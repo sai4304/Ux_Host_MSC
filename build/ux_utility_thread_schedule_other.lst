@@ -1,0 +1,241 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_utility_thread_schedule_other.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_utility_thread_schedule_other,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_thread_schedule_other
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_thread_schedule_other:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** #if !defined(UX_STANDALONE)
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    _ux_utility_thread_schedule_other                   PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                           6.1.11       */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    This function force the scheduling of all other threads.            */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    caller_priority                        Priority to restore.          */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  OUTPUT                                                                */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    Completion Status                                                   */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  CALLS                                                                 */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    tx_thread_identify                    ThreadX identify              */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    tx_thread_priority_change             ThreadX priority change       */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    tx_thread_relinquish                  ThreadX relinquish            */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  CALLED BY                                                             */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    USBX Components                                                     */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  RELEASE HISTORY                                                       */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                            used UX prefix to refer to  */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                            TX symbols instead of using */
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                            them directly,              */
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                            resulting in version 6.1    */
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*  04-25-2022     Chaoqiong Xiao           Modified comment(s),          */
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                            off in standalone build,    */
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                            resulting in version 6.1.11 */
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /*                                                                        */
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** /**************************************************************************/
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** UINT  _ux_utility_thread_schedule_other(UINT caller_priority)
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** {
+  30              		.loc 1 80 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 80 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s 			page 3
+
+
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 82B0     		sub	sp, sp, #8
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 16
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** UINT        status;
+  43              		.loc 1 82 1 is_stmt 1 view .LVU2
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** UINT        old_priority;
+  44              		.loc 1 83 1 view .LVU3
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** UX_THREAD   *my_thread;
+  45              		.loc 1 84 1 view .LVU4
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     UX_PARAMETER_NOT_USED(caller_priority);
+  46              		.loc 1 86 5 view .LVU5
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     /* Call TX to know my own tread.  */
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     my_thread = tx_thread_identify();
+  47              		.loc 1 89 5 view .LVU6
+  48              		.loc 1 89 17 is_stmt 0 view .LVU7
+  49 0004 FFF7FEFF 		bl	_tx_thread_identify
+  50              	.LVL1:
+  51              		.loc 1 89 17 view .LVU8
+  52 0008 0446     		mov	r4, r0
+  53              	.LVL2:
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     /* Call ThreadX to change thread priority .  */
+  92:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     status =  tx_thread_priority_change(my_thread, _ux_system -> ux_system_thread_lowest_priority, 
+  54              		.loc 1 92 5 is_stmt 1 view .LVU9
+  55              		.loc 1 92 63 is_stmt 0 view .LVU10
+  56 000a 084B     		ldr	r3, .L5
+  57 000c 1B68     		ldr	r3, [r3]
+  58              		.loc 1 92 15 view .LVU11
+  59 000e 01AA     		add	r2, sp, #4
+  60 0010 9969     		ldr	r1, [r3, #24]
+  61 0012 FFF7FEFF 		bl	_txe_thread_priority_change
+  62              	.LVL3:
+  93:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     
+  94:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     /* Check for error.  */
+  95:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     if (status == TX_SUCCESS)
+  63              		.loc 1 95 5 is_stmt 1 view .LVU12
+  64              		.loc 1 95 8 is_stmt 0 view .LVU13
+  65 0016 08B1     		cbz	r0, .L4
+  66              	.L1:
+  96:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     {
+  97:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     
+  98:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****         /* Wait until all other threads passed into the scheduler. */
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****         _ux_utility_thread_relinquish();
+ 100:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     
+ 101:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****         /* And now return the priority of the thread to normal.  */
+ 102:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****         status =  tx_thread_priority_change(my_thread, old_priority, &old_priority);
+ 103:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****         
+ 104:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     }
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** 
+ 106:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     /* Return completion status.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s 			page 4
+
+
+ 107:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     return(status);
+ 108:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** }
+  67              		.loc 1 108 1 view .LVU14
+  68 0018 02B0     		add	sp, sp, #8
+  69              	.LCFI2:
+  70              		.cfi_remember_state
+  71              		.cfi_def_cfa_offset 8
+  72              		@ sp needed
+  73 001a 10BD     		pop	{r4, pc}
+  74              	.LVL4:
+  75              	.L4:
+  76              	.LCFI3:
+  77              		.cfi_restore_state
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****     
+  78              		.loc 1 99 9 is_stmt 1 view .LVU15
+  79 001c FFF7FEFF 		bl	_ux_utility_thread_relinquish
+  80              	.LVL5:
+ 102:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****         
+  81              		.loc 1 102 9 view .LVU16
+ 102:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c ****         
+  82              		.loc 1 102 19 is_stmt 0 view .LVU17
+  83 0020 01AA     		add	r2, sp, #4
+  84 0022 0199     		ldr	r1, [sp, #4]
+  85 0024 2046     		mov	r0, r4
+  86 0026 FFF7FEFF 		bl	_txe_thread_priority_change
+  87              	.LVL6:
+ 107:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** }
+  88              		.loc 1 107 5 is_stmt 1 view .LVU18
+ 107:Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c **** }
+  89              		.loc 1 107 11 is_stmt 0 view .LVU19
+  90 002a F5E7     		b	.L1
+  91              	.L6:
+  92              		.align	2
+  93              	.L5:
+  94 002c 00000000 		.word	_ux_system
+  95              		.cfi_endproc
+  96              	.LFE11:
+  98              		.text
+  99              	.Letext0:
+ 100              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 101              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 102              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 103              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 104              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_thread_schedule_other.c
+C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s:20     .text._ux_utility_thread_schedule_other:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s:26     .text._ux_utility_thread_schedule_other:00000000 _ux_utility_thread_schedule_other
+C:\Users\HP\AppData\Local\Temp\ccnfUEhD.s:94     .text._ux_utility_thread_schedule_other:0000002c $d
+
+UNDEFINED SYMBOLS
+_tx_thread_identify
+_txe_thread_priority_change
+_ux_utility_thread_relinquish
+_ux_system

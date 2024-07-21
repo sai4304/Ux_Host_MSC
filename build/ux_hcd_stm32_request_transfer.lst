@@ -1,0 +1,309 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_request_transfer.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_request_transfer,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_request_transfer
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_request_transfer:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c"
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    _ux_hcd_stm32_request_transfer                      PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                           6.1.10       */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*     This function is the handler for all the transactions on the USB.  */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*     The transfer request passed as parameter contains the endpoint and */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*     the device descriptors in addition to the type of transaction de   */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*     be executed. This function routes the transfer request to          */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*     according to the type of transfer to be executed.                  */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  INPUT                                                                 */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    hcd_stm32                             Pointer to STM32 controller   */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    transfer_request                      Pointer to transfer request   */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  OUTPUT                                                                */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    Completion Status                                                   */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  CALLS                                                                 */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    _ux_hcd_stm32_request_bulk_transfer         Request bulk transfer   */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    _ux_hcd_stm32_request_control_transfer      Request control         */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                    transfer            */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    _ux_hcd_stm32_request_periodic_transfer     Request periodic        */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                    transfer            */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  CALLED BY                                                             */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    STM32 Controller Driver                                             */
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  RELEASE HISTORY                                                       */
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*    DATE              NAME                      DESCRIPTION             */
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                            internal clean up,          */
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                            added standalone support,   */
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                            resulting in version 6.1.10 */
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /*                                                                        */
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** /**************************************************************************/
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** UINT  _ux_hcd_stm32_request_transfer(UX_HCD_STM32 *hcd_stm32, UX_TRANSFER *transfer_request)
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** {
+  30              		.loc 1 85 1 view -0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s 			page 3
+
+
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 85 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** UX_ENDPOINT     *endpoint;
+  40              		.loc 1 87 1 is_stmt 1 view .LVU2
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** UINT            status;
+  41              		.loc 1 88 1 view .LVU3
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     /* Device Connection Status.  */
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     if (hcd_stm32 -> ux_hcd_stm32_controller_flag & UX_HCD_STM32_CONTROLLER_FLAG_DEVICE_ATTACHED)
+  42              		.loc 1 91 5 view .LVU4
+  43              		.loc 1 91 19 is_stmt 0 view .LVU5
+  44 0002 436C     		ldr	r3, [r0, #68]
+  45              		.loc 1 91 8 view .LVU6
+  46 0004 13F0010F 		tst	r3, #1
+  47 0008 18D0     		beq	.L2
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     {
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         /* Get the pointer to the Endpoint.  */
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         endpoint =  (UX_ENDPOINT *) transfer_request -> ux_transfer_request_endpoint;
+  48              		.loc 1 95 9 is_stmt 1 view .LVU7
+  49              		.loc 1 95 18 is_stmt 0 view .LVU8
+  50 000a 4B68     		ldr	r3, [r1, #4]
+  51              	.LVL1:
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #if !defined(UX_HOST_STANDALONE)
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         /* We reset the actual length field of the transfer request as a safety measure.  */
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         transfer_request -> ux_transfer_request_actual_length =  0;
+  52              		.loc 1 100 9 is_stmt 1 view .LVU9
+  53              		.loc 1 100 63 is_stmt 0 view .LVU10
+  54 000c 0022     		movs	r2, #0
+  55 000e 0A61     		str	r2, [r1, #16]
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #endif /* !defined(UX_HOST_STANDALONE) */
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         /* Isolate the endpoint type and route the transfer request.  */
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         switch ((endpoint -> ux_endpoint_descriptor.bmAttributes) & UX_MASK_ENDPOINT_TYPE)
+  56              		.loc 1 104 9 is_stmt 1 view .LVU11
+  57              		.loc 1 104 52 is_stmt 0 view .LVU12
+  58 0010 9B69     		ldr	r3, [r3, #24]
+  59              	.LVL2:
+  60              		.loc 1 104 67 view .LVU13
+  61 0012 03F00303 		and	r3, r3, #3
+  62              		.loc 1 104 9 view .LVU14
+  63 0016 032B     		cmp	r3, #3
+  64 0018 0CD8     		bhi	.L3
+  65 001a DFE803F0 		tbb	[pc, r3]
+  66              	.L5:
+  67 001e 02       		.byte	(.L7-.L5)/2
+  68 001f 08       		.byte	(.L4-.L5)/2
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s 			page 4
+
+
+  69 0020 05       		.byte	(.L6-.L5)/2
+  70 0021 08       		.byte	(.L4-.L5)/2
+  71              		.p2align 1
+  72              	.L7:
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         {
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 107:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         case UX_CONTROL_ENDPOINT:
+ 108:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             status = _ux_hcd_stm32_request_control_transfer(hcd_stm32, transfer_request);
+  73              		.loc 1 109 13 is_stmt 1 view .LVU15
+  74              		.loc 1 109 22 is_stmt 0 view .LVU16
+  75 0022 FFF7FEFF 		bl	_ux_hcd_stm32_request_control_transfer
+  76              	.LVL3:
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             break;
+  77              		.loc 1 110 13 is_stmt 1 view .LVU17
+  78 0026 0CE0     		b	.L1
+  79              	.LVL4:
+  80              	.L6:
+ 111:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 112:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         case UX_BULK_ENDPOINT:
+ 113:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             status = _ux_hcd_stm32_request_bulk_transfer(hcd_stm32, transfer_request);
+  81              		.loc 1 114 13 view .LVU18
+  82              		.loc 1 114 22 is_stmt 0 view .LVU19
+  83 0028 FFF7FEFF 		bl	_ux_hcd_stm32_request_bulk_transfer
+  84              	.LVL5:
+ 115:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             break;
+  85              		.loc 1 115 13 is_stmt 1 view .LVU20
+  86 002c 09E0     		b	.L1
+  87              	.LVL6:
+  88              	.L4:
+ 116:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 117:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         case UX_INTERRUPT_ENDPOINT:
+ 118:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         case UX_ISOCHRONOUS_ENDPOINT:
+ 119:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 120:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             status = _ux_hcd_stm32_request_periodic_transfer(hcd_stm32, transfer_request);
+  89              		.loc 1 120 13 view .LVU21
+  90              		.loc 1 120 22 is_stmt 0 view .LVU22
+  91 002e FFF7FEFF 		bl	_ux_hcd_stm32_request_periodic_transfer
+  92              	.LVL7:
+ 121:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             break;
+  93              		.loc 1 121 13 is_stmt 1 view .LVU23
+  94 0032 06E0     		b	.L1
+  95              	.LVL8:
+  96              	.L3:
+ 122:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 123:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         default:
+ 124:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 125:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #if defined(UX_HOST_STANDALONE)
+ 126:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             status =  UX_ERROR;
+ 127:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #else
+ 128:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             transfer_request -> ux_transfer_request_completion_code = UX_ERROR;
+  97              		.loc 1 128 13 view .LVU24
+  98              		.loc 1 128 69 is_stmt 0 view .LVU25
+  99 0034 FF23     		movs	r3, #255
+ 100 0036 4B63     		str	r3, [r1, #52]
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****             return(UX_STATE_EXIT);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s 			page 5
+
+
+ 101              		.loc 1 129 13 is_stmt 1 view .LVU26
+ 102              		.loc 1 129 19 is_stmt 0 view .LVU27
+ 103 0038 0120     		movs	r0, #1
+ 104              	.LVL9:
+ 105              		.loc 1 129 19 view .LVU28
+ 106 003a 02E0     		b	.L1
+ 107              	.LVL10:
+ 108              	.L2:
+ 130:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #endif /* defined(UX_HOST_STANDALONE) */
+ 131:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         }
+ 132:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     }
+ 133:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     else
+ 134:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     {
+ 135:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 136:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         /* Error, no device attached.  */
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #if defined(UX_HOST_STANDALONE)
+ 138:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         status = UX_NO_DEVICE_CONNECTED;
+ 139:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #else
+ 140:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         transfer_request -> ux_transfer_request_completion_code = UX_NO_DEVICE_CONNECTED;
+ 109              		.loc 1 140 9 is_stmt 1 view .LVU29
+ 110              		.loc 1 140 65 is_stmt 0 view .LVU30
+ 111 003c 5F23     		movs	r3, #95
+ 112 003e 4B63     		str	r3, [r1, #52]
+ 141:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****         status = UX_STATE_EXIT;
+ 113              		.loc 1 141 9 is_stmt 1 view .LVU31
+ 114              	.LVL11:
+ 115              		.loc 1 141 16 is_stmt 0 view .LVU32
+ 116 0040 0120     		movs	r0, #1
+ 117              	.LVL12:
+ 118              	.L1:
+ 142:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** #endif /* defined(UX_HOST_STANDALONE) */
+ 143:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 144:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     }
+ 145:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** 
+ 146:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c ****     return(status);
+ 147:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_transfer.c **** }
+ 119              		.loc 1 147 1 view .LVU33
+ 120 0042 08BD     		pop	{r3, pc}
+ 121              		.cfi_endproc
+ 122              	.LFE143:
+ 124              		.text
+ 125              	.Letext0:
+ 126              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 127              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 128              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 129              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 130              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 131              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 132              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 133              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 134              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 135              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_request_transfer.c
+C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s:20     .text._ux_hcd_stm32_request_transfer:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s:26     .text._ux_hcd_stm32_request_transfer:00000000 _ux_hcd_stm32_request_transfer
+C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s:67     .text._ux_hcd_stm32_request_transfer:0000001e $d
+C:\Users\HP\AppData\Local\Temp\ccvQdn1Z.s:71     .text._ux_hcd_stm32_request_transfer:00000022 $t
+
+UNDEFINED SYMBOLS
+_ux_hcd_stm32_request_control_transfer
+_ux_hcd_stm32_request_bulk_transfer
+_ux_hcd_stm32_request_periodic_transfer

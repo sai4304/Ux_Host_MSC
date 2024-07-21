@@ -1,0 +1,236 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqbmbGl.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_utility_thread_create.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_utility_thread_create,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_thread_create
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_thread_create:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqbmbGl.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** #if !defined(UX_STANDALONE)
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    _ux_utility_thread_create                           PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                           6.1.11       */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    This function creates a thread for USBX.                            */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    thread_ptr                            Thread control block pointer  */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    name                                  Pointer to thread name string */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    entry_function                        Entry function of the thread  */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    entry_input                           32-bit input value to thread  */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    stack_start                           Pointer to start of stack     */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    stack_size                            Stack size in bytes           */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    priority                              Priority of thread (0-31)     */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    preempt_threshold                     Preemption threshold          */
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    time_slice                            Thread time-slice value       */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    auto_start                            Automatic start selection     */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  OUTPUT                                                                */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    Completion Status                                                   */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  CALLS                                                                 */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    tx_thread_create                      ThreadX create thread function*/ 
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  CALLED BY                                                             */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    USBX Components                                                     */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  RELEASE HISTORY                                                       */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */ 
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                            used UX prefix to refer to  */
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                            TX symbols instead of using */
+  79:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                            them directly,              */
+  80:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                            resulting in version 6.1    */
+  81:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*  04-25-2022     Chaoqiong Xiao           Modified comment(s),          */
+  82:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                            off in standalone build,    */
+  83:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                            resulting in version 6.1.11 */
+  84:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /*                                                                        */
+  85:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** /**************************************************************************/
+  86:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** UINT  _ux_utility_thread_create(UX_THREAD *thread_ptr, CHAR *name, 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqbmbGl.s 			page 3
+
+
+  87:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****                 VOID (*entry_function)(ULONG), ULONG entry_input,
+  88:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****                 VOID *stack_start, ULONG stack_size, 
+  89:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****                 UINT priority, UINT preempt_threshold,
+  90:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****                 ULONG time_slice, UINT auto_start)
+  91:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** {
+  30              		.loc 1 91 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 24, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 91 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 88B0     		sub	sp, sp, #32
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 40
+  92:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  93:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** UINT    status;
+  43              		.loc 1 93 1 is_stmt 1 view .LVU2
+  94:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  95:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  96:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     /* Call ThreadX to create USBX thread.  */
+  97:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     status =  tx_thread_create(thread_ptr,name,entry_function,entry_input,
+  44              		.loc 1 97 5 view .LVU3
+  45              		.loc 1 97 15 is_stmt 0 view .LVU4
+  46 0004 B024     		movs	r4, #176
+  47 0006 0694     		str	r4, [sp, #24]
+  48 0008 0F9C     		ldr	r4, [sp, #60]
+  49 000a 0594     		str	r4, [sp, #20]
+  50 000c 0E9C     		ldr	r4, [sp, #56]
+  51 000e 0494     		str	r4, [sp, #16]
+  52 0010 0D9C     		ldr	r4, [sp, #52]
+  53 0012 0394     		str	r4, [sp, #12]
+  54 0014 0C9C     		ldr	r4, [sp, #48]
+  55 0016 0294     		str	r4, [sp, #8]
+  56 0018 0B9C     		ldr	r4, [sp, #44]
+  57 001a 0194     		str	r4, [sp, #4]
+  58 001c 0A9C     		ldr	r4, [sp, #40]
+  59 001e 0094     		str	r4, [sp]
+  60 0020 FFF7FEFF 		bl	_txe_thread_create
+  61              	.LVL1:
+  98:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****                     stack_start,stack_size, priority,preempt_threshold,time_slice,auto_start);
+  99:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+ 100:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     /* Check for status.  */
+ 101:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     if (status != UX_SUCCESS)
+  62              		.loc 1 101 5 is_stmt 1 view .LVU5
+  63              		.loc 1 101 8 is_stmt 0 view .LVU6
+  64 0024 0446     		mov	r4, r0
+  65 0026 10B9     		cbnz	r0, .L4
+  66              	.LVL2:
+  67              	.L1:
+ 102:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     {
+ 103:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+ 104:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****         /* Error trap. */
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_UTILITY, status);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqbmbGl.s 			page 4
+
+
+ 106:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+ 107:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 108:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_THREAD_ERROR, thread_ptr, 0, 0, UX_TRACE_ERRORS,
+ 109:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+ 110:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     }
+ 111:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     /* Return completion status.  */
+ 112:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c ****     return(status);
+ 113:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** }
+  68              		.loc 1 113 1 view .LVU7
+  69 0028 2046     		mov	r0, r4
+  70 002a 08B0     		add	sp, sp, #32
+  71              	.LCFI2:
+  72              		.cfi_remember_state
+  73              		.cfi_def_cfa_offset 8
+  74              		@ sp needed
+  75 002c 10BD     		pop	{r4, pc}
+  76              	.LVL3:
+  77              	.L4:
+  78              	.LCFI3:
+  79              		.cfi_restore_state
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  80              		.loc 1 105 9 is_stmt 1 view .LVU8
+  81 002e 0246     		mov	r2, r0
+  82 0030 0821     		movs	r1, #8
+  83 0032 0220     		movs	r0, #2
+  84              	.LVL4:
+ 105:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** 
+  85              		.loc 1 105 9 is_stmt 0 view .LVU9
+  86 0034 FFF7FEFF 		bl	_ux_system_error_handler
+  87              	.LVL5:
+ 112:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** }
+  88              		.loc 1 112 5 is_stmt 1 view .LVU10
+ 112:Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c **** }
+  89              		.loc 1 112 11 is_stmt 0 view .LVU11
+  90 0038 F6E7     		b	.L1
+  91              		.cfi_endproc
+  92              	.LFE11:
+  94              		.text
+  95              	.Letext0:
+  96              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+  97              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+  98              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqbmbGl.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_thread_create.c
+C:\Users\HP\AppData\Local\Temp\ccqbmbGl.s:20     .text._ux_utility_thread_create:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccqbmbGl.s:26     .text._ux_utility_thread_create:00000000 _ux_utility_thread_create
+
+UNDEFINED SYMBOLS
+_txe_thread_create
+_ux_system_error_handler

@@ -1,0 +1,519 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"app_azure_rtos.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.rodata.tx_application_define.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 54782041 		.ascii	"Tx App memory pool\000"
+  22      7070206D 
+  22      656D6F72 
+  22      7920706F 
+  22      6F6C00
+  23 0013 00       		.align	2
+  24              	.LC1:
+  25 0014 46782041 		.ascii	"Fx App memory pool\000"
+  25      7070206D 
+  25      656D6F72 
+  25      7920706F 
+  25      6F6C00
+  26 0027 00       		.align	2
+  27              	.LC2:
+  28 0028 55782041 		.ascii	"Ux App memory pool\000"
+  28      7070206D 
+  28      656D6F72 
+  28      7920706F 
+  28      6F6C00
+  29              		.section	.text.tx_application_define,"ax",%progbits
+  30              		.align	1
+  31              		.global	tx_application_define
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  36              	tx_application_define:
+  37              	.LVL0:
+  38              	.LFB143:
+  39              		.file 1 "AZURE_RTOS/App/app_azure_rtos.c"
+   1:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN Header */
+   2:AZURE_RTOS/App/app_azure_rtos.c **** /**
+   3:AZURE_RTOS/App/app_azure_rtos.c ****   ******************************************************************************
+   4:AZURE_RTOS/App/app_azure_rtos.c ****   * @file    app_azure_rtos.c
+   5:AZURE_RTOS/App/app_azure_rtos.c ****   * @author  MCD Application Team
+   6:AZURE_RTOS/App/app_azure_rtos.c ****   * @brief   app_azure_rtos application implementation file
+   7:AZURE_RTOS/App/app_azure_rtos.c ****   ******************************************************************************
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 2
+
+
+   8:AZURE_RTOS/App/app_azure_rtos.c ****   * @attention
+   9:AZURE_RTOS/App/app_azure_rtos.c ****   *
+  10:AZURE_RTOS/App/app_azure_rtos.c ****   * Copyright (c) 2021 STMicroelectronics.
+  11:AZURE_RTOS/App/app_azure_rtos.c ****   * All rights reserved.
+  12:AZURE_RTOS/App/app_azure_rtos.c ****   *
+  13:AZURE_RTOS/App/app_azure_rtos.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:AZURE_RTOS/App/app_azure_rtos.c ****   * in the root directory of this software component.
+  15:AZURE_RTOS/App/app_azure_rtos.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:AZURE_RTOS/App/app_azure_rtos.c ****   *
+  17:AZURE_RTOS/App/app_azure_rtos.c ****   ******************************************************************************
+  18:AZURE_RTOS/App/app_azure_rtos.c ****   */
+  19:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END Header */
+  20:AZURE_RTOS/App/app_azure_rtos.c **** 
+  21:AZURE_RTOS/App/app_azure_rtos.c **** /* Includes ------------------------------------------------------------------*/
+  22:AZURE_RTOS/App/app_azure_rtos.c **** 
+  23:AZURE_RTOS/App/app_azure_rtos.c **** #include "app_azure_rtos.h"
+  24:AZURE_RTOS/App/app_azure_rtos.c **** #include "stm32l4xx.h"
+  25:AZURE_RTOS/App/app_azure_rtos.c **** 
+  26:AZURE_RTOS/App/app_azure_rtos.c **** /* Private includes ----------------------------------------------------------*/
+  27:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN Includes */
+  28:AZURE_RTOS/App/app_azure_rtos.c **** 
+  29:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END Includes */
+  30:AZURE_RTOS/App/app_azure_rtos.c **** 
+  31:AZURE_RTOS/App/app_azure_rtos.c **** /* Private typedef -----------------------------------------------------------*/
+  32:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN PTD */
+  33:AZURE_RTOS/App/app_azure_rtos.c **** 
+  34:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END PTD */
+  35:AZURE_RTOS/App/app_azure_rtos.c **** 
+  36:AZURE_RTOS/App/app_azure_rtos.c **** /* Private define ------------------------------------------------------------*/
+  37:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN PD */
+  38:AZURE_RTOS/App/app_azure_rtos.c **** 
+  39:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END PD */
+  40:AZURE_RTOS/App/app_azure_rtos.c **** 
+  41:AZURE_RTOS/App/app_azure_rtos.c **** /* Private macro -------------------------------------------------------------*/
+  42:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN PM */
+  43:AZURE_RTOS/App/app_azure_rtos.c **** 
+  44:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END PM */
+  45:AZURE_RTOS/App/app_azure_rtos.c **** 
+  46:AZURE_RTOS/App/app_azure_rtos.c **** /* Private variables ---------------------------------------------------------*/
+  47:AZURE_RTOS/App/app_azure_rtos.c **** #if (USE_STATIC_ALLOCATION == 1)
+  48:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN TX_Pool_Buffer */
+  49:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END TX_Pool_Buffer */
+  50:AZURE_RTOS/App/app_azure_rtos.c **** #if defined ( __ICCARM__ )
+  51:AZURE_RTOS/App/app_azure_rtos.c **** #pragma data_alignment=4
+  52:AZURE_RTOS/App/app_azure_rtos.c **** #endif
+  53:AZURE_RTOS/App/app_azure_rtos.c **** __ALIGN_BEGIN static UCHAR tx_byte_pool_buffer[TX_APP_MEM_POOL_SIZE] __ALIGN_END;
+  54:AZURE_RTOS/App/app_azure_rtos.c **** static TX_BYTE_POOL tx_app_byte_pool;
+  55:AZURE_RTOS/App/app_azure_rtos.c **** 
+  56:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN FX_Pool_Buffer */
+  57:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END FX_Pool_Buffer */
+  58:AZURE_RTOS/App/app_azure_rtos.c **** #if defined ( __ICCARM__ )
+  59:AZURE_RTOS/App/app_azure_rtos.c **** #pragma data_alignment=4
+  60:AZURE_RTOS/App/app_azure_rtos.c **** #endif
+  61:AZURE_RTOS/App/app_azure_rtos.c **** __ALIGN_BEGIN static UCHAR fx_byte_pool_buffer[FX_APP_MEM_POOL_SIZE] __ALIGN_END;
+  62:AZURE_RTOS/App/app_azure_rtos.c **** static TX_BYTE_POOL fx_app_byte_pool;
+  63:AZURE_RTOS/App/app_azure_rtos.c **** 
+  64:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN UX_HOST_Pool_Buffer */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 3
+
+
+  65:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END UX_HOST_Pool_Buffer */
+  66:AZURE_RTOS/App/app_azure_rtos.c **** #if defined ( __ICCARM__ )
+  67:AZURE_RTOS/App/app_azure_rtos.c **** #pragma data_alignment=4
+  68:AZURE_RTOS/App/app_azure_rtos.c **** #endif
+  69:AZURE_RTOS/App/app_azure_rtos.c **** __ALIGN_BEGIN static UCHAR ux_host_byte_pool_buffer[UX_HOST_APP_MEM_POOL_SIZE] __ALIGN_END;
+  70:AZURE_RTOS/App/app_azure_rtos.c **** static TX_BYTE_POOL ux_host_app_byte_pool;
+  71:AZURE_RTOS/App/app_azure_rtos.c **** 
+  72:AZURE_RTOS/App/app_azure_rtos.c **** #endif
+  73:AZURE_RTOS/App/app_azure_rtos.c **** 
+  74:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN PV */
+  75:AZURE_RTOS/App/app_azure_rtos.c **** 
+  76:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END PV */
+  77:AZURE_RTOS/App/app_azure_rtos.c **** 
+  78:AZURE_RTOS/App/app_azure_rtos.c **** /* Private function prototypes -----------------------------------------------*/
+  79:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE BEGIN PFP */
+  80:AZURE_RTOS/App/app_azure_rtos.c **** 
+  81:AZURE_RTOS/App/app_azure_rtos.c **** /* USER CODE END PFP */
+  82:AZURE_RTOS/App/app_azure_rtos.c **** 
+  83:AZURE_RTOS/App/app_azure_rtos.c **** /**
+  84:AZURE_RTOS/App/app_azure_rtos.c ****   * @brief  Define the initial system.
+  85:AZURE_RTOS/App/app_azure_rtos.c ****   * @param  first_unused_memory : Pointer to the first unused memory
+  86:AZURE_RTOS/App/app_azure_rtos.c ****   * @retval None
+  87:AZURE_RTOS/App/app_azure_rtos.c ****   */
+  88:AZURE_RTOS/App/app_azure_rtos.c **** VOID tx_application_define(VOID *first_unused_memory)
+  89:AZURE_RTOS/App/app_azure_rtos.c **** {
+  40              		.loc 1 89 1 view -0
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 0, uses_anonymous_args = 0
+  44              		.loc 1 89 1 is_stmt 0 view .LVU1
+  45 0000 00B5     		push	{lr}
+  46              	.LCFI0:
+  47              		.cfi_def_cfa_offset 4
+  48              		.cfi_offset 14, -4
+  49 0002 83B0     		sub	sp, sp, #12
+  50              	.LCFI1:
+  51              		.cfi_def_cfa_offset 16
+  90:AZURE_RTOS/App/app_azure_rtos.c ****   /* USER CODE BEGIN  tx_application_define_1*/
+  91:AZURE_RTOS/App/app_azure_rtos.c **** 
+  92:AZURE_RTOS/App/app_azure_rtos.c ****   /* USER CODE END  tx_application_define_1 */
+  93:AZURE_RTOS/App/app_azure_rtos.c **** #if (USE_STATIC_ALLOCATION == 1)
+  94:AZURE_RTOS/App/app_azure_rtos.c ****   UINT status = TX_SUCCESS;
+  52              		.loc 1 94 3 is_stmt 1 view .LVU2
+  53              	.LVL1:
+  95:AZURE_RTOS/App/app_azure_rtos.c ****   VOID *memory_ptr;
+  54              		.loc 1 95 3 view .LVU3
+  96:AZURE_RTOS/App/app_azure_rtos.c **** 
+  97:AZURE_RTOS/App/app_azure_rtos.c ****   if (tx_byte_pool_create(&tx_app_byte_pool, "Tx App memory pool", tx_byte_pool_buffer, TX_APP_MEM_
+  55              		.loc 1 97 3 view .LVU4
+  56              		.loc 1 97 7 is_stmt 0 view .LVU5
+  57 0004 3423     		movs	r3, #52
+  58 0006 0093     		str	r3, [sp]
+  59 0008 4FF48063 		mov	r3, #1024
+  60 000c 164A     		ldr	r2, .L10
+  61 000e 1749     		ldr	r1, .L10+4
+  62 0010 1748     		ldr	r0, .L10+8
+  63              	.LVL2:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 4
+
+
+  64              		.loc 1 97 7 view .LVU6
+  65 0012 FFF7FEFF 		bl	_txe_byte_pool_create
+  66              	.LVL3:
+  67              		.loc 1 97 6 view .LVU7
+  68 0016 20B9     		cbnz	r0, .L2
+  98:AZURE_RTOS/App/app_azure_rtos.c ****   {
+  99:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN TX_Byte_Pool_Error */
+ 100:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 101:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END TX_Byte_Pool_Error */
+ 102:AZURE_RTOS/App/app_azure_rtos.c ****   }
+ 103:AZURE_RTOS/App/app_azure_rtos.c ****   else
+ 104:AZURE_RTOS/App/app_azure_rtos.c ****   {
+ 105:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN TX_Byte_Pool_Success */
+ 106:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 107:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END TX_Byte_Pool_Success */
+ 108:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 109:AZURE_RTOS/App/app_azure_rtos.c ****     memory_ptr = (VOID *)&tx_app_byte_pool;
+  69              		.loc 1 109 5 is_stmt 1 view .LVU8
+  70              	.LVL4:
+ 110:AZURE_RTOS/App/app_azure_rtos.c ****     status = App_ThreadX_Init(memory_ptr);
+  71              		.loc 1 110 5 view .LVU9
+  72              		.loc 1 110 14 is_stmt 0 view .LVU10
+  73 0018 1548     		ldr	r0, .L10+8
+  74 001a FFF7FEFF 		bl	App_ThreadX_Init
+  75              	.LVL5:
+ 111:AZURE_RTOS/App/app_azure_rtos.c ****     if (status != TX_SUCCESS)
+  76              		.loc 1 111 5 is_stmt 1 view .LVU11
+  77              		.loc 1 111 8 is_stmt 0 view .LVU12
+  78 001e 00B1     		cbz	r0, .L2
+  79              	.L3:
+ 112:AZURE_RTOS/App/app_azure_rtos.c ****     {
+ 113:AZURE_RTOS/App/app_azure_rtos.c ****       /* USER CODE BEGIN  App_ThreadX_Init_Error */
+ 114:AZURE_RTOS/App/app_azure_rtos.c ****       while(1)
+  80              		.loc 1 114 7 is_stmt 1 discriminator 1 view .LVU13
+ 115:AZURE_RTOS/App/app_azure_rtos.c ****       {
+ 116:AZURE_RTOS/App/app_azure_rtos.c ****       }
+  81              		.loc 1 116 7 discriminator 1 view .LVU14
+ 114:AZURE_RTOS/App/app_azure_rtos.c ****       {
+  82              		.loc 1 114 12 discriminator 1 view .LVU15
+  83 0020 FEE7     		b	.L3
+  84              	.LVL6:
+  85              	.L2:
+ 117:AZURE_RTOS/App/app_azure_rtos.c ****       /* USER CODE END  App_ThreadX_Init_Error */
+ 118:AZURE_RTOS/App/app_azure_rtos.c ****     }
+ 119:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 120:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN  App_ThreadX_Init_Success */
+ 121:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 122:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END  App_ThreadX_Init_Success */
+ 123:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 124:AZURE_RTOS/App/app_azure_rtos.c ****   }
+ 125:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 126:AZURE_RTOS/App/app_azure_rtos.c ****   if (tx_byte_pool_create(&fx_app_byte_pool, "Fx App memory pool", fx_byte_pool_buffer, FX_APP_MEM_
+  86              		.loc 1 126 3 view .LVU16
+  87              		.loc 1 126 7 is_stmt 0 view .LVU17
+  88 0022 3423     		movs	r3, #52
+  89 0024 0093     		str	r3, [sp]
+  90 0026 4FF40063 		mov	r3, #2048
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 5
+
+
+  91 002a 124A     		ldr	r2, .L10+12
+  92 002c 1249     		ldr	r1, .L10+16
+  93 002e 1348     		ldr	r0, .L10+20
+  94 0030 FFF7FEFF 		bl	_txe_byte_pool_create
+  95              	.LVL7:
+  96              		.loc 1 126 6 view .LVU18
+  97 0034 20B9     		cbnz	r0, .L4
+ 127:AZURE_RTOS/App/app_azure_rtos.c ****   {
+ 128:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN FX_Byte_Pool_Error */
+ 129:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 130:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END FX_Byte_Pool_Error */
+ 131:AZURE_RTOS/App/app_azure_rtos.c ****   }
+ 132:AZURE_RTOS/App/app_azure_rtos.c ****   else
+ 133:AZURE_RTOS/App/app_azure_rtos.c ****   {
+ 134:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN FX_Byte_Pool_Success */
+ 135:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 136:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END FX_Byte_Pool_Success */
+ 137:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 138:AZURE_RTOS/App/app_azure_rtos.c ****     memory_ptr = (VOID *)&fx_app_byte_pool;
+  98              		.loc 1 138 5 is_stmt 1 view .LVU19
+  99              	.LVL8:
+ 139:AZURE_RTOS/App/app_azure_rtos.c ****     status = MX_FileX_Init(memory_ptr);
+ 100              		.loc 1 139 5 view .LVU20
+ 101              		.loc 1 139 14 is_stmt 0 view .LVU21
+ 102 0036 1148     		ldr	r0, .L10+20
+ 103 0038 FFF7FEFF 		bl	MX_FileX_Init
+ 104              	.LVL9:
+ 140:AZURE_RTOS/App/app_azure_rtos.c ****     if (status != FX_SUCCESS)
+ 105              		.loc 1 140 5 is_stmt 1 view .LVU22
+ 106              		.loc 1 140 8 is_stmt 0 view .LVU23
+ 107 003c 00B1     		cbz	r0, .L4
+ 108              	.L5:
+ 141:AZURE_RTOS/App/app_azure_rtos.c ****     {
+ 142:AZURE_RTOS/App/app_azure_rtos.c ****       /* USER CODE BEGIN  MX_FileX_Init_Error */
+ 143:AZURE_RTOS/App/app_azure_rtos.c ****       while(1)
+ 109              		.loc 1 143 7 is_stmt 1 discriminator 2 view .LVU24
+ 144:AZURE_RTOS/App/app_azure_rtos.c ****       {
+ 145:AZURE_RTOS/App/app_azure_rtos.c ****       }
+ 110              		.loc 1 145 7 discriminator 2 view .LVU25
+ 143:AZURE_RTOS/App/app_azure_rtos.c ****       {
+ 111              		.loc 1 143 12 discriminator 2 view .LVU26
+ 112 003e FEE7     		b	.L5
+ 113              	.LVL10:
+ 114              	.L4:
+ 146:AZURE_RTOS/App/app_azure_rtos.c ****       /* USER CODE END  MX_FileX_Init_Error */
+ 147:AZURE_RTOS/App/app_azure_rtos.c ****     }
+ 148:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 149:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN MX_FileX_Init_Success */
+ 150:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 151:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END MX_FileX_Init_Success */
+ 152:AZURE_RTOS/App/app_azure_rtos.c ****   }
+ 153:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 154:AZURE_RTOS/App/app_azure_rtos.c ****   if (tx_byte_pool_create(&ux_host_app_byte_pool, "Ux App memory pool", ux_host_byte_pool_buffer, U
+ 115              		.loc 1 154 3 view .LVU27
+ 116              		.loc 1 154 7 is_stmt 0 view .LVU28
+ 117 0040 3423     		movs	r3, #52
+ 118 0042 0093     		str	r3, [sp]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 6
+
+
+ 119 0044 4FF4C843 		mov	r3, #25600
+ 120 0048 0D4A     		ldr	r2, .L10+24
+ 121 004a 0E49     		ldr	r1, .L10+28
+ 122 004c 0E48     		ldr	r0, .L10+32
+ 123 004e FFF7FEFF 		bl	_txe_byte_pool_create
+ 124              	.LVL11:
+ 125              		.loc 1 154 6 view .LVU29
+ 126 0052 10B1     		cbz	r0, .L9
+ 127              	.L1:
+ 155:AZURE_RTOS/App/app_azure_rtos.c ****   {
+ 156:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN UX_Byte_Pool_Error */
+ 157:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 158:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END UX_Byte_Pool_Error */
+ 159:AZURE_RTOS/App/app_azure_rtos.c ****   }
+ 160:AZURE_RTOS/App/app_azure_rtos.c ****   else
+ 161:AZURE_RTOS/App/app_azure_rtos.c ****   {
+ 162:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN UX_HOST_Byte_Pool_Success */
+ 163:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 164:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END UX_HOST_Byte_Pool_Success */
+ 165:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 166:AZURE_RTOS/App/app_azure_rtos.c ****     memory_ptr = (VOID *)&ux_host_app_byte_pool;
+ 167:AZURE_RTOS/App/app_azure_rtos.c ****     status = MX_USBX_Host_Init(memory_ptr);
+ 168:AZURE_RTOS/App/app_azure_rtos.c ****     if (status != UX_SUCCESS)
+ 169:AZURE_RTOS/App/app_azure_rtos.c ****     {
+ 170:AZURE_RTOS/App/app_azure_rtos.c ****       /* USER CODE BEGIN  MX_USBX_Host_Init_Error */
+ 171:AZURE_RTOS/App/app_azure_rtos.c ****       while(1)
+ 172:AZURE_RTOS/App/app_azure_rtos.c ****       {
+ 173:AZURE_RTOS/App/app_azure_rtos.c ****       }
+ 174:AZURE_RTOS/App/app_azure_rtos.c ****       /* USER CODE END  MX_USBX_Host_Init_Error */
+ 175:AZURE_RTOS/App/app_azure_rtos.c ****     }
+ 176:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 177:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE BEGIN MX_USBX_Host_Init_Success */
+ 178:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 179:AZURE_RTOS/App/app_azure_rtos.c ****     /* USER CODE END MX_USBX_Host_Init_Success */
+ 180:AZURE_RTOS/App/app_azure_rtos.c ****   }
+ 181:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 182:AZURE_RTOS/App/app_azure_rtos.c **** #else
+ 183:AZURE_RTOS/App/app_azure_rtos.c ****   /*
+ 184:AZURE_RTOS/App/app_azure_rtos.c ****    * Using dynamic memory allocation requires to apply some changes to the linker file.
+ 185:AZURE_RTOS/App/app_azure_rtos.c ****    * ThreadX needs to pass a pointer to the first free memory location in RAM to the tx_application
+ 186:AZURE_RTOS/App/app_azure_rtos.c ****    * using the "first_unused_memory" argument.
+ 187:AZURE_RTOS/App/app_azure_rtos.c ****    * This require changes in the linker files to expose this memory location.
+ 188:AZURE_RTOS/App/app_azure_rtos.c ****    * For EWARM add the following section into the .icf file:
+ 189:AZURE_RTOS/App/app_azure_rtos.c ****        place in RAM_region    { last section FREE_MEM };
+ 190:AZURE_RTOS/App/app_azure_rtos.c ****    * For MDK-ARM
+ 191:AZURE_RTOS/App/app_azure_rtos.c ****        - either define the RW_IRAM1 region in the ".sct" file
+ 192:AZURE_RTOS/App/app_azure_rtos.c ****        - or modify the line below in "tx_initialize_low_level.S to match the memory region being us
+ 193:AZURE_RTOS/App/app_azure_rtos.c ****           LDR r1, =|Image$$RW_IRAM1$$ZI$$Limit|
+ 194:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 195:AZURE_RTOS/App/app_azure_rtos.c ****    * For STM32CubeIDE add the following section into the .ld file:
+ 196:AZURE_RTOS/App/app_azure_rtos.c ****        ._threadx_heap :
+ 197:AZURE_RTOS/App/app_azure_rtos.c ****          {
+ 198:AZURE_RTOS/App/app_azure_rtos.c ****             . = ALIGN(8);
+ 199:AZURE_RTOS/App/app_azure_rtos.c ****             __RAM_segment_used_end__ = .;
+ 200:AZURE_RTOS/App/app_azure_rtos.c ****             . = . + 64K;
+ 201:AZURE_RTOS/App/app_azure_rtos.c ****             . = ALIGN(8);
+ 202:AZURE_RTOS/App/app_azure_rtos.c ****           } >RAM_D1 AT> RAM_D1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 7
+
+
+ 203:AZURE_RTOS/App/app_azure_rtos.c ****       * The simplest way to provide memory for ThreadX is to define a new section, see ._threadx_he
+ 204:AZURE_RTOS/App/app_azure_rtos.c ****       * In the example above the ThreadX heap size is set to 64KBytes.
+ 205:AZURE_RTOS/App/app_azure_rtos.c ****       * The ._threadx_heap must be located between the .bss and the ._user_heap_stack sections in t
+ 206:AZURE_RTOS/App/app_azure_rtos.c ****       * Caution: Make sure that ThreadX does not need more than the provided heap memory (64KBytes 
+ 207:AZURE_RTOS/App/app_azure_rtos.c ****       * Read more in STM32CubeIDE User Guide, chapter: "Linker script".
+ 208:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 209:AZURE_RTOS/App/app_azure_rtos.c ****    * The "tx_initialize_low_level.S" should be also modified to enable the "USE_DYNAMIC_MEMORY_ALLO
+ 210:AZURE_RTOS/App/app_azure_rtos.c ****    */
+ 211:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 212:AZURE_RTOS/App/app_azure_rtos.c ****   /* USER CODE BEGIN DYNAMIC_MEM_ALLOC */
+ 213:AZURE_RTOS/App/app_azure_rtos.c ****   (void)first_unused_memory;
+ 214:AZURE_RTOS/App/app_azure_rtos.c ****   /* USER CODE END DYNAMIC_MEM_ALLOC */
+ 215:AZURE_RTOS/App/app_azure_rtos.c **** #endif
+ 216:AZURE_RTOS/App/app_azure_rtos.c **** 
+ 217:AZURE_RTOS/App/app_azure_rtos.c **** }
+ 128              		.loc 1 217 1 view .LVU30
+ 129 0054 03B0     		add	sp, sp, #12
+ 130              	.LCFI2:
+ 131              		.cfi_remember_state
+ 132              		.cfi_def_cfa_offset 4
+ 133              		@ sp needed
+ 134 0056 5DF804FB 		ldr	pc, [sp], #4
+ 135              	.L9:
+ 136              	.LCFI3:
+ 137              		.cfi_restore_state
+ 166:AZURE_RTOS/App/app_azure_rtos.c ****     status = MX_USBX_Host_Init(memory_ptr);
+ 138              		.loc 1 166 5 is_stmt 1 view .LVU31
+ 139              	.LVL12:
+ 167:AZURE_RTOS/App/app_azure_rtos.c ****     if (status != UX_SUCCESS)
+ 140              		.loc 1 167 5 view .LVU32
+ 167:AZURE_RTOS/App/app_azure_rtos.c ****     if (status != UX_SUCCESS)
+ 141              		.loc 1 167 14 is_stmt 0 view .LVU33
+ 142 005a 0B48     		ldr	r0, .L10+32
+ 143 005c FFF7FEFF 		bl	MX_USBX_Host_Init
+ 144              	.LVL13:
+ 168:AZURE_RTOS/App/app_azure_rtos.c ****     {
+ 145              		.loc 1 168 5 is_stmt 1 view .LVU34
+ 168:AZURE_RTOS/App/app_azure_rtos.c ****     {
+ 146              		.loc 1 168 8 is_stmt 0 view .LVU35
+ 147 0060 0028     		cmp	r0, #0
+ 148 0062 F7D0     		beq	.L1
+ 149              	.L7:
+ 171:AZURE_RTOS/App/app_azure_rtos.c ****       {
+ 150              		.loc 1 171 7 is_stmt 1 discriminator 3 view .LVU36
+ 173:AZURE_RTOS/App/app_azure_rtos.c ****       /* USER CODE END  MX_USBX_Host_Init_Error */
+ 151              		.loc 1 173 7 discriminator 3 view .LVU37
+ 171:AZURE_RTOS/App/app_azure_rtos.c ****       {
+ 152              		.loc 1 171 12 discriminator 3 view .LVU38
+ 153 0064 FEE7     		b	.L7
+ 154              	.L11:
+ 155 0066 00BF     		.align	2
+ 156              	.L10:
+ 157 0068 00000000 		.word	.LANCHOR0
+ 158 006c 00000000 		.word	.LC0
+ 159 0070 00000000 		.word	.LANCHOR1
+ 160 0074 00000000 		.word	.LANCHOR2
+ 161 0078 14000000 		.word	.LC1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 8
+
+
+ 162 007c 00000000 		.word	.LANCHOR3
+ 163 0080 00000000 		.word	ux_host_byte_pool_buffer
+ 164 0084 28000000 		.word	.LC2
+ 165 0088 00000000 		.word	.LANCHOR4
+ 166              		.cfi_endproc
+ 167              	.LFE143:
+ 169              		.section	.bss.fx_app_byte_pool,"aw",%nobits
+ 170              		.align	2
+ 171              		.set	.LANCHOR3,. + 0
+ 174              	fx_app_byte_pool:
+ 175 0000 00000000 		.space	52
+ 175      00000000 
+ 175      00000000 
+ 175      00000000 
+ 175      00000000 
+ 176              		.section	.bss.fx_byte_pool_buffer,"aw",%nobits
+ 177              		.align	2
+ 178              		.set	.LANCHOR2,. + 0
+ 181              	fx_byte_pool_buffer:
+ 182 0000 00000000 		.space	2048
+ 182      00000000 
+ 182      00000000 
+ 182      00000000 
+ 182      00000000 
+ 183              		.section	.bss.tx_app_byte_pool,"aw",%nobits
+ 184              		.align	2
+ 185              		.set	.LANCHOR1,. + 0
+ 188              	tx_app_byte_pool:
+ 189 0000 00000000 		.space	52
+ 189      00000000 
+ 189      00000000 
+ 189      00000000 
+ 189      00000000 
+ 190              		.section	.bss.tx_byte_pool_buffer,"aw",%nobits
+ 191              		.align	2
+ 192              		.set	.LANCHOR0,. + 0
+ 195              	tx_byte_pool_buffer:
+ 196 0000 00000000 		.space	1024
+ 196      00000000 
+ 196      00000000 
+ 196      00000000 
+ 196      00000000 
+ 197              		.section	.bss.ux_host_app_byte_pool,"aw",%nobits
+ 198              		.align	2
+ 199              		.set	.LANCHOR4,. + 0
+ 202              	ux_host_app_byte_pool:
+ 203 0000 00000000 		.space	52
+ 203      00000000 
+ 203      00000000 
+ 203      00000000 
+ 203      00000000 
+ 204              		.section	.bss.ux_host_byte_pool_buffer,"aw",%nobits
+ 205              		.align	2
+ 208              	ux_host_byte_pool_buffer:
+ 209 0000 00000000 		.space	25600
+ 209      00000000 
+ 209      00000000 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 9
+
+
+ 209      00000000 
+ 209      00000000 
+ 210              		.text
+ 211              	.Letext0:
+ 212              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 213              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 214              		.file 4 "Core/Inc/app_threadx.h"
+ 215              		.file 5 "FileX/App/app_filex.h"
+ 216              		.file 6 "USBX/App/app_usbx_host.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app_azure_rtos.c
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:20     .rodata.tx_application_define.str1.4:00000000 $d
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:30     .text.tx_application_define:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:36     .text.tx_application_define:00000000 tx_application_define
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:157    .text.tx_application_define:00000068 $d
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:208    .bss.ux_host_byte_pool_buffer:00000000 ux_host_byte_pool_buffer
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:170    .bss.fx_app_byte_pool:00000000 $d
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:174    .bss.fx_app_byte_pool:00000000 fx_app_byte_pool
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:177    .bss.fx_byte_pool_buffer:00000000 $d
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:181    .bss.fx_byte_pool_buffer:00000000 fx_byte_pool_buffer
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:184    .bss.tx_app_byte_pool:00000000 $d
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:188    .bss.tx_app_byte_pool:00000000 tx_app_byte_pool
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:191    .bss.tx_byte_pool_buffer:00000000 $d
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:195    .bss.tx_byte_pool_buffer:00000000 tx_byte_pool_buffer
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:198    .bss.ux_host_app_byte_pool:00000000 $d
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:202    .bss.ux_host_app_byte_pool:00000000 ux_host_app_byte_pool
+C:\Users\HP\AppData\Local\Temp\ccZFoqjo.s:205    .bss.ux_host_byte_pool_buffer:00000000 $d
+
+UNDEFINED SYMBOLS
+_txe_byte_pool_create
+App_ThreadX_Init
+MX_FileX_Init
+MX_USBX_Host_Init

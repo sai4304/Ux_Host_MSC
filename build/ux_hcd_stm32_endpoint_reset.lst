@@ -1,0 +1,200 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc3YDUS7.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_endpoint_reset.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_endpoint_reset,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_endpoint_reset
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_endpoint_reset:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c"
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc3YDUS7.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    _ux_hcd_stm32_endpoint_reset                        PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                           6.0          */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    This function will reset an endpoint.                               */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    hcd_stm32                             Pointer to STM32 controller   */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    endpoint                              Pointer to endpoint           */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  OUTPUT                                                                */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    Completion Status                                                   */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  CALLS                                                                 */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    None                                                                */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  CALLED BY                                                             */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    STM32 Controller Driver                                             */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  RELEASE HISTORY                                                       */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*    DATE              NAME                      DESCRIPTION             */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** /**************************************************************************/
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** UINT  _ux_hcd_stm32_endpoint_reset(UX_HCD_STM32 *hcd_stm32, UX_ENDPOINT *endpoint)
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** {
+  30              		.loc 1 73 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 73 1 is_stmt 0 view .LVU1
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 3, -16
+  39              		.cfi_offset 4, -12
+  40              		.cfi_offset 5, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0446     		mov	r4, r0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc3YDUS7.s 			page 3
+
+
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** UX_HCD_STM32_ED       *ed;
+  43              		.loc 1 75 1 is_stmt 1 view .LVU2
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     /* From the endpoint container fetch the STM32 ED descriptor.  */
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     ed =  (UX_HCD_STM32_ED *) endpoint -> ux_endpoint_ed;
+  44              		.loc 1 79 5 view .LVU3
+  45              		.loc 1 79 8 is_stmt 0 view .LVU4
+  46 0004 8D68     		ldr	r5, [r1, #8]
+  47              	.LVL1:
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     /* Finish current transfer.  */
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     _ux_hcd_stm32_request_trans_finish(hcd_stm32, ed);
+  48              		.loc 1 82 5 is_stmt 1 view .LVU5
+  49 0006 2946     		mov	r1, r5
+  50              	.LVL2:
+  51              		.loc 1 82 5 is_stmt 0 view .LVU6
+  52 0008 FFF7FEFF 		bl	_ux_hcd_stm32_request_trans_finish
+  53              	.LVL3:
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     /* Reset the data0/data1 toggle bit.  */
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].toggle_in = 0;
+  54              		.loc 1 85 5 is_stmt 1 view .LVU7
+  55              		.loc 1 85 15 is_stmt 0 view .LVU8
+  56 000c A26C     		ldr	r2, [r4, #72]
+  57              		.loc 1 85 38 view .LVU9
+  58 000e 95F82930 		ldrb	r3, [r5, #41]	@ zero_extendqisi2
+  59              		.loc 1 85 72 view .LVU10
+  60 0012 2C21     		movs	r1, #44
+  61 0014 01FB0322 		mla	r2, r1, r3, r2
+  62 0018 0020     		movs	r0, #0
+  63 001a 82F85400 		strb	r0, [r2, #84]
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].toggle_out = 0;
+  64              		.loc 1 86 5 is_stmt 1 view .LVU11
+  65              		.loc 1 86 15 is_stmt 0 view .LVU12
+  66 001e A36C     		ldr	r3, [r4, #72]
+  67              		.loc 1 86 38 view .LVU13
+  68 0020 95F82920 		ldrb	r2, [r5, #41]	@ zero_extendqisi2
+  69              		.loc 1 86 73 view .LVU14
+  70 0024 01FB0233 		mla	r3, r1, r2, r3
+  71 0028 83F85500 		strb	r0, [r3, #85]
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** 
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     /* This operation never fails.  */
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c ****     return(UX_SUCCESS);
+  72              		.loc 1 89 5 is_stmt 1 view .LVU15
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_reset.c **** }
+  73              		.loc 1 90 1 is_stmt 0 view .LVU16
+  74 002c 38BD     		pop	{r3, r4, r5, pc}
+  75              		.loc 1 90 1 view .LVU17
+  76              		.cfi_endproc
+  77              	.LFE143:
+  79              		.text
+  80              	.Letext0:
+  81              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+  82              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+  83              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc3YDUS7.s 			page 4
+
+
+  84              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+  85              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+  86              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+  87              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+  88              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+  89              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+  90              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc3YDUS7.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_endpoint_reset.c
+C:\Users\HP\AppData\Local\Temp\cc3YDUS7.s:20     .text._ux_hcd_stm32_endpoint_reset:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc3YDUS7.s:26     .text._ux_hcd_stm32_endpoint_reset:00000000 _ux_hcd_stm32_endpoint_reset
+
+UNDEFINED SYMBOLS
+_ux_hcd_stm32_request_trans_finish

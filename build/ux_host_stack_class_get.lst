@@ -1,0 +1,333 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_class_get.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_class_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_class_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_class_get:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    _ux_host_stack_class_get                            PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    This function returns a pointer to the class container. A class     */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    needs to obtain its container from the USBX stack to search for     */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    instances when a driver or an application wants to open a device.   */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    Note: The C string of class_name must be NULL-terminated and the    */
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    length of it (without the NULL-terminator itself) must be no larger */
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    than UX_MAX_CLASS_NAME_LENGTH.                                      */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  INPUT                                                                 */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    class_name                            Name of class                 */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    class                                 Class pointer                 */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  OUTPUT                                                                */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    Completion Status                                                   */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  CALLS                                                                 */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    _ux_utility_string_length_check       Check C string and return its */
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                          length if null-terminated     */
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    _ux_utility_memory_compare            Compare memory blocks         */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  CALLED BY                                                             */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    Application                                                         */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    USBX Components                                                     */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  RELEASE HISTORY                                                       */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */ 
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                            optimized based on compile  */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                            definitions,                */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                            resulting in version 6.1    */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /*                                                                        */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** /**************************************************************************/
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** UINT  _ux_host_stack_class_get(UCHAR *class_name, UX_HOST_CLASS **host_class)
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** {
+  30              		.loc 1 84 1 view -0
+  31              		.cfi_startproc
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s 			page 3
+
+
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 84 1 is_stmt 0 view .LVU1
+  35 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 20
+  38              		.cfi_offset 4, -20
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 83B0     		sub	sp, sp, #12
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 32
+  46 0004 0646     		mov	r6, r0
+  47 0006 0F46     		mov	r7, r1
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** UX_HOST_CLASS       *class_ptr;
+  48              		.loc 1 86 1 is_stmt 1 view .LVU2
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #if !defined(UX_NAME_REFERENCED_BY_POINTER)
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** UINT                status;
+  49              		.loc 1 88 1 view .LVU3
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** UINT                class_name_length =  0;
+  50              		.loc 1 89 1 view .LVU4
+  51              		.loc 1 89 21 is_stmt 0 view .LVU5
+  52 0008 0023     		movs	r3, #0
+  53 000a 0193     		str	r3, [sp, #4]
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #endif
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #if UX_MAX_CLASS_DRIVER > 1
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** ULONG               class_index;
+  54              		.loc 1 92 1 is_stmt 1 view .LVU6
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #endif
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #if !defined(UX_NAME_REFERENCED_BY_POINTER)
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     /* Get the length of the class name (exclude null-terminator).  */
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     status =  _ux_utility_string_length_check(class_name, &class_name_length, UX_MAX_CLASS_NAME_LEN
+  55              		.loc 1 97 5 view .LVU7
+  56              		.loc 1 97 15 is_stmt 0 view .LVU8
+  57 000c 3F22     		movs	r2, #63
+  58 000e 01A9     		add	r1, sp, #4
+  59              	.LVL1:
+  60              		.loc 1 97 15 view .LVU9
+  61 0010 FFF7FEFF 		bl	_ux_utility_string_length_check
+  62              	.LVL2:
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     if (status)
+  63              		.loc 1 98 5 is_stmt 1 view .LVU10
+  64              		.loc 1 98 8 is_stmt 0 view .LVU11
+  65 0014 0446     		mov	r4, r0
+  66 0016 C8B9     		cbnz	r0, .L1
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         return(status);
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #endif
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     /* Get first class.  */
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     class_ptr =  _ux_system_host -> ux_system_host_class_array;
+  67              		.loc 1 103 5 is_stmt 1 view .LVU12
+  68              		.loc 1 103 34 is_stmt 0 view .LVU13
+  69 0018 0E4B     		ldr	r3, .L8
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s 			page 4
+
+
+  70 001a 1B68     		ldr	r3, [r3]
+  71              		.loc 1 103 15 view .LVU14
+  72 001c 5D68     		ldr	r5, [r3, #4]
+  73              	.LVL3:
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #if UX_MAX_CLASS_DRIVER > 1
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     /* We need to parse the class driver table.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     for (class_index = 0; class_index < _ux_system_host -> ux_system_host_max_class; class_index++)
+  74              		.loc 1 107 5 is_stmt 1 view .LVU15
+  75              		.loc 1 107 5 is_stmt 0 view .LVU16
+  76 001e 01E0     		b	.L3
+  77              	.LVL4:
+  78              	.L4:
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     {
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #endif
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         /* Check if this class is already being used. */
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         if (class_ptr -> ux_host_class_status == UX_USED)
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         {
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             /* We have found a container. Check if this is the one we need (compare including null-
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             if (ux_utility_name_match(class_ptr -> ux_host_class_name, class_name, class_name_lengt
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             {           
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****                 /* The class container was found. Update the pointer to the class container for the
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****                 *host_class =  class_ptr;
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****                 /* Return success.  */
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****                 return(UX_SUCCESS);
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             }
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         }
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #if UX_MAX_CLASS_DRIVER > 1
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         /* Move to the next class.  */
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         class_ptr++;
+  79              		.loc 1 129 9 is_stmt 1 discriminator 2 view .LVU17
+  80              		.loc 1 129 18 is_stmt 0 discriminator 2 view .LVU18
+  81 0020 5835     		adds	r5, r5, #88
+  82              	.LVL5:
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     {
+  83              		.loc 1 107 86 is_stmt 1 discriminator 2 view .LVU19
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     {
+  84              		.loc 1 107 97 is_stmt 0 discriminator 2 view .LVU20
+  85 0022 0134     		adds	r4, r4, #1
+  86              	.LVL6:
+  87              	.L3:
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     {
+  88              		.loc 1 107 27 is_stmt 1 discriminator 1 view .LVU21
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     {
+  89              		.loc 1 107 57 is_stmt 0 discriminator 1 view .LVU22
+  90 0024 0B4B     		ldr	r3, .L8
+  91 0026 1B68     		ldr	r3, [r3]
+  92 0028 1B68     		ldr	r3, [r3]
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     {
+  93              		.loc 1 107 5 discriminator 1 view .LVU23
+  94 002a A342     		cmp	r3, r4
+  95 002c 0DD9     		bls	.L7
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s 			page 5
+
+
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         {
+  96              		.loc 1 112 9 is_stmt 1 view .LVU24
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         {
+  97              		.loc 1 112 23 is_stmt 0 view .LVU25
+  98 002e 2B6C     		ldr	r3, [r5, #64]
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****         {
+  99              		.loc 1 112 12 view .LVU26
+ 100 0030 012B     		cmp	r3, #1
+ 101 0032 F5D1     		bne	.L4
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             {           
+ 102              		.loc 1 116 13 is_stmt 1 view .LVU27
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             {           
+ 103              		.loc 1 116 17 is_stmt 0 view .LVU28
+ 104 0034 019A     		ldr	r2, [sp, #4]
+ 105 0036 0132     		adds	r2, r2, #1
+ 106 0038 3146     		mov	r1, r6
+ 107 003a 2846     		mov	r0, r5
+ 108 003c FFF7FEFF 		bl	_ux_utility_memory_compare
+ 109              	.LVL7:
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             {           
+ 110              		.loc 1 116 16 view .LVU29
+ 111 0040 0028     		cmp	r0, #0
+ 112 0042 EDD1     		bne	.L4
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 113              		.loc 1 120 17 is_stmt 1 view .LVU30
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 114              		.loc 1 120 29 is_stmt 0 view .LVU31
+ 115 0044 3D60     		str	r5, [r7]
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             }
+ 116              		.loc 1 123 17 is_stmt 1 view .LVU32
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             }
+ 117              		.loc 1 123 23 is_stmt 0 view .LVU33
+ 118 0046 0446     		mov	r4, r0
+ 119              	.LVL8:
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****             }
+ 120              		.loc 1 123 23 view .LVU34
+ 121 0048 00E0     		b	.L1
+ 122              	.LVL9:
+ 123              	.L7:
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     }
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** #endif
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_HOST_CLASS_UNKNOWN, class_name, 0, 0, UX_TRACE_ERROR
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** 
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     /* This class does not exist, return an error.  */    
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c ****     return(UX_HOST_CLASS_UNKNOWN);
+ 124              		.loc 1 137 11 view .LVU35
+ 125 004a 5924     		movs	r4, #89
+ 126              	.LVL10:
+ 127              	.L1:
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_get.c **** }
+ 128              		.loc 1 138 1 view .LVU36
+ 129 004c 2046     		mov	r0, r4
+ 130 004e 03B0     		add	sp, sp, #12
+ 131              	.LCFI2:
+ 132              		.cfi_def_cfa_offset 20
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s 			page 6
+
+
+ 133              		@ sp needed
+ 134 0050 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 135              	.LVL11:
+ 136              	.L9:
+ 137              		.loc 1 138 1 view .LVU37
+ 138 0052 00BF     		.align	2
+ 139              	.L8:
+ 140 0054 00000000 		.word	_ux_system_host
+ 141              		.cfi_endproc
+ 142              	.LFE11:
+ 144              		.text
+ 145              	.Letext0:
+ 146              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 147              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 148              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 149              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 150              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_class_get.c
+C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s:20     .text._ux_host_stack_class_get:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s:26     .text._ux_host_stack_class_get:00000000 _ux_host_stack_class_get
+C:\Users\HP\AppData\Local\Temp\cc1dGjoZ.s:140    .text._ux_host_stack_class_get:00000054 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_string_length_check
+_ux_utility_memory_compare
+_ux_system_host

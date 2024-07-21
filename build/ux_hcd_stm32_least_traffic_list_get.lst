@@ -1,0 +1,322 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctnqJlX.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_least_traffic_list_get.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_least_traffic_list_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_least_traffic_list_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_least_traffic_list_get:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_ge
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctnqJlX.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*    _ux_hcd_stm32_least_traffic_list_get                PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                           6.0          */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*     This function return a pointer to the first ED in the periodic     */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*     tree that has the least traffic registered.                        */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*    hcd_stm32                               Pointer to STM32 controller */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  OUTPUT                                                                */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*    UX_HCD_STM32_ED *                       Pointer to STM32 ED         */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  CALLS                                                                 */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*    None                                                                */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  CALLED BY                                                             */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*    STM32 Controller Driver                                             */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  RELEASE HISTORY                                                       */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** /**************************************************************************/
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** UINT  _ux_hcd_stm32_least_traffic_list_get(UX_HCD_STM32 *hcd_stm32)
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** {
+  30              		.loc 1 73 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 73 1 is_stmt 0 view .LVU1
+  35 0000 30B5     		push	{r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 12
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  41 0002 0446     		mov	r4, r0
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctnqJlX.s 			page 3
+
+
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** UX_HCD_STM32_ED     *ed;
+  42              		.loc 1 75 1 is_stmt 1 view .LVU2
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** UINT                list_index;
+  43              		.loc 1 76 1 view .LVU3
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** ULONG               min_bandwidth_used;
+  44              		.loc 1 77 1 view .LVU4
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** ULONG               bandwidth_used;
+  45              		.loc 1 78 1 view .LVU5
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** UINT                min_bandwidth_slot;
+  46              		.loc 1 79 1 view .LVU6
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     /* Set the min bandwidth used to a arbitrary maximum value.  */
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     min_bandwidth_used =  0xffffffff;
+  47              		.loc 1 83 5 view .LVU7
+  48              	.LVL1:
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     /* The first ED is the list candidate for now.  */
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     min_bandwidth_slot =  0;
+  49              		.loc 1 86 5 view .LVU8
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     /* All list will be scanned.  */
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     for (list_index = 0; list_index < 32; list_index++)
+  50              		.loc 1 89 5 view .LVU9
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  51              		.loc 1 86 24 is_stmt 0 view .LVU10
+  52 0004 0025     		movs	r5, #0
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  53              		.loc 1 83 24 view .LVU11
+  54 0006 4FF0FF30 		mov	r0, #-1
+  55              	.LVL2:
+  56              		.loc 1 89 21 view .LVU12
+  57 000a AC46     		mov	ip, r5
+  58              		.loc 1 89 5 view .LVU13
+  59 000c 11E0     		b	.L2
+  60              	.LVL3:
+  61              	.L4:
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     {
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         /* Reset the bandwidth for this list.  */
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         bandwidth_used =  0;
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         /* Get the ED of the beginning of the list we parse now.  */
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         ed =  hcd_stm32 -> ux_hcd_stm32_periodic_ed_head;
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         /* Parse the eds in the list.  */
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         while (ed != UX_NULL)
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         {
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             if ((list_index & ed -> ux_stm32_ed_interval_mask) == ed -> ux_stm32_ed_interval_positi
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             {
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****                 /* Add to the bandwidth used the max packet size pointed by this ED.  */
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****                 bandwidth_used +=  (ULONG) ed -> ux_stm32_ed_endpoint -> ux_endpoint_descriptor.wMa
+ 107:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             }
+ 108:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             /* Move to next ED.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctnqJlX.s 			page 4
+
+
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             ed =  ed -> ux_stm32_ed_next_ed;
+  62              		.loc 1 110 13 is_stmt 1 view .LVU14
+  63              		.loc 1 110 16 is_stmt 0 view .LVU15
+  64 000e 1B68     		ldr	r3, [r3]
+  65              	.LVL4:
+  66              	.L3:
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         {
+  67              		.loc 1 99 15 is_stmt 1 view .LVU16
+  68 0010 4BB1     		cbz	r3, .L10
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             {
+  69              		.loc 1 102 13 view .LVU17
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             {
+  70              		.loc 1 102 34 is_stmt 0 view .LVU18
+  71 0012 DA69     		ldr	r2, [r3, #28]
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             {
+  72              		.loc 1 102 29 view .LVU19
+  73 0014 02EA0C02 		and	r2, r2, ip
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             {
+  74              		.loc 1 102 70 view .LVU20
+  75 0018 196A     		ldr	r1, [r3, #32]
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             {
+  76              		.loc 1 102 16 view .LVU21
+  77 001a 8A42     		cmp	r2, r1
+  78 001c F7D1     		bne	.L4
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             }
+  79              		.loc 1 106 17 is_stmt 1 view .LVU22
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             }
+  80              		.loc 1 106 47 is_stmt 0 view .LVU23
+  81 001e 5A68     		ldr	r2, [r3, #4]
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             }
+  82              		.loc 1 106 96 view .LVU24
+  83 0020 D269     		ldr	r2, [r2, #28]
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             }
+  84              		.loc 1 106 32 view .LVU25
+  85 0022 9644     		add	lr, lr, r2
+  86              	.LVL5:
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             }
+  87              		.loc 1 106 32 view .LVU26
+  88 0024 F3E7     		b	.L4
+  89              	.L10:
+ 111:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         }
+ 112:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 113:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         /* We have processed a list, check the bandwidth used by this list.
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****            If this bandwidth is the minimum, we memorize the ED.  */
+ 115:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         if (bandwidth_used < min_bandwidth_used)
+  90              		.loc 1 115 9 is_stmt 1 view .LVU27
+  91              		.loc 1 115 12 is_stmt 0 view .LVU28
+  92 0026 7045     		cmp	r0, lr
+  93 0028 01D9     		bls	.L6
+ 116:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         {
+ 117:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 118:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             /* We have found a better list with a lower used bandwidth, memorize the bandwidth
+ 119:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****                for this list.  */
+ 120:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             min_bandwidth_used =  bandwidth_used;
+ 121:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 122:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             /* Memorize the begin ED for this list.  */
+ 123:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****             min_bandwidth_slot =  list_index;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctnqJlX.s 			page 5
+
+
+  94              		.loc 1 123 32 view .LVU29
+  95 002a 6546     		mov	r5, ip
+  96              	.LVL6:
+ 120:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+  97              		.loc 1 120 32 view .LVU30
+  98 002c 7046     		mov	r0, lr
+  99              	.LVL7:
+ 100              	.L6:
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     {
+ 101              		.loc 1 89 43 is_stmt 1 discriminator 2 view .LVU31
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     {
+ 102              		.loc 1 89 53 is_stmt 0 discriminator 2 view .LVU32
+ 103 002e 0CF1010C 		add	ip, ip, #1
+ 104              	.LVL8:
+ 105              	.L2:
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     {
+ 106              		.loc 1 89 26 is_stmt 1 discriminator 1 view .LVU33
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     {
+ 107              		.loc 1 89 5 is_stmt 0 discriminator 1 view .LVU34
+ 108 0032 BCF11F0F 		cmp	ip, #31
+ 109 0036 03D8     		bhi	.L11
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 110              		.loc 1 93 9 is_stmt 1 view .LVU35
+ 111              	.LVL9:
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 112              		.loc 1 96 9 view .LVU36
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 113              		.loc 1 96 12 is_stmt 0 view .LVU37
+ 114 0038 E36C     		ldr	r3, [r4, #76]
+ 115              	.LVL10:
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         {
+ 116              		.loc 1 99 9 is_stmt 1 view .LVU38
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 117              		.loc 1 93 24 is_stmt 0 view .LVU39
+ 118 003a 4FF0000E 		mov	lr, #0
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         {
+ 119              		.loc 1 99 15 view .LVU40
+ 120 003e E7E7     		b	.L3
+ 121              	.LVL11:
+ 122              	.L11:
+ 124:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****         }
+ 125:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     }
+ 126:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** 
+ 127:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     /* Return the ED list with the lowest bandwidth.  */
+ 128:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c ****     return(min_bandwidth_slot);
+ 123              		.loc 1 128 5 is_stmt 1 view .LVU41
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_least_traffic_list_get.c **** }
+ 124              		.loc 1 129 1 is_stmt 0 view .LVU42
+ 125 0040 2846     		mov	r0, r5
+ 126              	.LVL12:
+ 127              		.loc 1 129 1 view .LVU43
+ 128 0042 30BD     		pop	{r4, r5, pc}
+ 129              		.loc 1 129 1 view .LVU44
+ 130              		.cfi_endproc
+ 131              	.LFE143:
+ 133              		.text
+ 134              	.Letext0:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctnqJlX.s 			page 6
+
+
+ 135              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 136              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 137              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 138              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 139              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 140              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 141              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 142              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 143              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 144              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctnqJlX.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_least_traffic_list_get.c
+C:\Users\HP\AppData\Local\Temp\cctnqJlX.s:20     .text._ux_hcd_stm32_least_traffic_list_get:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cctnqJlX.s:26     .text._ux_hcd_stm32_least_traffic_list_get:00000000 _ux_hcd_stm32_least_traffic_list_get
+
+NO UNDEFINED SYMBOLS

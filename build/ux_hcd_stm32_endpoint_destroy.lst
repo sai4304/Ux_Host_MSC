@@ -1,0 +1,396 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_endpoint_destroy.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_endpoint_destroy,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_endpoint_destroy
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_endpoint_destroy:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c"
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    _ux_hcd_stm32_endpoint_destroy                      PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                           6.1.10       */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    This function will destroy an endpoint.                             */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    hcd_stm32                             Pointer to STM32 controller   */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    endpoint                              Pointer to endpoint           */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  OUTPUT                                                                */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    Completion Status                                                   */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  CALLS                                                                 */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    _ux_utility_virtual_address           Get virtual address           */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    _ux_utility_delay_ms                  Delay ms                      */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  CALLED BY                                                             */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    STM32 Controller Driver                                             */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  RELEASE HISTORY                                                       */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*    DATE              NAME                      DESCRIPTION             */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                            added standalone support,   */
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                            resulting in version 6.1.10 */
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /*                                                                        */
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** /**************************************************************************/
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** UINT  _ux_hcd_stm32_endpoint_destroy(UX_HCD_STM32 *hcd_stm32, UX_ENDPOINT *endpoint)
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** {
+  30              		.loc 1 77 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 77 1 is_stmt 0 view .LVU1
+  35 0000 70B5     		push	{r4, r5, r6, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 4, -16
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 3
+
+
+  39              		.cfi_offset 5, -12
+  40              		.cfi_offset 6, -8
+  41              		.cfi_offset 14, -4
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #if defined(UX_HOST_STANDALONE)
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** UX_INTERRUPT_SAVE_AREA
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #endif /* defined(UX_HOST_STANDALONE) */
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** UX_HCD_STM32_ED       *ed;
+  42              		.loc 1 82 1 is_stmt 1 view .LVU2
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** UX_HCD_STM32_ED       *next_ed;
+  43              		.loc 1 83 1 view .LVU3
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** UINT                   endpoint_type;
+  44              		.loc 1 84 1 view .LVU4
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* From the endpoint container fetch the STM32 ED descriptor.  */
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     ed =  (UX_HCD_STM32_ED *) endpoint -> ux_endpoint_ed;
+  45              		.loc 1 87 5 view .LVU5
+  46              		.loc 1 87 8 is_stmt 0 view .LVU6
+  47 0002 8C68     		ldr	r4, [r1, #8]
+  48              	.LVL1:
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* Check if this physical endpoint has been initialized properly!  */
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     if (ed == UX_NULL)
+  49              		.loc 1 90 5 is_stmt 1 view .LVU7
+  50              		.loc 1 90 8 is_stmt 0 view .LVU8
+  51 0004 BCB1     		cbz	r4, .L11
+  52 0006 0546     		mov	r5, r0
+  53 0008 0E46     		mov	r6, r1
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     {
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         /* Error trap. */
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_HCD, UX_ENDPOINT_HANDLE_
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_ENDPOINT_HANDLE_UNKNOWN, endpoint, 0, 0, UX_TRAC
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         return(UX_ENDPOINT_HANDLE_UNKNOWN);
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     }
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #if defined(UX_HOST_STANDALONE)
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* There is no background thread, just remove the ED from processing list.  */
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     UX_DISABLE
+ 107:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #else
+ 108:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* Wait for the controller to finish the current frame processing.  */
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     _ux_utility_delay_ms(1);
+  54              		.loc 1 110 5 is_stmt 1 view .LVU9
+  55 000a 0120     		movs	r0, #1
+  56              	.LVL2:
+  57              		.loc 1 110 5 is_stmt 0 view .LVU10
+  58 000c FFF7FEFF 		bl	_ux_utility_delay_ms
+  59              	.LVL3:
+ 111:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #endif /* defined(UX_HOST_STANDALONE) */
+ 112:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 113:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* We need to free the channel.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 4
+
+
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     hcd_stm32 -> ux_hcd_stm32_channels_ed[ed -> ux_stm32_ed_channel] =  UX_NULL;
+  60              		.loc 1 114 5 is_stmt 1 view .LVU11
+  61              		.loc 1 114 46 is_stmt 0 view .LVU12
+  62 0010 94F82930 		ldrb	r3, [r4, #41]	@ zero_extendqisi2
+  63              		.loc 1 114 70 view .LVU13
+  64 0014 0233     		adds	r3, r3, #2
+  65 0016 0022     		movs	r2, #0
+  66 0018 45F82320 		str	r2, [r5, r3, lsl #2]
+ 115:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 116:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* Get endpoint type.  */
+ 117:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     endpoint_type = (endpoint -> ux_endpoint_descriptor.bmAttributes) & UX_MASK_ENDPOINT_TYPE;
+  67              		.loc 1 117 5 is_stmt 1 view .LVU14
+  68              		.loc 1 117 56 is_stmt 0 view .LVU15
+  69 001c B369     		ldr	r3, [r6, #24]
+  70              		.loc 1 117 19 view .LVU16
+  71 001e 03F00303 		and	r3, r3, #3
+  72              	.LVL4:
+ 118:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 119:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* Check for periodic endpoints.  */
+ 120:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     if ((endpoint_type == UX_INTERRUPT_ENDPOINT) || (endpoint_type == UX_ISOCHRONOUS_ENDPOINT))
+  73              		.loc 1 120 5 is_stmt 1 view .LVU17
+  74              		.loc 1 120 8 is_stmt 0 view .LVU18
+  75 0022 032B     		cmp	r3, #3
+  76 0024 01D0     		beq	.L4
+  77              		.loc 1 120 50 discriminator 1 view .LVU19
+  78 0026 012B     		cmp	r3, #1
+  79 0028 18D1     		bne	.L5
+  80              	.L4:
+ 121:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     {
+ 122:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 123:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         /* Remove the ED from periodic ED list.  */
+ 124:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         if (hcd_stm32 -> ux_hcd_stm32_periodic_ed_head == ed)
+  81              		.loc 1 124 9 is_stmt 1 view .LVU20
+  82              		.loc 1 124 23 is_stmt 0 view .LVU21
+  83 002a EB6C     		ldr	r3, [r5, #76]
+  84              	.LVL5:
+  85              		.loc 1 124 12 view .LVU22
+  86 002c A342     		cmp	r3, r4
+  87 002e 0AD1     		bne	.L6
+ 125:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         {
+ 126:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 127:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             /* The head one in the list, just set the pointer to it's next.  */
+ 128:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             hcd_stm32 -> ux_hcd_stm32_periodic_ed_head = ed -> ux_stm32_ed_next_ed;
+  88              		.loc 1 128 13 is_stmt 1 view .LVU23
+  89              		.loc 1 128 61 is_stmt 0 view .LVU24
+  90 0030 2368     		ldr	r3, [r4]
+  91              		.loc 1 128 56 view .LVU25
+  92 0032 EB64     		str	r3, [r5, #76]
+  93              	.LVL6:
+  94              		.loc 1 128 56 view .LVU26
+  95 0034 0FE0     		b	.L7
+  96              	.LVL7:
+  97              	.L11:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+  98              		.loc 1 94 9 is_stmt 1 view .LVU27
+  99 0036 5322     		movs	r2, #83
+ 100 0038 0121     		movs	r1, #1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 5
+
+
+ 101              	.LVL8:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 102              		.loc 1 94 9 is_stmt 0 view .LVU28
+ 103 003a 0220     		movs	r0, #2
+ 104              	.LVL9:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 105              		.loc 1 94 9 view .LVU29
+ 106 003c FFF7FEFF 		bl	_ux_system_error_handler
+ 107              	.LVL10:
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 108              		.loc 1 99 9 is_stmt 1 view .LVU30
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 109              		.loc 1 99 15 is_stmt 0 view .LVU31
+ 110 0040 5320     		movs	r0, #83
+ 111 0042 13E0     		b	.L1
+ 112              	.LVL11:
+ 113              	.L9:
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         }
+ 130:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         else
+ 131:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         {
+ 132:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 133:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             /* Get the first ED in the list.  */
+ 134:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             next_ed = hcd_stm32 -> ux_hcd_stm32_periodic_ed_head;
+ 135:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 136:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             /* Search for the ED in the list.  */
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             while( (next_ed != UX_NULL) && (next_ed -> ux_stm32_ed_next_ed != ed) )
+ 138:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             {
+ 139:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 140:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****                 /* Move to next ED.  */
+ 141:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****                 next_ed = next_ed -> ux_stm32_ed_next_ed;
+ 114              		.loc 1 141 25 view .LVU32
+ 115 0044 1346     		mov	r3, r2
+ 116              	.LVL12:
+ 117              	.L6:
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             {
+ 118              		.loc 1 137 18 is_stmt 1 view .LVU33
+ 119 0046 13B1     		cbz	r3, .L8
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             {
+ 120              		.loc 1 137 53 is_stmt 0 discriminator 1 view .LVU34
+ 121 0048 1A68     		ldr	r2, [r3]
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             {
+ 122              		.loc 1 137 41 discriminator 1 view .LVU35
+ 123 004a A242     		cmp	r2, r4
+ 124 004c FAD1     		bne	.L9
+ 125              	.L8:
+ 142:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             }
+ 143:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 144:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             /* Check if we found the ED.  */
+ 145:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             if (next_ed)
+ 126              		.loc 1 145 13 is_stmt 1 view .LVU36
+ 127              		.loc 1 145 16 is_stmt 0 view .LVU37
+ 128 004e 13B1     		cbz	r3, .L7
+ 146:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             {
+ 147:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****                 /* Remove the ED from list.  */
+ 149:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****                 next_ed -> ux_stm32_ed_next_ed = next_ed -> ux_stm32_ed_next_ed -> ux_stm32_ed_next
+ 129              		.loc 1 149 17 is_stmt 1 view .LVU38
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 6
+
+
+ 130              		.loc 1 149 58 is_stmt 0 view .LVU39
+ 131 0050 1A68     		ldr	r2, [r3]
+ 132              		.loc 1 149 81 view .LVU40
+ 133 0052 1268     		ldr	r2, [r2]
+ 134              		.loc 1 149 48 view .LVU41
+ 135 0054 1A60     		str	r2, [r3]
+ 136              	.LVL13:
+ 137              	.L7:
+ 150:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****             }
+ 151:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         }
+ 152:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 153:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         /* Decrease the periodic active count.  */
+ 154:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         hcd_stm32 -> ux_hcd_stm32_periodic_scheduler_active --;
+ 138              		.loc 1 154 9 is_stmt 1 view .LVU42
+ 139              		.loc 1 154 19 is_stmt 0 view .LVU43
+ 140 0056 2B6C     		ldr	r3, [r5, #64]
+ 141              		.loc 1 154 61 view .LVU44
+ 142 0058 013B     		subs	r3, r3, #1
+ 143 005a 2B64     		str	r3, [r5, #64]
+ 144              	.L5:
+ 155:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     }
+ 156:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 157:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* Now we can safely make the ED free.  */
+ 158:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     ed -> ux_stm32_ed_status =  UX_HCD_STM32_ED_STATUS_FREE;
+ 145              		.loc 1 158 5 is_stmt 1 view .LVU45
+ 146              		.loc 1 158 30 is_stmt 0 view .LVU46
+ 147 005c 0026     		movs	r6, #0
+ 148              	.LVL14:
+ 149              		.loc 1 158 30 view .LVU47
+ 150 005e 84F82860 		strb	r6, [r4, #40]
+ 159:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 160:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #if defined (USBH_HAL_HUB_SPLIT_SUPPORTED)
+ 161:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     HAL_HCD_HC_ClearHubInfo(hcd_stm32->hcd_handle, ed -> ux_stm32_ed_channel);
+ 162:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #endif /* USBH_HAL_HUB_SPLIT_SUPPORTED */
+ 163:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 164:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* Finish current transfer.  */
+ 165:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     _ux_hcd_stm32_request_trans_finish(hcd_stm32, ed);
+ 151              		.loc 1 165 5 is_stmt 1 view .LVU48
+ 152 0062 2146     		mov	r1, r4
+ 153 0064 2846     		mov	r0, r5
+ 154 0066 FFF7FEFF 		bl	_ux_hcd_stm32_request_trans_finish
+ 155              	.LVL15:
+ 166:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 167:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #if defined(UX_HOST_STANDALONE)
+ 168:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 169:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* If setup memory is not freed correct, free it.  */
+ 170:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     if (ed -> ux_stm32_ed_setup)
+ 171:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****         _ux_utility_memory_free(ed -> ux_stm32_ed_setup);
+ 172:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 173:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     UX_RESTORE
+ 174:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** #endif /* defined(UX_HOST_STANDALONE) */
+ 175:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** 
+ 176:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     /* Return successful completion.  */
+ 177:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c ****     return(UX_SUCCESS);
+ 156              		.loc 1 177 5 view .LVU49
+ 157              		.loc 1 177 11 is_stmt 0 view .LVU50
+ 158 006a 3046     		mov	r0, r6
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 7
+
+
+ 159              	.LVL16:
+ 160              	.L1:
+ 178:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_endpoint_destroy.c **** }
+ 161              		.loc 1 178 1 view .LVU51
+ 162 006c 70BD     		pop	{r4, r5, r6, pc}
+ 163              		.loc 1 178 1 view .LVU52
+ 164              		.cfi_endproc
+ 165              	.LFE143:
+ 167              		.text
+ 168              	.Letext0:
+ 169              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 170              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 171              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 172              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 173              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 174              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 175              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 176              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 177              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 178              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ 179              		.file 12 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc783V7E.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_endpoint_destroy.c
+C:\Users\HP\AppData\Local\Temp\cc783V7E.s:20     .text._ux_hcd_stm32_endpoint_destroy:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc783V7E.s:26     .text._ux_hcd_stm32_endpoint_destroy:00000000 _ux_hcd_stm32_endpoint_destroy
+
+UNDEFINED SYMBOLS
+_ux_utility_delay_ms
+_ux_system_error_handler
+_ux_hcd_stm32_request_trans_finish

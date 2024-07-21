@@ -1,0 +1,1378 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_callback.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.HAL_HCD_Connect_Callback,"ax",%progbits
+  20              		.align	1
+  21              		.global	HAL_HCD_Connect_Callback
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	HAL_HCD_Connect_Callback:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c"
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    HAL_HCD_Connect_Callback                            PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                           6.1.10       */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    This function handles callback from HAL driver.                     */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    hhcd                                  Pointer to HCD handle         */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  OUTPUT                                                                */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Completion Status                                                   */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLS                                                                 */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    _ux_utility_semaphore_put             Put semaphore                 */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLED BY                                                             */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    stm32 Controller Driver                                             */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  RELEASE HISTORY                                                       */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    DATE              NAME                      DESCRIPTION             */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            refined macros names,       */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            resulting in version 6.1.10 */
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** void HAL_HCD_Connect_Callback(HCD_HandleTypeDef *hhcd)
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** {
+  30              		.loc 1 75 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 75 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 3
+
+
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD              *hcd;
+  40              		.loc 1 77 1 is_stmt 1 view .LVU2
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD_STM32        *hcd_stm32;
+  41              		.loc 1 78 1 view .LVU3
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Get the pointer to the HCD & HCD_STM32.  */
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd = (UX_HCD*)hhcd -> pData;
+  42              		.loc 1 82 5 view .LVU4
+  43              		.loc 1 82 9 is_stmt 0 view .LVU5
+  44 0002 D0F80033 		ldr	r3, [r0, #768]
+  45              	.LVL1:
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd_stm32 = (UX_HCD_STM32*)hcd -> ux_hcd_controller_hardware;
+  46              		.loc 1 83 5 is_stmt 1 view .LVU6
+  47              		.loc 1 83 15 is_stmt 0 view .LVU7
+  48 0006 5A6F     		ldr	r2, [r3, #116]
+  49              	.LVL2:
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Something happened on the root hub port. Signal it to the root hub     thread.  */
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd -> ux_hcd_root_hub_signal[0]++;
+  50              		.loc 1 86 5 is_stmt 1 view .LVU8
+  51              		.loc 1 86 34 is_stmt 0 view .LVU9
+  52 0008 196D     		ldr	r1, [r3, #80]
+  53              		.loc 1 86 37 view .LVU10
+  54 000a 0131     		adds	r1, r1, #1
+  55 000c 1965     		str	r1, [r3, #80]
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* The controller has issued a ATTACH Root HUB signal.  */
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd_stm32 -> ux_hcd_stm32_controller_flag |= UX_HCD_STM32_CONTROLLER_FLAG_DEVICE_ATTACHED;
+  56              		.loc 1 89 5 is_stmt 1 view .LVU11
+  57              		.loc 1 89 47 is_stmt 0 view .LVU12
+  58 000e 536C     		ldr	r3, [r2, #68]
+  59              	.LVL3:
+  60              		.loc 1 89 47 view .LVU13
+  61 0010 43F00103 		orr	r3, r3, #1
+  62 0014 5364     		str	r3, [r2, #68]
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd_stm32 -> ux_hcd_stm32_controller_flag &= ~UX_HCD_STM32_CONTROLLER_FLAG_DEVICE_DETACHED;
+  63              		.loc 1 90 5 is_stmt 1 view .LVU14
+  64              		.loc 1 90 47 is_stmt 0 view .LVU15
+  65 0016 23F00203 		bic	r3, r3, #2
+  66 001a 5364     		str	r3, [r2, #68]
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Wake up the root hub thread.  */
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     _ux_host_semaphore_put(&_ux_system_host -> ux_system_host_enum_semaphore);
+  67              		.loc 1 93 5 is_stmt 1 view .LVU16
+  68              		.loc 1 93 45 is_stmt 0 view .LVU17
+  69 001c 024B     		ldr	r3, .L3
+  70 001e 1868     		ldr	r0, [r3]
+  71              	.LVL4:
+  72              		.loc 1 93 5 view .LVU18
+  73 0020 D830     		adds	r0, r0, #216
+  74 0022 FFF7FEFF 		bl	_ux_utility_semaphore_put
+  75              	.LVL5:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** }
+  76              		.loc 1 94 1 view .LVU19
+  77 0026 08BD     		pop	{r3, pc}
+  78              	.L4:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 4
+
+
+  79              		.align	2
+  80              	.L3:
+  81 0028 00000000 		.word	_ux_system_host
+  82              		.cfi_endproc
+  83              	.LFE143:
+  85              		.section	.text.HAL_HCD_Disconnect_Callback,"ax",%progbits
+  86              		.align	1
+  87              		.global	HAL_HCD_Disconnect_Callback
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  92              	HAL_HCD_Disconnect_Callback:
+  93              	.LVL6:
+  94              	.LFB144:
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  FUNCTION                                               RELEASE        */
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    HAL_HCD_Disconnect_Callback                         PORTABLE C      */
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                           6.1.10       */
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  AUTHOR                                                                */
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 107:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  DESCRIPTION                                                           */
+ 108:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    This function handles callback from HAL driver.                     */
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 111:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  INPUT                                                                 */
+ 112:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 113:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    hhcd                                  Pointer to HCD handle         */
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 115:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  OUTPUT                                                                */
+ 116:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 117:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Completion Status                                                   */
+ 118:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 119:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLS                                                                 */
+ 120:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 121:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    _ux_utility_semaphore_put             Put semaphore                 */
+ 122:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 123:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLED BY                                                             */
+ 124:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 125:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    stm32 Controller Driver                                             */
+ 126:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 127:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  RELEASE HISTORY                                                       */
+ 128:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 130:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 131:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+ 132:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 133:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            refined macros names,       */
+ 134:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            resulting in version 6.1.10 */
+ 135:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 136:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** void HAL_HCD_Disconnect_Callback(HCD_HandleTypeDef *hhcd)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 5
+
+
+ 138:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** {
+  95              		.loc 1 138 1 is_stmt 1 view -0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              		.loc 1 138 1 is_stmt 0 view .LVU21
+ 100 0000 08B5     		push	{r3, lr}
+ 101              	.LCFI1:
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 3, -8
+ 104              		.cfi_offset 14, -4
+ 139:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 140:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD              *hcd;
+ 105              		.loc 1 140 1 is_stmt 1 view .LVU22
+ 141:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD_STM32        *hcd_stm32;
+ 106              		.loc 1 141 1 view .LVU23
+ 142:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 143:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 144:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Get the pointer to the HCD & HCD_STM32.  */
+ 145:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd = (UX_HCD*)hhcd -> pData;
+ 107              		.loc 1 145 5 view .LVU24
+ 108              		.loc 1 145 9 is_stmt 0 view .LVU25
+ 109 0002 D0F80033 		ldr	r3, [r0, #768]
+ 110              	.LVL7:
+ 146:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd_stm32 = (UX_HCD_STM32*)hcd -> ux_hcd_controller_hardware;
+ 111              		.loc 1 146 5 is_stmt 1 view .LVU26
+ 112              		.loc 1 146 15 is_stmt 0 view .LVU27
+ 113 0006 5A6F     		ldr	r2, [r3, #116]
+ 114              	.LVL8:
+ 147:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Something happened on the root hub port. Signal it to the root hub     thread.  */
+ 149:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd -> ux_hcd_root_hub_signal[0]++;
+ 115              		.loc 1 149 5 is_stmt 1 view .LVU28
+ 116              		.loc 1 149 34 is_stmt 0 view .LVU29
+ 117 0008 196D     		ldr	r1, [r3, #80]
+ 118              		.loc 1 149 37 view .LVU30
+ 119 000a 0131     		adds	r1, r1, #1
+ 120 000c 1965     		str	r1, [r3, #80]
+ 150:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 151:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* The controller has issued a DETACH Root HUB signal.  */
+ 152:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd_stm32 -> ux_hcd_stm32_controller_flag |= UX_HCD_STM32_CONTROLLER_FLAG_DEVICE_DETACHED;
+ 121              		.loc 1 152 5 is_stmt 1 view .LVU31
+ 122              		.loc 1 152 47 is_stmt 0 view .LVU32
+ 123 000e 536C     		ldr	r3, [r2, #68]
+ 124              	.LVL9:
+ 125              		.loc 1 152 47 view .LVU33
+ 126 0010 43F00203 		orr	r3, r3, #2
+ 127 0014 5364     		str	r3, [r2, #68]
+ 153:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd_stm32 -> ux_hcd_stm32_controller_flag &= ~UX_HCD_STM32_CONTROLLER_FLAG_DEVICE_ATTACHED;
+ 128              		.loc 1 153 5 is_stmt 1 view .LVU34
+ 129              		.loc 1 153 47 is_stmt 0 view .LVU35
+ 130 0016 23F00103 		bic	r3, r3, #1
+ 131 001a 5364     		str	r3, [r2, #68]
+ 154:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 155:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Wake up the root hub thread.  */
+ 156:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     _ux_host_semaphore_put(&_ux_system_host -> ux_system_host_enum_semaphore);
+ 132              		.loc 1 156 5 is_stmt 1 view .LVU36
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 6
+
+
+ 133              		.loc 1 156 45 is_stmt 0 view .LVU37
+ 134 001c 024B     		ldr	r3, .L7
+ 135 001e 1868     		ldr	r0, [r3]
+ 136              	.LVL10:
+ 137              		.loc 1 156 5 view .LVU38
+ 138 0020 D830     		adds	r0, r0, #216
+ 139 0022 FFF7FEFF 		bl	_ux_utility_semaphore_put
+ 140              	.LVL11:
+ 157:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** }
+ 141              		.loc 1 157 1 view .LVU39
+ 142 0026 08BD     		pop	{r3, pc}
+ 143              	.L8:
+ 144              		.align	2
+ 145              	.L7:
+ 146 0028 00000000 		.word	_ux_system_host
+ 147              		.cfi_endproc
+ 148              	.LFE144:
+ 150              		.section	.text.HAL_HCD_HC_NotifyURBChange_Callback,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	HAL_HCD_HC_NotifyURBChange_Callback
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	HAL_HCD_HC_NotifyURBChange_Callback:
+ 158              	.LVL12:
+ 159              	.LFB145:
+ 158:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 159:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 160:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+ 161:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 162:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  FUNCTION                                               RELEASE        */
+ 163:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 164:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    HAL_HCD_Disconnect_Callback                         PORTABLE C      */
+ 165:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                           6.1.12       */
+ 166:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  AUTHOR                                                                */
+ 167:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 168:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+ 169:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 170:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  DESCRIPTION                                                           */
+ 171:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 172:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    This function handles callback from HAL driver.                     */
+ 173:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 174:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  INPUT                                                                 */
+ 175:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 176:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    hhcd                                  Pointer to HCD handle         */
+ 177:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 178:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  OUTPUT                                                                */
+ 179:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 180:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Completion Status                                                   */
+ 181:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 182:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLS                                                                 */
+ 183:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 184:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    _ux_utility_semaphore_put             Put semaphore                 */
+ 185:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    HAL_HCD_HC_SubmitRequest              Submit request                */
+ 186:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    HAL_HCD_HC_Halt                       Halt channel                  */
+ 187:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    HAL_HCD_HC_GetXferCount               Get transfer count            */
+ 188:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 7
+
+
+ 189:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLED BY                                                             */
+ 190:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 191:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    stm32 Controller Driver                                             */
+ 192:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 193:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  RELEASE HISTORY                                                       */
+ 194:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 195:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 196:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 197:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+ 198:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 199:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            refined macros names,       */
+ 200:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            added standalone support,   */
+ 201:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            resulting in version 6.1.10 */
+ 202:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  07-29-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 203:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            added ISO transfer support, */
+ 204:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            resulting in version 6.1.12 */
+ 205:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 206:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+ 207:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *hhcd, uint8_t chnum, HCD_URBStateTypeDe
+ 208:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** {
+ 160              		.loc 1 208 1 is_stmt 1 view -0
+ 161              		.cfi_startproc
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 210:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD              *hcd;
+ 164              		.loc 1 210 1 view .LVU41
+ 211:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD_STM32        *hcd_stm32;
+ 165              		.loc 1 211 1 view .LVU42
+ 212:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD_STM32_ED     *ed;
+ 166              		.loc 1 212 1 view .LVU43
+ 213:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_TRANSFER         *transfer_request;
+ 167              		.loc 1 213 1 view .LVU44
+ 214:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_TRANSFER         *transfer_next;
+ 168              		.loc 1 214 1 view .LVU45
+ 215:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 216:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 217:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Check the URB state.  */
+ 218:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     if (urb_state == URB_DONE || urb_state == URB_STALL || urb_state == URB_ERROR || urb_state == U
+ 169              		.loc 1 218 5 view .LVU46
+ 170              		.loc 1 218 8 is_stmt 0 view .LVU47
+ 171 0000 012A     		cmp	r2, #1
+ 172 0002 06D0     		beq	.L10
+ 173              		.loc 1 218 31 discriminator 1 view .LVU48
+ 174 0004 052A     		cmp	r2, #5
+ 175 0006 04D0     		beq	.L10
+ 176              		.loc 1 218 57 discriminator 2 view .LVU49
+ 177 0008 042A     		cmp	r2, #4
+ 178 000a 02D0     		beq	.L10
+ 179              		.loc 1 218 83 discriminator 3 view .LVU50
+ 180 000c 022A     		cmp	r2, #2
+ 181 000e 00D0     		beq	.L10
+ 182 0010 7047     		bx	lr
+ 183              	.L10:
+ 208:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 184              		.loc 1 208 1 view .LVU51
+ 185 0012 F0B5     		push	{r4, r5, r6, r7, lr}
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 8
+
+
+ 186              	.LCFI2:
+ 187              		.cfi_def_cfa_offset 20
+ 188              		.cfi_offset 4, -20
+ 189              		.cfi_offset 5, -16
+ 190              		.cfi_offset 6, -12
+ 191              		.cfi_offset 7, -8
+ 192              		.cfi_offset 14, -4
+ 193 0014 85B0     		sub	sp, sp, #20
+ 194              	.LCFI3:
+ 195              		.cfi_def_cfa_offset 40
+ 219:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     {
+ 220:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 221:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Get the pointer to the HCD & HCD_STM32.  */
+ 222:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         hcd = (UX_HCD*)hhcd -> pData;
+ 196              		.loc 1 222 9 is_stmt 1 view .LVU52
+ 197              		.loc 1 222 13 is_stmt 0 view .LVU53
+ 198 0016 D0F80033 		ldr	r3, [r0, #768]
+ 199              	.LVL13:
+ 223:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         hcd_stm32 = (UX_HCD_STM32*)hcd -> ux_hcd_controller_hardware;
+ 200              		.loc 1 223 9 is_stmt 1 view .LVU54
+ 201              		.loc 1 223 19 is_stmt 0 view .LVU55
+ 202 001a 5C6F     		ldr	r4, [r3, #116]
+ 203              	.LVL14:
+ 224:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 225:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Check if driver is still valid.  */
+ 226:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         if (hcd_stm32 == UX_NULL)
+ 204              		.loc 1 226 9 is_stmt 1 view .LVU56
+ 205              		.loc 1 226 12 is_stmt 0 view .LVU57
+ 206 001c 002C     		cmp	r4, #0
+ 207 001e 47D0     		beq	.L9
+ 227:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             return;
+ 228:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 229:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Load the ED for the channel.  */
+ 230:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         ed =  hcd_stm32 -> ux_hcd_stm32_channels_ed[chnum];
+ 208              		.loc 1 230 9 is_stmt 1 view .LVU58
+ 209              		.loc 1 230 12 is_stmt 0 view .LVU59
+ 210 0020 0231     		adds	r1, r1, #2
+ 211              	.LVL15:
+ 212              		.loc 1 230 12 view .LVU60
+ 213 0022 54F82150 		ldr	r5, [r4, r1, lsl #2]
+ 214              	.LVL16:
+ 231:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 232:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Check if ED is still valid.  */
+ 233:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         if (ed == UX_NULL)
+ 215              		.loc 1 233 9 is_stmt 1 view .LVU61
+ 216              		.loc 1 233 12 is_stmt 0 view .LVU62
+ 217 0026 002D     		cmp	r5, #0
+ 218 0028 42D0     		beq	.L9
+ 234:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         {
+ 235:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             return;
+ 236:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         }
+ 237:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 238:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Get transfer request.  */
+ 239:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         transfer_request = ed -> ux_stm32_ed_transfer_request;
+ 219              		.loc 1 239 9 is_stmt 1 view .LVU63
+ 220              		.loc 1 239 26 is_stmt 0 view .LVU64
+ 221 002a AE68     		ldr	r6, [r5, #8]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 9
+
+
+ 222              	.LVL17:
+ 240:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 241:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Check if request is still valid.  */
+ 242:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         if (transfer_request == UX_NULL)
+ 223              		.loc 1 242 9 is_stmt 1 view .LVU65
+ 224              		.loc 1 242 12 is_stmt 0 view .LVU66
+ 225 002c 002E     		cmp	r6, #0
+ 226 002e 3FD0     		beq	.L9
+ 243:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         {
+ 244:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             return;
+ 245:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         }
+ 246:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 247:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Check if URB state is not URB_NOTREADY.  */
+ 248:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         if (urb_state != URB_NOTREADY)
+ 227              		.loc 1 248 9 is_stmt 1 view .LVU67
+ 228              		.loc 1 248 12 is_stmt 0 view .LVU68
+ 229 0030 022A     		cmp	r2, #2
+ 230 0032 00F0BC80 		beq	.L12
+ 249:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         {
+ 250:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 251:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* Handle URB states.  */
+ 252:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             switch (urb_state)
+ 231              		.loc 1 252 13 is_stmt 1 view .LVU69
+ 232 0036 012A     		cmp	r2, #1
+ 233 0038 3CD0     		beq	.L13
+ 234 003a 052A     		cmp	r2, #5
+ 235 003c 40F0A180 		bne	.L14
+ 253:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             {
+ 254:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             case URB_STALL:
+ 255:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 256:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* Set the completion code to stalled.  */
+ 257:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 transfer_request -> ux_transfer_request_completion_code =  UX_TRANSFER_STALLED;
+ 236              		.loc 1 257 17 view .LVU70
+ 237              		.loc 1 257 73 is_stmt 0 view .LVU71
+ 238 0040 2123     		movs	r3, #33
+ 239              	.LVL18:
+ 240              		.loc 1 257 73 view .LVU72
+ 241 0042 7363     		str	r3, [r6, #52]
+ 242              	.LVL19:
+ 258:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 break;
+ 243              		.loc 1 258 17 is_stmt 1 view .LVU73
+ 244              	.L15:
+ 259:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 260:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             case URB_DONE:
+ 261:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 262:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* Check the request direction.  */
+ 263:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 if (ed -> ux_stm32_ed_dir == 1)
+ 264:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 265:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   if ((ed -> ux_stm32_ed_type == EP_TYPE_CTRL) || (ed -> ux_stm32_ed_type == EP_TYP
+ 266:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 267:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Get transfer size for receiving direction. */
+ 268:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     transfer_request -> ux_transfer_request_actual_length += HAL_HCD_HC_GetXferCoun
+ 269:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 270:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Check if there is more data to be received. */
+ 271:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     if ((transfer_request -> ux_transfer_request_requested_length > transfer_reques
+ 272:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                        (HAL_HCD_HC_GetXferCount(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel)
+ 273:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 10
+
+
+ 274:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       /* Adjust the transmit length.  */
+ 275:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       ed -> ux_stm32_ed_packet_length = UX_MIN(ed->ux_stm32_ed_endpoint->ux_endpoin
+ 276:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                                transfer_request -> ux_transfer_requ
+ 277:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 278:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       /* Submit the transmit request.  */
+ 279:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       HAL_HCD_HC_SubmitRequest(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel,
+ 280:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                1U,
+ 281:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                ed -> ux_stm32_ed_type,
+ 282:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                USBH_PID_DATA,
+ 283:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                ed -> ux_stm32_ed_data + transfer_request -> ux_tran
+ 284:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                ed -> ux_stm32_ed_packet_length, 0);
+ 285:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       return;
+ 286:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     }
+ 287:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 288:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   else
+ 289:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 290:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Get transfer size for receiving direction. */
+ 291:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     transfer_request -> ux_transfer_request_actual_length = HAL_HCD_HC_GetXferCount
+ 292:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 293:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 }
+ 294:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 295:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* Check if the request is for OUT transfer.  */
+ 296:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 if (ed -> ux_stm32_ed_dir == 0U)
+ 297:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 298:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 299:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #if defined (USBH_HAL_HUB_SPLIT_SUPPORTED)
+ 300:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   if ((hcd_stm32->hcd_handle->hc[ed -> ux_stm32_ed_channel].do_ssplit == 1U) && (ed
+ 301:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       (ed -> ux_stm32_ed_packet_length > hcd_stm32->hcd_handle->hc[ed -> ux_stm32_e
+ 302:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 303:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Update actual transfer length with ISOC max packet size for split transactio
+ 304:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     transfer_request -> ux_transfer_request_actual_length += hcd_stm32->hcd_handle-
+ 305:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 306:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   else
+ 307:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #endif /*defined (USBH_HAL_HUB_SPLIT_SUPPORTED) */
+ 308:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 309:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Update actual transfer length.  */
+ 310:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     transfer_request -> ux_transfer_request_actual_length += ed -> ux_stm32_ed_pack
+ 311:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 312:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 313:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Check if there is more data to send.  */
+ 314:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     if (transfer_request -> ux_transfer_request_requested_length >
+ 315:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         transfer_request -> ux_transfer_request_actual_length)
+ 316:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     {
+ 317:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 318:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #if defined (USBH_HAL_HUB_SPLIT_SUPPORTED)
+ 319:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       if ((hcd_stm32->hcd_handle->hc[ed -> ux_stm32_ed_channel].do_ssplit == 1U) &&
+ 320:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                           (ed -> ux_stm32_ed_packet_length > hcd_stm32->hcd_handle->hc[ed -> ux_stm
+ 321:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       {
+ 322:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         /* Adjust the transmit length.  */
+ 323:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         ed -> ux_stm32_ed_packet_length = transfer_request -> ux_transfer_request_p
+ 324:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                           hcd_stm32->hcd_handle->hc[ed -> ux_stm32_
+ 325:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 326:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         /* Submit the transmit request.  */
+ 327:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         HAL_HCD_HC_SubmitRequest(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel
+ 328:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  0, ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 329:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  ed -> ux_stm32_ed_data + transfer_request -> ux_tr
+ 330:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  ed -> ux_stm32_ed_packet_length, 0);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 11
+
+
+ 331:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         return;
+ 332:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                       }
+ 333:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #endif /* defined (USBH_HAL_HUB_SPLIT_SUPPORTED) */
+ 334:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 335:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         /* Periodic transfer that needs schedule is not started here.  */
+ 336:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         if (ed -> ux_stm32_ed_sch_mode)
+ 337:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                             return;
+ 338:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 339:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         /* Adjust the transmit length.  */
+ 340:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         ed -> ux_stm32_ed_packet_length =
+ 341:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                             UX_MIN(transfer_request -> ux_transfer_request_packet_length,
+ 342:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                    transfer_request -> ux_transfer_request_requested_length -
+ 343:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                    transfer_request -> ux_transfer_request_actual_length);
+ 344:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 345:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         /* Submit the transmit request.  */
+ 346:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         HAL_HCD_HC_SubmitRequest(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel
+ 347:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  0, ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 348:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  ed -> ux_stm32_ed_data + transfer_request -> ux_tr
+ 349:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  ed -> ux_stm32_ed_packet_length, 0);
+ 350:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         return;
+ 351:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     }
+ 352:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 }
+ 353:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 354:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* Set the completion code to SUCCESS.  */
+ 355:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 transfer_request -> ux_transfer_request_completion_code =  UX_SUCCESS;
+ 356:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 break;
+ 357:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 358:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             default:
+ 359:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* Set the completion code to transfer error.  */
+ 360:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 transfer_request -> ux_transfer_request_completion_code =  UX_TRANSFER_ERROR;
+ 361:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 362:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 363:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* Finish current transfer.  */
+ 364:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             _ux_hcd_stm32_request_trans_finish(hcd_stm32, ed);
+ 245              		.loc 1 364 13 view .LVU74
+ 246 0044 2946     		mov	r1, r5
+ 247 0046 2046     		mov	r0, r4
+ 248 0048 FFF7FEFF 		bl	_ux_hcd_stm32_request_trans_finish
+ 249              	.LVL20:
+ 365:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 366:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* Move to next transfer.  */
+ 367:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             transfer_next = transfer_request -> ux_transfer_request_next_transfer_request;
+ 250              		.loc 1 367 13 view .LVU75
+ 251              		.loc 1 367 27 is_stmt 0 view .LVU76
+ 252 004c F76B     		ldr	r7, [r6, #60]
+ 253              	.LVL21:
+ 368:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             ed -> ux_stm32_ed_transfer_request = transfer_next;
+ 254              		.loc 1 368 13 is_stmt 1 view .LVU77
+ 255              		.loc 1 368 48 is_stmt 0 view .LVU78
+ 256 004e AF60     		str	r7, [r5, #8]
+ 369:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 370:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* If there is transfer to start, start it.  */
+ 371:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             if (transfer_next)
+ 257              		.loc 1 371 13 is_stmt 1 view .LVU79
+ 258              		.loc 1 371 16 is_stmt 0 view .LVU80
+ 259 0050 002F     		cmp	r7, #0
+ 260 0052 00F0A180 		beq	.L20
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 12
+
+
+ 372:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             {
+ 373:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 374:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* If transfer is not started by schedular, start here.  */
+ 375:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 if (!ed -> ux_stm32_ed_sch_mode)
+ 261              		.loc 1 375 17 is_stmt 1 view .LVU81
+ 262              		.loc 1 375 25 is_stmt 0 view .LVU82
+ 263 0056 95F82D30 		ldrb	r3, [r5, #45]	@ zero_extendqisi2
+ 264              		.loc 1 375 20 view .LVU83
+ 265 005a 0BBB     		cbnz	r3, .L21
+ 376:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 377:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 378:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* For ISO OUT, packet size is from request variable,
+ 379:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     * otherwise, use request length.  */
+ 380:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     if ((ed -> ux_stm32_ed_type == EP_TYPE_ISOC) && (ed -> ux_stm32_ed_dir == 0))
+ 266              		.loc 1 380 21 is_stmt 1 view .LVU84
+ 267              		.loc 1 380 29 is_stmt 0 view .LVU85
+ 268 005c 95F82C30 		ldrb	r3, [r5, #44]	@ zero_extendqisi2
+ 269              		.loc 1 380 24 view .LVU86
+ 270 0060 012B     		cmp	r3, #1
+ 271 0062 00F09180 		beq	.L32
+ 272              	.L22:
+ 381:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         ed -> ux_stm32_ed_packet_length = transfer_next -> ux_transfer_request_pack
+ 382:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     else
+ 383:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         ed -> ux_stm32_ed_packet_length = transfer_next -> ux_transfer_request_requ
+ 273              		.loc 1 383 25 is_stmt 1 view .LVU87
+ 274              		.loc 1 383 73 is_stmt 0 view .LVU88
+ 275 0066 FB68     		ldr	r3, [r7, #12]
+ 276              		.loc 1 383 57 view .LVU89
+ 277 0068 AB61     		str	r3, [r5, #24]
+ 278              	.L23:
+ 384:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 385:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Prepare transactions.  */
+ 386:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     _ux_hcd_stm32_request_trans_prepare(hcd_stm32, ed, transfer_next);
+ 279              		.loc 1 386 21 is_stmt 1 view .LVU90
+ 280 006a 3A46     		mov	r2, r7
+ 281 006c 2946     		mov	r1, r5
+ 282 006e 2046     		mov	r0, r4
+ 283 0070 FFF7FEFF 		bl	_ux_hcd_stm32_request_trans_prepare
+ 284              	.LVL22:
+ 387:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 388:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     /* Call HAL driver to submit the transfer request.  */
+ 389:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     HAL_HCD_HC_SubmitRequest(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel,
+ 285              		.loc 1 389 21 view .LVU91
+ 390:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                              ed -> ux_stm32_ed_dir,
+ 391:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                              ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 392:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                              ed -> ux_stm32_ed_data + transfer_next -> ux_transfer_
+ 286              		.loc 1 392 49 is_stmt 0 view .LVU92
+ 287 0074 2B69     		ldr	r3, [r5, #16]
+ 288              		.loc 1 392 85 view .LVU93
+ 289 0076 3F69     		ldr	r7, [r7, #16]
+ 290              	.LVL23:
+ 291              		.loc 1 392 69 view .LVU94
+ 292 0078 1F44     		add	r7, r7, r3
+ 393:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                              ed -> ux_stm32_ed_packet_length, 0);
+ 293              		.loc 1 393 49 view .LVU95
+ 294 007a D5F818C0 		ldr	ip, [r5, #24]
+ 389:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                              ed -> ux_stm32_ed_dir,
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 13
+
+
+ 295              		.loc 1 389 21 view .LVU96
+ 296 007e 95F82C30 		ldrb	r3, [r5, #44]	@ zero_extendqisi2
+ 297 0082 95F82A20 		ldrb	r2, [r5, #42]	@ zero_extendqisi2
+ 298 0086 95F82910 		ldrb	r1, [r5, #41]	@ zero_extendqisi2
+ 299 008a A06C     		ldr	r0, [r4, #72]
+ 300 008c 0024     		movs	r4, #0
+ 301              	.LVL24:
+ 389:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                              ed -> ux_stm32_ed_dir,
+ 302              		.loc 1 389 21 view .LVU97
+ 303 008e 0394     		str	r4, [sp, #12]
+ 304 0090 1FFA8CF4 		uxth	r4, ip
+ 305 0094 0294     		str	r4, [sp, #8]
+ 306 0096 0197     		str	r7, [sp, #4]
+ 307 0098 0124     		movs	r4, #1
+ 308 009a 0094     		str	r4, [sp]
+ 309 009c FFF7FEFF 		bl	HAL_HCD_HC_SubmitRequest
+ 310              	.LVL25:
+ 311              	.L21:
+ 394:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 }
+ 395:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 396:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             else
+ 397:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             {
+ 398:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 399:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* Transfer not continued, periodic needs re-schedule.  */
+ 400:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 if ((ed -> ux_stm32_ed_type == EP_TYPE_INTR) ||
+ 401:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     (ed -> ux_stm32_ed_type == EP_TYPE_ISOC))
+ 402:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     ed -> ux_stm32_ed_sch_mode = 1;
+ 403:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 }
+ 404:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 405:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #if defined(UX_HOST_STANDALONE)
+ 406:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             transfer_request -> ux_transfer_request_status = UX_TRANSFER_STATUS_COMPLETED;
+ 407:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             ed -> ux_stm32_ed_status |= UX_HCD_STM32_ED_STATUS_TRANSFER_DONE;
+ 408:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** #endif /* defined(UX_HOST_STANDALONE) */
+ 409:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 410:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* Invoke callback function.  */
+ 411:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             if (transfer_request -> ux_transfer_request_completion_function)
+ 312              		.loc 1 411 13 is_stmt 1 view .LVU98
+ 313              		.loc 1 411 34 is_stmt 0 view .LVU99
+ 314 00a0 736A     		ldr	r3, [r6, #36]
+ 315              		.loc 1 411 16 view .LVU100
+ 316 00a2 0BB1     		cbz	r3, .L25
+ 412:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 transfer_request -> ux_transfer_request_completion_function(transfer_request);
+ 317              		.loc 1 412 17 is_stmt 1 view .LVU101
+ 318 00a4 3046     		mov	r0, r6
+ 319 00a6 9847     		blx	r3
+ 320              	.LVL26:
+ 321              	.L25:
+ 413:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 414:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* Wake up the transfer request thread.  */
+ 415:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             _ux_host_semaphore_put(&transfer_request -> ux_transfer_request_semaphore);
+ 322              		.loc 1 415 13 view .LVU102
+ 323 00a8 06F14400 		add	r0, r6, #68
+ 324 00ac FFF7FEFF 		bl	_ux_utility_semaphore_put
+ 325              	.LVL27:
+ 326              	.L9:
+ 416:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 417:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 14
+
+
+ 418:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         else
+ 419:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         {
+ 420:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 421:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* Handle URB_NOTREADY state here.  */
+ 422:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             /* Check if we need to retry the transfer by checking the status.  */
+ 423:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             if ((ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_SETUP) ||
+ 424:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_DATA_OUT) ||
+ 425:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_STATUS_OUT) ||
+ 426:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_BULK_OUT))
+ 427:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             {
+ 428:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 429:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 /* Submit the transmit request.  */
+ 430:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 HAL_HCD_HC_SubmitRequest(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel, 0,
+ 431:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                         ((ed -> ux_stm32_ed_endpoint -> ux_endpoint_descriptor.bmAt
+ 432:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL
+ 433:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_data + transfer_request -> ux_transfer_r
+ 434:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_packet_length, 0);
+ 435:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 436:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 437:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         }
+ 438:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     }
+ 439:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** }
+ 327              		.loc 1 439 1 is_stmt 0 view .LVU103
+ 328 00b0 05B0     		add	sp, sp, #20
+ 329              	.LCFI4:
+ 330              		.cfi_remember_state
+ 331              		.cfi_def_cfa_offset 20
+ 332              		@ sp needed
+ 333 00b2 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 334              	.LVL28:
+ 335              	.L13:
+ 336              	.LCFI5:
+ 337              		.cfi_restore_state
+ 263:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 338              		.loc 1 263 17 is_stmt 1 view .LVU104
+ 263:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 339              		.loc 1 263 24 is_stmt 0 view .LVU105
+ 340 00b4 95F82A30 		ldrb	r3, [r5, #42]	@ zero_extendqisi2
+ 341              	.LVL29:
+ 263:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 342              		.loc 1 263 20 view .LVU106
+ 343 00b8 012B     		cmp	r3, #1
+ 344 00ba 26D0     		beq	.L33
+ 345              	.LVL30:
+ 346              	.L16:
+ 296:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 347              		.loc 1 296 17 is_stmt 1 view .LVU107
+ 296:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 348              		.loc 1 296 24 is_stmt 0 view .LVU108
+ 349 00bc 95F82A30 		ldrb	r3, [r5, #42]	@ zero_extendqisi2
+ 296:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 {
+ 350              		.loc 1 296 20 view .LVU109
+ 351 00c0 002B     		cmp	r3, #0
+ 352 00c2 5BD1     		bne	.L19
+ 310:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 353              		.loc 1 310 21 is_stmt 1 view .LVU110
+ 310:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 15
+
+
+ 354              		.loc 1 310 81 is_stmt 0 view .LVU111
+ 355 00c4 AB69     		ldr	r3, [r5, #24]
+ 310:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 356              		.loc 1 310 75 view .LVU112
+ 357 00c6 3269     		ldr	r2, [r6, #16]
+ 358 00c8 1344     		add	r3, r3, r2
+ 359 00ca 3361     		str	r3, [r6, #16]
+ 314:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         transfer_request -> ux_transfer_request_actual_length)
+ 360              		.loc 1 314 21 is_stmt 1 view .LVU113
+ 314:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         transfer_request -> ux_transfer_request_actual_length)
+ 361              		.loc 1 314 42 is_stmt 0 view .LVU114
+ 362 00cc F768     		ldr	r7, [r6, #12]
+ 314:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         transfer_request -> ux_transfer_request_actual_length)
+ 363              		.loc 1 314 24 view .LVU115
+ 364 00ce BB42     		cmp	r3, r7
+ 365 00d0 54D2     		bcs	.L19
+ 336:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                             return;
+ 366              		.loc 1 336 25 is_stmt 1 view .LVU116
+ 336:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                             return;
+ 367              		.loc 1 336 32 is_stmt 0 view .LVU117
+ 368 00d2 95F82D10 		ldrb	r1, [r5, #45]	@ zero_extendqisi2
+ 336:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                             return;
+ 369              		.loc 1 336 28 view .LVU118
+ 370 00d6 0029     		cmp	r1, #0
+ 371 00d8 EAD1     		bne	.L9
+ 340:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                             UX_MIN(transfer_request -> ux_transfer_request_packet_length,
+ 372              		.loc 1 340 25 is_stmt 1 view .LVU119
+ 341:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                    transfer_request -> ux_transfer_request_requested_length -
+ 373              		.loc 1 341 29 is_stmt 0 view .LVU120
+ 374 00da FF1A     		subs	r7, r7, r3
+ 375 00dc B36B     		ldr	r3, [r6, #56]
+ 376 00de 9F42     		cmp	r7, r3
+ 377 00e0 28BF     		it	cs
+ 378 00e2 1F46     		movcs	r7, r3
+ 340:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                             UX_MIN(transfer_request -> ux_transfer_request_packet_length,
+ 379              		.loc 1 340 57 view .LVU121
+ 380 00e4 AF61     		str	r7, [r5, #24]
+ 346:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  0, ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 381              		.loc 1 346 25 is_stmt 1 view .LVU122
+ 348:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  ed -> ux_stm32_ed_packet_length, 0);
+ 382              		.loc 1 348 53 is_stmt 0 view .LVU123
+ 383 00e6 2B69     		ldr	r3, [r5, #16]
+ 348:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  ed -> ux_stm32_ed_packet_length, 0);
+ 384              		.loc 1 348 92 view .LVU124
+ 385 00e8 3669     		ldr	r6, [r6, #16]
+ 386              	.LVL31:
+ 348:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  ed -> ux_stm32_ed_packet_length, 0);
+ 387              		.loc 1 348 73 view .LVU125
+ 388 00ea 1E44     		add	r6, r6, r3
+ 346:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  0, ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 389              		.loc 1 346 25 view .LVU126
+ 390 00ec 95F82C30 		ldrb	r3, [r5, #44]	@ zero_extendqisi2
+ 391 00f0 95F82910 		ldrb	r1, [r5, #41]	@ zero_extendqisi2
+ 392 00f4 A06C     		ldr	r0, [r4, #72]
+ 393 00f6 0022     		movs	r2, #0
+ 394 00f8 0392     		str	r2, [sp, #12]
+ 395 00fa BFB2     		uxth	r7, r7
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 16
+
+
+ 396 00fc 0297     		str	r7, [sp, #8]
+ 397 00fe 0196     		str	r6, [sp, #4]
+ 398 0100 0124     		movs	r4, #1
+ 399              	.LVL32:
+ 346:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                  0, ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 400              		.loc 1 346 25 view .LVU127
+ 401 0102 0094     		str	r4, [sp]
+ 402 0104 FFF7FEFF 		bl	HAL_HCD_HC_SubmitRequest
+ 403              	.LVL33:
+ 350:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     }
+ 404              		.loc 1 350 25 is_stmt 1 view .LVU128
+ 405 0108 D2E7     		b	.L9
+ 406              	.LVL34:
+ 407              	.L33:
+ 265:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 408              		.loc 1 265 19 view .LVU129
+ 265:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 409              		.loc 1 265 27 is_stmt 0 view .LVU130
+ 410 010a 95F82C30 		ldrb	r3, [r5, #44]	@ zero_extendqisi2
+ 265:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 411              		.loc 1 265 22 view .LVU131
+ 412 010e 0BB1     		cbz	r3, .L17
+ 265:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   {
+ 413              		.loc 1 265 64 discriminator 1 view .LVU132
+ 414 0110 022B     		cmp	r3, #2
+ 415 0112 2CD1     		bne	.L18
+ 416              	.L17:
+ 268:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 417              		.loc 1 268 21 is_stmt 1 view .LVU133
+ 268:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 418              		.loc 1 268 78 is_stmt 0 view .LVU134
+ 419 0114 95F82910 		ldrb	r1, [r5, #41]	@ zero_extendqisi2
+ 420 0118 A06C     		ldr	r0, [r4, #72]
+ 421              	.LVL35:
+ 268:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 422              		.loc 1 268 78 view .LVU135
+ 423 011a FFF7FEFF 		bl	HAL_HCD_HC_GetXferCount
+ 424              	.LVL36:
+ 268:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 425              		.loc 1 268 75 view .LVU136
+ 426 011e 3369     		ldr	r3, [r6, #16]
+ 427 0120 1844     		add	r0, r0, r3
+ 428 0122 3061     		str	r0, [r6, #16]
+ 271:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                        (HAL_HCD_HC_GetXferCount(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel)
+ 429              		.loc 1 271 21 is_stmt 1 view .LVU137
+ 271:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                        (HAL_HCD_HC_GetXferCount(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel)
+ 430              		.loc 1 271 43 is_stmt 0 view .LVU138
+ 431 0124 F368     		ldr	r3, [r6, #12]
+ 271:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                        (HAL_HCD_HC_GetXferCount(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel)
+ 432              		.loc 1 271 24 view .LVU139
+ 433 0126 9842     		cmp	r0, r3
+ 434 0128 C8D2     		bcs	.L16
+ 272:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     {
+ 435              		.loc 1 272 25 discriminator 1 view .LVU140
+ 436 012a 95F82910 		ldrb	r1, [r5, #41]	@ zero_extendqisi2
+ 437 012e A06C     		ldr	r0, [r4, #72]
+ 438 0130 FFF7FEFF 		bl	HAL_HCD_HC_GetXferCount
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 17
+
+
+ 439              	.LVL37:
+ 272:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     {
+ 440              		.loc 1 272 106 discriminator 1 view .LVU141
+ 441 0134 6B68     		ldr	r3, [r5, #4]
+ 272:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     {
+ 442              		.loc 1 272 152 discriminator 1 view .LVU142
+ 443 0136 DB69     		ldr	r3, [r3, #28]
+ 271:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                        (HAL_HCD_HC_GetXferCount(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel)
+ 444              		.loc 1 271 140 discriminator 1 view .LVU143
+ 445 0138 9842     		cmp	r0, r3
+ 446 013a BFD1     		bne	.L16
+ 275:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                                transfer_request -> ux_transfer_requ
+ 447              		.loc 1 275 23 is_stmt 1 view .LVU144
+ 275:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                                transfer_request -> ux_transfer_requ
+ 448              		.loc 1 275 57 is_stmt 0 view .LVU145
+ 449 013c F268     		ldr	r2, [r6, #12]
+ 450 013e 3169     		ldr	r1, [r6, #16]
+ 451 0140 521A     		subs	r2, r2, r1
+ 452 0142 9A42     		cmp	r2, r3
+ 453 0144 28BF     		it	cs
+ 454 0146 1A46     		movcs	r2, r3
+ 275:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                                transfer_request -> ux_transfer_requ
+ 455              		.loc 1 275 55 view .LVU146
+ 456 0148 AA61     		str	r2, [r5, #24]
+ 279:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                1U,
+ 457              		.loc 1 279 23 is_stmt 1 view .LVU147
+ 283:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                ed -> ux_stm32_ed_packet_length, 0);
+ 458              		.loc 1 283 51 is_stmt 0 view .LVU148
+ 459 014a 2B69     		ldr	r3, [r5, #16]
+ 283:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                ed -> ux_stm32_ed_packet_length, 0);
+ 460              		.loc 1 283 90 view .LVU149
+ 461 014c 3069     		ldr	r0, [r6, #16]
+ 283:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                ed -> ux_stm32_ed_packet_length, 0);
+ 462              		.loc 1 283 71 view .LVU150
+ 463 014e 1844     		add	r0, r0, r3
+ 279:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                1U,
+ 464              		.loc 1 279 23 view .LVU151
+ 465 0150 95F82C30 		ldrb	r3, [r5, #44]	@ zero_extendqisi2
+ 466 0154 95F82910 		ldrb	r1, [r5, #41]	@ zero_extendqisi2
+ 467 0158 0025     		movs	r5, #0
+ 468              	.LVL38:
+ 279:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                                1U,
+ 469              		.loc 1 279 23 view .LVU152
+ 470 015a 0395     		str	r5, [sp, #12]
+ 471 015c 92B2     		uxth	r2, r2
+ 472 015e 0292     		str	r2, [sp, #8]
+ 473 0160 0190     		str	r0, [sp, #4]
+ 474 0162 0122     		movs	r2, #1
+ 475 0164 0092     		str	r2, [sp]
+ 476 0166 A06C     		ldr	r0, [r4, #72]
+ 477 0168 FFF7FEFF 		bl	HAL_HCD_HC_SubmitRequest
+ 478              	.LVL39:
+ 285:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     }
+ 479              		.loc 1 285 23 is_stmt 1 view .LVU153
+ 480 016c A0E7     		b	.L9
+ 481              	.LVL40:
+ 482              	.L18:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 18
+
+
+ 291:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 483              		.loc 1 291 21 view .LVU154
+ 291:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 484              		.loc 1 291 77 is_stmt 0 view .LVU155
+ 485 016e 95F82910 		ldrb	r1, [r5, #41]	@ zero_extendqisi2
+ 486 0172 A06C     		ldr	r0, [r4, #72]
+ 487              	.LVL41:
+ 291:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 488              		.loc 1 291 77 view .LVU156
+ 489 0174 FFF7FEFF 		bl	HAL_HCD_HC_GetXferCount
+ 490              	.LVL42:
+ 291:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                   }
+ 491              		.loc 1 291 75 view .LVU157
+ 492 0178 3061     		str	r0, [r6, #16]
+ 493 017a 9FE7     		b	.L16
+ 494              	.L19:
+ 355:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 break;
+ 495              		.loc 1 355 17 is_stmt 1 view .LVU158
+ 355:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 break;
+ 496              		.loc 1 355 73 is_stmt 0 view .LVU159
+ 497 017c 0023     		movs	r3, #0
+ 498 017e 7363     		str	r3, [r6, #52]
+ 356:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 499              		.loc 1 356 17 is_stmt 1 view .LVU160
+ 500 0180 60E7     		b	.L15
+ 501              	.LVL43:
+ 502              	.L14:
+ 360:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 503              		.loc 1 360 17 view .LVU161
+ 360:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 504              		.loc 1 360 73 is_stmt 0 view .LVU162
+ 505 0182 2323     		movs	r3, #35
+ 506              	.LVL44:
+ 360:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 507              		.loc 1 360 73 view .LVU163
+ 508 0184 7363     		str	r3, [r6, #52]
+ 509              	.LVL45:
+ 360:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 510              		.loc 1 360 73 view .LVU164
+ 511 0186 5DE7     		b	.L15
+ 512              	.LVL46:
+ 513              	.L32:
+ 380:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         ed -> ux_stm32_ed_packet_length = transfer_next -> ux_transfer_request_pack
+ 514              		.loc 1 380 73 discriminator 1 view .LVU165
+ 515 0188 95F82A30 		ldrb	r3, [r5, #42]	@ zero_extendqisi2
+ 380:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                         ed -> ux_stm32_ed_packet_length = transfer_next -> ux_transfer_request_pack
+ 516              		.loc 1 380 66 discriminator 1 view .LVU166
+ 517 018c 002B     		cmp	r3, #0
+ 518 018e 7FF46AAF 		bne	.L22
+ 381:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     else
+ 519              		.loc 1 381 25 is_stmt 1 view .LVU167
+ 381:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     else
+ 520              		.loc 1 381 73 is_stmt 0 view .LVU168
+ 521 0192 BB6B     		ldr	r3, [r7, #56]
+ 381:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     else
+ 522              		.loc 1 381 57 view .LVU169
+ 523 0194 AB61     		str	r3, [r5, #24]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 19
+
+
+ 524 0196 68E7     		b	.L23
+ 525              	.L20:
+ 400:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     (ed -> ux_stm32_ed_type == EP_TYPE_ISOC))
+ 526              		.loc 1 400 17 is_stmt 1 view .LVU170
+ 400:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     (ed -> ux_stm32_ed_type == EP_TYPE_ISOC))
+ 527              		.loc 1 400 25 is_stmt 0 view .LVU171
+ 528 0198 95F82C30 		ldrb	r3, [r5, #44]	@ zero_extendqisi2
+ 400:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     (ed -> ux_stm32_ed_type == EP_TYPE_ISOC))
+ 529              		.loc 1 400 20 view .LVU172
+ 530 019c 032B     		cmp	r3, #3
+ 531 019e 02D0     		beq	.L24
+ 400:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                     (ed -> ux_stm32_ed_type == EP_TYPE_ISOC))
+ 532              		.loc 1 400 62 discriminator 1 view .LVU173
+ 533 01a0 012B     		cmp	r3, #1
+ 534 01a2 7FF47DAF 		bne	.L21
+ 535              	.L24:
+ 402:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 }
+ 536              		.loc 1 402 21 is_stmt 1 view .LVU174
+ 402:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 }
+ 537              		.loc 1 402 48 is_stmt 0 view .LVU175
+ 538 01a6 0123     		movs	r3, #1
+ 539 01a8 85F82D30 		strb	r3, [r5, #45]
+ 540 01ac 78E7     		b	.L21
+ 541              	.LVL47:
+ 542              	.L12:
+ 423:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_DATA_OUT) ||
+ 543              		.loc 1 423 13 is_stmt 1 view .LVU176
+ 423:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_DATA_OUT) ||
+ 544              		.loc 1 423 21 is_stmt 0 view .LVU177
+ 545 01ae 95F82830 		ldrb	r3, [r5, #40]	@ zero_extendqisi2
+ 546              	.LVL48:
+ 423:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_DATA_OUT) ||
+ 547              		.loc 1 423 16 view .LVU178
+ 548 01b2 032B     		cmp	r3, #3
+ 549 01b4 06D0     		beq	.L26
+ 423:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_DATA_OUT) ||
+ 550              		.loc 1 423 84 discriminator 1 view .LVU179
+ 551 01b6 052B     		cmp	r3, #5
+ 552 01b8 04D0     		beq	.L26
+ 424:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL_STATUS_OUT) ||
+ 553              		.loc 1 424 87 view .LVU180
+ 554 01ba 072B     		cmp	r3, #7
+ 555 01bc 02D0     		beq	.L26
+ 425:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                 (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_BULK_OUT))
+ 556              		.loc 1 425 89 view .LVU181
+ 557 01be 092B     		cmp	r3, #9
+ 558 01c0 7FF476AF 		bne	.L9
+ 559              	.L26:
+ 430:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                         ((ed -> ux_stm32_ed_endpoint -> ux_endpoint_descriptor.bmAt
+ 560              		.loc 1 430 17 is_stmt 1 view .LVU182
+ 561 01c4 A06C     		ldr	r0, [r4, #72]
+ 562              	.LVL49:
+ 430:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                         ((ed -> ux_stm32_ed_endpoint -> ux_endpoint_descriptor.bmAt
+ 563              		.loc 1 430 17 is_stmt 0 view .LVU183
+ 564 01c6 95F82910 		ldrb	r1, [r5, #41]	@ zero_extendqisi2
+ 431:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL
+ 565              		.loc 1 431 46 view .LVU184
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 20
+
+
+ 566 01ca 6C68     		ldr	r4, [r5, #4]
+ 567              	.LVL50:
+ 431:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL
+ 568              		.loc 1 431 95 view .LVU185
+ 569 01cc A469     		ldr	r4, [r4, #24]
+ 431:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_CONTROL
+ 570              		.loc 1 431 110 view .LVU186
+ 571 01ce 04F00304 		and	r4, r4, #3
+ 430:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                         ((ed -> ux_stm32_ed_endpoint -> ux_endpoint_descriptor.bmAt
+ 572              		.loc 1 430 17 view .LVU187
+ 573 01d2 022C     		cmp	r4, #2
+ 574 01d4 00D0     		beq	.L27
+ 575 01d6 0022     		movs	r2, #0
+ 576              	.LVL51:
+ 577              	.L27:
+ 433:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_packet_length, 0);
+ 578              		.loc 1 433 45 discriminator 4 view .LVU188
+ 579 01d8 2C69     		ldr	r4, [r5, #16]
+ 433:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_packet_length, 0);
+ 580              		.loc 1 433 84 discriminator 4 view .LVU189
+ 581 01da 3669     		ldr	r6, [r6, #16]
+ 582              	.LVL52:
+ 433:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                          ed -> ux_stm32_ed_packet_length, 0);
+ 583              		.loc 1 433 65 discriminator 4 view .LVU190
+ 584 01dc 3444     		add	r4, r4, r6
+ 434:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****             }
+ 585              		.loc 1 434 45 discriminator 4 view .LVU191
+ 586 01de AD69     		ldr	r5, [r5, #24]
+ 587              	.LVL53:
+ 430:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                         ((ed -> ux_stm32_ed_endpoint -> ux_endpoint_descriptor.bmAt
+ 588              		.loc 1 430 17 discriminator 4 view .LVU192
+ 589 01e0 0026     		movs	r6, #0
+ 590 01e2 0396     		str	r6, [sp, #12]
+ 591              	.LVL54:
+ 430:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****                                         ((ed -> ux_stm32_ed_endpoint -> ux_endpoint_descriptor.bmAt
+ 592              		.loc 1 430 17 discriminator 4 view .LVU193
+ 593 01e4 ADB2     		uxth	r5, r5
+ 594 01e6 0295     		str	r5, [sp, #8]
+ 595 01e8 0194     		str	r4, [sp, #4]
+ 596 01ea 033B     		subs	r3, r3, #3
+ 597 01ec 18BF     		it	ne
+ 598 01ee 0123     		movne	r3, #1
+ 599 01f0 0093     		str	r3, [sp]
+ 600 01f2 1346     		mov	r3, r2
+ 601 01f4 3246     		mov	r2, r6
+ 602 01f6 FFF7FEFF 		bl	HAL_HCD_HC_SubmitRequest
+ 603              	.LVL55:
+ 604 01fa 59E7     		b	.L9
+ 605              		.cfi_endproc
+ 606              	.LFE145:
+ 608              		.section	.text.HAL_HCD_SOF_Callback,"ax",%progbits
+ 609              		.align	1
+ 610              		.global	HAL_HCD_SOF_Callback
+ 611              		.syntax unified
+ 612              		.thumb
+ 613              		.thumb_func
+ 615              	HAL_HCD_SOF_Callback:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 21
+
+
+ 616              	.LVL56:
+ 617              	.LFB146:
+ 440:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 441:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 442:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+ 443:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 444:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  FUNCTION                                               RELEASE        */
+ 445:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 446:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    HAL_HCD_SOF_Callback                                PORTABLE C      */
+ 447:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                           6.1.10       */
+ 448:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  AUTHOR                                                                */
+ 449:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 450:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+ 451:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 452:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  DESCRIPTION                                                           */
+ 453:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 454:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    This function handles callback from HAL driver.                     */
+ 455:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 456:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  INPUT                                                                 */
+ 457:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 458:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    hhcd                                  Pointer to HCD handle         */
+ 459:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 460:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  OUTPUT                                                                */
+ 461:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 462:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    Completion Status                                                   */
+ 463:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 464:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLS                                                                 */
+ 465:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 466:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    _ux_utility_semaphore_put             Put semaphore                 */
+ 467:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 468:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  CALLED BY                                                             */
+ 469:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 470:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    stm32 Controller Driver                                             */
+ 471:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 472:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  RELEASE HISTORY                                                       */
+ 473:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 474:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 475:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 476:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+ 477:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 478:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            refined macros names,       */
+ 479:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                            resulting in version 6.1.10 */
+ 480:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /*                                                                        */
+ 481:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** /**************************************************************************/
+ 482:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** void HAL_HCD_SOF_Callback(HCD_HandleTypeDef *hhcd)
+ 483:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** {
+ 618              		.loc 1 483 1 is_stmt 1 view -0
+ 619              		.cfi_startproc
+ 620              		@ args = 0, pretend = 0, frame = 0
+ 621              		@ frame_needed = 0, uses_anonymous_args = 0
+ 622              		.loc 1 483 1 is_stmt 0 view .LVU195
+ 623 0000 08B5     		push	{r3, lr}
+ 624              	.LCFI6:
+ 625              		.cfi_def_cfa_offset 8
+ 626              		.cfi_offset 3, -8
+ 627              		.cfi_offset 14, -4
+ 484:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 22
+
+
+ 485:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD              *hcd;
+ 628              		.loc 1 485 1 is_stmt 1 view .LVU196
+ 486:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** UX_HCD_STM32        *hcd_stm32;
+ 629              		.loc 1 486 1 view .LVU197
+ 487:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 488:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 489:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     /* Get the pointer to the HCD & HCD_STM32.  */
+ 490:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd = (UX_HCD*)hhcd -> pData;
+ 630              		.loc 1 490 5 view .LVU198
+ 631              		.loc 1 490 9 is_stmt 0 view .LVU199
+ 632 0002 D0F80023 		ldr	r2, [r0, #768]
+ 633              	.LVL57:
+ 491:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     hcd_stm32 = (UX_HCD_STM32*)hcd -> ux_hcd_controller_hardware;
+ 634              		.loc 1 491 5 is_stmt 1 view .LVU200
+ 635              		.loc 1 491 15 is_stmt 0 view .LVU201
+ 636 0006 516F     		ldr	r1, [r2, #116]
+ 637              	.LVL58:
+ 492:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 493:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     if ((hcd_stm32 -> ux_hcd_stm32_controller_flag & UX_HCD_STM32_CONTROLLER_FLAG_SOF) == 0)
+ 638              		.loc 1 493 5 is_stmt 1 view .LVU202
+ 639              		.loc 1 493 20 is_stmt 0 view .LVU203
+ 640 0008 4B6C     		ldr	r3, [r1, #68]
+ 641              		.loc 1 493 8 view .LVU204
+ 642 000a 13F0040F 		tst	r3, #4
+ 643 000e 00D0     		beq	.L37
+ 644              	.LVL59:
+ 645              	.L34:
+ 494:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     {
+ 495:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         hcd_stm32 -> ux_hcd_stm32_controller_flag |= UX_HCD_STM32_CONTROLLER_FLAG_SOF;
+ 496:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         hcd -> ux_hcd_thread_signal++;
+ 497:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 498:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         /* Wake up the scheduler.  */
+ 499:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         _ux_host_semaphore_put(&_ux_system_host -> ux_system_host_hcd_semaphore);
+ 500:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     }
+ 501:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** }
+ 646              		.loc 1 501 1 view .LVU205
+ 647 0010 08BD     		pop	{r3, pc}
+ 648              	.LVL60:
+ 649              	.L37:
+ 495:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         hcd -> ux_hcd_thread_signal++;
+ 650              		.loc 1 495 9 is_stmt 1 view .LVU206
+ 495:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****         hcd -> ux_hcd_thread_signal++;
+ 651              		.loc 1 495 51 is_stmt 0 view .LVU207
+ 652 0012 43F00403 		orr	r3, r3, #4
+ 653 0016 4B64     		str	r3, [r1, #68]
+ 496:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 654              		.loc 1 496 9 is_stmt 1 view .LVU208
+ 496:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 655              		.loc 1 496 13 is_stmt 0 view .LVU209
+ 656 0018 536E     		ldr	r3, [r2, #100]
+ 496:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c **** 
+ 657              		.loc 1 496 36 view .LVU210
+ 658 001a 0133     		adds	r3, r3, #1
+ 659 001c 5366     		str	r3, [r2, #100]
+ 499:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     }
+ 660              		.loc 1 499 9 is_stmt 1 view .LVU211
+ 499:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 23
+
+
+ 661              		.loc 1 499 49 is_stmt 0 view .LVU212
+ 662 001e 034B     		ldr	r3, .L38
+ 663 0020 1868     		ldr	r0, [r3]
+ 664              	.LVL61:
+ 499:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_callback.c ****     }
+ 665              		.loc 1 499 9 view .LVU213
+ 666 0022 00F5D670 		add	r0, r0, #428
+ 667 0026 FFF7FEFF 		bl	_ux_utility_semaphore_put
+ 668              	.LVL62:
+ 669              		.loc 1 501 1 view .LVU214
+ 670 002a F1E7     		b	.L34
+ 671              	.L39:
+ 672              		.align	2
+ 673              	.L38:
+ 674 002c 00000000 		.word	_ux_system_host
+ 675              		.cfi_endproc
+ 676              	.LFE146:
+ 678              		.text
+ 679              	.Letext0:
+ 680              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 681              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 682              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 683              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 684              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 685              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 686              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 687              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 688              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 689              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ 690              		.file 12 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 691              		.file 13 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccqmErg.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_callback.c
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:20     .text.HAL_HCD_Connect_Callback:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:26     .text.HAL_HCD_Connect_Callback:00000000 HAL_HCD_Connect_Callback
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:81     .text.HAL_HCD_Connect_Callback:00000028 $d
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:86     .text.HAL_HCD_Disconnect_Callback:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:92     .text.HAL_HCD_Disconnect_Callback:00000000 HAL_HCD_Disconnect_Callback
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:146    .text.HAL_HCD_Disconnect_Callback:00000028 $d
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:151    .text.HAL_HCD_HC_NotifyURBChange_Callback:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:157    .text.HAL_HCD_HC_NotifyURBChange_Callback:00000000 HAL_HCD_HC_NotifyURBChange_Callback
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:609    .text.HAL_HCD_SOF_Callback:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:615    .text.HAL_HCD_SOF_Callback:00000000 HAL_HCD_SOF_Callback
+C:\Users\HP\AppData\Local\Temp\cccqmErg.s:674    .text.HAL_HCD_SOF_Callback:0000002c $d
+
+UNDEFINED SYMBOLS
+_ux_utility_semaphore_put
+_ux_system_host
+_ux_hcd_stm32_request_trans_finish
+_ux_hcd_stm32_request_trans_prepare
+HAL_HCD_HC_SubmitRequest
+HAL_HCD_HC_GetXferCount

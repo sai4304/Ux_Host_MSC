@@ -1,0 +1,268 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fx_directory_local_path_get_copy.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._fx_directory_local_path_get_copy,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_local_path_get_copy
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_local_path_get_copy:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c"
+   1:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** #include "fx_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** #include "fx_file.h"
+  31:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** #include "fx_directory.h"
+  33:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  34:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+  35:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  38:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    _fx_directory_local_path_get_copy                   PORTABLE C      */
+  39:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                           6.1          */
+  40:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    This function copies the local default directory for this thread    */
+  47:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    into the specified buffer.                                          */
+  48:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  49:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    media_ptr                             Media control block pointer   */
+  52:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    return_path_name_buffer               Destination buffer for name   */
+  53:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    return_path_name_buffer_size          Size of buffer pointed to by  */
+  54:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                            return_path_name_buffer     */
+  55:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  OUTPUT                                                                */
+  57:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    return status                                                       */
+  59:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  CALLS                                                                 */
+  61:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  62:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    None                                                                */
+  63:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  CALLED BY                                                             */
+  65:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    Application Code                                                    */
+  67:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  RELEASE HISTORY                                                       */
+  69:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*    DATE              NAME                      DESCRIPTION             */
+  71:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  73:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*  09-30-2020     William E. Lamie         Modified comment(s), verified */
+  74:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                            memcpy usage,               */
+  75:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                            resulting in version 6.1    */
+  76:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /*                                                                        */
+  77:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** /**************************************************************************/
+  78:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** UINT  _fx_directory_local_path_get_copy(FX_MEDIA *media_ptr, CHAR *return_path_name_buffer, UINT re
+  79:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** {
+  30              		.loc 1 79 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 79 1 is_stmt 0 view .LVU1
+  35 0000 70B5     		push	{r4, r5, r6, lr}
+  36              	.LCFI0:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s 			page 3
+
+
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 4, -16
+  39              		.cfi_offset 5, -12
+  40              		.cfi_offset 6, -8
+  41              		.cfi_offset 14, -4
+  42 0002 82B0     		sub	sp, sp, #8
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 24
+  45 0004 0E46     		mov	r6, r1
+  46 0006 1446     		mov	r4, r2
+  80:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  81:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** UINT    status;
+  47              		.loc 1 81 1 is_stmt 1 view .LVU2
+  82:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** CHAR    *return_path_name;
+  48              		.loc 1 82 1 view .LVU3
+  83:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** UINT    path_name_length_with_null_terminator;
+  49              		.loc 1 83 1 view .LVU4
+  84:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  85:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  86:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****     /* Get the pointer to the path.  */
+  87:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****     status =  _fx_directory_local_path_get(media_ptr, &return_path_name);
+  50              		.loc 1 87 5 view .LVU5
+  51              		.loc 1 87 15 is_stmt 0 view .LVU6
+  52 0008 01A9     		add	r1, sp, #4
+  53              	.LVL1:
+  54              		.loc 1 87 15 view .LVU7
+  55 000a FFF7FEFF 		bl	_fx_directory_local_path_get
+  56              	.LVL2:
+  88:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****     if (status == FX_SUCCESS)
+  57              		.loc 1 88 5 is_stmt 1 view .LVU8
+  58              		.loc 1 88 8 is_stmt 0 view .LVU9
+  59 000e 0546     		mov	r5, r0
+  60 0010 78B9     		cbnz	r0, .L1
+  89:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****     {
+  90:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  91:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****         /* Was a path set?  */
+  92:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****         if (return_path_name != FX_NULL)
+  61              		.loc 1 92 9 is_stmt 1 view .LVU10
+  62              		.loc 1 92 30 is_stmt 0 view .LVU11
+  63 0012 0198     		ldr	r0, [sp, #4]
+  64              	.LVL3:
+  65              		.loc 1 92 12 view .LVU12
+  66 0014 58B1     		cbz	r0, .L3
+  93:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****         {
+  94:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  95:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             /* Get the length of the path.  */
+  96:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             path_name_length_with_null_terminator =  _fx_utility_string_length_get(return_path_name
+  67              		.loc 1 96 13 is_stmt 1 view .LVU13
+  68              		.loc 1 96 54 is_stmt 0 view .LVU14
+  69 0016 4FF48071 		mov	r1, #256
+  70 001a FFF7FEFF 		bl	_fx_utility_string_length_get
+  71              	.LVL4:
+  72              		.loc 1 96 51 view .LVU15
+  73 001e 421C     		adds	r2, r0, #1
+  74              	.LVL5:
+  97:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+  98:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             /* Can it fit in the user's buffer? */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s 			page 4
+
+
+  99:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             if (path_name_length_with_null_terminator <= return_path_name_buffer_size)
+  75              		.loc 1 99 13 is_stmt 1 view .LVU16
+  76              		.loc 1 99 16 is_stmt 0 view .LVU17
+  77 0020 A242     		cmp	r2, r4
+  78 0022 09D8     		bhi	.L4
+ 100:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             {
+ 101:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+ 102:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****                 /* Copy the path name into the user's buffer.  */
+ 103:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****                 _fx_utility_memory_copy((UCHAR *) return_path_name, (UCHAR *) return_path_name_buff
+  79              		.loc 1 103 17 is_stmt 1 view .LVU18
+  80 0024 3146     		mov	r1, r6
+  81 0026 0198     		ldr	r0, [sp, #4]
+  82 0028 FFF7FEFF 		bl	_fx_utility_memory_copy
+  83              	.LVL6:
+  84              		.loc 1 103 17 is_stmt 0 view .LVU19
+  85 002c 01E0     		b	.L1
+  86              	.L3:
+ 104:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             }
+ 105:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             else
+ 106:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             {
+ 107:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+ 108:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****                 /* Buffer is too small. Return error.  */
+ 109:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****                 return(FX_BUFFER_ERROR);
+ 110:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             }
+ 111:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****         }
+ 112:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****         else
+ 113:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****         {
+ 114:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+ 115:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             /* Set zero-length string.  */
+ 116:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             return_path_name_buffer[0] = '\0';
+  87              		.loc 1 116 13 is_stmt 1 view .LVU20
+  88              		.loc 1 116 40 is_stmt 0 view .LVU21
+  89 002e 0023     		movs	r3, #0
+  90 0030 3370     		strb	r3, [r6]
+  91              	.LVL7:
+  92              	.L1:
+ 117:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****         }
+ 118:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****     }
+ 119:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** 
+ 120:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****     /* Return status.  */
+ 121:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****     return(status);
+ 122:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c **** }
+  93              		.loc 1 122 1 view .LVU22
+  94 0032 2846     		mov	r0, r5
+  95 0034 02B0     		add	sp, sp, #8
+  96              	.LCFI2:
+  97              		.cfi_remember_state
+  98              		.cfi_def_cfa_offset 16
+  99              		@ sp needed
+ 100 0036 70BD     		pop	{r4, r5, r6, pc}
+ 101              	.LVL8:
+ 102              	.L4:
+ 103              	.LCFI3:
+ 104              		.cfi_restore_state
+ 109:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             }
+ 105              		.loc 1 109 23 view .LVU23
+ 106 0038 2125     		movs	r5, #33
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s 			page 5
+
+
+ 107              	.LVL9:
+ 109:Middlewares/ST/filex/common/src/fx_directory_local_path_get_copy.c ****             }
+ 108              		.loc 1 109 23 view .LVU24
+ 109 003a FAE7     		b	.L1
+ 110              		.cfi_endproc
+ 111              	.LFE8:
+ 113              		.text
+ 114              	.Letext0:
+ 115              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 116              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 117              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 118              		.file 5 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ 119              		.file 6 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_local_path_get_copy.c
+C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s:20     .text._fx_directory_local_path_get_copy:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc9KuRCT.s:26     .text._fx_directory_local_path_get_copy:00000000 _fx_directory_local_path_get_copy
+
+UNDEFINED SYMBOLS
+_fx_directory_local_path_get
+_fx_utility_string_length_get
+_fx_utility_memory_copy

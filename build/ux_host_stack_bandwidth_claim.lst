@@ -1,0 +1,649 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_bandwidth_claim.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_bandwidth_claim,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_bandwidth_claim
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_bandwidth_claim:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** #if UX_MAX_DEVICES > 1
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  FUNCTION                                               RELEASE        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    _ux_host_stack_bandwidth_claim                      PORTABLE C      */ 
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                           6.1          */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    This function will reserve bandwidth for a periodic endpoint. The   */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    bandwidth requirement is calculated by the MaxPacketSize field of   */
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    endpoint and the speed of the endpoint. If the device is on a 1.1   */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    bus or it is a 1.1 device behind a 2.0 hub on a 2.0 bus, the device */
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    bandwidth must be multiplied by 8 on the 1.1 segment.               */
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    This algorithm takes into account both TT bandwidth and HCD         */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    bandwidth. The TTs are attached to the device structure and not     */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    the hub structure in order to make the stack agnostic of the hub    */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    class.                                                              */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  INPUT                                                                 */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    HCD                                   Pointer to HCD                */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    endpoint                              Pointer to endpoint           */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  OUTPUT                                                                */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    None                                                                */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  CALLS                                                                 */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    None                                                                */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  CALLED BY                                                             */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    USBX Components                                                     */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  RELEASE HISTORY                                                       */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */ 
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                            optimized based on compile  */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                            definitions,                */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                            resulting in version 6.1    */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*                                                                        */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /**************************************************************************/
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** VOID  _ux_host_stack_bandwidth_claim(UX_HCD *hcd, UX_ENDPOINT *endpoint)
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** {
+  30              		.loc 1 85 1 view -0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 3
+
+
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 16
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 85 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 84B0     		sub	sp, sp, #16
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 24
+  43 0004 8446     		mov	ip, r0
+  44 0006 8E46     		mov	lr, r1
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** UX_DEVICE       *device;
+  45              		.loc 1 87 1 is_stmt 1 view .LVU2
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** UX_DEVICE       *parent_device;
+  46              		.loc 1 88 1 view .LVU3
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** USHORT          hcd_bandwidth_claimed;
+  47              		.loc 1 89 1 view .LVU4
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** USHORT          max_packet_size;
+  48              		.loc 1 90 1 view .LVU5
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** LONG            packet_size;
+  49              		.loc 1 91 1 view .LVU6
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** USHORT          tt_bandwidth_claimed =  0;
+  50              		.loc 1 92 1 view .LVU7
+  51              	.LVL1:
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** ULONG           port_index;
+  52              		.loc 1 93 1 view .LVU8
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** ULONG           port_map;
+  53              		.loc 1 94 1 view .LVU9
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** ULONG           tt_index;
+  54              		.loc 1 95 1 view .LVU10
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** const UCHAR     overheads[4][3] = {
+  55              		.loc 1 96 1 view .LVU11
+  56              		.loc 1 96 17 is_stmt 0 view .LVU12
+  57 0008 3A4B     		ldr	r3, .L18
+  58 000a 93E80700 		ldm	r3, {r0, r1, r2}
+  59              	.LVL2:
+  60              		.loc 1 96 17 view .LVU13
+  61 000e 04AB     		add	r3, sp, #16
+  62 0010 03E90700 		stmdb	r3, {r0, r1, r2}
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** /*   LS  FS   HS   */
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {63, 45, 173}, /* Control */
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     { 0,  9,  38}, /* Isochronous */
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     { 0, 13,  55}, /* Bulk */
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {19, 13,  55}  /* Interrupt */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** };
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Get the pointer to the device.  */
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     device =  endpoint -> ux_endpoint_device;
+  63              		.loc 1 105 5 is_stmt 1 view .LVU14
+  64              		.loc 1 105 12 is_stmt 0 view .LVU15
+  65 0014 DEF82C20 		ldr	r2, [lr, #44]
+  66              	.LVL3:
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 4
+
+
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Calculate the bandwidth. From USB spec.
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      *
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * The frame unit consumed per byte is like follow:
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      *              Bytes/FrameUnit     FrameUnit/byte  FrameUnit/byte
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      *              (Overhead included) (HS baseline)   (FS baseline)
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * Low Speed       187.5                40             8
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * Full Speed     1500                   5             1
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * High Speed     7500                   1            1/5
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * 
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * The overhead is like follow:
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      *               Control Isochronous Bulk Interrupt
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * bmAttribute     (0)       (1)     (2)     (3)
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * Low Speed        63       --      --      19
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * Full Speed       45        9      13      13
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * High Speed      173       38      55      55
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * 
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      * Worst case bit stuffing is calculated as 1.1667 (7/6) times the raw time.
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****      */
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Get maximum packet size.  */
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     max_packet_size  = endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_PACKET_SIZE_MASK;
+  67              		.loc 1 127 5 is_stmt 1 view .LVU16
+  68              		.loc 1 127 58 is_stmt 0 view .LVU17
+  69 0018 DEF81C40 		ldr	r4, [lr, #28]
+  70              		.loc 1 127 22 view .LVU18
+  71 001c C4F30A00 		ubfx	r0, r4, #0, #11
+  72              	.LVL4:
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Rough time for possible Bit Stuffing.  */
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     packet_size = (max_packet_size * 7 + 5) / 6;
+  73              		.loc 1 130 5 is_stmt 1 view .LVU19
+  74              		.loc 1 130 36 is_stmt 0 view .LVU20
+  75 0020 C0EBC000 		rsb	r0, r0, r0, lsl #3
+  76              	.LVL5:
+  77              		.loc 1 130 40 view .LVU21
+  78 0024 0530     		adds	r0, r0, #5
+  79              		.loc 1 130 17 view .LVU22
+  80 0026 344B     		ldr	r3, .L18+4
+  81 0028 83FB0013 		smull	r1, r3, r3, r0
+  82 002c A3EBE070 		sub	r0, r3, r0, asr #31
+  83              	.LVL6:
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Add overhead.  */
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     packet_size += overheads[endpoint -> ux_endpoint_descriptor.bmAttributes & UX_MASK_ENDPOINT_TYP
+  84              		.loc 1 133 5 is_stmt 1 view .LVU23
+  85              		.loc 1 133 64 is_stmt 0 view .LVU24
+  86 0030 DEF81830 		ldr	r3, [lr, #24]
+  87              		.loc 1 133 78 view .LVU25
+  88 0034 03F00303 		and	r3, r3, #3
+  89              		.loc 1 133 110 view .LVU26
+  90 0038 1169     		ldr	r1, [r2, #16]
+  91              		.loc 1 133 102 view .LVU27
+  92 003a 03EB4303 		add	r3, r3, r3, lsl #1
+  93 003e 1033     		adds	r3, r3, #16
+  94 0040 6B44     		add	r3, sp, r3
+  95 0042 0B44     		add	r3, r3, r1
+  96 0044 13F80C3C 		ldrb	r3, [r3, #-12]	@ zero_extendqisi2
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 5
+
+
+  97              		.loc 1 133 17 view .LVU28
+  98 0048 0344     		add	r3, r3, r0
+  99              	.LVL7:
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     max_packet_size = (USHORT)packet_size;
+ 100              		.loc 1 134 5 is_stmt 1 view .LVU29
+ 101              		.loc 1 134 21 is_stmt 0 view .LVU30
+ 102 004a 9BB2     		uxth	r3, r3
+ 103              	.LVL8:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Check for high-speed endpoint.  */
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     if (device -> ux_device_speed == UX_HIGH_SPEED_DEVICE)
+ 104              		.loc 1 137 5 is_stmt 1 view .LVU31
+ 105              		.loc 1 137 8 is_stmt 0 view .LVU32
+ 106 004c 0229     		cmp	r1, #2
+ 107 004e 1CD0     		beq	.L15
+ 108              	.L2:
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         /* Get number of transactions.  */
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         max_packet_size = (USHORT)(max_packet_size *
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                         UX_MAX_NUMBER_OF_TRANSACTIONS_SHIFT) + 1));
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Calculate the bandwidth claimed by this endpoint for the main bus.  */
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     if (hcd -> ux_hcd_version != 0x200)
+ 109              		.loc 1 147 5 is_stmt 1 view .LVU33
+ 110              		.loc 1 147 13 is_stmt 0 view .LVU34
+ 111 0050 DCF89000 		ldr	r0, [ip, #144]
+ 112              	.LVL9:
+ 113              		.loc 1 147 8 view .LVU35
+ 114 0054 B0F5007F 		cmp	r0, #512
+ 115 0058 27D0     		beq	.L3
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         if (device -> ux_device_speed == UX_LOW_SPEED_DEVICE)
+ 116              		.loc 1 150 9 is_stmt 1 view .LVU36
+ 117              		.loc 1 150 12 is_stmt 0 view .LVU37
+ 118 005a E9B9     		cbnz	r1, .L4
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             /* Low speed transfer takes 40x more units than high speed. */
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             hcd_bandwidth_claimed =  (USHORT)(max_packet_size * 8 * 5);
+ 119              		.loc 1 152 13 is_stmt 1 view .LVU38
+ 120              		.loc 1 152 35 is_stmt 0 view .LVU39
+ 121 005c 03EB8303 		add	r3, r3, r3, lsl #2
+ 122              	.LVL10:
+ 123              		.loc 1 152 35 view .LVU40
+ 124 0060 DB00     		lsls	r3, r3, #3
+ 125 0062 9BB2     		uxth	r3, r3
+ 126              	.LVL11:
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** ULONG           port_index;
+ 127              		.loc 1 92 17 view .LVU41
+ 128 0064 0024     		movs	r4, #0
+ 129              	.LVL12:
+ 130              	.L5:
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         else
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         {
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 6
+
+
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             if (device -> ux_device_speed == UX_FULL_SPEED_DEVICE)
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 /* Full speed transfer takes 5x more units than high speed. */
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 hcd_bandwidth_claimed =  (USHORT)(max_packet_size * 5);
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             else
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 /* Use high speed timing as base for bus bandwidth calculation. */
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 hcd_bandwidth_claimed =  (USHORT)max_packet_size;
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         }
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     else        
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         hcd_bandwidth_claimed =  (USHORT)max_packet_size;
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         if (device -> ux_device_speed == UX_LOW_SPEED_DEVICE)
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             /* Low speed transfer takes 8x more units than full speed. */
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             tt_bandwidth_claimed =  (USHORT)(max_packet_size * 8);
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         else
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             /* Use full speed timing as base for TT bandwidth calculation. */
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             tt_bandwidth_claimed =  (USHORT)max_packet_size;
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Allocate the HCD bandwidth, since it's already checked by _bandwidth_check.  */
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     hcd -> ux_hcd_available_bandwidth -=  hcd_bandwidth_claimed;
+ 131              		.loc 1 177 5 is_stmt 1 view .LVU42
+ 132              		.loc 1 177 39 is_stmt 0 view .LVU43
+ 133 0066 DCF88C10 		ldr	r1, [ip, #140]
+ 134              	.LVL13:
+ 135              		.loc 1 177 39 view .LVU44
+ 136 006a CB1A     		subs	r3, r1, r3
+ 137              	.LVL14:
+ 138              		.loc 1 177 39 view .LVU45
+ 139 006c CCF88C30 		str	r3, [ip, #140]
+ 140              	.LVL15:
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* We need to take care of the case where the endpoint belongs to a USB 1.1
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****        device that sits behind a 2.0 hub. We ignore cases where the device
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****        is either high speed or the bus is 1.1.  */
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     if ((device -> ux_device_speed == UX_HIGH_SPEED_DEVICE) || (hcd -> ux_hcd_version != 0x200))
+ 141              		.loc 1 182 5 is_stmt 1 view .LVU46
+ 142              		.loc 1 182 17 is_stmt 0 view .LVU47
+ 143 0070 1369     		ldr	r3, [r2, #16]
+ 144              		.loc 1 182 8 view .LVU48
+ 145 0072 022B     		cmp	r3, #2
+ 146 0074 25D0     		beq	.L1
+ 147              		.loc 1 182 61 discriminator 1 view .LVU49
+ 148 0076 B0F5007F 		cmp	r0, #512
+ 149 007a 22D1     		bne	.L1
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         /* The device is high speed, therefore no need for TT.  */
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         return;
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* We have a 1.1 device, check if the parent is a 2.0 hub.  */
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     parent_device =  device -> ux_device_parent;
+ 150              		.loc 1 190 5 is_stmt 1 view .LVU50
+ 151              		.loc 1 190 19 is_stmt 0 view .LVU51
+ 152 007c D2F81C31 		ldr	r3, [r2, #284]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 7
+
+
+ 153              	.LVL16:
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     if (parent_device == UX_NULL)
+ 154              		.loc 1 191 5 is_stmt 1 view .LVU52
+ 155              		.loc 1 191 8 is_stmt 0 view .LVU53
+ 156 0080 FBB1     		cbz	r3, .L1
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         /* We are at the root, must be a 1.1 controller then!  */
+ 195:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         return;
+ 196:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 198:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* We get here when the parent is a hub. The problem occurs when the hub is 
+ 199:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****        itself connected to a chain of hubs. We need to find the first 2.0 hub 
+ 200:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****        parent to this chain to check the TT. We need to remember the port on 
+ 201:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****        which the first 1.1 device is hooked to.  */
+ 202:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     port_index =  device -> ux_device_port_location - 1;
+ 157              		.loc 1 202 5 is_stmt 1 view .LVU54
+ 158              		.loc 1 202 26 is_stmt 0 view .LVU55
+ 159 0082 D2F81821 		ldr	r2, [r2, #280]
+ 160              	.LVL17:
+ 161              		.loc 1 202 16 view .LVU56
+ 162 0086 013A     		subs	r2, r2, #1
+ 163              	.LVL18:
+ 203:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 204:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* Scan the chain of hubs upward.  */
+ 205:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     while (parent_device != UX_NULL)
+ 164              		.loc 1 205 5 is_stmt 1 view .LVU57
+ 165              		.loc 1 205 11 is_stmt 0 view .LVU58
+ 166 0088 22E0     		b	.L7
+ 167              	.LVL19:
+ 168              	.L15:
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 169              		.loc 1 141 9 is_stmt 1 view .LVU59
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                         UX_MAX_NUMBER_OF_TRANSACTIONS_SHIFT) + 1));
+ 170              		.loc 1 142 112 is_stmt 0 view .LVU60
+ 171 008a C4F3C124 		ubfx	r4, r4, #11, #2
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 172              		.loc 1 141 27 view .LVU61
+ 173 008e 0134     		adds	r4, r4, #1
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 174              		.loc 1 141 25 view .LVU62
+ 175 0090 14FB03F3 		smulbb	r3, r4, r3
+ 176              	.LVL20:
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 177              		.loc 1 141 25 view .LVU63
+ 178 0094 9BB2     		uxth	r3, r3
+ 179              	.LVL21:
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 180              		.loc 1 141 25 view .LVU64
+ 181 0096 DBE7     		b	.L2
+ 182              	.LVL22:
+ 183              	.L4:
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 /* Full speed transfer takes 5x more units than high speed. */
+ 184              		.loc 1 156 13 is_stmt 1 view .LVU65
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 /* Full speed transfer takes 5x more units than high speed. */
+ 185              		.loc 1 156 16 is_stmt 0 view .LVU66
+ 186 0098 0129     		cmp	r1, #1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 8
+
+
+ 187 009a 01D0     		beq	.L16
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** ULONG           port_index;
+ 188              		.loc 1 92 17 view .LVU67
+ 189 009c 0024     		movs	r4, #0
+ 190 009e E2E7     		b	.L5
+ 191              	.L16:
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             else
+ 192              		.loc 1 158 17 is_stmt 1 view .LVU68
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             else
+ 193              		.loc 1 158 39 is_stmt 0 view .LVU69
+ 194 00a0 03EB8303 		add	r3, r3, r3, lsl #2
+ 195              	.LVL23:
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             else
+ 196              		.loc 1 158 39 view .LVU70
+ 197 00a4 9BB2     		uxth	r3, r3
+ 198              	.LVL24:
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** ULONG           port_index;
+ 199              		.loc 1 92 17 view .LVU71
+ 200 00a6 0024     		movs	r4, #0
+ 201 00a8 DDE7     		b	.L5
+ 202              	.LVL25:
+ 203              	.L3:
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         if (device -> ux_device_speed == UX_LOW_SPEED_DEVICE)
+ 204              		.loc 1 167 9 is_stmt 1 view .LVU72
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             /* Low speed transfer takes 8x more units than full speed. */
+ 205              		.loc 1 168 9 view .LVU73
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             /* Low speed transfer takes 8x more units than full speed. */
+ 206              		.loc 1 168 12 is_stmt 0 view .LVU74
+ 207 00aa 11B9     		cbnz	r1, .L13
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         else
+ 208              		.loc 1 170 13 is_stmt 1 view .LVU75
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         else
+ 209              		.loc 1 170 34 is_stmt 0 view .LVU76
+ 210 00ac DC00     		lsls	r4, r3, #3
+ 211 00ae A4B2     		uxth	r4, r4
+ 212              	.LVL26:
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         else
+ 213              		.loc 1 170 34 view .LVU77
+ 214 00b0 D9E7     		b	.L5
+ 215              	.LVL27:
+ 216              	.L13:
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 217              		.loc 1 173 34 view .LVU78
+ 218 00b2 1C46     		mov	r4, r3
+ 219 00b4 D7E7     		b	.L5
+ 220              	.LVL28:
+ 221              	.L17:
+ 206:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {
+ 207:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 208:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         /* Is the device high speed?  */
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         if (parent_device -> ux_device_speed == UX_HIGH_SPEED_DEVICE)
+ 210:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         {
+ 211:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 212:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             /* The device is a high speed hub, find the TT that manages the port. 
+ 213:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                The first 1.1 device is connected to. First we calculate the port 
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                mapping bit.  */
+ 215:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             port_map =  (ULONG)(1 << port_index);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 9
+
+
+ 216:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 217:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             /* Parse all the TTs attached to the hub.
+ 218:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                Since we confirmed exist of TT in previous _check,
+ 219:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                just do while loop here.
+ 220:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****              */
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             tt_index = 0;
+ 222:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             while(1)
+ 223:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             {
+ 224:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 /* Check if this TT owns the port where the device is attached.  */
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 if ((parent_device -> ux_device_hub_tt[tt_index].ux_hub_tt_port_mapping & port_map)
+ 226:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 {
+ 227:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 228:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     /* We have found the port, check if the tt can give us the bandwidth
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                        we want to claim.  */
+ 230:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     parent_device -> ux_device_hub_tt[tt_index].ux_hub_tt_max_bandwidth -=  tt_band
+ 222              		.loc 1 230 21 is_stmt 1 view .LVU79
+ 223              		.loc 1 230 89 is_stmt 0 view .LVU80
+ 224 00b6 2430     		adds	r0, r0, #36
+ 225              	.LVL29:
+ 226              		.loc 1 230 89 view .LVU81
+ 227 00b8 03EBC003 		add	r3, r3, r0, lsl #3
+ 228              	.LVL30:
+ 229              		.loc 1 230 89 view .LVU82
+ 230 00bc 9A68     		ldr	r2, [r3, #8]
+ 231              	.LVL31:
+ 232              		.loc 1 230 89 view .LVU83
+ 233 00be 121B     		subs	r2, r2, r4
+ 234 00c0 9A60     		str	r2, [r3, #8]
+ 231:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                     return;
+ 235              		.loc 1 231 21 is_stmt 1 view .LVU84
+ 236              	.LVL32:
+ 237              	.L1:
+ 232:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 }
+ 233:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 234:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 /* Try next index.  */
+ 235:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 tt_index ++;
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             }
+ 237:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         }
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 239:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         /* We now remember where this hub is located on the parent.  */
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         port_index =  parent_device -> ux_device_port_location - 1;
+ 241:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         
+ 242:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         /* We go up one level in the hub chain.  */
+ 243:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         parent_device =  parent_device -> ux_device_parent;
+ 244:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 245:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 246:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     /* We get here when we have not found a 2.0 hub in the list and we got
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****        to the root port.  */
+ 248:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     return;
+ 249:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** }
+ 238              		.loc 1 249 1 is_stmt 0 view .LVU85
+ 239 00c2 04B0     		add	sp, sp, #16
+ 240              	.LCFI2:
+ 241              		.cfi_remember_state
+ 242              		.cfi_def_cfa_offset 8
+ 243              		@ sp needed
+ 244 00c4 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 10
+
+
+ 245              	.LVL33:
+ 246              	.L8:
+ 247              	.LCFI3:
+ 248              		.cfi_restore_state
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         
+ 249              		.loc 1 240 9 is_stmt 1 view .LVU86
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         
+ 250              		.loc 1 240 37 is_stmt 0 view .LVU87
+ 251 00c6 D3F81821 		ldr	r2, [r3, #280]
+ 252              	.LVL34:
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         
+ 253              		.loc 1 240 20 view .LVU88
+ 254 00ca 013A     		subs	r2, r2, #1
+ 255              	.LVL35:
+ 243:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 256              		.loc 1 243 9 is_stmt 1 view .LVU89
+ 243:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     }
+ 257              		.loc 1 243 23 is_stmt 0 view .LVU90
+ 258 00cc D3F81C31 		ldr	r3, [r3, #284]
+ 259              	.LVL36:
+ 260              	.L7:
+ 205:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****     {
+ 261              		.loc 1 205 11 is_stmt 1 view .LVU91
+ 262 00d0 002B     		cmp	r3, #0
+ 263 00d2 F6D0     		beq	.L1
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         {
+ 264              		.loc 1 209 9 view .LVU92
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         {
+ 265              		.loc 1 209 27 is_stmt 0 view .LVU93
+ 266 00d4 1969     		ldr	r1, [r3, #16]
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****         {
+ 267              		.loc 1 209 12 view .LVU94
+ 268 00d6 0229     		cmp	r1, #2
+ 269 00d8 F5D1     		bne	.L8
+ 215:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 270              		.loc 1 215 13 is_stmt 1 view .LVU95
+ 215:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c **** 
+ 271              		.loc 1 215 35 is_stmt 0 view .LVU96
+ 272 00da 0121     		movs	r1, #1
+ 273 00dc 01FA02F2 		lsl	r2, r1, r2
+ 274              	.LVL37:
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             while(1)
+ 275              		.loc 1 221 13 is_stmt 1 view .LVU97
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             while(1)
+ 276              		.loc 1 221 22 is_stmt 0 view .LVU98
+ 277 00e0 0020     		movs	r0, #0
+ 278              	.LVL38:
+ 279              	.L10:
+ 222:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             {
+ 280              		.loc 1 222 13 is_stmt 1 view .LVU99
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 {
+ 281              		.loc 1 225 17 view .LVU100
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 {
+ 282              		.loc 1 225 65 is_stmt 0 view .LVU101
+ 283 00e2 00F12401 		add	r1, r0, #36
+ 284 00e6 03EBC101 		add	r1, r3, r1, lsl #3
+ 285 00ea 4968     		ldr	r1, [r1, #4]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 11
+
+
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 {
+ 286              		.loc 1 225 20 view .LVU102
+ 287 00ec 1142     		tst	r1, r2
+ 288 00ee E2D1     		bne	.L17
+ 235:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             }
+ 289              		.loc 1 235 17 is_stmt 1 view .LVU103
+ 235:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             }
+ 290              		.loc 1 235 26 is_stmt 0 view .LVU104
+ 291 00f0 0130     		adds	r0, r0, #1
+ 292              	.LVL39:
+ 222:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****             {
+ 293              		.loc 1 222 18 is_stmt 1 view .LVU105
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_claim.c ****                 {
+ 294              		.loc 1 225 20 is_stmt 0 view .LVU106
+ 295 00f2 F6E7     		b	.L10
+ 296              	.L19:
+ 297              		.align	2
+ 298              	.L18:
+ 299 00f4 00000000 		.word	.LANCHOR0
+ 300 00f8 ABAAAA2A 		.word	715827883
+ 301              		.cfi_endproc
+ 302              	.LFE11:
+ 304              		.section	.rodata
+ 305              		.align	2
+ 306              		.set	.LANCHOR0,. + 0
+ 307              	.LC0:
+ 308 0000 3F2DAD   		.ascii	"?-\255"
+ 309 0003 000926   		.ascii	"\000\011&"
+ 310 0006 000D37   		.ascii	"\000\0157"
+ 311 0009 130D37   		.ascii	"\023\0157"
+ 312              		.text
+ 313              	.Letext0:
+ 314              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 315              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 316              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_bandwidth_claim.c
+C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s:20     .text._ux_host_stack_bandwidth_claim:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s:26     .text._ux_host_stack_bandwidth_claim:00000000 _ux_host_stack_bandwidth_claim
+C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s:299    .text._ux_host_stack_bandwidth_claim:000000f4 $d
+C:\Users\HP\AppData\Local\Temp\ccaxYnJI.s:305    .rodata:00000000 $d
+
+NO UNDEFINED SYMBOLS

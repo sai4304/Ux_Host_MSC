@@ -1,0 +1,611 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_new_endpoint_create.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_new_endpoint_create,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_new_endpoint_create
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_new_endpoint_create:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    _ux_host_stack_new_endpoint_create                  PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                           6.1.11       */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    This function creates a new endpoint for the current interface      */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    scanned. The endpoint is hooked to the interface that owns it.      */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    It is not active yet until either the default interface for the     */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    configuration is selected by a SET_CONFIGURATION or when an         */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    alternate setting for this interface is set.                        */
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  INPUT                                                                 */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    interface                             Interface container that owns */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            this endpoint               */
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    endpoint_pointer                      Pointer to a unparsed         */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            endpoint descriptor         */
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  OUTPUT                                                                */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    Completion Status                                                   */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  CALLS                                                                 */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    _ux_utility_descriptor_parse          Parse the descriptor          */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    _ux_utility_memory_allocate           Allocate memory block         */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  CALLED BY                                                             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    USBX Components                                                     */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  RELEASE HISTORY                                                       */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            resulting in version 6.1    */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  10-15-2021     Chaoqiong Xiao           Modified comment(s),          */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            added descriptor validate,  */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            resulting in version 6.1.9  */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*  04-25-2022     Chaoqiong Xiao           Modified comment(s),          */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            internal clean up,          */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            fixed size calculation,     */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                            resulting in version 6.1.11 */
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /*                                                                        */
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** /**************************************************************************/
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** UINT  _ux_host_stack_new_endpoint_create(UX_INTERFACE *interface_ptr,
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 3
+
+
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                                                  UCHAR * interface_endpoint)
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** {
+  30              		.loc 1 88 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 88 1 is_stmt 0 view .LVU1
+  35 0000 70B5     		push	{r4, r5, r6, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 4, -16
+  39              		.cfi_offset 5, -12
+  40              		.cfi_offset 6, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0546     		mov	r5, r0
+  43 0004 0E46     		mov	r6, r1
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** UX_ENDPOINT     *endpoint;
+  44              		.loc 1 90 1 is_stmt 1 view .LVU2
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** UX_ENDPOINT     *list_endpoint;
+  45              		.loc 1 91 1 view .LVU3
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** ULONG           endpoint_type;
+  46              		.loc 1 92 1 view .LVU4
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** ULONG           packet_size;
+  47              		.loc 1 93 1 view .LVU5
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** ULONG           n_tran;
+  48              		.loc 1 94 1 view .LVU6
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Obtain memory for storing this new endpoint.  */
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     endpoint =  (UX_ENDPOINT *) _ux_utility_memory_allocate(UX_NO_ALIGN, UX_REGULAR_MEMORY, sizeof(
+  49              		.loc 1 97 5 view .LVU7
+  50              		.loc 1 97 33 is_stmt 0 view .LVU8
+  51 0006 9422     		movs	r2, #148
+  52 0008 0021     		movs	r1, #0
+  53              	.LVL1:
+  54              		.loc 1 97 33 view .LVU9
+  55 000a 0846     		mov	r0, r1
+  56              	.LVL2:
+  57              		.loc 1 97 33 view .LVU10
+  58 000c FFF7FEFF 		bl	_ux_utility_memory_allocate
+  59              	.LVL3:
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     if (endpoint == UX_NULL)
+  60              		.loc 1 98 5 is_stmt 1 view .LVU11
+  61              		.loc 1 98 8 is_stmt 0 view .LVU12
+  62 0010 0028     		cmp	r0, #0
+  63 0012 67D0     		beq	.L16
+  64 0014 0446     		mov	r4, r0
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         return(UX_MEMORY_INSUFFICIENT);
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_NEW_ENDPOINT_CREATE, interface_ptr, endpoint, 0, 0,
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Save the endpoint handle in the container, this is for ensuring the
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        endpoint container is not corrupted.  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     endpoint -> ux_endpoint =  (ULONG) (ALIGN_TYPE) endpoint;
+  65              		.loc 1 106 5 is_stmt 1 view .LVU13
+  66              		.loc 1 106 29 is_stmt 0 view .LVU14
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 4
+
+
+  67 0016 0060     		str	r0, [r0]
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* The endpoint container has a built in transfer_request. 
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        The transfer_request needs to point to the endpoint as well.  */
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     endpoint -> ux_endpoint_transfer_request.ux_transfer_request_endpoint =  endpoint;
+  68              		.loc 1 110 5 is_stmt 1 view .LVU15
+  69              		.loc 1 110 75 is_stmt 0 view .LVU16
+  70 0018 4063     		str	r0, [r0, #52]
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Save the pointer to the device. This is useful for the HCD layer.  */
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     endpoint -> ux_endpoint_device =  interface_ptr -> ux_interface_configuration -> ux_configurati
+  71              		.loc 1 113 5 is_stmt 1 view .LVU17
+  72              		.loc 1 113 53 is_stmt 0 view .LVU18
+  73 001a 2B6C     		ldr	r3, [r5, #64]
+  74              		.loc 1 113 83 view .LVU19
+  75 001c 5B6B     		ldr	r3, [r3, #52]
+  76              		.loc 1 113 36 view .LVU20
+  77 001e C362     		str	r3, [r0, #44]
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Parse the interface descriptor and make it machine independent.  */
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     _ux_utility_descriptor_parse(interface_endpoint,
+  78              		.loc 1 116 5 is_stmt 1 view .LVU21
+  79 0020 00F10C03 		add	r3, r0, #12
+  80 0024 0622     		movs	r2, #6
+  81 0026 3049     		ldr	r1, .L29
+  82 0028 3046     		mov	r0, r6
+  83              	.LVL4:
+  84              		.loc 1 116 5 is_stmt 0 view .LVU22
+  85 002a FFF7FEFF 		bl	_ux_utility_descriptor_parse
+  86              	.LVL5:
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                             _ux_system_endpoint_descriptor_structure,
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                             UX_ENDPOINT_DESCRIPTOR_ENTRIES,
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                             (UCHAR *) &endpoint -> ux_endpoint_descriptor);
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Check endpoint size and interval to see if they are valid.  */
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     endpoint_type = endpoint -> ux_endpoint_descriptor.bmAttributes & UX_MASK_ENDPOINT_TYPE;
+  87              		.loc 1 122 5 is_stmt 1 view .LVU23
+  88              		.loc 1 122 55 is_stmt 0 view .LVU24
+  89 002e A169     		ldr	r1, [r4, #24]
+  90              		.loc 1 122 19 view .LVU25
+  91 0030 01F00301 		and	r1, r1, #3
+  92              	.LVL6:
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Endpoint size should not be zero.  */
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     if (endpoint -> ux_endpoint_descriptor.wMaxPacketSize == 0)
+  93              		.loc 1 125 5 is_stmt 1 view .LVU26
+  94              		.loc 1 125 43 is_stmt 0 view .LVU27
+  95 0034 E269     		ldr	r2, [r4, #28]
+  96              		.loc 1 125 8 view .LVU28
+  97 0036 E2B1     		cbz	r2, .L21
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     {
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         _ux_utility_memory_free(endpoint);
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         return(UX_DESCRIPTOR_CORRUPTED);
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Control/bulk endpoint, 8, 16, 32, 64, ... 512 can be accepted.
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        Note non-standard size in 2^N is accepted since they really works.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 5
+
+
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     if (endpoint_type == UX_CONTROL_ENDPOINT || endpoint_type == UX_BULK_ENDPOINT)
+  98              		.loc 1 133 5 is_stmt 1 view .LVU29
+  99              		.loc 1 133 8 is_stmt 0 view .LVU30
+ 100 0038 01B3     		cbz	r1, .L17
+ 101              		.loc 1 133 46 discriminator 1 view .LVU31
+ 102 003a 0229     		cmp	r1, #2
+ 103 003c 26D0     		beq	.L22
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     {
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         for (packet_size = 8; packet_size <= 512; packet_size <<= 1)
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             if (packet_size == endpoint -> ux_endpoint_descriptor.wMaxPacketSize)
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                 break;
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         /* If endpoint size not valid, return error.  */
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         if (packet_size > 512)
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             _ux_utility_memory_free(endpoint);
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Interrupt/isochronous endpoint, max 1024 and 3 transactions can be accepted.  */
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     else
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     {
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         /* Max size over 1024 is not allowed.  */
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         packet_size = endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_PACKET_SIZE_MASK;
+ 104              		.loc 1 154 9 is_stmt 1 view .LVU32
+ 105              		.loc 1 154 21 is_stmt 0 view .LVU33
+ 106 003e C2F30A03 		ubfx	r3, r2, #0, #11
+ 107              	.LVL7:
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         if (packet_size > 1024)
+ 108              		.loc 1 155 9 is_stmt 1 view .LVU34
+ 109              		.loc 1 155 12 is_stmt 0 view .LVU35
+ 110 0042 B3F5806F 		cmp	r3, #1024
+ 111 0046 36D8     		bhi	.L23
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             _ux_utility_memory_free(endpoint);
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         /* Number transaction over 2 additional is not allowed.  */
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         n_tran = endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSACTIONS_
+ 112              		.loc 1 162 9 is_stmt 1 view .LVU36
+ 113              		.loc 1 162 16 is_stmt 0 view .LVU37
+ 114 0048 02F4C052 		and	r2, r2, #6144
+ 115              	.LVL8:
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         if (n_tran >= UX_MAX_NUMBER_OF_TRANSACTIONS_MASK)
+ 116              		.loc 1 163 9 is_stmt 1 view .LVU38
+ 117              		.loc 1 163 12 is_stmt 0 view .LVU39
+ 118 004c B2F5C05F 		cmp	r2, #6144
+ 119 0050 36D2     		bcs	.L24
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             _ux_utility_memory_free(endpoint);
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 6
+
+
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         /* Isochronous/high speed interrupt interval should be 1~16.  */
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         if (endpoint -> ux_endpoint_descriptor.bInterval < 1)
+ 120              		.loc 1 170 9 is_stmt 1 view .LVU40
+ 121              		.loc 1 170 47 is_stmt 0 view .LVU41
+ 122 0052 206A     		ldr	r0, [r4, #32]
+ 123              		.loc 1 170 12 view .LVU42
+ 124 0054 0028     		cmp	r0, #0
+ 125 0056 38D0     		beq	.L25
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             _ux_utility_memory_free(endpoint);
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         if ((endpoint_type == UX_ISOCHRONOUS_ENDPOINT) ||
+ 126              		.loc 1 175 9 is_stmt 1 view .LVU43
+ 127              		.loc 1 175 12 is_stmt 0 view .LVU44
+ 128 0058 0129     		cmp	r1, #1
+ 129 005a 04D0     		beq	.L13
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             (interface_ptr -> ux_interface_configuration -> ux_configuration_device
+ 130              		.loc 1 176 28 discriminator 1 view .LVU45
+ 131 005c 296C     		ldr	r1, [r5, #64]
+ 132              	.LVL9:
+ 133              		.loc 1 176 58 discriminator 1 view .LVU46
+ 134 005e 496B     		ldr	r1, [r1, #52]
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                                     -> ux_device_speed == UX_HIGH_SPEED_DEVICE)
+ 135              		.loc 1 177 37 discriminator 1 view .LVU47
+ 136 0060 0969     		ldr	r1, [r1, #16]
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             (interface_ptr -> ux_interface_configuration -> ux_configuration_device
+ 137              		.loc 1 175 56 discriminator 1 view .LVU48
+ 138 0062 0229     		cmp	r1, #2
+ 139 0064 01D1     		bne	.L14
+ 140              	.L13:
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             )
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             if (endpoint -> ux_endpoint_descriptor.bInterval > 16)
+ 141              		.loc 1 180 13 is_stmt 1 view .LVU49
+ 142              		.loc 1 180 16 is_stmt 0 view .LVU50
+ 143 0066 1028     		cmp	r0, #16
+ 144 0068 34D8     		bhi	.L26
+ 145              	.L14:
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             {
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                 _ux_utility_memory_free(endpoint);
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                 return(UX_DESCRIPTOR_CORRUPTED);
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             }
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         /* Save final packet size.  */
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         n_tran >>= UX_MAX_NUMBER_OF_TRANSACTIONS_SHIFT;
+ 146              		.loc 1 188 9 is_stmt 1 view .LVU51
+ 147              		.loc 1 188 16 is_stmt 0 view .LVU52
+ 148 006a D20A     		lsrs	r2, r2, #11
+ 149              	.LVL10:
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         packet_size *= (n_tran + 1);
+ 150              		.loc 1 189 9 is_stmt 1 view .LVU53
+ 151              		.loc 1 189 21 is_stmt 0 view .LVU54
+ 152 006c 02FB0333 		mla	r3, r2, r3, r3
+ 153              	.LVL11:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 7
+
+
+ 154              		.loc 1 189 21 view .LVU55
+ 155 0070 11E0     		b	.L9
+ 156              	.LVL12:
+ 157              	.L21:
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         return(UX_DESCRIPTOR_CORRUPTED);
+ 158              		.loc 1 127 9 is_stmt 1 view .LVU56
+ 159 0072 2046     		mov	r0, r4
+ 160 0074 FFF7FEFF 		bl	_ux_utility_memory_free
+ 161              	.LVL13:
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 162              		.loc 1 128 9 view .LVU57
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 163              		.loc 1 128 15 is_stmt 0 view .LVU58
+ 164 0078 4220     		movs	r0, #66
+ 165 007a 16E0     		b	.L1
+ 166              	.LVL14:
+ 167              	.L17:
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 168              		.loc 1 128 15 view .LVU59
+ 169 007c 0823     		movs	r3, #8
+ 170              	.L7:
+ 171              	.LVL15:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 172              		.loc 1 135 31 is_stmt 1 discriminator 1 view .LVU60
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 173              		.loc 1 135 9 is_stmt 0 discriminator 1 view .LVU61
+ 174 007e B3F5007F 		cmp	r3, #512
+ 175 0082 05D8     		bhi	.L6
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                 break;
+ 176              		.loc 1 137 13 is_stmt 1 view .LVU62
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                 break;
+ 177              		.loc 1 137 16 is_stmt 0 view .LVU63
+ 178 0084 9A42     		cmp	r2, r3
+ 179 0086 03D0     		beq	.L6
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 180              		.loc 1 135 51 is_stmt 1 discriminator 2 view .LVU64
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 181              		.loc 1 135 63 is_stmt 0 discriminator 2 view .LVU65
+ 182 0088 5B00     		lsls	r3, r3, #1
+ 183              	.LVL16:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 184              		.loc 1 135 63 discriminator 2 view .LVU66
+ 185 008a F8E7     		b	.L7
+ 186              	.LVL17:
+ 187              	.L22:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 188              		.loc 1 135 63 discriminator 2 view .LVU67
+ 189 008c 0823     		movs	r3, #8
+ 190 008e F6E7     		b	.L7
+ 191              	.LVL18:
+ 192              	.L6:
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 193              		.loc 1 142 9 is_stmt 1 view .LVU68
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         {
+ 194              		.loc 1 142 12 is_stmt 0 view .LVU69
+ 195 0090 B3F5007F 		cmp	r3, #512
+ 196 0094 0AD8     		bhi	.L27
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 8
+
+
+ 197              	.LVL19:
+ 198              	.L9:
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Save transfer packet size.  */
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     endpoint -> ux_endpoint_transfer_request.ux_transfer_request_packet_length = packet_size;
+ 199              		.loc 1 193 5 is_stmt 1 view .LVU70
+ 200              		.loc 1 193 80 is_stmt 0 view .LVU71
+ 201 0096 A366     		str	r3, [r4, #104]
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 195:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* The interface that owns this endpoint is memorized in the 
+ 196:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        endpoint container itself, easier for back chaining.  */
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     endpoint -> ux_endpoint_interface =  interface_ptr;
+ 202              		.loc 1 197 5 is_stmt 1 view .LVU72
+ 203              		.loc 1 197 39 is_stmt 0 view .LVU73
+ 204 0098 A562     		str	r5, [r4, #40]
+ 198:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 199:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* There is 2 cases for the creation of the endpoint descriptor 
+ 200:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        if this is the first one, the endpoint descriptor is hooked
+ 201:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        to the interface. 
+ 202:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        If it is not the first one, the endpoint is hooked to the
+ 203:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****        end of the chain of endpoints.  */
+ 204:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     if (interface_ptr -> ux_interface_first_endpoint == UX_NULL)
+ 205              		.loc 1 204 5 is_stmt 1 view .LVU74
+ 206              		.loc 1 204 23 is_stmt 0 view .LVU75
+ 207 009a AB6B     		ldr	r3, [r5, #56]
+ 208              	.LVL20:
+ 209              		.loc 1 204 8 view .LVU76
+ 210 009c FBB1     		cbz	r3, .L28
+ 211              	.L15:
+ 212              	.LVL21:
+ 205:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     {
+ 206:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 207:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         interface_ptr -> ux_interface_first_endpoint =  endpoint;
+ 208:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     else
+ 210:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     {
+ 211:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 212:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         list_endpoint =  interface_ptr -> ux_interface_first_endpoint;
+ 213:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         /* Traverse the list until the end.  */
+ 215:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         while (list_endpoint -> ux_endpoint_next_endpoint != UX_NULL)
+ 213              		.loc 1 215 15 is_stmt 1 view .LVU77
+ 214 009e 1A46     		mov	r2, r3
+ 215              		.loc 1 215 30 is_stmt 0 view .LVU78
+ 216 00a0 5B6A     		ldr	r3, [r3, #36]
+ 217              	.LVL22:
+ 218              		.loc 1 215 15 view .LVU79
+ 219 00a2 002B     		cmp	r3, #0
+ 220 00a4 FBD1     		bne	.L15
+ 216:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             list_endpoint =  list_endpoint -> ux_endpoint_next_endpoint;
+ 217:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 218:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         /* Hook the endpoint.  */
+ 219:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         list_endpoint -> ux_endpoint_next_endpoint =  endpoint;
+ 221              		.loc 1 219 9 is_stmt 1 view .LVU80
+ 222              		.loc 1 219 52 is_stmt 0 view .LVU81
+ 223 00a6 5462     		str	r4, [r2, #36]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 9
+
+
+ 224              	.LVL23:
+ 220:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 222:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     /* Return successful status.  */
+ 223:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     return(UX_SUCCESS);
+ 225              		.loc 1 223 11 view .LVU82
+ 226 00a8 0020     		movs	r0, #0
+ 227              	.LVL24:
+ 228              	.L1:
+ 224:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** }
+ 229              		.loc 1 224 1 view .LVU83
+ 230 00aa 70BD     		pop	{r4, r5, r6, pc}
+ 231              	.LVL25:
+ 232              	.L27:
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 233              		.loc 1 144 13 is_stmt 1 view .LVU84
+ 234 00ac 2046     		mov	r0, r4
+ 235 00ae FFF7FEFF 		bl	_ux_utility_memory_free
+ 236              	.LVL26:
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 237              		.loc 1 145 13 view .LVU85
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 238              		.loc 1 145 19 is_stmt 0 view .LVU86
+ 239 00b2 4220     		movs	r0, #66
+ 240 00b4 F9E7     		b	.L1
+ 241              	.LVL27:
+ 242              	.L23:
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 243              		.loc 1 157 13 is_stmt 1 view .LVU87
+ 244 00b6 2046     		mov	r0, r4
+ 245 00b8 FFF7FEFF 		bl	_ux_utility_memory_free
+ 246              	.LVL28:
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 247              		.loc 1 158 13 view .LVU88
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 248              		.loc 1 158 19 is_stmt 0 view .LVU89
+ 249 00bc 4220     		movs	r0, #66
+ 250 00be F4E7     		b	.L1
+ 251              	.LVL29:
+ 252              	.L24:
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 253              		.loc 1 165 13 is_stmt 1 view .LVU90
+ 254 00c0 2046     		mov	r0, r4
+ 255 00c2 FFF7FEFF 		bl	_ux_utility_memory_free
+ 256              	.LVL30:
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 257              		.loc 1 166 13 view .LVU91
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 258              		.loc 1 166 19 is_stmt 0 view .LVU92
+ 259 00c6 4220     		movs	r0, #66
+ 260 00c8 EFE7     		b	.L1
+ 261              	.LVL31:
+ 262              	.L25:
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 263              		.loc 1 172 13 is_stmt 1 view .LVU93
+ 264 00ca 2046     		mov	r0, r4
+ 265 00cc FFF7FEFF 		bl	_ux_utility_memory_free
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 10
+
+
+ 266              	.LVL32:
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 267              		.loc 1 173 13 view .LVU94
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****         }
+ 268              		.loc 1 173 19 is_stmt 0 view .LVU95
+ 269 00d0 4220     		movs	r0, #66
+ 270 00d2 EAE7     		b	.L1
+ 271              	.LVL33:
+ 272              	.L26:
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****                 return(UX_DESCRIPTOR_CORRUPTED);
+ 273              		.loc 1 182 17 is_stmt 1 view .LVU96
+ 274 00d4 2046     		mov	r0, r4
+ 275 00d6 FFF7FEFF 		bl	_ux_utility_memory_free
+ 276              	.LVL34:
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             }
+ 277              		.loc 1 183 17 view .LVU97
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****             }
+ 278              		.loc 1 183 23 is_stmt 0 view .LVU98
+ 279 00da 4220     		movs	r0, #66
+ 280 00dc E5E7     		b	.L1
+ 281              	.LVL35:
+ 282              	.L28:
+ 207:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 283              		.loc 1 207 9 is_stmt 1 view .LVU99
+ 207:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c ****     }
+ 284              		.loc 1 207 54 is_stmt 0 view .LVU100
+ 285 00de AC63     		str	r4, [r5, #56]
+ 286              	.LVL36:
+ 223:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** }
+ 287              		.loc 1 223 11 view .LVU101
+ 288 00e0 0020     		movs	r0, #0
+ 289 00e2 E2E7     		b	.L1
+ 290              	.LVL37:
+ 291              	.L16:
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 292              		.loc 1 99 15 view .LVU102
+ 293 00e4 1220     		movs	r0, #18
+ 294              	.LVL38:
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_new_endpoint_create.c **** 
+ 295              		.loc 1 99 15 view .LVU103
+ 296 00e6 E0E7     		b	.L1
+ 297              	.L30:
+ 298              		.align	2
+ 299              	.L29:
+ 300 00e8 00000000 		.word	_ux_system_endpoint_descriptor_structure
+ 301              		.cfi_endproc
+ 302              	.LFE11:
+ 304              		.text
+ 305              	.Letext0:
+ 306              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 307              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 308              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 309              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 310              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc42vTpC.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_new_endpoint_create.c
+C:\Users\HP\AppData\Local\Temp\cc42vTpC.s:20     .text._ux_host_stack_new_endpoint_create:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc42vTpC.s:26     .text._ux_host_stack_new_endpoint_create:00000000 _ux_host_stack_new_endpoint_create
+C:\Users\HP\AppData\Local\Temp\cc42vTpC.s:300    .text._ux_host_stack_new_endpoint_create:000000e8 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_utility_descriptor_parse
+_ux_utility_memory_free
+_ux_system_endpoint_descriptor_structure

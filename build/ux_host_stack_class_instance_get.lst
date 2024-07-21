@@ -1,0 +1,223 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSQcWqN.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_class_instance_get.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_class_instance_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_class_instance_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_class_instance_get:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSQcWqN.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    _ux_host_stack_class_instance_get                   PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    This function returns a class instance pointer for a specific       */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    class. The instance of a class is not contained in the class code   */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    to reduce the class complexity. Rather, each class instance is      */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    attached to class container.                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  INPUT                                                                 */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    class                                 Pointer to class              */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    class_index                           Index of class                */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    class_instance                        Destination of class instance */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                            pointer                     */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  OUTPUT                                                                */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    Completion Status                                                   */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  CALLS                                                                 */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    None                                                                */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  CALLED BY                                                             */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    Application                                                         */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    USBX Components                                                     */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  RELEASE HISTORY                                                       */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                            resulting in version 6.1    */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /*                                                                        */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** /**************************************************************************/
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** UINT  _ux_host_stack_class_instance_get(UX_HOST_CLASS *host_class, UINT class_index, VOID **class_i
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** {
+  30              		.loc 1 79 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** VOID    **current_class_instance;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSQcWqN.s 			page 3
+
+
+  35              		.loc 1 81 1 view .LVU1
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     /* Start with the first class instance attached to the class container.  */
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     current_class_instance =  host_class -> ux_host_class_first_instance;
+  36              		.loc 1 85 5 view .LVU2
+  37              		.loc 1 85 28 is_stmt 0 view .LVU3
+  38 0000 836C     		ldr	r3, [r0, #72]
+  39              	.LVL1:
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     /* Check if there are any instances attached.  */
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     if(current_class_instance == UX_NULL)
+  40              		.loc 1 88 5 is_stmt 1 view .LVU4
+  41              		.loc 1 88 7 is_stmt 0 view .LVU5
+  42 0002 4BB1     		cbz	r3, .L7
+  43              	.LVL2:
+  44              	.L3:
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     {        
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****         return(UX_HOST_CLASS_INSTANCE_UNKNOWN);
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     }
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     /* Traverse the list of the class instances until we found the right one.  */        
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     while (class_index-- != 0)
+  45              		.loc 1 95 11 is_stmt 1 view .LVU6
+  46 0004 0846     		mov	r0, r1
+  47              		.loc 1 95 23 is_stmt 0 view .LVU7
+  48 0006 0139     		subs	r1, r1, #1
+  49              	.LVL3:
+  50              		.loc 1 95 11 view .LVU8
+  51 0008 20B1     		cbz	r0, .L8
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     {
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****         /* Points to the next class instance.  */
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****         current_class_instance =  *current_class_instance;
+  52              		.loc 1 99 9 is_stmt 1 view .LVU9
+  53              		.loc 1 99 32 is_stmt 0 view .LVU10
+  54 000a 1B68     		ldr	r3, [r3]
+  55              	.LVL4:
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****         /* Check if we have reached the end of the list of the class instances.  */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****         if (current_class_instance == UX_NULL)
+  56              		.loc 1 102 9 is_stmt 1 view .LVU11
+  57              		.loc 1 102 12 is_stmt 0 view .LVU12
+  58 000c 002B     		cmp	r3, #0
+  59 000e F9D1     		bne	.L3
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****         {        
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****             return(UX_HOST_CLASS_INSTANCE_UNKNOWN);
+  60              		.loc 1 105 19 view .LVU13
+  61 0010 5B20     		movs	r0, #91
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****         }
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     }
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** 
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     /* Update the class instance pointer from the caller.  */
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     *class_instance =  current_class_instance;
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSQcWqN.s 			page 4
+
+
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     /* Return successful completion.  */
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     return(UX_SUCCESS);
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** }
+  62              		.loc 1 114 1 view .LVU14
+  63 0012 7047     		bx	lr
+  64              	.L8:
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     
+  65              		.loc 1 110 5 is_stmt 1 view .LVU15
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     
+  66              		.loc 1 110 21 is_stmt 0 view .LVU16
+  67 0014 1360     		str	r3, [r2]
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** }
+  68              		.loc 1 113 5 is_stmt 1 view .LVU17
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c **** }
+  69              		.loc 1 113 11 is_stmt 0 view .LVU18
+  70 0016 7047     		bx	lr
+  71              	.LVL5:
+  72              	.L7:
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     }
+  73              		.loc 1 91 15 view .LVU19
+  74 0018 5B20     		movs	r0, #91
+  75              	.LVL6:
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_class_instance_get.c ****     }
+  76              		.loc 1 91 15 view .LVU20
+  77 001a 7047     		bx	lr
+  78              		.cfi_endproc
+  79              	.LFE11:
+  81              		.text
+  82              	.Letext0:
+  83              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+  84              		.file 3 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSQcWqN.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_class_instance_get.c
+C:\Users\HP\AppData\Local\Temp\ccSQcWqN.s:20     .text._ux_host_stack_class_instance_get:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccSQcWqN.s:26     .text._ux_host_stack_class_instance_get:00000000 _ux_host_stack_class_instance_get
+
+NO UNDEFINED SYMBOLS

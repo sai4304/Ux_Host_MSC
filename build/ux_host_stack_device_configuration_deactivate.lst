@@ -1,0 +1,430 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_device_configuration_deactivate.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_device_configuration_deactivate,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_device_configuration_deactivate
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_device_configuration_deactivate:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    _ux_host_stack_device_configuration_deactivate      PORTABLE C      */
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                           6.1.12       */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    This function deactivate current configuration for a device.        */
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    When this configuration is deactivated, all the device interfaces   */
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    are deactivated on the device.                                      */
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  OUTPUT                                                                */
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    Completion Status                                                   */
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  CALLS                                                                 */
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    _ux_utility_semaphore_get             Get semaphore                 */
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    _ux_utility_semaphore_put             Put semaphore                 */
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    (ux_host_class_entry_function)        Class entry function          */
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  CALLED BY                                                             */
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    Application                                                         */
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    USBX Components                                                     */
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  RELEASE HISTORY                                                       */
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*    DATE              NAME                      DESCRIPTION             */
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  02-02-2021     Chaoqiong Xiao           Initial Version 6.1.4         */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  06-02-2021     Chaoqiong Xiao           Modified comment(s),          */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            fixed trace enabled error,  */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            resulting in version 6.1.7  */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            added standalone support,   */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            resulting in version 6.1.10 */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  04-25-2022     Chaoqiong Xiao           Modified comment(s),          */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            internal clean up,          */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            resulting in version 6.1.11 */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*  07-29-2022     Chaoqiong Xiao           Modified comment(s),          */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            fixed parameter/variable    */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            names conflict C++ keyword, */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                            resulting in version 6.1.12 */
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /*                                                                        */
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** /**************************************************************************/
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** UINT  _ux_host_stack_device_configuration_deactivate(UX_DEVICE *device)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 3
+
+
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** {
+  30              		.loc 1 87 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 56
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 87 1 is_stmt 0 view .LVU1
+  35 0000 70B5     		push	{r4, r5, r6, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 4, -16
+  39              		.cfi_offset 5, -12
+  40              		.cfi_offset 6, -8
+  41              		.cfi_offset 14, -4
+  42 0002 8EB0     		sub	sp, sp, #56
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 72
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #if defined(UX_HOST_STANDALONE)
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** UX_INTERRUPT_SAVE_AREA
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #endif
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** UX_HOST_CLASS_COMMAND       command;
+  45              		.loc 1 92 1 is_stmt 1 view .LVU2
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** UX_CONFIGURATION            *configuration;
+  46              		.loc 1 93 1 view .LVU3
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** UX_INTERFACE                *interface_ptr;
+  47              		.loc 1 94 1 view .LVU4
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** UINT                        status;
+  48              		.loc 1 95 1 view .LVU5
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Do a sanity check on the device handle.  */
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     if (device -> ux_device_handle != (ULONG) (ALIGN_TYPE) device)
+  49              		.loc 1 99 5 view .LVU6
+  50              		.loc 1 99 16 is_stmt 0 view .LVU7
+  51 0004 0368     		ldr	r3, [r0]
+  52              		.loc 1 99 8 view .LVU8
+  53 0006 8342     		cmp	r3, r0
+  54 0008 11D1     		bne	.L10
+  55 000a 0546     		mov	r5, r0
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     {
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         /* Error trap. */
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_DEVICE_HA
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DEVICE_HANDLE_UNKNOWN, device, 0, 0, UX_TRACE_ER
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         return(UX_DEVICE_HANDLE_UNKNOWN);
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_DEVICE_CONFIGURATION_DEACTIVATE, device, device -> 
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #if defined(UX_HOST_STANDALONE)
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Check device lock.  */
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     UX_DISABLE
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 4
+
+
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     if (device -> ux_device_flags & UX_DEVICE_FLAG_LOCK)
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     {
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         UX_RESTORE
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         return(UX_BUSY);
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     device -> ux_device_flags |= UX_DEVICE_FLAG_LOCK;
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     UX_RESTORE
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #else
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Protect the control endpoint semaphore here.  It will be unprotected in the
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****        transfer request function.  */
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     status =  _ux_host_semaphore_get(&device -> ux_device_protection_semaphore, UX_WAIT_FOREVER);
+  56              		.loc 1 129 5 is_stmt 1 view .LVU9
+  57              		.loc 1 129 15 is_stmt 0 view .LVU10
+  58 000c 00F12406 		add	r6, r0, #36
+  59 0010 4FF0FF31 		mov	r1, #-1
+  60 0014 3046     		mov	r0, r6
+  61              	.LVL1:
+  62              		.loc 1 129 15 view .LVU11
+  63 0016 FFF7FEFF 		bl	_ux_utility_semaphore_get
+  64              	.LVL2:
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Check for status.  */
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     if (status != UX_SUCCESS)
+  65              		.loc 1 132 5 is_stmt 1 view .LVU12
+  66              		.loc 1 132 8 is_stmt 0 view .LVU13
+  67 001a 0446     		mov	r4, r0
+  68 001c 70B9     		cbnz	r0, .L11
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     {
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         /* Error trap. */
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_SEMAPHORE
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_SEMAPHORE_ERROR, device -> ux_device_current_con
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         return(UX_SEMAPHORE_ERROR);
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #endif
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Check for the state of the device, if not configured, we are done.  */
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     if (device -> ux_device_state != UX_DEVICE_CONFIGURED)
+  69              		.loc 1 146 5 is_stmt 1 view .LVU14
+  70              		.loc 1 146 16 is_stmt 0 view .LVU15
+  71 001e AB68     		ldr	r3, [r5, #8]
+  72              		.loc 1 146 8 view .LVU16
+  73 0020 032B     		cmp	r3, #3
+  74 0022 12D1     		bne	.L12
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     {
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #if defined(UX_HOST_STANDALONE)
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         device -> ux_device_flags &= ~UX_DEVICE_FLAG_LOCK;
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #else
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         _ux_host_semaphore_put(&device -> ux_device_protection_semaphore);
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #endif
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         return(UX_SUCCESS);
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 5
+
+
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Deactivate classes by command.  */
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     command.ux_host_class_command_request =  UX_HOST_CLASS_COMMAND_DEACTIVATE;
+  75              		.loc 1 157 5 is_stmt 1 view .LVU17
+  76              		.loc 1 157 43 is_stmt 0 view .LVU18
+  77 0024 0323     		movs	r3, #3
+  78 0026 0193     		str	r3, [sp, #4]
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Search for the active configuration.  */
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     configuration =  device -> ux_device_current_configuration;
+  79              		.loc 1 160 5 is_stmt 1 view .LVU19
+  80              		.loc 1 160 19 is_stmt 0 view .LVU20
+  81 0028 AB69     		ldr	r3, [r5, #24]
+  82              	.LVL3:
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* If device configured configuration must be activated.  */
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* We have the correct configuration, search the interface(s).  */
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     interface_ptr =  configuration -> ux_configuration_first_interface;
+  83              		.loc 1 165 5 is_stmt 1 view .LVU21
+  84              		.loc 1 165 19 is_stmt 0 view .LVU22
+  85 002a DC6A     		ldr	r4, [r3, #44]
+  86              	.LVL4:
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Loop to perform the search.  */
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     while (interface_ptr != UX_NULL)
+  87              		.loc 1 168 5 is_stmt 1 view .LVU23
+  88              		.loc 1 168 11 is_stmt 0 view .LVU24
+  89 002c 17E0     		b	.L6
+  90              	.LVL5:
+  91              	.L10:
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  92              		.loc 1 103 9 is_stmt 1 view .LVU25
+  93 002e 5022     		movs	r2, #80
+  94 0030 0421     		movs	r1, #4
+  95 0032 0220     		movs	r0, #2
+  96              	.LVL6:
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+  97              		.loc 1 103 9 is_stmt 0 view .LVU26
+  98 0034 FFF7FEFF 		bl	_ux_system_error_handler
+  99              	.LVL7:
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 100              		.loc 1 108 9 is_stmt 1 view .LVU27
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 101              		.loc 1 108 15 is_stmt 0 view .LVU28
+ 102 0038 5024     		movs	r4, #80
+ 103 003a 19E0     		b	.L1
+ 104              	.LVL8:
+ 105              	.L11:
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 106              		.loc 1 136 9 is_stmt 1 view .LVU29
+ 107 003c 1522     		movs	r2, #21
+ 108 003e 0421     		movs	r1, #4
+ 109 0040 0220     		movs	r0, #2
+ 110              	.LVL9:
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 111              		.loc 1 136 9 is_stmt 0 view .LVU30
+ 112 0042 FFF7FEFF 		bl	_ux_system_error_handler
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 6
+
+
+ 113              	.LVL10:
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 114              		.loc 1 141 9 is_stmt 1 view .LVU31
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 115              		.loc 1 141 15 is_stmt 0 view .LVU32
+ 116 0046 1524     		movs	r4, #21
+ 117              	.LVL11:
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 118              		.loc 1 141 15 view .LVU33
+ 119 0048 12E0     		b	.L1
+ 120              	.LVL12:
+ 121              	.L12:
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #endif
+ 122              		.loc 1 151 9 is_stmt 1 view .LVU34
+ 123 004a 3046     		mov	r0, r6
+ 124              	.LVL13:
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #endif
+ 125              		.loc 1 151 9 is_stmt 0 view .LVU35
+ 126 004c FFF7FEFF 		bl	_ux_utility_semaphore_put
+ 127              	.LVL14:
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 128              		.loc 1 153 9 is_stmt 1 view .LVU36
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 129              		.loc 1 153 15 is_stmt 0 view .LVU37
+ 130 0050 0EE0     		b	.L1
+ 131              	.LVL15:
+ 132              	.L14:
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     {
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         /* Check if an instance of the interface is present.  */
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         if (interface_ptr -> ux_interface_class_instance != UX_NULL)
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         {
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****             /* We need to stop the class instance for the device.  */
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****             command.ux_host_class_command_instance =  interface_ptr -> ux_interface_class_instance;
+ 133              		.loc 1 176 13 is_stmt 1 view .LVU38
+ 134              		.loc 1 176 52 is_stmt 0 view .LVU39
+ 135 0052 0393     		str	r3, [sp, #12]
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****             /* Call the class.  */
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****             interface_ptr -> ux_interface_class -> ux_host_class_entry_function(&command);
+ 136              		.loc 1 179 13 is_stmt 1 view .LVU40
+ 137              		.loc 1 179 27 is_stmt 0 view .LVU41
+ 138 0054 236B     		ldr	r3, [r4, #48]
+ 139              		.loc 1 179 49 view .LVU42
+ 140 0056 5B6C     		ldr	r3, [r3, #68]
+ 141              		.loc 1 179 13 view .LVU43
+ 142 0058 01A8     		add	r0, sp, #4
+ 143 005a 9847     		blx	r3
+ 144              	.LVL16:
+ 145              	.L7:
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         }
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         /* Move to next interface.  */
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         interface_ptr =  interface_ptr -> ux_interface_next_interface;
+ 146              		.loc 1 183 9 is_stmt 1 view .LVU44
+ 147              		.loc 1 183 23 is_stmt 0 view .LVU45
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 7
+
+
+ 148 005c E46B     		ldr	r4, [r4, #60]
+ 149              	.LVL17:
+ 150              	.L6:
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     {
+ 151              		.loc 1 168 11 is_stmt 1 view .LVU46
+ 152 005e 1CB1     		cbz	r4, .L13
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         {
+ 153              		.loc 1 172 9 view .LVU47
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         {
+ 154              		.loc 1 172 27 is_stmt 0 view .LVU48
+ 155 0060 636B     		ldr	r3, [r4, #52]
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****         {
+ 156              		.loc 1 172 12 view .LVU49
+ 157 0062 002B     		cmp	r3, #0
+ 158 0064 F5D1     		bne	.L14
+ 159 0066 F9E7     		b	.L7
+ 160              	.L13:
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     }
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* The device can now be un-configured.  */
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     status =  _ux_host_stack_device_configuration_reset(device);
+ 161              		.loc 1 187 5 is_stmt 1 view .LVU50
+ 162              		.loc 1 187 15 is_stmt 0 view .LVU51
+ 163 0068 2846     		mov	r0, r5
+ 164 006a FFF7FEFF 		bl	_ux_host_stack_device_configuration_reset
+ 165              	.LVL18:
+ 166 006e 0446     		mov	r4, r0
+ 167              	.LVL19:
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #if defined(UX_HOST_STANDALONE)
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     device -> ux_device_flags &= ~UX_DEVICE_FLAG_LOCK;
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** #endif
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** 
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     /* Return completion status.  */
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c ****     return(status);
+ 168              		.loc 1 194 5 is_stmt 1 view .LVU52
+ 169              	.L1:
+ 195:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_configuration_deactivate.c **** }
+ 170              		.loc 1 195 1 is_stmt 0 view .LVU53
+ 171 0070 2046     		mov	r0, r4
+ 172 0072 0EB0     		add	sp, sp, #56
+ 173              	.LCFI2:
+ 174              		.cfi_def_cfa_offset 16
+ 175              		@ sp needed
+ 176 0074 70BD     		pop	{r4, r5, r6, pc}
+ 177              		.cfi_endproc
+ 178              	.LFE11:
+ 180              		.text
+ 181              	.Letext0:
+ 182              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 183              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 184              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 185              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 186              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_device_configuration_deactivate.c
+C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s:20     .text._ux_host_stack_device_configuration_deactivate:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccKk7hAP.s:26     .text._ux_host_stack_device_configuration_deactivate:00000000 _ux_host_stack_device_configuration_deactivate
+
+UNDEFINED SYMBOLS
+_ux_utility_semaphore_get
+_ux_system_error_handler
+_ux_utility_semaphore_put
+_ux_host_stack_device_configuration_reset

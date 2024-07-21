@@ -1,0 +1,1502 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"app_usbx_host.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.rodata.ux_host_error_callback.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 55534220 		.ascii	"USB Device Enumeration Failure\000"
+  22      44657669 
+  22      63652045 
+  22      6E756D65 
+  22      72617469 
+  23 001f 00       		.align	2
+  24              	.LC1:
+  25 0020 55534220 		.ascii	"USB Device disconnected\000"
+  25      44657669 
+  25      63652064 
+  25      6973636F 
+  25      6E6E6563 
+  26              		.section	.text.ux_host_error_callback,"ax",%progbits
+  27              		.align	1
+  28              		.syntax unified
+  29              		.thumb
+  30              		.thumb_func
+  32              	ux_host_error_callback:
+  33              	.LVL0:
+  34              	.LFB146:
+  35              		.file 1 "USBX/App/app_usbx_host.c"
+   1:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN Header */
+   2:USBX/App/app_usbx_host.c **** /**
+   3:USBX/App/app_usbx_host.c ****   ******************************************************************************
+   4:USBX/App/app_usbx_host.c ****   * @file    app_usbx_host.c
+   5:USBX/App/app_usbx_host.c ****   * @author  MCD Application Team
+   6:USBX/App/app_usbx_host.c ****   * @brief   USBX host applicative file
+   7:USBX/App/app_usbx_host.c ****   ******************************************************************************
+   8:USBX/App/app_usbx_host.c ****   * @attention
+   9:USBX/App/app_usbx_host.c ****   *
+  10:USBX/App/app_usbx_host.c ****   * Copyright (c) 2021 STMicroelectronics.
+  11:USBX/App/app_usbx_host.c ****   * All rights reserved.
+  12:USBX/App/app_usbx_host.c ****   *
+  13:USBX/App/app_usbx_host.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:USBX/App/app_usbx_host.c ****   * in the root directory of this software component.
+  15:USBX/App/app_usbx_host.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 2
+
+
+  16:USBX/App/app_usbx_host.c ****   *
+  17:USBX/App/app_usbx_host.c ****   ******************************************************************************
+  18:USBX/App/app_usbx_host.c ****   */
+  19:USBX/App/app_usbx_host.c **** /* USER CODE END Header */
+  20:USBX/App/app_usbx_host.c **** 
+  21:USBX/App/app_usbx_host.c **** /* Includes ------------------------------------------------------------------*/
+  22:USBX/App/app_usbx_host.c **** #include "app_usbx_host.h"
+  23:USBX/App/app_usbx_host.c **** 
+  24:USBX/App/app_usbx_host.c **** /* Private includes ----------------------------------------------------------*/
+  25:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN Includes */
+  26:USBX/App/app_usbx_host.c **** 
+  27:USBX/App/app_usbx_host.c **** /* USER CODE END Includes */
+  28:USBX/App/app_usbx_host.c **** 
+  29:USBX/App/app_usbx_host.c **** /* Private typedef -----------------------------------------------------------*/
+  30:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN PTD */
+  31:USBX/App/app_usbx_host.c **** 
+  32:USBX/App/app_usbx_host.c **** /* USER CODE END PTD */
+  33:USBX/App/app_usbx_host.c **** 
+  34:USBX/App/app_usbx_host.c **** /* Private define ------------------------------------------------------------*/
+  35:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN PD */
+  36:USBX/App/app_usbx_host.c **** 
+  37:USBX/App/app_usbx_host.c **** /* USER CODE END PD */
+  38:USBX/App/app_usbx_host.c **** 
+  39:USBX/App/app_usbx_host.c **** /* Private macro -------------------------------------------------------------*/
+  40:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN PM */
+  41:USBX/App/app_usbx_host.c **** 
+  42:USBX/App/app_usbx_host.c **** /* USER CODE END PM */
+  43:USBX/App/app_usbx_host.c **** 
+  44:USBX/App/app_usbx_host.c **** /* Private variables ---------------------------------------------------------*/
+  45:USBX/App/app_usbx_host.c **** 
+  46:USBX/App/app_usbx_host.c **** static TX_THREAD ux_host_app_thread;
+  47:USBX/App/app_usbx_host.c **** 
+  48:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN PV */
+  49:USBX/App/app_usbx_host.c **** TX_THREAD                   msc_app_thread;
+  50:USBX/App/app_usbx_host.c **** UX_HOST_CLASS_STORAGE       *storage;
+  51:USBX/App/app_usbx_host.c **** UX_HOST_CLASS_STORAGE_MEDIA *storage_media;
+  52:USBX/App/app_usbx_host.c **** FX_MEDIA                    *media;
+  53:USBX/App/app_usbx_host.c **** TX_EVENT_FLAGS_GROUP        ux_app_EventFlag;
+  54:USBX/App/app_usbx_host.c **** 
+  55:USBX/App/app_usbx_host.c **** extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
+  56:USBX/App/app_usbx_host.c **** /* USER CODE END PV */
+  57:USBX/App/app_usbx_host.c **** 
+  58:USBX/App/app_usbx_host.c **** /* Private function prototypes -----------------------------------------------*/
+  59:USBX/App/app_usbx_host.c **** static VOID app_ux_host_thread_entry(ULONG thread_input);
+  60:USBX/App/app_usbx_host.c **** static UINT ux_host_event_callback(ULONG event, UX_HOST_CLASS *current_class, VOID *current_instanc
+  61:USBX/App/app_usbx_host.c **** static VOID ux_host_error_callback(UINT system_level, UINT system_context, UINT error_code);
+  62:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN PFP */
+  63:USBX/App/app_usbx_host.c **** 
+  64:USBX/App/app_usbx_host.c **** /* USER CODE END PFP */
+  65:USBX/App/app_usbx_host.c **** 
+  66:USBX/App/app_usbx_host.c **** /**
+  67:USBX/App/app_usbx_host.c ****   * @brief  Application USBX Host Initialization.
+  68:USBX/App/app_usbx_host.c ****   * @param  memory_ptr: memory pointer
+  69:USBX/App/app_usbx_host.c ****   * @retval status
+  70:USBX/App/app_usbx_host.c ****   */
+  71:USBX/App/app_usbx_host.c **** UINT MX_USBX_Host_Init(VOID *memory_ptr)
+  72:USBX/App/app_usbx_host.c **** {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 3
+
+
+  73:USBX/App/app_usbx_host.c ****   UINT ret = UX_SUCCESS;
+  74:USBX/App/app_usbx_host.c ****   UCHAR *pointer;
+  75:USBX/App/app_usbx_host.c ****   TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL*)memory_ptr;
+  76:USBX/App/app_usbx_host.c **** 
+  77:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN MX_USBX_Host_Init0 */
+  78:USBX/App/app_usbx_host.c **** 
+  79:USBX/App/app_usbx_host.c ****   /* USER CODE END MX_USBX_Host_Init0 */
+  80:USBX/App/app_usbx_host.c **** 
+  81:USBX/App/app_usbx_host.c ****   /* Allocate the stack for USBX Memory */
+  82:USBX/App/app_usbx_host.c ****   if (tx_byte_allocate(byte_pool, (VOID **) &pointer,
+  83:USBX/App/app_usbx_host.c ****                        USBX_HOST_MEMORY_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+  84:USBX/App/app_usbx_host.c ****   {
+  85:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN USBX_ALLOCATE_STACK_ERORR */
+  86:USBX/App/app_usbx_host.c ****     return TX_POOL_ERROR;
+  87:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_ALLOCATE_STACK_ERORR */
+  88:USBX/App/app_usbx_host.c ****   }
+  89:USBX/App/app_usbx_host.c **** 
+  90:USBX/App/app_usbx_host.c ****   /* Initialize USBX Memory */
+  91:USBX/App/app_usbx_host.c ****   if (ux_system_initialize(pointer, USBX_HOST_MEMORY_STACK_SIZE, UX_NULL, 0) != UX_SUCCESS)
+  92:USBX/App/app_usbx_host.c ****   {
+  93:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN USBX_SYSTEM_INITIALIZE_ERORR */
+  94:USBX/App/app_usbx_host.c ****     return UX_ERROR;
+  95:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_SYSTEM_INITIALIZE_ERORR */
+  96:USBX/App/app_usbx_host.c ****   }
+  97:USBX/App/app_usbx_host.c **** 
+  98:USBX/App/app_usbx_host.c ****   /* Install the host portion of USBX */
+  99:USBX/App/app_usbx_host.c ****   if (ux_host_stack_initialize(ux_host_event_callback) != UX_SUCCESS)
+ 100:USBX/App/app_usbx_host.c ****   {
+ 101:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN USBX_HOST_INITIALIZE_ERORR */
+ 102:USBX/App/app_usbx_host.c ****     return UX_ERROR;
+ 103:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_HOST_INITIALIZE_ERORR */
+ 104:USBX/App/app_usbx_host.c ****   }
+ 105:USBX/App/app_usbx_host.c **** 
+ 106:USBX/App/app_usbx_host.c ****   /* Register a callback error function */
+ 107:USBX/App/app_usbx_host.c ****   ux_utility_error_callback_register(&ux_host_error_callback);
+ 108:USBX/App/app_usbx_host.c **** 
+ 109:USBX/App/app_usbx_host.c ****   /* Initialize the host storage class */
+ 110:USBX/App/app_usbx_host.c ****   if (ux_host_stack_class_register(_ux_system_host_class_storage_name,
+ 111:USBX/App/app_usbx_host.c ****                                    ux_host_class_storage_entry) != UX_SUCCESS)
+ 112:USBX/App/app_usbx_host.c ****   {
+ 113:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN USBX_HOST_STORAGE_REGISTER_ERORR */
+ 114:USBX/App/app_usbx_host.c ****     return UX_ERROR;
+ 115:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_HOST_STORAGE_REGISTER_ERORR */
+ 116:USBX/App/app_usbx_host.c ****   }
+ 117:USBX/App/app_usbx_host.c **** 
+ 118:USBX/App/app_usbx_host.c ****   /* Allocate the stack for host application main thread */
+ 119:USBX/App/app_usbx_host.c ****   if (tx_byte_allocate(byte_pool, (VOID **) &pointer, UX_HOST_APP_THREAD_STACK_SIZE,
+ 120:USBX/App/app_usbx_host.c ****                        TX_NO_WAIT) != TX_SUCCESS)
+ 121:USBX/App/app_usbx_host.c ****   {
+ 122:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN MAIN_THREAD_ALLOCATE_STACK_ERORR */
+ 123:USBX/App/app_usbx_host.c ****     return TX_POOL_ERROR;
+ 124:USBX/App/app_usbx_host.c ****     /* USER CODE END MAIN_THREAD_ALLOCATE_STACK_ERORR */
+ 125:USBX/App/app_usbx_host.c ****   }
+ 126:USBX/App/app_usbx_host.c **** 
+ 127:USBX/App/app_usbx_host.c ****   /* Create the host application main thread */
+ 128:USBX/App/app_usbx_host.c ****   if (tx_thread_create(&ux_host_app_thread, UX_HOST_APP_THREAD_NAME, app_ux_host_thread_entry,
+ 129:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, UX_HOST_APP_THREAD_PRIO,
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 4
+
+
+ 130:USBX/App/app_usbx_host.c ****                        UX_HOST_APP_THREAD_PREEMPTION_THRESHOLD, UX_HOST_APP_THREAD_TIME_SLICE,
+ 131:USBX/App/app_usbx_host.c ****                        UX_HOST_APP_THREAD_START_OPTION) != TX_SUCCESS)
+ 132:USBX/App/app_usbx_host.c ****   {
+ 133:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN MAIN_THREAD_CREATE_ERORR */
+ 134:USBX/App/app_usbx_host.c ****     return TX_THREAD_ERROR;
+ 135:USBX/App/app_usbx_host.c ****     /* USER CODE END MAIN_THREAD_CREATE_ERORR */
+ 136:USBX/App/app_usbx_host.c ****   }
+ 137:USBX/App/app_usbx_host.c **** 
+ 138:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN MX_USBX_Host_Init1 */
+ 139:USBX/App/app_usbx_host.c **** 
+ 140:USBX/App/app_usbx_host.c ****   /* Allocate the stack for storrage app thread  */
+ 141:USBX/App/app_usbx_host.c ****   if (tx_byte_allocate(byte_pool, (VOID **) &pointer,
+ 142:USBX/App/app_usbx_host.c ****                        UX_HOST_APP_THREAD_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+ 143:USBX/App/app_usbx_host.c ****   {
+ 144:USBX/App/app_usbx_host.c ****     return TX_POOL_ERROR;
+ 145:USBX/App/app_usbx_host.c ****   }
+ 146:USBX/App/app_usbx_host.c **** 
+ 147:USBX/App/app_usbx_host.c ****   /* Create the storage applicative process thread */
+ 148:USBX/App/app_usbx_host.c ****   if (tx_thread_create(&msc_app_thread, "MSC App thread", msc_process_thread_entry,
+ 149:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, 30, 30, 0,
+ 150:USBX/App/app_usbx_host.c ****                        TX_AUTO_START) != TX_SUCCESS)
+ 151:USBX/App/app_usbx_host.c ****   {
+ 152:USBX/App/app_usbx_host.c ****     return TX_THREAD_ERROR;
+ 153:USBX/App/app_usbx_host.c ****   }
+ 154:USBX/App/app_usbx_host.c **** 
+ 155:USBX/App/app_usbx_host.c ****   /* Create the event flags group */
+ 156:USBX/App/app_usbx_host.c ****   if (tx_event_flags_create(&ux_app_EventFlag, "Event Flag") != TX_SUCCESS)
+ 157:USBX/App/app_usbx_host.c ****   {
+ 158:USBX/App/app_usbx_host.c ****     return TX_GROUP_ERROR;
+ 159:USBX/App/app_usbx_host.c ****   }
+ 160:USBX/App/app_usbx_host.c **** 
+ 161:USBX/App/app_usbx_host.c ****   /* USER CODE END MX_USBX_Host_Init1 */
+ 162:USBX/App/app_usbx_host.c **** 
+ 163:USBX/App/app_usbx_host.c ****   return ret;
+ 164:USBX/App/app_usbx_host.c **** }
+ 165:USBX/App/app_usbx_host.c **** 
+ 166:USBX/App/app_usbx_host.c **** /**
+ 167:USBX/App/app_usbx_host.c ****   * @brief  Function implementing app_ux_host_thread_entry.
+ 168:USBX/App/app_usbx_host.c ****   * @param  thread_input: User thread input parameter.
+ 169:USBX/App/app_usbx_host.c ****   * @retval none
+ 170:USBX/App/app_usbx_host.c ****   */
+ 171:USBX/App/app_usbx_host.c **** static VOID app_ux_host_thread_entry(ULONG thread_input)
+ 172:USBX/App/app_usbx_host.c **** {
+ 173:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN app_ux_host_thread_entry */
+ 174:USBX/App/app_usbx_host.c **** 
+ 175:USBX/App/app_usbx_host.c ****   /* Initialization of USB host */
+ 176:USBX/App/app_usbx_host.c ****   USBX_APP_Host_Init();
+ 177:USBX/App/app_usbx_host.c **** 
+ 178:USBX/App/app_usbx_host.c ****   /* USER CODE END app_ux_host_thread_entry */
+ 179:USBX/App/app_usbx_host.c **** }
+ 180:USBX/App/app_usbx_host.c **** 
+ 181:USBX/App/app_usbx_host.c **** /**
+ 182:USBX/App/app_usbx_host.c ****   * @brief  ux_host_event_callback
+ 183:USBX/App/app_usbx_host.c ****   *         This callback is invoked to notify application of instance changes.
+ 184:USBX/App/app_usbx_host.c ****   * @param  event: event code.
+ 185:USBX/App/app_usbx_host.c ****   * @param  current_class: Pointer to class.
+ 186:USBX/App/app_usbx_host.c ****   * @param  current_instance: Pointer to class instance.
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 5
+
+
+ 187:USBX/App/app_usbx_host.c ****   * @retval status
+ 188:USBX/App/app_usbx_host.c ****   */
+ 189:USBX/App/app_usbx_host.c **** UINT ux_host_event_callback(ULONG event, UX_HOST_CLASS *current_class, VOID *current_instance)
+ 190:USBX/App/app_usbx_host.c **** {
+ 191:USBX/App/app_usbx_host.c ****   UINT status = UX_SUCCESS;
+ 192:USBX/App/app_usbx_host.c **** 
+ 193:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN ux_host_event_callback0 */
+ 194:USBX/App/app_usbx_host.c **** 
+ 195:USBX/App/app_usbx_host.c ****   /* USER CODE END ux_host_event_callback0 */
+ 196:USBX/App/app_usbx_host.c **** 
+ 197:USBX/App/app_usbx_host.c ****   switch (event)
+ 198:USBX/App/app_usbx_host.c ****   {
+ 199:USBX/App/app_usbx_host.c ****     case UX_DEVICE_INSERTION:
+ 200:USBX/App/app_usbx_host.c **** 
+ 201:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_DEVICE_INSERTION */
+ 202:USBX/App/app_usbx_host.c **** 
+ 203:USBX/App/app_usbx_host.c ****       /* Get current Storage Class */
+ 204:USBX/App/app_usbx_host.c ****       if (current_class -> ux_host_class_entry_function == ux_host_class_storage_entry)
+ 205:USBX/App/app_usbx_host.c ****       {
+ 206:USBX/App/app_usbx_host.c ****         if (storage == UX_NULL)
+ 207:USBX/App/app_usbx_host.c ****         {
+ 208:USBX/App/app_usbx_host.c ****           /* Get current Storage Instance */
+ 209:USBX/App/app_usbx_host.c ****           storage = (UX_HOST_CLASS_STORAGE *)current_instance;
+ 210:USBX/App/app_usbx_host.c **** 
+ 211:USBX/App/app_usbx_host.c ****           USBH_UsrLog("\nUSB Mass Storage Device Plugged");
+ 212:USBX/App/app_usbx_host.c ****           USBH_UsrLog("PID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 213:USBX/App/app_usbx_host.c ****           USBH_UsrLog("VID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 214:USBX/App/app_usbx_host.c **** 
+ 215:USBX/App/app_usbx_host.c ****           /* Get the storage media */
+ 216:USBX/App/app_usbx_host.c ****           storage_media = (UX_HOST_CLASS_STORAGE_MEDIA *)current_class -> ux_host_class_media;
+ 217:USBX/App/app_usbx_host.c **** 
+ 218:USBX/App/app_usbx_host.c ****           if (storage_media -> ux_host_class_storage_media_lun != 0)
+ 219:USBX/App/app_usbx_host.c ****           {
+ 220:USBX/App/app_usbx_host.c ****             storage_media = UX_NULL;
+ 221:USBX/App/app_usbx_host.c ****           }
+ 222:USBX/App/app_usbx_host.c ****           else
+ 223:USBX/App/app_usbx_host.c ****           {
+ 224:USBX/App/app_usbx_host.c ****             /* Get the media file */
+ 225:USBX/App/app_usbx_host.c ****             media = &storage_media->ux_host_class_storage_media;
+ 226:USBX/App/app_usbx_host.c ****           }
+ 227:USBX/App/app_usbx_host.c **** 
+ 228:USBX/App/app_usbx_host.c ****           /* Check the storage class state */
+ 229:USBX/App/app_usbx_host.c ****           if (storage -> ux_host_class_storage_state ==  UX_HOST_CLASS_INSTANCE_LIVE)
+ 230:USBX/App/app_usbx_host.c ****           {
+ 231:USBX/App/app_usbx_host.c ****             /* Set STORAGE_MEDIA flag */
+ 232:USBX/App/app_usbx_host.c ****             if (tx_event_flags_set(&ux_app_EventFlag, STORAGE_MEDIA, TX_OR) != TX_SUCCESS)
+ 233:USBX/App/app_usbx_host.c ****             {
+ 234:USBX/App/app_usbx_host.c ****               Error_Handler();
+ 235:USBX/App/app_usbx_host.c ****             }
+ 236:USBX/App/app_usbx_host.c ****           }
+ 237:USBX/App/app_usbx_host.c ****         }
+ 238:USBX/App/app_usbx_host.c ****       }
+ 239:USBX/App/app_usbx_host.c **** 
+ 240:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_DEVICE_INSERTION */
+ 241:USBX/App/app_usbx_host.c **** 
+ 242:USBX/App/app_usbx_host.c ****       break;
+ 243:USBX/App/app_usbx_host.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 6
+
+
+ 244:USBX/App/app_usbx_host.c ****     case UX_DEVICE_REMOVAL:
+ 245:USBX/App/app_usbx_host.c **** 
+ 246:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_DEVICE_REMOVAL */
+ 247:USBX/App/app_usbx_host.c **** 
+ 248:USBX/App/app_usbx_host.c ****       if ((VOID*)storage == current_instance)
+ 249:USBX/App/app_usbx_host.c ****       {
+ 250:USBX/App/app_usbx_host.c ****         /* Clear storage media instance & media file */
+ 251:USBX/App/app_usbx_host.c ****         storage = UX_NULL;
+ 252:USBX/App/app_usbx_host.c ****         storage_media = UX_NULL;
+ 253:USBX/App/app_usbx_host.c ****         media = UX_NULL;
+ 254:USBX/App/app_usbx_host.c **** 
+ 255:USBX/App/app_usbx_host.c ****         USBH_UsrLog("\nUSB Mass Storage Device Unplugged");
+ 256:USBX/App/app_usbx_host.c ****       }
+ 257:USBX/App/app_usbx_host.c **** 
+ 258:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_DEVICE_REMOVAL */
+ 259:USBX/App/app_usbx_host.c **** 
+ 260:USBX/App/app_usbx_host.c ****       break;
+ 261:USBX/App/app_usbx_host.c **** 
+ 262:USBX/App/app_usbx_host.c **** #if defined (UX_HOST_CLASS_STORAGE_NO_FILEX)
+ 263:USBX/App/app_usbx_host.c ****     case UX_STORAGE_MEDIA_INSERTION:
+ 264:USBX/App/app_usbx_host.c **** 
+ 265:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_STORAGE_MEDIA_INSERTION */
+ 266:USBX/App/app_usbx_host.c **** 
+ 267:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_STORAGE_MEDIA_INSERTION */
+ 268:USBX/App/app_usbx_host.c **** 
+ 269:USBX/App/app_usbx_host.c ****       break;
+ 270:USBX/App/app_usbx_host.c **** 
+ 271:USBX/App/app_usbx_host.c ****     case UX_STORAGE_MEDIA_REMOVAL:
+ 272:USBX/App/app_usbx_host.c **** 
+ 273:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_STORAGE_MEDIA_REMOVAL */
+ 274:USBX/App/app_usbx_host.c **** 
+ 275:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_STORAGE_MEDIA_REMOVAL */
+ 276:USBX/App/app_usbx_host.c **** 
+ 277:USBX/App/app_usbx_host.c ****       break;
+ 278:USBX/App/app_usbx_host.c **** #endif
+ 279:USBX/App/app_usbx_host.c **** 
+ 280:USBX/App/app_usbx_host.c ****     case UX_DEVICE_CONNECTION:
+ 281:USBX/App/app_usbx_host.c **** 
+ 282:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_DEVICE_CONNECTION */
+ 283:USBX/App/app_usbx_host.c **** 
+ 284:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_DEVICE_CONNECTION */
+ 285:USBX/App/app_usbx_host.c **** 
+ 286:USBX/App/app_usbx_host.c ****       break;
+ 287:USBX/App/app_usbx_host.c **** 
+ 288:USBX/App/app_usbx_host.c ****     case UX_DEVICE_DISCONNECTION:
+ 289:USBX/App/app_usbx_host.c **** 
+ 290:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_DEVICE_DISCONNECTION */
+ 291:USBX/App/app_usbx_host.c **** 
+ 292:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_DEVICE_DISCONNECTION */
+ 293:USBX/App/app_usbx_host.c **** 
+ 294:USBX/App/app_usbx_host.c ****       break;
+ 295:USBX/App/app_usbx_host.c **** 
+ 296:USBX/App/app_usbx_host.c ****     default:
+ 297:USBX/App/app_usbx_host.c **** 
+ 298:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN EVENT_DEFAULT */
+ 299:USBX/App/app_usbx_host.c **** 
+ 300:USBX/App/app_usbx_host.c ****       /* USER CODE END EVENT_DEFAULT */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 7
+
+
+ 301:USBX/App/app_usbx_host.c **** 
+ 302:USBX/App/app_usbx_host.c ****       break;
+ 303:USBX/App/app_usbx_host.c ****   }
+ 304:USBX/App/app_usbx_host.c **** 
+ 305:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN ux_host_event_callback1 */
+ 306:USBX/App/app_usbx_host.c **** 
+ 307:USBX/App/app_usbx_host.c ****   /* USER CODE END ux_host_event_callback1 */
+ 308:USBX/App/app_usbx_host.c **** 
+ 309:USBX/App/app_usbx_host.c ****   return status;
+ 310:USBX/App/app_usbx_host.c **** }
+ 311:USBX/App/app_usbx_host.c **** 
+ 312:USBX/App/app_usbx_host.c **** /**
+ 313:USBX/App/app_usbx_host.c ****   * @brief ux_host_error_callback
+ 314:USBX/App/app_usbx_host.c ****   *         This callback is invoked to notify application of error changes.
+ 315:USBX/App/app_usbx_host.c ****   * @param  system_level: system level parameter.
+ 316:USBX/App/app_usbx_host.c ****   * @param  system_context: system context code.
+ 317:USBX/App/app_usbx_host.c ****   * @param  error_code: error event code.
+ 318:USBX/App/app_usbx_host.c ****   * @retval Status
+ 319:USBX/App/app_usbx_host.c ****   */
+ 320:USBX/App/app_usbx_host.c **** VOID ux_host_error_callback(UINT system_level, UINT system_context, UINT error_code)
+ 321:USBX/App/app_usbx_host.c **** {
+  36              		.loc 1 321 1 view -0
+  37              		.cfi_startproc
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40              		.loc 1 321 1 is_stmt 0 view .LVU1
+  41 0000 08B5     		push	{r3, lr}
+  42              	.LCFI0:
+  43              		.cfi_def_cfa_offset 8
+  44              		.cfi_offset 3, -8
+  45              		.cfi_offset 14, -4
+ 322:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN ux_host_error_callback0 */
+ 323:USBX/App/app_usbx_host.c **** 
+ 324:USBX/App/app_usbx_host.c ****   /* USER CODE END ux_host_error_callback0 */
+ 325:USBX/App/app_usbx_host.c **** 
+ 326:USBX/App/app_usbx_host.c ****   switch (error_code)
+  46              		.loc 1 326 3 is_stmt 1 view .LVU2
+  47 0002 442A     		cmp	r2, #68
+  48 0004 02D0     		beq	.L2
+  49 0006 5F2A     		cmp	r2, #95
+  50 0008 07D0     		beq	.L3
+  51              	.LVL1:
+  52              	.L1:
+ 327:USBX/App/app_usbx_host.c ****   {
+ 328:USBX/App/app_usbx_host.c ****     case UX_DEVICE_ENUMERATION_FAILURE:
+ 329:USBX/App/app_usbx_host.c **** 
+ 330:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_DEVICE_ENUMERATION_FAILURE */
+ 331:USBX/App/app_usbx_host.c **** 
+ 332:USBX/App/app_usbx_host.c ****       USBH_UsrLog("USB Device Enumeration Failure");
+ 333:USBX/App/app_usbx_host.c **** 
+ 334:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_DEVICE_ENUMERATION_FAILURE */
+ 335:USBX/App/app_usbx_host.c **** 
+ 336:USBX/App/app_usbx_host.c ****       break;
+ 337:USBX/App/app_usbx_host.c **** 
+ 338:USBX/App/app_usbx_host.c ****     case  UX_NO_DEVICE_CONNECTED:
+ 339:USBX/App/app_usbx_host.c **** 
+ 340:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN UX_NO_DEVICE_CONNECTED */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 8
+
+
+ 341:USBX/App/app_usbx_host.c **** 
+ 342:USBX/App/app_usbx_host.c ****       USBH_UsrLog("USB Device disconnected");
+ 343:USBX/App/app_usbx_host.c **** 
+ 344:USBX/App/app_usbx_host.c ****       /* USER CODE END UX_NO_DEVICE_CONNECTED */
+ 345:USBX/App/app_usbx_host.c **** 
+ 346:USBX/App/app_usbx_host.c ****       break;
+ 347:USBX/App/app_usbx_host.c **** 
+ 348:USBX/App/app_usbx_host.c ****     default:
+ 349:USBX/App/app_usbx_host.c **** 
+ 350:USBX/App/app_usbx_host.c ****       /* USER CODE BEGIN ERROR_DEFAULT */
+ 351:USBX/App/app_usbx_host.c **** 
+ 352:USBX/App/app_usbx_host.c ****       /* USER CODE END ERROR_DEFAULT */
+ 353:USBX/App/app_usbx_host.c **** 
+ 354:USBX/App/app_usbx_host.c ****       break;
+ 355:USBX/App/app_usbx_host.c ****   }
+ 356:USBX/App/app_usbx_host.c **** 
+ 357:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN ux_host_error_callback1 */
+ 358:USBX/App/app_usbx_host.c **** 
+ 359:USBX/App/app_usbx_host.c ****   /* USER CODE END ux_host_error_callback1 */
+ 360:USBX/App/app_usbx_host.c **** }
+  53              		.loc 1 360 1 is_stmt 0 view .LVU3
+  54 000a 08BD     		pop	{r3, pc}
+  55              	.LVL2:
+  56              	.L2:
+ 332:USBX/App/app_usbx_host.c **** 
+  57              		.loc 1 332 7 is_stmt 1 view .LVU4
+  58 000c 0648     		ldr	r0, .L6
+  59              	.LVL3:
+ 332:USBX/App/app_usbx_host.c **** 
+  60              		.loc 1 332 7 is_stmt 0 view .LVU5
+  61 000e FFF7FEFF 		bl	printf
+  62              	.LVL4:
+ 332:USBX/App/app_usbx_host.c **** 
+  63              		.loc 1 332 7 is_stmt 1 view .LVU6
+  64 0012 0A20     		movs	r0, #10
+  65 0014 FFF7FEFF 		bl	putchar
+  66              	.LVL5:
+ 332:USBX/App/app_usbx_host.c **** 
+  67              		.loc 1 332 52 view .LVU7
+ 336:USBX/App/app_usbx_host.c **** 
+  68              		.loc 1 336 7 view .LVU8
+  69 0018 F7E7     		b	.L1
+  70              	.LVL6:
+  71              	.L3:
+ 342:USBX/App/app_usbx_host.c **** 
+  72              		.loc 1 342 7 view .LVU9
+  73 001a 0448     		ldr	r0, .L6+4
+  74              	.LVL7:
+ 342:USBX/App/app_usbx_host.c **** 
+  75              		.loc 1 342 7 is_stmt 0 view .LVU10
+  76 001c FFF7FEFF 		bl	printf
+  77              	.LVL8:
+ 342:USBX/App/app_usbx_host.c **** 
+  78              		.loc 1 342 7 is_stmt 1 view .LVU11
+  79 0020 0A20     		movs	r0, #10
+  80 0022 FFF7FEFF 		bl	putchar
+  81              	.LVL9:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 9
+
+
+ 342:USBX/App/app_usbx_host.c **** 
+  82              		.loc 1 342 45 view .LVU12
+ 346:USBX/App/app_usbx_host.c **** 
+  83              		.loc 1 346 7 view .LVU13
+  84              		.loc 1 360 1 is_stmt 0 view .LVU14
+  85 0026 F0E7     		b	.L1
+  86              	.L7:
+  87              		.align	2
+  88              	.L6:
+  89 0028 00000000 		.word	.LC0
+  90 002c 20000000 		.word	.LC1
+  91              		.cfi_endproc
+  92              	.LFE146:
+  94              		.section	.rodata.ux_host_event_callback.str1.4,"aMS",%progbits,1
+  95              		.align	2
+  96              	.LC2:
+  97 0000 0A555342 		.ascii	"\012USB Mass Storage Device Plugged\000"
+  97      204D6173 
+  97      73205374 
+  97      6F726167 
+  97      65204465 
+  98 0021 000000   		.align	2
+  99              	.LC3:
+ 100 0024 5049443A 		.ascii	"PID: %#x \000"
+ 100      20252378 
+ 100      2000
+ 101 002e 0000     		.align	2
+ 102              	.LC4:
+ 103 0030 5649443A 		.ascii	"VID: %#x \000"
+ 103      20252378 
+ 103      2000
+ 104 003a 0000     		.align	2
+ 105              	.LC5:
+ 106 003c 0A555342 		.ascii	"\012USB Mass Storage Device Unplugged\000"
+ 106      204D6173 
+ 106      73205374 
+ 106      6F726167 
+ 106      65204465 
+ 107              		.section	.text.ux_host_event_callback,"ax",%progbits
+ 108              		.align	1
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 113              	ux_host_event_callback:
+ 114              	.LVL10:
+ 115              	.LFB145:
+ 190:USBX/App/app_usbx_host.c ****   UINT status = UX_SUCCESS;
+ 116              		.loc 1 190 1 is_stmt 1 view -0
+ 117              		.cfi_startproc
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190:USBX/App/app_usbx_host.c ****   UINT status = UX_SUCCESS;
+ 120              		.loc 1 190 1 is_stmt 0 view .LVU16
+ 121 0000 38B5     		push	{r3, r4, r5, lr}
+ 122              	.LCFI1:
+ 123              		.cfi_def_cfa_offset 16
+ 124              		.cfi_offset 3, -16
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 10
+
+
+ 125              		.cfi_offset 4, -12
+ 126              		.cfi_offset 5, -8
+ 127              		.cfi_offset 14, -4
+ 191:USBX/App/app_usbx_host.c **** 
+ 128              		.loc 1 191 3 is_stmt 1 view .LVU17
+ 129              	.LVL11:
+ 197:USBX/App/app_usbx_host.c ****   {
+ 130              		.loc 1 197 3 view .LVU18
+ 131 0002 0128     		cmp	r0, #1
+ 132 0004 03D0     		beq	.L9
+ 133 0006 0228     		cmp	r0, #2
+ 134 0008 41D0     		beq	.L10
+ 135              	.LVL12:
+ 136              	.L11:
+ 309:USBX/App/app_usbx_host.c **** }
+ 137              		.loc 1 309 3 view .LVU19
+ 310:USBX/App/app_usbx_host.c **** 
+ 138              		.loc 1 310 1 is_stmt 0 view .LVU20
+ 139 000a 0020     		movs	r0, #0
+ 140 000c 38BD     		pop	{r3, r4, r5, pc}
+ 141              	.LVL13:
+ 142              	.L9:
+ 310:USBX/App/app_usbx_host.c **** 
+ 143              		.loc 1 310 1 view .LVU21
+ 144 000e 0C46     		mov	r4, r1
+ 204:USBX/App/app_usbx_host.c ****       {
+ 145              		.loc 1 204 7 is_stmt 1 view .LVU22
+ 204:USBX/App/app_usbx_host.c ****       {
+ 146              		.loc 1 204 25 is_stmt 0 view .LVU23
+ 147 0010 496C     		ldr	r1, [r1, #68]
+ 148              	.LVL14:
+ 204:USBX/App/app_usbx_host.c ****       {
+ 149              		.loc 1 204 10 view .LVU24
+ 150 0012 284B     		ldr	r3, .L15
+ 151 0014 9942     		cmp	r1, r3
+ 152 0016 F8D1     		bne	.L11
+ 206:USBX/App/app_usbx_host.c ****         {
+ 153              		.loc 1 206 9 is_stmt 1 view .LVU25
+ 206:USBX/App/app_usbx_host.c ****         {
+ 154              		.loc 1 206 21 is_stmt 0 view .LVU26
+ 155 0018 274B     		ldr	r3, .L15+4
+ 156 001a 1B68     		ldr	r3, [r3]
+ 206:USBX/App/app_usbx_host.c ****         {
+ 157              		.loc 1 206 12 view .LVU27
+ 158 001c 002B     		cmp	r3, #0
+ 159 001e F4D1     		bne	.L11
+ 209:USBX/App/app_usbx_host.c **** 
+ 160              		.loc 1 209 11 is_stmt 1 view .LVU28
+ 209:USBX/App/app_usbx_host.c **** 
+ 161              		.loc 1 209 19 is_stmt 0 view .LVU29
+ 162 0020 254D     		ldr	r5, .L15+4
+ 163 0022 2A60     		str	r2, [r5]
+ 211:USBX/App/app_usbx_host.c ****           USBH_UsrLog("PID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 164              		.loc 1 211 11 is_stmt 1 view .LVU30
+ 165 0024 2548     		ldr	r0, .L15+8
+ 166              	.LVL15:
+ 211:USBX/App/app_usbx_host.c ****           USBH_UsrLog("PID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 11
+
+
+ 167              		.loc 1 211 11 is_stmt 0 view .LVU31
+ 168 0026 FFF7FEFF 		bl	printf
+ 169              	.LVL16:
+ 211:USBX/App/app_usbx_host.c ****           USBH_UsrLog("PID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 170              		.loc 1 211 11 is_stmt 1 view .LVU32
+ 171 002a 0A20     		movs	r0, #10
+ 172 002c FFF7FEFF 		bl	putchar
+ 173              	.LVL17:
+ 211:USBX/App/app_usbx_host.c ****           USBH_UsrLog("PID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 174              		.loc 1 211 59 view .LVU33
+ 212:USBX/App/app_usbx_host.c ****           USBH_UsrLog("VID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 175              		.loc 1 212 11 view .LVU34
+ 176 0030 2B68     		ldr	r3, [r5]
+ 177 0032 9B68     		ldr	r3, [r3, #8]
+ 178 0034 D96E     		ldr	r1, [r3, #108]
+ 179 0036 2248     		ldr	r0, .L15+12
+ 180 0038 FFF7FEFF 		bl	printf
+ 181              	.LVL18:
+ 212:USBX/App/app_usbx_host.c ****           USBH_UsrLog("VID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 182              		.loc 1 212 11 view .LVU35
+ 183 003c 0A20     		movs	r0, #10
+ 184 003e FFF7FEFF 		bl	putchar
+ 185              	.LVL19:
+ 212:USBX/App/app_usbx_host.c ****           USBH_UsrLog("VID: %#x ", (UINT)storage -> ux_host_class_storage_device -> ux_device_descr
+ 186              		.loc 1 212 116 view .LVU36
+ 213:USBX/App/app_usbx_host.c **** 
+ 187              		.loc 1 213 11 view .LVU37
+ 188 0042 2B68     		ldr	r3, [r5]
+ 189 0044 9B68     		ldr	r3, [r3, #8]
+ 190 0046 996E     		ldr	r1, [r3, #104]
+ 191 0048 1E48     		ldr	r0, .L15+16
+ 192 004a FFF7FEFF 		bl	printf
+ 193              	.LVL20:
+ 213:USBX/App/app_usbx_host.c **** 
+ 194              		.loc 1 213 11 view .LVU38
+ 195 004e 0A20     		movs	r0, #10
+ 196 0050 FFF7FEFF 		bl	putchar
+ 197              	.LVL21:
+ 213:USBX/App/app_usbx_host.c **** 
+ 198              		.loc 1 213 115 view .LVU39
+ 216:USBX/App/app_usbx_host.c **** 
+ 199              		.loc 1 216 11 view .LVU40
+ 216:USBX/App/app_usbx_host.c **** 
+ 200              		.loc 1 216 72 is_stmt 0 view .LVU41
+ 201 0054 236D     		ldr	r3, [r4, #80]
+ 216:USBX/App/app_usbx_host.c **** 
+ 202              		.loc 1 216 25 view .LVU42
+ 203 0056 1C4A     		ldr	r2, .L15+20
+ 204 0058 1360     		str	r3, [r2]
+ 218:USBX/App/app_usbx_host.c ****           {
+ 205              		.loc 1 218 11 is_stmt 1 view .LVU43
+ 218:USBX/App/app_usbx_host.c ****           {
+ 206              		.loc 1 218 29 is_stmt 0 view .LVU44
+ 207 005a 03F50052 		add	r2, r3, #8192
+ 208 005e D2F8C424 		ldr	r2, [r2, #1220]
+ 218:USBX/App/app_usbx_host.c ****           {
+ 209              		.loc 1 218 14 view .LVU45
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 12
+
+
+ 210 0062 8AB1     		cbz	r2, .L12
+ 220:USBX/App/app_usbx_host.c ****           }
+ 211              		.loc 1 220 13 is_stmt 1 view .LVU46
+ 220:USBX/App/app_usbx_host.c ****           }
+ 212              		.loc 1 220 27 is_stmt 0 view .LVU47
+ 213 0064 184B     		ldr	r3, .L15+20
+ 214 0066 0022     		movs	r2, #0
+ 215 0068 1A60     		str	r2, [r3]
+ 216              	.L13:
+ 229:USBX/App/app_usbx_host.c ****           {
+ 217              		.loc 1 229 11 is_stmt 1 view .LVU48
+ 229:USBX/App/app_usbx_host.c ****           {
+ 218              		.loc 1 229 23 is_stmt 0 view .LVU49
+ 219 006a 134B     		ldr	r3, .L15+4
+ 220 006c 1B68     		ldr	r3, [r3]
+ 221 006e DB6E     		ldr	r3, [r3, #108]
+ 229:USBX/App/app_usbx_host.c ****           {
+ 222              		.loc 1 229 14 view .LVU50
+ 223 0070 012B     		cmp	r3, #1
+ 224 0072 CAD1     		bne	.L11
+ 232:USBX/App/app_usbx_host.c ****             {
+ 225              		.loc 1 232 13 is_stmt 1 view .LVU51
+ 232:USBX/App/app_usbx_host.c ****             {
+ 226              		.loc 1 232 17 is_stmt 0 view .LVU52
+ 227 0074 0022     		movs	r2, #0
+ 228 0076 0121     		movs	r1, #1
+ 229 0078 1448     		ldr	r0, .L15+24
+ 230 007a FFF7FEFF 		bl	_txe_event_flags_set
+ 231              	.LVL22:
+ 232:USBX/App/app_usbx_host.c ****             {
+ 232              		.loc 1 232 16 view .LVU53
+ 233 007e 0028     		cmp	r0, #0
+ 234 0080 C3D0     		beq	.L11
+ 234:USBX/App/app_usbx_host.c ****             }
+ 235              		.loc 1 234 15 is_stmt 1 view .LVU54
+ 236 0082 FFF7FEFF 		bl	Error_Handler
+ 237              	.LVL23:
+ 238 0086 C0E7     		b	.L11
+ 239              	.L12:
+ 225:USBX/App/app_usbx_host.c ****           }
+ 240              		.loc 1 225 13 view .LVU55
+ 225:USBX/App/app_usbx_host.c ****           }
+ 241              		.loc 1 225 19 is_stmt 0 view .LVU56
+ 242 0088 114A     		ldr	r2, .L15+28
+ 243 008a 1360     		str	r3, [r2]
+ 244 008c EDE7     		b	.L13
+ 245              	.LVL24:
+ 246              	.L10:
+ 248:USBX/App/app_usbx_host.c ****       {
+ 247              		.loc 1 248 7 is_stmt 1 view .LVU57
+ 248:USBX/App/app_usbx_host.c ****       {
+ 248              		.loc 1 248 11 is_stmt 0 view .LVU58
+ 249 008e 0A4B     		ldr	r3, .L15+4
+ 250 0090 1B68     		ldr	r3, [r3]
+ 248:USBX/App/app_usbx_host.c ****       {
+ 251              		.loc 1 248 10 view .LVU59
+ 252 0092 9342     		cmp	r3, r2
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 13
+
+
+ 253 0094 B9D1     		bne	.L11
+ 251:USBX/App/app_usbx_host.c ****         storage_media = UX_NULL;
+ 254              		.loc 1 251 9 is_stmt 1 view .LVU60
+ 251:USBX/App/app_usbx_host.c ****         storage_media = UX_NULL;
+ 255              		.loc 1 251 17 is_stmt 0 view .LVU61
+ 256 0096 0023     		movs	r3, #0
+ 257 0098 074A     		ldr	r2, .L15+4
+ 258              	.LVL25:
+ 251:USBX/App/app_usbx_host.c ****         storage_media = UX_NULL;
+ 259              		.loc 1 251 17 view .LVU62
+ 260 009a 1360     		str	r3, [r2]
+ 252:USBX/App/app_usbx_host.c ****         media = UX_NULL;
+ 261              		.loc 1 252 9 is_stmt 1 view .LVU63
+ 252:USBX/App/app_usbx_host.c ****         media = UX_NULL;
+ 262              		.loc 1 252 23 is_stmt 0 view .LVU64
+ 263 009c 0A4A     		ldr	r2, .L15+20
+ 264 009e 1360     		str	r3, [r2]
+ 253:USBX/App/app_usbx_host.c **** 
+ 265              		.loc 1 253 9 is_stmt 1 view .LVU65
+ 253:USBX/App/app_usbx_host.c **** 
+ 266              		.loc 1 253 15 is_stmt 0 view .LVU66
+ 267 00a0 0B4A     		ldr	r2, .L15+28
+ 268 00a2 1360     		str	r3, [r2]
+ 255:USBX/App/app_usbx_host.c ****       }
+ 269              		.loc 1 255 9 is_stmt 1 view .LVU67
+ 270 00a4 0B48     		ldr	r0, .L15+32
+ 271              	.LVL26:
+ 255:USBX/App/app_usbx_host.c ****       }
+ 272              		.loc 1 255 9 is_stmt 0 view .LVU68
+ 273 00a6 FFF7FEFF 		bl	printf
+ 274              	.LVL27:
+ 255:USBX/App/app_usbx_host.c ****       }
+ 275              		.loc 1 255 9 is_stmt 1 view .LVU69
+ 276 00aa 0A20     		movs	r0, #10
+ 277 00ac FFF7FEFF 		bl	putchar
+ 278              	.LVL28:
+ 279 00b0 ABE7     		b	.L11
+ 280              	.L16:
+ 281 00b2 00BF     		.align	2
+ 282              	.L15:
+ 283 00b4 00000000 		.word	_ux_host_class_storage_entry
+ 284 00b8 00000000 		.word	.LANCHOR0
+ 285 00bc 00000000 		.word	.LC2
+ 286 00c0 24000000 		.word	.LC3
+ 287 00c4 30000000 		.word	.LC4
+ 288 00c8 00000000 		.word	.LANCHOR1
+ 289 00cc 00000000 		.word	.LANCHOR3
+ 290 00d0 00000000 		.word	.LANCHOR2
+ 291 00d4 3C000000 		.word	.LC5
+ 292              		.cfi_endproc
+ 293              	.LFE145:
+ 295              		.section	.rodata.MX_USBX_Host_Init.str1.4,"aMS",%progbits,1
+ 296              		.align	2
+ 297              	.LC6:
+ 298 0000 55534258 		.ascii	"USBX App Host Main Thread\000"
+ 298      20417070 
+ 298      20486F73 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 14
+
+
+ 298      74204D61 
+ 298      696E2054 
+ 299 001a 0000     		.align	2
+ 300              	.LC7:
+ 301 001c 4D534320 		.ascii	"MSC App thread\000"
+ 301      41707020 
+ 301      74687265 
+ 301      616400
+ 302 002b 00       		.align	2
+ 303              	.LC8:
+ 304 002c 4576656E 		.ascii	"Event Flag\000"
+ 304      7420466C 
+ 304      616700
+ 305              		.section	.text.MX_USBX_Host_Init,"ax",%progbits
+ 306              		.align	1
+ 307              		.global	MX_USBX_Host_Init
+ 308              		.syntax unified
+ 309              		.thumb
+ 310              		.thumb_func
+ 312              	MX_USBX_Host_Init:
+ 313              	.LVL29:
+ 314              	.LFB143:
+  72:USBX/App/app_usbx_host.c ****   UINT ret = UX_SUCCESS;
+ 315              		.loc 1 72 1 view -0
+ 316              		.cfi_startproc
+ 317              		@ args = 0, pretend = 0, frame = 8
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+  72:USBX/App/app_usbx_host.c ****   UINT ret = UX_SUCCESS;
+ 319              		.loc 1 72 1 is_stmt 0 view .LVU71
+ 320 0000 10B5     		push	{r4, lr}
+ 321              	.LCFI2:
+ 322              		.cfi_def_cfa_offset 8
+ 323              		.cfi_offset 4, -8
+ 324              		.cfi_offset 14, -4
+ 325 0002 8AB0     		sub	sp, sp, #40
+ 326              	.LCFI3:
+ 327              		.cfi_def_cfa_offset 48
+ 328 0004 0446     		mov	r4, r0
+  73:USBX/App/app_usbx_host.c ****   UCHAR *pointer;
+ 329              		.loc 1 73 3 is_stmt 1 view .LVU72
+ 330              	.LVL30:
+  74:USBX/App/app_usbx_host.c ****   TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL*)memory_ptr;
+ 331              		.loc 1 74 3 view .LVU73
+  75:USBX/App/app_usbx_host.c **** 
+ 332              		.loc 1 75 3 view .LVU74
+  82:USBX/App/app_usbx_host.c ****                        USBX_HOST_MEMORY_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+ 333              		.loc 1 82 3 view .LVU75
+  82:USBX/App/app_usbx_host.c ****                        USBX_HOST_MEMORY_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+ 334              		.loc 1 82 7 is_stmt 0 view .LVU76
+ 335 0006 0023     		movs	r3, #0
+ 336 0008 4FF4B042 		mov	r2, #22528
+ 337 000c 09A9     		add	r1, sp, #36
+ 338 000e FFF7FEFF 		bl	_txe_byte_allocate
+ 339              	.LVL31:
+  82:USBX/App/app_usbx_host.c ****                        USBX_HOST_MEMORY_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+ 340              		.loc 1 82 6 view .LVU77
+ 341 0012 0028     		cmp	r0, #0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 15
+
+
+ 342 0014 57D1     		bne	.L19
+  91:USBX/App/app_usbx_host.c ****   {
+ 343              		.loc 1 91 3 is_stmt 1 view .LVU78
+  91:USBX/App/app_usbx_host.c ****   {
+ 344              		.loc 1 91 7 is_stmt 0 view .LVU79
+ 345 0016 0023     		movs	r3, #0
+ 346 0018 1A46     		mov	r2, r3
+ 347 001a 4FF4B041 		mov	r1, #22528
+ 348 001e 0998     		ldr	r0, [sp, #36]
+ 349 0020 FFF7FEFF 		bl	_ux_system_initialize
+ 350              	.LVL32:
+  91:USBX/App/app_usbx_host.c ****   {
+ 351              		.loc 1 91 6 view .LVU80
+ 352 0024 0028     		cmp	r0, #0
+ 353 0026 51D1     		bne	.L20
+  99:USBX/App/app_usbx_host.c ****   {
+ 354              		.loc 1 99 3 is_stmt 1 view .LVU81
+  99:USBX/App/app_usbx_host.c ****   {
+ 355              		.loc 1 99 7 is_stmt 0 view .LVU82
+ 356 0028 2F48     		ldr	r0, .L29
+ 357 002a FFF7FEFF 		bl	_ux_host_stack_initialize
+ 358              	.LVL33:
+  99:USBX/App/app_usbx_host.c ****   {
+ 359              		.loc 1 99 6 view .LVU83
+ 360 002e 0028     		cmp	r0, #0
+ 361 0030 4ED1     		bne	.L21
+ 107:USBX/App/app_usbx_host.c **** 
+ 362              		.loc 1 107 3 is_stmt 1 view .LVU84
+ 363 0032 2E48     		ldr	r0, .L29+4
+ 364 0034 FFF7FEFF 		bl	_ux_utility_error_callback_register
+ 365              	.LVL34:
+ 110:USBX/App/app_usbx_host.c ****                                    ux_host_class_storage_entry) != UX_SUCCESS)
+ 366              		.loc 1 110 3 view .LVU85
+ 110:USBX/App/app_usbx_host.c ****                                    ux_host_class_storage_entry) != UX_SUCCESS)
+ 367              		.loc 1 110 7 is_stmt 0 view .LVU86
+ 368 0038 2D49     		ldr	r1, .L29+8
+ 369 003a 2E48     		ldr	r0, .L29+12
+ 370 003c FFF7FEFF 		bl	_ux_host_stack_class_register
+ 371              	.LVL35:
+ 110:USBX/App/app_usbx_host.c ****                                    ux_host_class_storage_entry) != UX_SUCCESS)
+ 372              		.loc 1 110 6 view .LVU87
+ 373 0040 0028     		cmp	r0, #0
+ 374 0042 47D1     		bne	.L22
+ 119:USBX/App/app_usbx_host.c ****                        TX_NO_WAIT) != TX_SUCCESS)
+ 375              		.loc 1 119 3 is_stmt 1 view .LVU88
+ 119:USBX/App/app_usbx_host.c ****                        TX_NO_WAIT) != TX_SUCCESS)
+ 376              		.loc 1 119 7 is_stmt 0 view .LVU89
+ 377 0044 0023     		movs	r3, #0
+ 378 0046 4FF48062 		mov	r2, #1024
+ 379 004a 09A9     		add	r1, sp, #36
+ 380 004c 2046     		mov	r0, r4
+ 381 004e FFF7FEFF 		bl	_txe_byte_allocate
+ 382              	.LVL36:
+ 119:USBX/App/app_usbx_host.c ****                        TX_NO_WAIT) != TX_SUCCESS)
+ 383              		.loc 1 119 6 view .LVU90
+ 384 0052 0028     		cmp	r0, #0
+ 385 0054 40D1     		bne	.L23
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 16
+
+
+ 128:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, UX_HOST_APP_THREAD_PRIO,
+ 386              		.loc 1 128 3 is_stmt 1 view .LVU91
+ 128:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, UX_HOST_APP_THREAD_PRIO,
+ 387              		.loc 1 128 7 is_stmt 0 view .LVU92
+ 388 0056 B023     		movs	r3, #176
+ 389 0058 0693     		str	r3, [sp, #24]
+ 390 005a 0123     		movs	r3, #1
+ 391 005c 0593     		str	r3, [sp, #20]
+ 392 005e 0023     		movs	r3, #0
+ 393 0060 0493     		str	r3, [sp, #16]
+ 394 0062 0A22     		movs	r2, #10
+ 395 0064 0392     		str	r2, [sp, #12]
+ 396 0066 0292     		str	r2, [sp, #8]
+ 397 0068 4FF48062 		mov	r2, #1024
+ 398 006c 0192     		str	r2, [sp, #4]
+ 399 006e 099A     		ldr	r2, [sp, #36]
+ 400 0070 0092     		str	r2, [sp]
+ 401 0072 214A     		ldr	r2, .L29+16
+ 402 0074 2149     		ldr	r1, .L29+20
+ 403 0076 2248     		ldr	r0, .L29+24
+ 404 0078 FFF7FEFF 		bl	_txe_thread_create
+ 405              	.LVL37:
+ 128:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, UX_HOST_APP_THREAD_PRIO,
+ 406              		.loc 1 128 6 view .LVU93
+ 407 007c 70BB     		cbnz	r0, .L24
+ 141:USBX/App/app_usbx_host.c ****                        UX_HOST_APP_THREAD_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+ 408              		.loc 1 141 3 is_stmt 1 view .LVU94
+ 141:USBX/App/app_usbx_host.c ****                        UX_HOST_APP_THREAD_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+ 409              		.loc 1 141 7 is_stmt 0 view .LVU95
+ 410 007e 0023     		movs	r3, #0
+ 411 0080 4FF48062 		mov	r2, #1024
+ 412 0084 09A9     		add	r1, sp, #36
+ 413 0086 2046     		mov	r0, r4
+ 414 0088 FFF7FEFF 		bl	_txe_byte_allocate
+ 415              	.LVL38:
+ 141:USBX/App/app_usbx_host.c ****                        UX_HOST_APP_THREAD_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+ 416              		.loc 1 141 6 view .LVU96
+ 417 008c 40BB     		cbnz	r0, .L25
+ 148:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, 30, 30, 0,
+ 418              		.loc 1 148 3 is_stmt 1 view .LVU97
+ 148:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, 30, 30, 0,
+ 419              		.loc 1 148 7 is_stmt 0 view .LVU98
+ 420 008e B023     		movs	r3, #176
+ 421 0090 0693     		str	r3, [sp, #24]
+ 422 0092 0123     		movs	r3, #1
+ 423 0094 0593     		str	r3, [sp, #20]
+ 424 0096 0023     		movs	r3, #0
+ 425 0098 0493     		str	r3, [sp, #16]
+ 426 009a 1E22     		movs	r2, #30
+ 427 009c 0392     		str	r2, [sp, #12]
+ 428 009e 0292     		str	r2, [sp, #8]
+ 429 00a0 4FF48062 		mov	r2, #1024
+ 430 00a4 0192     		str	r2, [sp, #4]
+ 431 00a6 099A     		ldr	r2, [sp, #36]
+ 432 00a8 0092     		str	r2, [sp]
+ 433 00aa 164A     		ldr	r2, .L29+28
+ 434 00ac 1649     		ldr	r1, .L29+32
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 17
+
+
+ 435 00ae 1748     		ldr	r0, .L29+36
+ 436 00b0 FFF7FEFF 		bl	_txe_thread_create
+ 437              	.LVL39:
+ 148:USBX/App/app_usbx_host.c ****                        0, pointer, UX_HOST_APP_THREAD_STACK_SIZE, 30, 30, 0,
+ 438              		.loc 1 148 6 view .LVU99
+ 439 00b4 B0B9     		cbnz	r0, .L26
+ 156:USBX/App/app_usbx_host.c ****   {
+ 440              		.loc 1 156 3 is_stmt 1 view .LVU100
+ 156:USBX/App/app_usbx_host.c ****   {
+ 441              		.loc 1 156 7 is_stmt 0 view .LVU101
+ 442 00b6 2422     		movs	r2, #36
+ 443 00b8 1549     		ldr	r1, .L29+40
+ 444 00ba 1648     		ldr	r0, .L29+44
+ 445 00bc FFF7FEFF 		bl	_txe_event_flags_create
+ 446              	.LVL40:
+ 156:USBX/App/app_usbx_host.c ****   {
+ 447              		.loc 1 156 6 view .LVU102
+ 448 00c0 10B1     		cbz	r0, .L17
+ 158:USBX/App/app_usbx_host.c ****   }
+ 449              		.loc 1 158 12 view .LVU103
+ 450 00c2 0620     		movs	r0, #6
+ 451 00c4 00E0     		b	.L17
+ 452              	.L19:
+  86:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_ALLOCATE_STACK_ERORR */
+ 453              		.loc 1 86 12 view .LVU104
+ 454 00c6 0220     		movs	r0, #2
+ 455              	.L17:
+ 164:USBX/App/app_usbx_host.c **** 
+ 456              		.loc 1 164 1 view .LVU105
+ 457 00c8 0AB0     		add	sp, sp, #40
+ 458              	.LCFI4:
+ 459              		.cfi_remember_state
+ 460              		.cfi_def_cfa_offset 8
+ 461              		@ sp needed
+ 462 00ca 10BD     		pop	{r4, pc}
+ 463              	.LVL41:
+ 464              	.L20:
+ 465              	.LCFI5:
+ 466              		.cfi_restore_state
+  94:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_SYSTEM_INITIALIZE_ERORR */
+ 467              		.loc 1 94 12 view .LVU106
+ 468 00cc FF20     		movs	r0, #255
+ 469 00ce FBE7     		b	.L17
+ 470              	.L21:
+ 102:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_HOST_INITIALIZE_ERORR */
+ 471              		.loc 1 102 12 view .LVU107
+ 472 00d0 FF20     		movs	r0, #255
+ 473 00d2 F9E7     		b	.L17
+ 474              	.L22:
+ 114:USBX/App/app_usbx_host.c ****     /* USER CODE END USBX_HOST_STORAGE_REGISTER_ERORR */
+ 475              		.loc 1 114 12 view .LVU108
+ 476 00d4 FF20     		movs	r0, #255
+ 477 00d6 F7E7     		b	.L17
+ 478              	.L23:
+ 123:USBX/App/app_usbx_host.c ****     /* USER CODE END MAIN_THREAD_ALLOCATE_STACK_ERORR */
+ 479              		.loc 1 123 12 view .LVU109
+ 480 00d8 0220     		movs	r0, #2
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 18
+
+
+ 481 00da F5E7     		b	.L17
+ 482              	.L24:
+ 134:USBX/App/app_usbx_host.c ****     /* USER CODE END MAIN_THREAD_CREATE_ERORR */
+ 483              		.loc 1 134 12 view .LVU110
+ 484 00dc 0E20     		movs	r0, #14
+ 485 00de F3E7     		b	.L17
+ 486              	.L25:
+ 144:USBX/App/app_usbx_host.c ****   }
+ 487              		.loc 1 144 12 view .LVU111
+ 488 00e0 0220     		movs	r0, #2
+ 489 00e2 F1E7     		b	.L17
+ 490              	.L26:
+ 152:USBX/App/app_usbx_host.c ****   }
+ 491              		.loc 1 152 12 view .LVU112
+ 492 00e4 0E20     		movs	r0, #14
+ 493 00e6 EFE7     		b	.L17
+ 494              	.L30:
+ 495              		.align	2
+ 496              	.L29:
+ 497 00e8 00000000 		.word	ux_host_event_callback
+ 498 00ec 00000000 		.word	ux_host_error_callback
+ 499 00f0 00000000 		.word	_ux_host_class_storage_entry
+ 500 00f4 00000000 		.word	_ux_system_host_class_storage_name
+ 501 00f8 00000000 		.word	app_ux_host_thread_entry
+ 502 00fc 00000000 		.word	.LC6
+ 503 0100 00000000 		.word	.LANCHOR4
+ 504 0104 00000000 		.word	msc_process_thread_entry
+ 505 0108 1C000000 		.word	.LC7
+ 506 010c 00000000 		.word	.LANCHOR5
+ 507 0110 2C000000 		.word	.LC8
+ 508 0114 00000000 		.word	.LANCHOR3
+ 509              		.cfi_endproc
+ 510              	.LFE143:
+ 512              		.section	.text.USBH_DriverVBUS,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	USBH_DriverVBUS
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 519              	USBH_DriverVBUS:
+ 520              	.LVL42:
+ 521              	.LFB148:
+ 361:USBX/App/app_usbx_host.c **** 
+ 362:USBX/App/app_usbx_host.c **** /* USER CODE BEGIN 1 */
+ 363:USBX/App/app_usbx_host.c **** /**
+ 364:USBX/App/app_usbx_host.c ****   * @brief  USBX_APP_Host_Init
+ 365:USBX/App/app_usbx_host.c ****   *         Initialization of USB Host.
+ 366:USBX/App/app_usbx_host.c ****   * @param  None
+ 367:USBX/App/app_usbx_host.c ****   * @retval None
+ 368:USBX/App/app_usbx_host.c ****   */
+ 369:USBX/App/app_usbx_host.c **** VOID USBX_APP_Host_Init(VOID)
+ 370:USBX/App/app_usbx_host.c **** {
+ 371:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN USB_Host_Init_PreTreatment_0 */
+ 372:USBX/App/app_usbx_host.c **** 
+ 373:USBX/App/app_usbx_host.c ****   /* USER CODE END USB_Host_Init_PreTreatment_0 */
+ 374:USBX/App/app_usbx_host.c **** 
+ 375:USBX/App/app_usbx_host.c ****   /* Initialize the LL driver */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 19
+
+
+ 376:USBX/App/app_usbx_host.c ****   MX_USB_OTG_FS_HCD_Init();
+ 377:USBX/App/app_usbx_host.c **** 
+ 378:USBX/App/app_usbx_host.c ****   /* Register all the USB host controllers available in this system. */
+ 379:USBX/App/app_usbx_host.c ****   ux_host_stack_hcd_register(_ux_system_host_hcd_stm32_name,
+ 380:USBX/App/app_usbx_host.c ****                              _ux_hcd_stm32_initialize, USB_OTG_FS_PERIPH_BASE,
+ 381:USBX/App/app_usbx_host.c ****                              (ULONG)&hhcd_USB_OTG_FS);
+ 382:USBX/App/app_usbx_host.c **** 
+ 383:USBX/App/app_usbx_host.c ****   /* Drive vbus */
+ 384:USBX/App/app_usbx_host.c ****   USBH_DriverVBUS(USB_VBUS_TRUE);
+ 385:USBX/App/app_usbx_host.c **** 
+ 386:USBX/App/app_usbx_host.c ****   /* Enable USB Global Interrupt */
+ 387:USBX/App/app_usbx_host.c ****   HAL_HCD_Start(&hhcd_USB_OTG_FS);
+ 388:USBX/App/app_usbx_host.c **** 
+ 389:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN USB_Host_Init_PreTreatment1 */
+ 390:USBX/App/app_usbx_host.c **** 
+ 391:USBX/App/app_usbx_host.c ****   /* Start Application Message */
+ 392:USBX/App/app_usbx_host.c ****   USBH_UsrLog(" **** USB OTG HS in FS MSC Host **** \n");
+ 393:USBX/App/app_usbx_host.c ****   USBH_UsrLog("USB Host library started.\n");
+ 394:USBX/App/app_usbx_host.c **** 
+ 395:USBX/App/app_usbx_host.c ****   /* Wait for Device to be attached */
+ 396:USBX/App/app_usbx_host.c ****   USBH_UsrLog("Starting MSC Application");
+ 397:USBX/App/app_usbx_host.c ****   USBH_UsrLog("Connect your MSC Device");
+ 398:USBX/App/app_usbx_host.c **** 
+ 399:USBX/App/app_usbx_host.c ****   /* USER CODE END USB_Host_Init_PreTreatment1 */
+ 400:USBX/App/app_usbx_host.c **** 
+ 401:USBX/App/app_usbx_host.c **** }
+ 402:USBX/App/app_usbx_host.c **** 
+ 403:USBX/App/app_usbx_host.c **** /**
+ 404:USBX/App/app_usbx_host.c **** * @brief  Drive VBUS.
+ 405:USBX/App/app_usbx_host.c **** * @param  state : VBUS state
+ 406:USBX/App/app_usbx_host.c **** *          This parameter can be one of the these values:
+ 407:USBX/App/app_usbx_host.c **** *           1 : VBUS Active
+ 408:USBX/App/app_usbx_host.c **** *           0 : VBUS Inactive
+ 409:USBX/App/app_usbx_host.c **** * @retval Status
+ 410:USBX/App/app_usbx_host.c **** */
+ 411:USBX/App/app_usbx_host.c **** void USBH_DriverVBUS(uint8_t state)
+ 412:USBX/App/app_usbx_host.c **** {
+ 522              		.loc 1 412 1 is_stmt 1 view -0
+ 523              		.cfi_startproc
+ 524              		@ args = 0, pretend = 0, frame = 0
+ 525              		@ frame_needed = 0, uses_anonymous_args = 0
+ 526              		.loc 1 412 1 is_stmt 0 view .LVU114
+ 527 0000 08B5     		push	{r3, lr}
+ 528              	.LCFI6:
+ 529              		.cfi_def_cfa_offset 8
+ 530              		.cfi_offset 3, -8
+ 531              		.cfi_offset 14, -4
+ 413:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN 0 */
+ 414:USBX/App/app_usbx_host.c **** 
+ 415:USBX/App/app_usbx_host.c ****   /* USER CODE END 0*/
+ 416:USBX/App/app_usbx_host.c **** 
+ 417:USBX/App/app_usbx_host.c ****   if (state == USB_VBUS_TRUE)
+ 532              		.loc 1 417 3 is_stmt 1 view .LVU115
+ 533              		.loc 1 417 6 is_stmt 0 view .LVU116
+ 534 0002 0128     		cmp	r0, #1
+ 535 0004 08D0     		beq	.L35
+ 418:USBX/App/app_usbx_host.c ****   {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 20
+
+
+ 419:USBX/App/app_usbx_host.c ****     /* Drive high Charge pump */
+ 420:USBX/App/app_usbx_host.c ****     /* Add IOE driver control */
+ 421:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN DRIVE_HIGH_CHARGE_FOR_FS */
+ 422:USBX/App/app_usbx_host.c ****     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
+ 423:USBX/App/app_usbx_host.c ****     /* USER CODE END DRIVE_HIGH_CHARGE_FOR_FS */
+ 424:USBX/App/app_usbx_host.c ****   }
+ 425:USBX/App/app_usbx_host.c ****   else
+ 426:USBX/App/app_usbx_host.c ****   {
+ 427:USBX/App/app_usbx_host.c ****     /* Drive low Charge pump */
+ 428:USBX/App/app_usbx_host.c ****     /* Add IOE driver control */
+ 429:USBX/App/app_usbx_host.c ****     /* USER CODE BEGIN DRIVE_LOW_CHARGE_FOR_FS */
+ 430:USBX/App/app_usbx_host.c ****     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
+ 536              		.loc 1 430 5 is_stmt 1 view .LVU117
+ 537 0006 0022     		movs	r2, #0
+ 538 0008 4021     		movs	r1, #64
+ 539 000a 0648     		ldr	r0, .L36
+ 540              	.LVL43:
+ 541              		.loc 1 430 5 is_stmt 0 view .LVU118
+ 542 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 543              	.LVL44:
+ 544              	.L33:
+ 431:USBX/App/app_usbx_host.c ****     /* USER CODE END DRIVE_LOW_CHARGE_FOR_FS */
+ 432:USBX/App/app_usbx_host.c ****   }
+ 433:USBX/App/app_usbx_host.c **** 
+ 434:USBX/App/app_usbx_host.c ****   HAL_Delay(200);
+ 545              		.loc 1 434 3 is_stmt 1 view .LVU119
+ 546 0010 C820     		movs	r0, #200
+ 547 0012 FFF7FEFF 		bl	HAL_Delay
+ 548              	.LVL45:
+ 435:USBX/App/app_usbx_host.c **** }
+ 549              		.loc 1 435 1 is_stmt 0 view .LVU120
+ 550 0016 08BD     		pop	{r3, pc}
+ 551              	.LVL46:
+ 552              	.L35:
+ 422:USBX/App/app_usbx_host.c ****     /* USER CODE END DRIVE_HIGH_CHARGE_FOR_FS */
+ 553              		.loc 1 422 5 is_stmt 1 view .LVU121
+ 554 0018 0122     		movs	r2, #1
+ 555 001a 4021     		movs	r1, #64
+ 556 001c 0148     		ldr	r0, .L36
+ 557              	.LVL47:
+ 422:USBX/App/app_usbx_host.c ****     /* USER CODE END DRIVE_HIGH_CHARGE_FOR_FS */
+ 558              		.loc 1 422 5 is_stmt 0 view .LVU122
+ 559 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 560              	.LVL48:
+ 561 0022 F5E7     		b	.L33
+ 562              	.L37:
+ 563              		.align	2
+ 564              	.L36:
+ 565 0024 00180048 		.word	1207965696
+ 566              		.cfi_endproc
+ 567              	.LFE148:
+ 569              		.section	.rodata.USBX_APP_Host_Init.str1.4,"aMS",%progbits,1
+ 570              		.align	2
+ 571              	.LC9:
+ 572 0000 202A2A2A 		.ascii	" **** USB OTG HS in FS MSC Host **** \000"
+ 572      2A205553 
+ 572      42204F54 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 21
+
+
+ 572      47204853 
+ 572      20696E20 
+ 573 0026 0000     		.align	2
+ 574              	.LC10:
+ 575 0028 55534220 		.ascii	"USB Host library started.\000"
+ 575      486F7374 
+ 575      206C6962 
+ 575      72617279 
+ 575      20737461 
+ 576 0042 0000     		.align	2
+ 577              	.LC11:
+ 578 0044 53746172 		.ascii	"Starting MSC Application\000"
+ 578      74696E67 
+ 578      204D5343 
+ 578      20417070 
+ 578      6C696361 
+ 579 005d 000000   		.align	2
+ 580              	.LC12:
+ 581 0060 436F6E6E 		.ascii	"Connect your MSC Device\000"
+ 581      65637420 
+ 581      796F7572 
+ 581      204D5343 
+ 581      20446576 
+ 582              		.section	.text.USBX_APP_Host_Init,"ax",%progbits
+ 583              		.align	1
+ 584              		.global	USBX_APP_Host_Init
+ 585              		.syntax unified
+ 586              		.thumb
+ 587              		.thumb_func
+ 589              	USBX_APP_Host_Init:
+ 590              	.LFB147:
+ 370:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN USB_Host_Init_PreTreatment_0 */
+ 591              		.loc 1 370 1 is_stmt 1 view -0
+ 592              		.cfi_startproc
+ 593              		@ args = 0, pretend = 0, frame = 0
+ 594              		@ frame_needed = 0, uses_anonymous_args = 0
+ 595 0000 10B5     		push	{r4, lr}
+ 596              	.LCFI7:
+ 597              		.cfi_def_cfa_offset 8
+ 598              		.cfi_offset 4, -8
+ 599              		.cfi_offset 14, -4
+ 376:USBX/App/app_usbx_host.c **** 
+ 600              		.loc 1 376 3 view .LVU124
+ 601 0002 FFF7FEFF 		bl	MX_USB_OTG_FS_HCD_Init
+ 602              	.LVL49:
+ 379:USBX/App/app_usbx_host.c ****                              _ux_hcd_stm32_initialize, USB_OTG_FS_PERIPH_BASE,
+ 603              		.loc 1 379 3 view .LVU125
+ 604 0006 134C     		ldr	r4, .L40
+ 605 0008 2346     		mov	r3, r4
+ 606 000a 4FF0A042 		mov	r2, #1342177280
+ 607 000e 1249     		ldr	r1, .L40+4
+ 608 0010 1248     		ldr	r0, .L40+8
+ 609 0012 FFF7FEFF 		bl	_ux_host_stack_hcd_register
+ 610              	.LVL50:
+ 384:USBX/App/app_usbx_host.c **** 
+ 611              		.loc 1 384 3 view .LVU126
+ 612 0016 0120     		movs	r0, #1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 22
+
+
+ 613 0018 FFF7FEFF 		bl	USBH_DriverVBUS
+ 614              	.LVL51:
+ 387:USBX/App/app_usbx_host.c **** 
+ 615              		.loc 1 387 3 view .LVU127
+ 616 001c 2046     		mov	r0, r4
+ 617 001e FFF7FEFF 		bl	HAL_HCD_Start
+ 618              	.LVL52:
+ 392:USBX/App/app_usbx_host.c ****   USBH_UsrLog("USB Host library started.\n");
+ 619              		.loc 1 392 3 view .LVU128
+ 620 0022 0F48     		ldr	r0, .L40+12
+ 621 0024 FFF7FEFF 		bl	puts
+ 622              	.LVL53:
+ 392:USBX/App/app_usbx_host.c ****   USBH_UsrLog("USB Host library started.\n");
+ 623              		.loc 1 392 3 view .LVU129
+ 624 0028 0A20     		movs	r0, #10
+ 625 002a FFF7FEFF 		bl	putchar
+ 626              	.LVL54:
+ 392:USBX/App/app_usbx_host.c ****   USBH_UsrLog("USB Host library started.\n");
+ 627              		.loc 1 392 57 view .LVU130
+ 393:USBX/App/app_usbx_host.c **** 
+ 628              		.loc 1 393 3 view .LVU131
+ 629 002e 0D48     		ldr	r0, .L40+16
+ 630 0030 FFF7FEFF 		bl	puts
+ 631              	.LVL55:
+ 393:USBX/App/app_usbx_host.c **** 
+ 632              		.loc 1 393 3 view .LVU132
+ 633 0034 0A20     		movs	r0, #10
+ 634 0036 FFF7FEFF 		bl	putchar
+ 635              	.LVL56:
+ 393:USBX/App/app_usbx_host.c **** 
+ 636              		.loc 1 393 45 view .LVU133
+ 396:USBX/App/app_usbx_host.c ****   USBH_UsrLog("Connect your MSC Device");
+ 637              		.loc 1 396 3 view .LVU134
+ 638 003a 0B48     		ldr	r0, .L40+20
+ 639 003c FFF7FEFF 		bl	printf
+ 640              	.LVL57:
+ 396:USBX/App/app_usbx_host.c ****   USBH_UsrLog("Connect your MSC Device");
+ 641              		.loc 1 396 3 view .LVU135
+ 642 0040 0A20     		movs	r0, #10
+ 643 0042 FFF7FEFF 		bl	putchar
+ 644              	.LVL58:
+ 396:USBX/App/app_usbx_host.c ****   USBH_UsrLog("Connect your MSC Device");
+ 645              		.loc 1 396 42 view .LVU136
+ 397:USBX/App/app_usbx_host.c **** 
+ 646              		.loc 1 397 3 view .LVU137
+ 647 0046 0948     		ldr	r0, .L40+24
+ 648 0048 FFF7FEFF 		bl	printf
+ 649              	.LVL59:
+ 397:USBX/App/app_usbx_host.c **** 
+ 650              		.loc 1 397 3 view .LVU138
+ 651 004c 0A20     		movs	r0, #10
+ 652 004e FFF7FEFF 		bl	putchar
+ 653              	.LVL60:
+ 397:USBX/App/app_usbx_host.c **** 
+ 654              		.loc 1 397 41 view .LVU139
+ 401:USBX/App/app_usbx_host.c **** 
+ 655              		.loc 1 401 1 is_stmt 0 view .LVU140
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 23
+
+
+ 656 0052 10BD     		pop	{r4, pc}
+ 657              	.L41:
+ 658              		.align	2
+ 659              	.L40:
+ 660 0054 00000000 		.word	hhcd_USB_OTG_FS
+ 661 0058 00000000 		.word	_ux_hcd_stm32_initialize
+ 662 005c 00000000 		.word	_ux_system_host_hcd_stm32_name
+ 663 0060 00000000 		.word	.LC9
+ 664 0064 28000000 		.word	.LC10
+ 665 0068 44000000 		.word	.LC11
+ 666 006c 60000000 		.word	.LC12
+ 667              		.cfi_endproc
+ 668              	.LFE147:
+ 670              		.section	.text.app_ux_host_thread_entry,"ax",%progbits
+ 671              		.align	1
+ 672              		.syntax unified
+ 673              		.thumb
+ 674              		.thumb_func
+ 676              	app_ux_host_thread_entry:
+ 677              	.LVL61:
+ 678              	.LFB144:
+ 172:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN app_ux_host_thread_entry */
+ 679              		.loc 1 172 1 is_stmt 1 view -0
+ 680              		.cfi_startproc
+ 681              		@ args = 0, pretend = 0, frame = 0
+ 682              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172:USBX/App/app_usbx_host.c ****   /* USER CODE BEGIN app_ux_host_thread_entry */
+ 683              		.loc 1 172 1 is_stmt 0 view .LVU142
+ 684 0000 08B5     		push	{r3, lr}
+ 685              	.LCFI8:
+ 686              		.cfi_def_cfa_offset 8
+ 687              		.cfi_offset 3, -8
+ 688              		.cfi_offset 14, -4
+ 176:USBX/App/app_usbx_host.c **** 
+ 689              		.loc 1 176 3 is_stmt 1 view .LVU143
+ 690 0002 FFF7FEFF 		bl	USBX_APP_Host_Init
+ 691              	.LVL62:
+ 179:USBX/App/app_usbx_host.c **** 
+ 692              		.loc 1 179 1 is_stmt 0 view .LVU144
+ 693 0006 08BD     		pop	{r3, pc}
+ 694              		.cfi_endproc
+ 695              	.LFE144:
+ 697              		.global	ux_app_EventFlag
+ 698              		.global	media
+ 699              		.global	storage_media
+ 700              		.global	storage
+ 701              		.global	msc_app_thread
+ 702              		.section	.bss.media,"aw",%nobits
+ 703              		.align	2
+ 704              		.set	.LANCHOR2,. + 0
+ 707              	media:
+ 708 0000 00000000 		.space	4
+ 709              		.section	.bss.msc_app_thread,"aw",%nobits
+ 710              		.align	2
+ 711              		.set	.LANCHOR5,. + 0
+ 714              	msc_app_thread:
+ 715 0000 00000000 		.space	176
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 24
+
+
+ 715      00000000 
+ 715      00000000 
+ 715      00000000 
+ 715      00000000 
+ 716              		.section	.bss.storage,"aw",%nobits
+ 717              		.align	2
+ 718              		.set	.LANCHOR0,. + 0
+ 721              	storage:
+ 722 0000 00000000 		.space	4
+ 723              		.section	.bss.storage_media,"aw",%nobits
+ 724              		.align	2
+ 725              		.set	.LANCHOR1,. + 0
+ 728              	storage_media:
+ 729 0000 00000000 		.space	4
+ 730              		.section	.bss.ux_app_EventFlag,"aw",%nobits
+ 731              		.align	2
+ 732              		.set	.LANCHOR3,. + 0
+ 735              	ux_app_EventFlag:
+ 736 0000 00000000 		.space	36
+ 736      00000000 
+ 736      00000000 
+ 736      00000000 
+ 736      00000000 
+ 737              		.section	.bss.ux_host_app_thread,"aw",%nobits
+ 738              		.align	2
+ 739              		.set	.LANCHOR4,. + 0
+ 742              	ux_host_app_thread:
+ 743 0000 00000000 		.space	176
+ 743      00000000 
+ 743      00000000 
+ 743      00000000 
+ 743      00000000 
+ 744              		.text
+ 745              	.Letext0:
+ 746              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 747              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 748              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 749              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 750              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 751              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 752              		.file 8 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 753              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 754              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ 755              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 756              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 757              		.file 13 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 758              		.file 14 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_storage.h"
+ 759              		.file 15 "USBX/App/app_usbx_host.h"
+ 760              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 761              		.file 17 "Core/Inc/main.h"
+ 762              		.file 18 "<built-in>"
+ 763              		.file 19 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\stdio.h"
+ 764              		.file 20 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 25
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app_usbx_host.c
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:20     .rodata.ux_host_error_callback.str1.4:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:27     .text.ux_host_error_callback:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:32     .text.ux_host_error_callback:00000000 ux_host_error_callback
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:89     .text.ux_host_error_callback:00000028 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:95     .rodata.ux_host_event_callback.str1.4:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:108    .text.ux_host_event_callback:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:113    .text.ux_host_event_callback:00000000 ux_host_event_callback
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:283    .text.ux_host_event_callback:000000b4 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:296    .rodata.MX_USBX_Host_Init.str1.4:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:306    .text.MX_USBX_Host_Init:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:312    .text.MX_USBX_Host_Init:00000000 MX_USBX_Host_Init
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:497    .text.MX_USBX_Host_Init:000000e8 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:676    .text.app_ux_host_thread_entry:00000000 app_ux_host_thread_entry
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:513    .text.USBH_DriverVBUS:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:519    .text.USBH_DriverVBUS:00000000 USBH_DriverVBUS
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:565    .text.USBH_DriverVBUS:00000024 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:570    .rodata.USBX_APP_Host_Init.str1.4:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:583    .text.USBX_APP_Host_Init:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:589    .text.USBX_APP_Host_Init:00000000 USBX_APP_Host_Init
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:660    .text.USBX_APP_Host_Init:00000054 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:671    .text.app_ux_host_thread_entry:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:735    .bss.ux_app_EventFlag:00000000 ux_app_EventFlag
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:707    .bss.media:00000000 media
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:728    .bss.storage_media:00000000 storage_media
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:721    .bss.storage:00000000 storage
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:714    .bss.msc_app_thread:00000000 msc_app_thread
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:703    .bss.media:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:710    .bss.msc_app_thread:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:717    .bss.storage:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:724    .bss.storage_media:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:731    .bss.ux_app_EventFlag:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:738    .bss.ux_host_app_thread:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cccJAOv4.s:742    .bss.ux_host_app_thread:00000000 ux_host_app_thread
+
+UNDEFINED SYMBOLS
+printf
+putchar
+_txe_event_flags_set
+Error_Handler
+_ux_host_class_storage_entry
+_txe_byte_allocate
+_ux_system_initialize
+_ux_host_stack_initialize
+_ux_utility_error_callback_register
+_ux_host_stack_class_register
+_txe_thread_create
+_txe_event_flags_create
+_ux_system_host_class_storage_name
+msc_process_thread_entry
+HAL_GPIO_WritePin
+HAL_Delay
+MX_USB_OTG_FS_HCD_Init
+_ux_host_stack_hcd_register
+HAL_HCD_Start
+puts
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cccJAOv4.s 			page 26
+
+
+hhcd_USB_OTG_FS
+_ux_hcd_stm32_initialize
+_ux_system_host_hcd_stm32_name

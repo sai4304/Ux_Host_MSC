@@ -1,0 +1,298 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fx_media_read.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._fx_media_read,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_media_read
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_media_read:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/filex/common/src/fx_media_read.c"
+   1:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_media_read.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_media_read.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_media_read.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_media_read.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_media_read.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  12:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  13:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_media_read.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_media_read.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_media_read.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_media_read.c **** /**   Media                                                               */
+  19:Middlewares/ST/filex/common/src/fx_media_read.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  23:Middlewares/ST/filex/common/src/fx_media_read.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  25:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  26:Middlewares/ST/filex/common/src/fx_media_read.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  28:Middlewares/ST/filex/common/src/fx_media_read.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_media_read.c **** #include "fx_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fx_media_read.c **** #include "fx_media.h"
+  31:Middlewares/ST/filex/common/src/fx_media_read.c **** #include "fx_utility.h"
+  32:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  33:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  34:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+  35:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  38:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    _fx_media_read                                      PORTABLE C      */
+  39:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                           6.1          */
+  40:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    This function reads the specified raw logical sector from the       */
+  47:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    specified media.                                                    */
+  48:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  49:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  51:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    media_ptr                             Media control block pointer   */
+  52:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    logical_sector                        Logical sector to read        */
+  53:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    buffer_ptr                            Pointer to caller's buffer    */
+  54:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  55:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  OUTPUT                                                                */
+  56:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  57:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    return status                                                       */
+  58:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  CALLS                                                                 */
+  60:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    _fx_utility_logical_sector_read       Logical sector read utility   */
+  62:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  CALLED BY                                                             */
+  64:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    Application Code                                                    */
+  66:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  RELEASE HISTORY                                                       */
+  68:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fx_media_read.c **** /*    DATE              NAME                      DESCRIPTION             */
+  70:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  72:Middlewares/ST/filex/common/src/fx_media_read.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  73:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                            resulting in version 6.1    */
+  74:Middlewares/ST/filex/common/src/fx_media_read.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fx_media_read.c **** /**************************************************************************/
+  76:Middlewares/ST/filex/common/src/fx_media_read.c **** UINT  _fx_media_read(FX_MEDIA *media_ptr, ULONG logical_sector, VOID *buffer_ptr)
+  77:Middlewares/ST/filex/common/src/fx_media_read.c **** {
+  30              		.loc 1 77 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 77 1 is_stmt 0 view .LVU1
+  35 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 20
+  38              		.cfi_offset 4, -20
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s 			page 3
+
+
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 85B0     		sub	sp, sp, #20
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 40
+  46 0004 0446     		mov	r4, r0
+  78:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  79:Middlewares/ST/filex/common/src/fx_media_read.c **** UINT                   status;
+  47              		.loc 1 79 1 is_stmt 1 view .LVU2
+  80:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  81:Middlewares/ST/filex/common/src/fx_media_read.c **** #ifdef TX_ENABLE_EVENT_TRACE
+  82:Middlewares/ST/filex/common/src/fx_media_read.c **** TX_TRACE_BUFFER_ENTRY *trace_event;
+  83:Middlewares/ST/filex/common/src/fx_media_read.c **** ULONG                  trace_timestamp;
+  84:Middlewares/ST/filex/common/src/fx_media_read.c **** #endif
+  85:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  86:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  87:Middlewares/ST/filex/common/src/fx_media_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+  88:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  89:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* Increment the number of times this service has been called.  */
+  90:Middlewares/ST/filex/common/src/fx_media_read.c ****     media_ptr -> fx_media_reads++;
+  48              		.loc 1 90 5 view .LVU3
+  49              		.loc 1 90 15 is_stmt 0 view .LVU4
+  50 0006 D0F86031 		ldr	r3, [r0, #352]
+  51              		.loc 1 90 32 view .LVU5
+  52 000a 0133     		adds	r3, r3, #1
+  53 000c C0F86031 		str	r3, [r0, #352]
+  91:Middlewares/ST/filex/common/src/fx_media_read.c **** #endif
+  92:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  93:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* Check the media to make sure it is open.  */
+  94:Middlewares/ST/filex/common/src/fx_media_read.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  54              		.loc 1 94 5 is_stmt 1 view .LVU6
+  55              		.loc 1 94 19 is_stmt 0 view .LVU7
+  56 0010 0068     		ldr	r0, [r0]
+  57              	.LVL1:
+  58              		.loc 1 94 8 view .LVU8
+  59 0012 114B     		ldr	r3, .L7
+  60 0014 9842     		cmp	r0, r3
+  61 0016 03D0     		beq	.L6
+  95:Middlewares/ST/filex/common/src/fx_media_read.c ****     {
+  96:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  97:Middlewares/ST/filex/common/src/fx_media_read.c ****         /* Return the media not opened error.  */
+  98:Middlewares/ST/filex/common/src/fx_media_read.c ****         return(FX_MEDIA_NOT_OPEN);
+  62              		.loc 1 98 15 view .LVU9
+  63 0018 1124     		movs	r4, #17
+  64              	.LVL2:
+  65              	.L1:
+  99:Middlewares/ST/filex/common/src/fx_media_read.c ****     }
+ 100:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 101:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 102:Middlewares/ST/filex/common/src/fx_media_read.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_MEDIA_READ, media_ptr, logical_sector, buffer_ptr, 0, FX_TRACE
+ 103:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 104:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* Protect against other threads accessing the media.  */
+ 105:Middlewares/ST/filex/common/src/fx_media_read.c ****     FX_PROTECT
+ 106:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 107:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* Read the logical sector.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s 			page 4
+
+
+ 108:Middlewares/ST/filex/common/src/fx_media_read.c ****     status =  _fx_utility_logical_sector_read(media_ptr, (ULONG64) logical_sector, buffer_ptr, ((UL
+ 109:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 110:Middlewares/ST/filex/common/src/fx_media_read.c **** #ifdef TX_ENABLE_EVENT_TRACE
+ 111:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 112:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* Check for successful status.  */
+ 113:Middlewares/ST/filex/common/src/fx_media_read.c ****     if (status == FX_SUCCESS)
+ 114:Middlewares/ST/filex/common/src/fx_media_read.c ****     {
+ 115:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 116:Middlewares/ST/filex/common/src/fx_media_read.c ****         /* Update the trace event with the bytes read.  */
+ 117:Middlewares/ST/filex/common/src/fx_media_read.c ****         FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_MEDIA_READ, 0, 0, 0, media_ptr
+ 118:Middlewares/ST/filex/common/src/fx_media_read.c ****     }
+ 119:Middlewares/ST/filex/common/src/fx_media_read.c **** #endif
+ 120:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 121:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* Release media protection.  */
+ 122:Middlewares/ST/filex/common/src/fx_media_read.c ****     FX_UNPROTECT
+ 123:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 124:Middlewares/ST/filex/common/src/fx_media_read.c ****     /* Return status to the caller.  */
+ 125:Middlewares/ST/filex/common/src/fx_media_read.c ****     return(status);
+ 126:Middlewares/ST/filex/common/src/fx_media_read.c **** }
+  66              		.loc 1 126 1 view .LVU10
+  67 001a 2046     		mov	r0, r4
+  68 001c 05B0     		add	sp, sp, #20
+  69              	.LCFI2:
+  70              		.cfi_remember_state
+  71              		.cfi_def_cfa_offset 20
+  72              		@ sp needed
+  73 001e F0BD     		pop	{r4, r5, r6, r7, pc}
+  74              	.LVL3:
+  75              	.L6:
+  76              	.LCFI3:
+  77              		.cfi_restore_state
+  78              		.loc 1 126 1 view .LVU11
+  79 0020 0E46     		mov	r6, r1
+  80 0022 1546     		mov	r5, r2
+ 105:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  81              		.loc 1 105 5 is_stmt 1 discriminator 2 view .LVU12
+ 105:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  82              		.loc 1 105 5 discriminator 2 view .LVU13
+  83 0024 04F5E477 		add	r7, r4, #456
+  84 0028 4FF0FF31 		mov	r1, #-1
+  85              	.LVL4:
+ 105:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  86              		.loc 1 105 5 is_stmt 0 discriminator 2 view .LVU14
+  87 002c 3846     		mov	r0, r7
+  88 002e FFF7FEFF 		bl	_tx_mutex_get
+  89              	.LVL5:
+ 105:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  90              		.loc 1 105 5 discriminator 2 view .LVU15
+  91 0032 70B9     		cbnz	r0, .L4
+ 108:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  92              		.loc 1 108 5 is_stmt 1 view .LVU16
+ 108:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+  93              		.loc 1 108 15 is_stmt 0 view .LVU17
+  94 0034 0423     		movs	r3, #4
+  95 0036 0293     		str	r3, [sp, #8]
+  96 0038 0123     		movs	r3, #1
+  97 003a 0193     		str	r3, [sp, #4]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s 			page 5
+
+
+  98 003c 0095     		str	r5, [sp]
+  99 003e 3246     		mov	r2, r6
+ 100 0040 0023     		movs	r3, #0
+ 101 0042 2046     		mov	r0, r4
+ 102 0044 FFF7FEFF 		bl	_fx_utility_logical_sector_read
+ 103              	.LVL6:
+ 104 0048 0446     		mov	r4, r0
+ 105              	.LVL7:
+ 122:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 106              		.loc 1 122 5 is_stmt 1 view .LVU18
+ 107 004a 3846     		mov	r0, r7
+ 108              	.LVL8:
+ 122:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 109              		.loc 1 122 5 is_stmt 0 view .LVU19
+ 110 004c FFF7FEFF 		bl	_tx_mutex_put
+ 111              	.LVL9:
+ 125:Middlewares/ST/filex/common/src/fx_media_read.c **** }
+ 112              		.loc 1 125 5 is_stmt 1 view .LVU20
+ 125:Middlewares/ST/filex/common/src/fx_media_read.c **** }
+ 113              		.loc 1 125 11 is_stmt 0 view .LVU21
+ 114 0050 E3E7     		b	.L1
+ 115              	.LVL10:
+ 116              	.L4:
+ 105:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 117              		.loc 1 105 5 view .LVU22
+ 118 0052 1124     		movs	r4, #17
+ 119              	.LVL11:
+ 105:Middlewares/ST/filex/common/src/fx_media_read.c **** 
+ 120              		.loc 1 105 5 view .LVU23
+ 121 0054 E1E7     		b	.L1
+ 122              	.L8:
+ 123 0056 00BF     		.align	2
+ 124              	.L7:
+ 125 0058 4944454D 		.word	1296385097
+ 126              		.cfi_endproc
+ 127              	.LFE8:
+ 129              		.text
+ 130              	.Letext0:
+ 131              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 132              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 133              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 134              		.file 5 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_media_read.c
+C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s:20     .text._fx_media_read:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s:26     .text._fx_media_read:00000000 _fx_media_read
+C:\Users\HP\AppData\Local\Temp\ccXkI8Va.s:125    .text._fx_media_read:00000058 $d
+
+UNDEFINED SYMBOLS
+_tx_mutex_get
+_fx_utility_logical_sector_read
+_tx_mutex_put

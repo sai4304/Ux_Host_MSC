@@ -1,0 +1,2466 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"tx_event_flags_set.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._tx_event_flags_set,"ax",%progbits
+  20              		.align	1
+  21              		.global	_tx_event_flags_set
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_tx_event_flags_set:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/threadx/common/src/tx_event_flags_set.c"
+   1:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+   2:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+   3:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+   5:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  10:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+  11:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  12:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  13:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+  14:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+  15:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**                                                                       */
+  16:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**                                                                       */
+  18:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**   Event Flags                                                         */
+  19:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**                                                                       */
+  20:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+  21:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+  22:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  23:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #define TX_SOURCE_CODE
+  24:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  25:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  26:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  28:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #include "tx_api.h"
+  29:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #include "tx_trace.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 2
+
+
+  30:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #include "tx_thread.h"
+  31:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #include "tx_event_flags.h"
+  32:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  33:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  34:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+  35:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  36:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  38:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    _tx_event_flags_set                                 PORTABLE C      */
+  39:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                           6.1.11       */
+  40:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  42:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  43:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  44:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  46:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    This function sets the specified flags in the event group based on  */
+  47:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    the set option specified.  All threads suspended on the group whose */
+  48:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    get request can now be satisfied are resumed.                       */
+  49:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  50:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  INPUT                                                                 */
+  51:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  52:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    group_ptr                         Pointer to group control block    */
+  53:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    flags_to_set                      Event flags to set                */
+  54:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    set_option                        Specified either AND or OR        */
+  55:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                        operation on the event flags    */
+  56:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  57:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  OUTPUT                                                                */
+  58:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  59:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    TX_SUCCESS                        Always returns success            */
+  60:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  61:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  CALLS                                                                 */
+  62:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  63:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    _tx_thread_system_preempt_check   Check for preemption              */
+  64:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    _tx_thread_system_resume          Resume thread service             */
+  65:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    _tx_thread_system_ni_resume       Non-interruptable resume thread   */
+  66:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  67:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  CALLED BY                                                             */
+  68:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  69:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    Application Code                                                    */
+  70:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  71:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  RELEASE HISTORY                                                       */
+  72:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  73:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*    DATE              NAME                      DESCRIPTION             */
+  74:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  75:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  05-19-2020      William E. Lamie        Initial Version 6.0           */
+  76:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  09-30-2020      Yuxin Zhou              Modified comment(s),          */
+  77:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                            resulting in version 6.1    */
+  78:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*  04-25-2022      William E. Lamie        Modified comment(s), and      */
+  79:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                            added corrected preemption  */
+  80:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                            check logic, resulting in   */
+  81:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                            version 6.1.11              */
+  82:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /*                                                                        */
+  83:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** /**************************************************************************/
+  84:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** UINT  _tx_event_flags_set(TX_EVENT_FLAGS_GROUP *group_ptr, ULONG flags_to_set, UINT set_option)
+  85:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** {
+  30              		.loc 1 85 1 view -0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 3
+
+
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 85 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 40
+  38              		.cfi_offset 3, -40
+  39              		.cfi_offset 4, -36
+  40              		.cfi_offset 5, -32
+  41              		.cfi_offset 6, -28
+  42              		.cfi_offset 7, -24
+  43              		.cfi_offset 8, -20
+  44              		.cfi_offset 9, -16
+  45              		.cfi_offset 10, -12
+  46              		.cfi_offset 11, -8
+  47              		.cfi_offset 14, -4
+  48 0004 8446     		mov	ip, r0
+  86:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  87:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_INTERRUPT_SAVE_AREA
+  49              		.loc 1 87 1 is_stmt 1 view .LVU2
+  88:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+  89:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_THREAD       *thread_ptr;
+  50              		.loc 1 89 1 view .LVU3
+  90:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_THREAD       *next_thread_ptr;
+  51              		.loc 1 90 1 view .LVU4
+  91:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_THREAD       *next_thread;
+  52              		.loc 1 91 1 view .LVU5
+  92:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_THREAD       *previous_thread;
+  53              		.loc 1 92 1 view .LVU6
+  93:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_THREAD       *satisfied_list;
+  54              		.loc 1 93 1 view .LVU7
+  94:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_THREAD       *last_satisfied;
+  55              		.loc 1 94 1 view .LVU8
+  95:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** TX_THREAD       *suspended_list;
+  56              		.loc 1 95 1 view .LVU9
+  96:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** UINT            suspended_count;
+  57              		.loc 1 96 1 view .LVU10
+  97:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** ULONG           current_event_flags;
+  58              		.loc 1 97 1 view .LVU11
+  98:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** ULONG           requested_flags;
+  59              		.loc 1 98 1 view .LVU12
+  99:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** ULONG           flags_satisfied;
+  60              		.loc 1 99 1 view .LVU13
+ 100:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** ULONG           *suspend_info_ptr;
+  61              		.loc 1 100 1 view .LVU14
+ 101:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** UINT            and_request;
+  62              		.loc 1 101 1 view .LVU15
+ 102:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** UINT            get_option;
+  63              		.loc 1 102 1 view .LVU16
+ 103:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** UINT            clear_request;
+  64              		.loc 1 103 1 view .LVU17
+ 104:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** UINT            preempt_check;
+  65              		.loc 1 104 1 view .LVU18
+ 105:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_NOT_INTERRUPTABLE
+ 106:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** UINT            interrupted_set_request;
+  66              		.loc 1 106 1 view .LVU19
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 4
+
+
+ 107:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 108:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_DISABLE_NOTIFY_CALLBACKS
+ 109:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** VOID            (*events_set_notify)(struct TX_EVENT_FLAGS_GROUP_STRUCT *notify_group_ptr);
+ 110:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 111:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 112:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 113:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     /* Disable interrupts to remove the semaphore from the created list.  */
+ 114:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     TX_DISABLE
+  67              		.loc 1 114 5 view .LVU20
+  68              	.LBB36:
+  69              	.LBI36:
+  70              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+   1:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+   2:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+   3:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+   5:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  10:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+  11:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  12:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  13:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+  14:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+  15:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**                                                                       */
+  16:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /** ThreadX Component                                                     */
+  17:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**                                                                       */
+  18:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**   Port Specific                                                       */
+  19:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**                                                                       */
+  20:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+  21:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+  22:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  23:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  24:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+  25:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  26:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  PORT SPECIFIC C INFORMATION                            RELEASE        */
+  27:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  28:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    tx_port.h                                         Cortex-M4/GNU     */
+  29:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                           6.1.12       */
+  30:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  31:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  AUTHOR                                                                */
+  32:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  33:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    Scott Larson, Microsoft Corporation                                 */
+  34:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  35:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  DESCRIPTION                                                           */
+  36:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  37:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    This file contains data type definitions that make the ThreadX      */
+  38:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    real-time kernel function identically on a variety of different     */
+  39:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    processor architectures.  For example, the size or number of bits   */
+  40:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    in an "int" data type vary between microprocessor architectures and */
+  41:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    even C compilers for the same microprocessor.  ThreadX does not     */
+  42:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    directly use native C data types.  Instead, ThreadX creates its     */
+  43:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    own special types that can be mapped to actual data types by this   */
+  44:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    file to guarantee consistency in the interface and functionality.   */
+  45:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 5
+
+
+  46:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    This file replaces the previous Cortex-M3/M4/M7 files. It unifies   */
+  47:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    the ARMv7-M architecture and compilers into one common file.        */
+  48:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  49:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  RELEASE HISTORY                                                       */
+  50:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  51:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*    DATE              NAME                      DESCRIPTION             */
+  52:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  53:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  06-02-2021      Scott Larson            Initial Version 6.1.7         */
+  54:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  01-31-2022      Scott Larson            Modified comments, updated    */
+  55:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            typedef to fix misra        */
+  56:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            violation,                  */
+  57:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            fixed predefined macro,     */
+  58:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            resulting in version 6.1.10 */
+  59:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  04-25-2022      Scott Larson            Modified comments and added   */
+  60:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            volatile to registers,      */
+  61:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            resulting in version 6.1.11 */
+  62:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*  07-29-2022      Scott Larson            Modified comments and         */
+  63:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            described BASEPRI usage,    */
+  64:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                            resulting in version 6.1.12 */
+  65:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*                                                                        */
+  66:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /**************************************************************************/
+  67:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  68:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_PORT_H
+  69:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_PORT_H
+  70:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  71:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  72:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Determine if the optional ThreadX user define file should be used.  */
+  73:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  74:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_INCLUDE_USER_DEFINE_FILE
+  75:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  76:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Yes, include the user defines in tx_user.h. The defines in this file may
+  77:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    alternately be defined on the command line.  */
+  78:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  79:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #include "tx_user.h"
+  80:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+  81:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  82:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  83:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define compiler library include files.  */
+  84:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  85:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #include <stdlib.h>
+  86:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #include <string.h>
+  87:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  88:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef __ICCARM__
+  89:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #include <intrinsics.h>                     /* IAR Intrinsics */
+  90:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define __asm__ __asm                       /* Define to make all inline asm look similar */
+  91:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef  TX_ENABLE_IAR_LIBRARY_SUPPORT
+  92:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #include <yvals.h>
+  93:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+  94:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif /* __ICCARM__ */
+  95:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+  96:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef __ghs__
+  97:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #include <arm_ghs.h>
+  98:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #include "tx_ghs.h"
+  99:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* __ghs__ */
+ 100:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 101:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 102:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #if !defined(__GNUC__) && !defined(__CC_ARM)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 6
+
+
+ 103:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define __get_control_value __get_CONTROL
+ 104:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define __set_control_value __set_CONTROL
+ 105:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 106:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 107:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef __GNUC__
+ 108:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define __get_ipsr_value __get_IPSR
+ 109:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 110:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 111:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define ThreadX basic types for this port.  */
+ 112:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 113:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define VOID                                    void
+ 114:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef char                                    CHAR;
+ 115:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef unsigned char                           UCHAR;
+ 116:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef int                                     INT;
+ 117:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef unsigned int                            UINT;
+ 118:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef long                                    LONG;
+ 119:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef unsigned long                           ULONG;
+ 120:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef unsigned long long                      ULONG64;
+ 121:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef short                                   SHORT;
+ 122:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** typedef unsigned short                          USHORT;
+ 123:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define ULONG64_DEFINED
+ 124:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 125:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the priority levels for ThreadX.  Legal values range
+ 126:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    from 32 to 1024 and MUST be evenly divisible by 32.  */
+ 127:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 128:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_MAX_PRIORITIES
+ 129:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_MAX_PRIORITIES                       32
+ 130:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 131:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 132:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 133:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the minimum stack for a ThreadX thread on this processor. If the size supplied during
+ 134:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    thread creation is less than this value, the thread create call will return an error.  */
+ 135:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 136:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_MINIMUM_STACK
+ 137:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_MINIMUM_STACK                        200         /* Minimum stack size for this port  */
+ 138:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 139:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 140:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 141:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the system timer thread's default stack size and priority.  These are only applicable
+ 142:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    if TX_TIMER_PROCESS_IN_ISR is not defined.  */
+ 143:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 144:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_TIMER_THREAD_STACK_SIZE
+ 145:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TIMER_THREAD_STACK_SIZE              1024        /* Default timer thread stack size  */
+ 146:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 147:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 148:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_TIMER_THREAD_PRIORITY
+ 149:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TIMER_THREAD_PRIORITY                0           /* Default timer thread priority    */
+ 150:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 151:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 152:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* By default, ThreadX for Cortex-M uses the PRIMASK register to enable/disable interrupts.
+ 153:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** If using BASEPRI is desired, define the following two symbols for both c and assembly files:
+ 154:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** TX_PORT_USE_BASEPRI - This tells ThreadX to use BASEPRI instead of PRIMASK.
+ 155:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** TX_PORT_BASEPRI = (priority_mask << (8 - number_priority_bits)) - this defines the maximum priority
+ 156:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** Any interrupt with a higher priority than priority_mask will not be masked, thus the interrupt will
+ 157:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** */
+ 158:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 159:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define various constants for the ThreadX Cortex-M port.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 7
+
+
+ 160:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 161:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_INT_DISABLE                          1           /* Disable interrupts               */
+ 162:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_INT_ENABLE                           0           /* Enable interrupts                */
+ 163:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 164:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 165:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the clock source for trace event entry time stamp. The following two item are port specif
+ 166:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    For example, if the time source is at the address 0x0a800024 and is 16-bits in size, the clock
+ 167:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    source constants would be:
+ 168:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 169:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_SOURCE                    *((volatile ULONG *) 0x0a800024)
+ 170:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_MASK                      0x0000FFFFUL
+ 171:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 172:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** */
+ 173:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 174:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 175:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_TRACE_TIME_SOURCE
+ 176:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_SOURCE                    *((volatile ULONG *) 0xE0001004)
+ 177:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 178:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 179:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** ULONG   _tx_misra_time_stamp_get(VOID);
+ 180:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_SOURCE                    _tx_misra_time_stamp_get()
+ 181:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 182:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 183:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_TRACE_TIME_MASK
+ 184:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TRACE_TIME_MASK                      0xFFFFFFFFUL
+ 185:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 186:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 187:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef __ghs__
+ 188:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define constants for Green Hills EventAnalyzer.  */
+ 189:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 190:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the number of ticks per second. This informs the EventAnalyzer what the timestamps
+ 191:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    represent.  By default, this is set to 1,000,000 i.e., one tick every microsecond. */
+ 192:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 193:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_EL_TICKS_PER_SECOND                  1000000
+ 194:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 195:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the method of how to get the upper and lower 32-bits of the time stamp. By default, simpl
+ 196:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    simulate the time-stamp source with a counter.  */
+ 197:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 198:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define read_tbu()                              _tx_el_time_base_upper
+ 199:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define read_tbl()                              ++_tx_el_time_base_lower
+ 200:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* __ghs__ */
+ 201:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 202:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the port specific options for the _tx_build_options variable. This variable indicates
+ 203:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    how the ThreadX library was built.  */
+ 204:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 205:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_BUILD_OPTIONS          (0)
+ 206:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 207:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 208:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the in-line initialization constant so that modules with in-line
+ 209:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    initialization capabilities can prevent their initialization from being
+ 210:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    a function call.  */
+ 211:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 212:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_MISRA_ENABLE
+ 213:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_DISABLE_INLINE
+ 214:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 215:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_INLINE_INITIALIZATION
+ 216:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 8
+
+
+ 217:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 218:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 219:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Determine whether or not stack checking is enabled. By default, ThreadX stack checking is
+ 220:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    disabled. When the following is defined, ThreadX thread stack checking is enabled.  If stack
+ 221:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    checking is enabled (TX_ENABLE_STACK_CHECKING is defined), the TX_DISABLE_STACK_FILLING
+ 222:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    define is negated, thereby forcing the stack fill which is necessary for the stack checking
+ 223:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    logic.  */
+ 224:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 225:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 226:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_ENABLE_STACK_CHECKING
+ 227:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #undef TX_DISABLE_STACK_FILLING
+ 228:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 229:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 230:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 231:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 232:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the TX_THREAD control block extensions for this port. The main reason
+ 233:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    for the multiple macros is so that backward compatibility can be maintained with
+ 234:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    existing ThreadX kernel awareness modules.  */
+ 235:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 236:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_0
+ 237:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_1
+ 238:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef  TX_ENABLE_IAR_LIBRARY_SUPPORT
+ 239:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_2           VOID    *tx_thread_iar_tls_pointer;
+ 240:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #elif defined(__ghs__)
+ 241:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_2           VOID *  tx_thread_eh_globals;                           \
+ 242:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                         int     Errno;             /* errno.  */                \
+ 243:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                         char *  strtok_saved_pos;  /* strtok() position.  */
+ 244:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 245:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_2
+ 246:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 247:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 248:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 249:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_EXTENSION_3
+ 250:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 251:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 252:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 253:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the port extensions of the remaining ThreadX objects.  */
+ 254:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 255:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_BLOCK_POOL_EXTENSION
+ 256:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_BYTE_POOL_EXTENSION
+ 257:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_EVENT_FLAGS_GROUP_EXTENSION
+ 258:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_MUTEX_EXTENSION
+ 259:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_QUEUE_EXTENSION
+ 260:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_SEMAPHORE_EXTENSION
+ 261:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TIMER_EXTENSION
+ 262:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 263:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 264:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the user extension field of the thread control block.  Nothing
+ 265:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    additional is needed for this port so it is defined as white space.  */
+ 266:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 267:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_THREAD_USER_EXTENSION
+ 268:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_USER_EXTENSION
+ 269:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 270:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 271:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 272:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the macros for processing extensions in tx_thread_create, tx_thread_delete,
+ 273:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    tx_thread_shell_entry, and tx_thread_terminate.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 9
+
+
+ 274:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 275:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 276:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef  TX_ENABLE_IAR_LIBRARY_SUPPORT
+ 277:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #if (__VER__ < 8000000)
+ 278:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_CREATE_EXTENSION(thread_ptr)                      thread_ptr -> tx_thread_iar_tls
+ 279:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_DELETE_EXTENSION(thread_ptr)                      __iar_dlib_perthread_deallocate
+ 280:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                     thread_ptr -> tx_thread_iar_tls
+ 281:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_PRE_SCHEDULER_INITIALIZATION               __iar_dlib_perthread_access(0);
+ 282:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 283:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** void    *_tx_iar_create_per_thread_tls_area(void);
+ 284:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** void    _tx_iar_destroy_per_thread_tls_area(void *tls_ptr);
+ 285:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** void    __iar_Initlocks(void);
+ 286:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 287:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_CREATE_EXTENSION(thread_ptr)                      thread_ptr -> tx_thread_iar_tls
+ 288:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_DELETE_EXTENSION(thread_ptr)                      do {_tx_iar_destroy_per_thread_
+ 289:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                         thread_ptr -> tx_thread_iar
+ 290:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_PRE_SCHEDULER_INITIALIZATION               do {__iar_Initlocks();} while(0
+ 291:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 292:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 293:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_CREATE_EXTENSION(thread_ptr)
+ 294:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_DELETE_EXTENSION(thread_ptr)
+ 295:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 296:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 297:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #if defined(__ARMVFP__) || defined(__ARM_PCS_VFP) || defined(__ARM_FP) || defined(__TARGET_FPU_VFP)
+ 298:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 299:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_MISRA_ENABLE
+ 300:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 301:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** ULONG  _tx_misra_control_get(void);
+ 302:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** void   _tx_misra_control_set(ULONG value);
+ 303:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** ULONG  _tx_misra_fpccr_get(void);
+ 304:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** void   _tx_misra_vfp_touch(void);
+ 305:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 306:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else   /* TX_MISRA_ENABLE not defined */
+ 307:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 308:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define some helper functions (these are intrinsics in some compilers). */
+ 309:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef __GNUC__ /* GCC and ARM Compiler 6 */
+ 310:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 311:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline ULONG __get_control_value(void)
+ 312:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 313:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** ULONG  control_value;
+ 314:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 315:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile (" MRS  %0,CONTROL ": "=r" (control_value) );
+ 316:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     return(control_value);
+ 317:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 318:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 319:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __set_control_value(ULONG control_value)
+ 320:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 321:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile (" MSR  CONTROL,%0": : "r" (control_value): "memory" );
+ 322:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 323:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 324:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_VFP_TOUCH()  __asm__ volatile ("VMOV.F32 s0, s0");
+ 325:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 326:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #elif defined(__CC_ARM) /* ARM Compiler 5 */
+ 327:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 328:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) ULONG __get_control_value(void)
+ 329:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 330:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** ULONG  control_value;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 10
+
+
+ 331:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 332:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm volatile ("MRS control_value,CONTROL");
+ 333:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     return(control_value);
+ 334:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 335:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 336:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) void __set_control_value(ULONG control_value)
+ 337:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 338:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile ("MSR CONTROL,control_value");
+ 339:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 340:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Can't access VFP registers with inline asm, so define this in tx_thread_schedule.  */
+ 341:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** void _tx_vfp_access(void);
+ 342:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_VFP_TOUCH()  _tx_vfp_access();
+ 343:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 344:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #elif defined(__ICCARM__)  /* IAR */
+ 345:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_VFP_TOUCH()  __asm__ volatile ("VMOV.F32 s0, s0");
+ 346:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* Helper functions for different compilers */
+ 347:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 348:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* TX_MISRA_ENABLE */
+ 349:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 350:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 351:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* A completed thread falls into _thread_shell_entry and we can simply deactivate the FPU via CONTR
+ 352:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    in order to ensure no lazy stacking will occur. */
+ 353:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 354:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 355:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 356:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_COMPLETED_EXTENSION(thread_ptr)   {                                              
+ 357:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     ULONG  _tx_vfp_state;                          
+ 358:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  __get_control_value();    
+ 359:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  _tx_vfp_state & ~((ULONG) 
+ 360:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         __set_control_value(_tx_vfp_state);        
+ 361:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     }
+ 362:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 363:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 364:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_COMPLETED_EXTENSION(thread_ptr)   {                                              
+ 365:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     ULONG  _tx_vfp_state;                          
+ 366:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  _tx_misra_control_get();  
+ 367:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         _tx_vfp_state =  _tx_vfp_state & ~((ULONG) 
+ 368:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         _tx_misra_control_set(_tx_vfp_state);      
+ 369:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     }
+ 370:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 371:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 372:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 373:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* A thread can be terminated by another thread, so we first check if it's self-terminating and not
+ 374:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    If so, deactivate the FPU via CONTROL.FPCA. Otherwise we are in an interrupt or another thread i
+ 375:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    this one, so if the FPCCR.LSPACT bit is set, we need to save the CONTROL.FPCA state, touch the F
+ 376:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    the lazy FPU save, then restore the CONTROL.FPCA state. */
+ 377:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 378:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 379:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 380:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_TERMINATED_EXTENSION(thread_ptr)  {                                              
+ 381:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     ULONG  _tx_system_state;                       
+ 382:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         _tx_system_state =  TX_THREAD_GET_SYSTEM_ST
+ 383:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         if ((_tx_system_state == ((ULONG) 0)) && ((
+ 384:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         {                                          
+ 385:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         ULONG  _tx_vfp_state;                      
+ 386:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  __get_control_value();
+ 387:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  _tx_vfp_state & ~((ULO
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 11
+
+
+ 388:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             __set_control_value(_tx_vfp_state);    
+ 389:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         }                                          
+ 390:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         else                                       
+ 391:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         {                                          
+ 392:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         ULONG  _tx_fpccr;                          
+ 393:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  *((volatile ULONG *) 0xE00
+ 394:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  _tx_fpccr & ((ULONG) 0x01)
+ 395:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             if (_tx_fpccr == ((ULONG) 0x01))       
+ 396:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             {                                      
+ 397:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             ULONG _tx_vfp_state;                   
+ 398:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state = __get_control_value
+ 399:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state =  _tx_vfp_state & ((
+ 400:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 TX_VFP_TOUCH();                    
+ 401:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 if (_tx_vfp_state == ((ULONG) 0))  
+ 402:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 {                                  
+ 403:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  __get_control_
+ 404:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  _tx_vfp_state 
+ 405:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                     __set_control_value(_tx_vfp_sta
+ 406:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 }                                  
+ 407:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             }                                      
+ 408:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         }                                          
+ 409:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     }
+ 410:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 411:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 412:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_TERMINATED_EXTENSION(thread_ptr)  {                                              
+ 413:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     ULONG  _tx_system_state;                       
+ 414:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         _tx_system_state =  TX_THREAD_GET_SYSTEM_ST
+ 415:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         if ((_tx_system_state == ((ULONG) 0)) && ((
+ 416:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         {                                          
+ 417:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         ULONG  _tx_vfp_state;                      
+ 418:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  _tx_misra_control_get(
+ 419:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_vfp_state =  _tx_vfp_state & ~((ULO
+ 420:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_misra_control_set(_tx_vfp_state);  
+ 421:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         }                                          
+ 422:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         else                                       
+ 423:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         {                                          
+ 424:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         ULONG  _tx_fpccr;                          
+ 425:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  _tx_misra_fpccr_get();    
+ 426:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             _tx_fpccr =  _tx_fpccr & ((ULONG) 0x01)
+ 427:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             if (_tx_fpccr == ((ULONG) 0x01))       
+ 428:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             {                                      
+ 429:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             ULONG _tx_vfp_state;                   
+ 430:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state = _tx_misra_control_g
+ 431:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 _tx_vfp_state =  _tx_vfp_state & ((
+ 432:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 _tx_misra_vfp_touch();             
+ 433:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 if (_tx_vfp_state == ((ULONG) 0))  
+ 434:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 {                                  
+ 435:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  _tx_misra_cont
+ 436:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                     _tx_vfp_state =  _tx_vfp_state 
+ 437:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                     _tx_misra_control_set(_tx_vfp_s
+ 438:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                                 }                                  
+ 439:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                             }                                      
+ 440:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                         }                                          
+ 441:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                     }
+ 442:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 443:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 444:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else   /* No VFP in use */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 12
+
+
+ 445:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 446:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_COMPLETED_EXTENSION(thread_ptr)
+ 447:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_TERMINATED_EXTENSION(thread_ptr)
+ 448:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 449:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* defined(__ARMVFP__) || defined(__ARM_PCS_VFP) || defined(__ARM_FP) || defined(__TARGET_F
+ 450:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 451:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 452:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the ThreadX object creation extensions for the remaining objects.  */
+ 453:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 454:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_BLOCK_POOL_CREATE_EXTENSION(pool_ptr)
+ 455:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_BYTE_POOL_CREATE_EXTENSION(pool_ptr)
+ 456:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_EVENT_FLAGS_GROUP_CREATE_EXTENSION(group_ptr)
+ 457:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_MUTEX_CREATE_EXTENSION(mutex_ptr)
+ 458:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_QUEUE_CREATE_EXTENSION(queue_ptr)
+ 459:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_SEMAPHORE_CREATE_EXTENSION(semaphore_ptr)
+ 460:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TIMER_CREATE_EXTENSION(timer_ptr)
+ 461:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 462:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 463:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the ThreadX object deletion extensions for the remaining objects.  */
+ 464:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 465:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_BLOCK_POOL_DELETE_EXTENSION(pool_ptr)
+ 466:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_BYTE_POOL_DELETE_EXTENSION(pool_ptr)
+ 467:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_EVENT_FLAGS_GROUP_DELETE_EXTENSION(group_ptr)
+ 468:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_MUTEX_DELETE_EXTENSION(mutex_ptr)
+ 469:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_QUEUE_DELETE_EXTENSION(queue_ptr)
+ 470:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_SEMAPHORE_DELETE_EXTENSION(semaphore_ptr)
+ 471:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_TIMER_DELETE_EXTENSION(timer_ptr)
+ 472:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 473:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 474:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the get system state macro.  */
+ 475:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 476:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_THREAD_GET_SYSTEM_STATE
+ 477:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_MISRA_ENABLE
+ 478:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 479:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef __CC_ARM /* ARM Compiler 5 */
+ 480:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 481:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** register unsigned int _ipsr __asm("ipsr");
+ 482:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | _ipsr)
+ 483:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 484:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #elif defined(__GNUC__) /* GCC and ARM Compiler 6 */
+ 485:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 486:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline unsigned int __get_ipsr_value(void)
+ 487:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 488:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** unsigned int  ipsr_value;
+ 489:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile (" MRS  %0,IPSR ": "=r" (ipsr_value) );
+ 490:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     return(ipsr_value);
+ 491:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 492:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 493:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | __get_ipsr_value())
+ 494:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 495:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #elif defined(__ICCARM__)   /* IAR */
+ 496:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 497:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | __get_IPSR())
+ 498:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 499:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* TX_THREAD_GET_SYSTEM_STATE for different compilers */
+ 500:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 501:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else   /* TX_MISRA_ENABLE is defined, use MISRA function. */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 13
+
+
+ 502:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** ULONG   _tx_misra_ipsr_get(VOID);
+ 503:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_GET_SYSTEM_STATE()        (_tx_thread_system_state | _tx_misra_ipsr_get())
+ 504:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* TX_MISRA_ENABLE */
+ 505:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif  /* TX_THREAD_GET_SYSTEM_STATE */
+ 506:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 507:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 508:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the check for whether or not to call the _tx_thread_system_return function.  A non-zero v
+ 509:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    indicates that _tx_thread_system_return should not be called. This overrides the definition in t
+ 510:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    for Cortex-M since so we don't waste time checking the _tx_thread_system_state variable that is 
+ 511:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    zero after initialization for Cortex-M ports. */
+ 512:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 513:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_THREAD_SYSTEM_RETURN_CHECK
+ 514:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_THREAD_SYSTEM_RETURN_CHECK(c)    (c) = ((ULONG) _tx_thread_preempt_disable);
+ 515:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 516:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 517:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the macro to ensure _tx_thread_preempt_disable is set early in initialization in order to
+ 518:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****    prevent early scheduling on Cortex-M parts.  */
+ 519:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 520:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_PORT_SPECIFIC_POST_INITIALIZATION    _tx_thread_preempt_disable++;
+ 521:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 522:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 523:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 524:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 525:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifndef TX_DISABLE_INLINE
+ 526:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 527:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the TX_LOWEST_SET_BIT_CALCULATE macro for each compiler. */
+ 528:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef __ICCARM__       /* IAR Compiler */
+ 529:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_LOWEST_SET_BIT_CALCULATE(m, b)       (b) = (UINT) __CLZ(__RBIT((m)));
+ 530:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #elif defined(__CC_ARM) /* AC5 Compiler */
+ 531:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_LOWEST_SET_BIT_CALCULATE(m, b)       (b) = (UINT) __clz(__rbit((m)));
+ 532:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #elif defined(__GNUC__) /* GCC and AC6 Compiler */
+ 533:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #define TX_LOWEST_SET_BIT_CALCULATE(m, b)       __asm__ volatile (" RBIT %0,%1 ": "=r" (m) : "r" (m
+ 534:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****                                                 __asm__ volatile (" CLZ  %0,%1 ": "=r" (b) : "r" (m
+ 535:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 536:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 537:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 538:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 539:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /* Define the interrupt disable/restore macros for each compiler. */
+ 540:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 541:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #if defined(__GNUC__) || defined(__ICCARM__)
+ 542:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 543:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** /*** GCC/AC6 and IAR ***/
+ 544:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 545:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline unsigned int __get_interrupt_posture(void)
+ 546:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 547:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** unsigned int posture;
+ 548:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 549:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile ("MRS  %0, BASEPRI ": "=r" (posture));
+ 550:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 551:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile ("MRS  %0, PRIMASK ": "=r" (posture));
+ 552:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     return(posture);
+ 554:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 555:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 556:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 557:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __set_basepri_value(unsigned int basepri_valu
+ 558:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 14
+
+
+ 559:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile ("MSR  BASEPRI,%0 ": : "r" (basepri_value));
+ 560:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 561:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 562:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __enable_interrupts(void)
+ 563:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 564:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile ("CPSIE  i": : : "memory");
+ 565:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 566:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 567:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 568:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline void __restore_interrupt(unsigned int int_posture)
+ 569:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 570:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 571:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __set_basepri_value(int_posture);
+ 572:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     //__asm__ volatile ("MSR  BASEPRI,%0": : "r" (int_posture): "memory");
+ 573:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile ("MSR  PRIMASK,%0": : "r" (int_posture): "memory");
+ 575:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 576:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 577:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 578:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** __attribute__( ( always_inline ) ) static inline unsigned int __disable_interrupts(void)
+  71              		.loc 2 578 63 view .LVU21
+  72              	.LBB37:
+ 579:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 580:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** unsigned int int_posture;
+  73              		.loc 2 580 1 view .LVU22
+ 581:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 582:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     int_posture = __get_interrupt_posture();
+  74              		.loc 2 582 5 view .LVU23
+  75              	.LBB38:
+  76              	.LBI38:
+ 545:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+  77              		.loc 2 545 63 view .LVU24
+  78              	.LBB39:
+ 547:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+  79              		.loc 2 547 1 view .LVU25
+ 551:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+  80              		.loc 2 551 5 view .LVU26
+  81              		.syntax unified
+  82              	@ 551 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+  83 0006 EFF3108E 		MRS  lr, PRIMASK 
+  84              	@ 0 "" 2
+  85              	.LVL1:
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+  86              		.loc 2 553 5 view .LVU27
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+  87              		.loc 2 553 5 is_stmt 0 view .LVU28
+  88              		.thumb
+  89              		.syntax unified
+  90              	.LBE39:
+  91              	.LBE38:
+ 583:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 584:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 585:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __set_basepri_value(TX_PORT_BASEPRI);
+ 586:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #else
+ 587:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     __asm__ volatile ("CPSID i" : : : "memory");
+  92              		.loc 2 587 5 is_stmt 1 view .LVU29
+  93              		.syntax unified
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 15
+
+
+  94              	@ 587 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+  95 000a 72B6     		CPSID i
+  96              	@ 0 "" 2
+ 588:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 589:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h ****     return(int_posture);
+  97              		.loc 2 589 5 view .LVU30
+  98              	.LVL2:
+  99              		.loc 2 589 5 is_stmt 0 view .LVU31
+ 100              		.thumb
+ 101              		.syntax unified
+ 102              	.LBE37:
+ 103              	.LBE36:
+ 115:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 116:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifdef TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO
+ 117:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 118:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     /* Increment the total event flags set counter.  */
+ 119:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     _tx_event_flags_performance_set_count++;
+ 120:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 121:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     /* Increment the number of event flags sets on this semaphore.  */
+ 122:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     group_ptr -> tx_event_flags_group_performance_set_count++;
+ 123:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 124:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 125:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 126:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     TX_TRACE_IN_LINE_INSERT(TX_TRACE_EVENT_FLAGS_SET, group_ptr, flags_to_set, set_option, group_pt
+ 127:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 128:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     /* Log this kernel call.  */
+ 129:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     TX_EL_EVENT_FLAGS_SET_INSERT
+ 130:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 131:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     /* Determine how to set this group's event flags.  */
+ 132:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     if ((set_option & TX_EVENT_FLAGS_AND_MASK) == TX_AND)
+ 104              		.loc 1 132 5 is_stmt 1 view .LVU32
+ 105              		.loc 1 132 8 is_stmt 0 view .LVU33
+ 106 000c 12F00205 		ands	r5, r2, #2
+ 107 0010 12D0     		beq	.L2
+ 133:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     {
+ 134:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 135:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_NOT_INTERRUPTABLE
+ 136:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 137:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Set interrupted set request flag to false.  */
+ 138:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         interrupted_set_request =  TX_FALSE;
+ 108              		.loc 1 138 9 is_stmt 1 view .LVU34
+ 109              	.LVL3:
+ 139:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 140:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Determine if the suspension list is being processed by an interrupted
+ 141:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****            set request.  */
+ 142:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         if (group_ptr -> tx_event_flags_group_suspended_count != TX_NO_SUSPENSIONS)
+ 110              		.loc 1 142 9 view .LVU35
+ 111              		.loc 1 142 23 is_stmt 0 view .LVU36
+ 112 0012 4369     		ldr	r3, [r0, #20]
+ 113              		.loc 1 142 12 view .LVU37
+ 114 0014 0BB1     		cbz	r3, .L3
+ 143:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 144:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 145:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             if (group_ptr -> tx_event_flags_group_suspension_list == TX_NULL)
+ 115              		.loc 1 145 13 is_stmt 1 view .LVU38
+ 116              		.loc 1 145 27 is_stmt 0 view .LVU39
+ 117 0016 0369     		ldr	r3, [r0, #16]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 16
+
+
+ 118              		.loc 1 145 16 view .LVU40
+ 119 0018 4BB1     		cbz	r3, .L32
+ 120              	.L3:
+ 121              	.LVL4:
+ 146:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 147:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 148:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Set the interrupted set request flag.  */
+ 149:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 interrupted_set_request =  TX_TRUE;
+ 150:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 151:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 152:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 153:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Was a set request interrupted?  */
+ 154:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         if (interrupted_set_request == TX_TRUE)
+ 155:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 156:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 157:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* A previous set operation was interrupted, we need to defer the
+ 158:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                event clearing until the set operation is complete.  */
+ 159:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 160:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* Remember the events to clear.  */
+ 161:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             group_ptr -> tx_event_flags_group_delayed_clear =
+ 162:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                         group_ptr -> tx_event_flags_group_delayed_clear | ~flags_to
+ 163:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 164:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         else
+ 165:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 166:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 167:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 168:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* Previous set operation was not interrupted, simply clear the
+ 169:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                specified flags by "ANDing" the flags into the current events
+ 170:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                of the group.  */
+ 171:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             group_ptr -> tx_event_flags_group_current =
+ 122              		.loc 1 171 13 is_stmt 1 view .LVU41
+ 172:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 group_ptr -> tx_event_flags_group_current & flags_to_set;
+ 123              		.loc 1 172 27 is_stmt 0 view .LVU42
+ 124 001a DCF80830 		ldr	r3, [ip, #8]
+ 125              		.loc 1 172 59 view .LVU43
+ 126 001e 1940     		ands	r1, r1, r3
+ 127              	.LVL5:
+ 171:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 group_ptr -> tx_event_flags_group_current & flags_to_set;
+ 128              		.loc 1 171 55 view .LVU44
+ 129 0020 CCF80810 		str	r1, [ip, #8]
+ 130              	.L4:
+ 173:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 174:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_NOT_INTERRUPTABLE
+ 175:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 176:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 177:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 178:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 179:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Restore interrupts.  */
+ 180:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         TX_RESTORE
+ 131              		.loc 1 180 9 is_stmt 1 view .LVU45
+ 132              	.LVL6:
+ 133              	.LBB40:
+ 134              	.LBI40:
+ 568:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 135              		.loc 2 568 55 view .LVU46
+ 136              	.LBB41:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 17
+
+
+ 137              		.loc 2 574 5 view .LVU47
+ 138              		.syntax unified
+ 139              	@ 574 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 140 0024 8EF31088 		MSR  PRIMASK,lr
+ 141              	@ 0 "" 2
+ 142              	.LVL7:
+ 143              		.thumb
+ 144              		.syntax unified
+ 145              	.L5:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 146              		.loc 2 574 5 is_stmt 0 view .LVU48
+ 147              	.LBE41:
+ 148              	.LBE40:
+ 181:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     }
+ 182:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     else
+ 183:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     {
+ 184:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 185:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_DISABLE_NOTIFY_CALLBACKS
+ 186:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 187:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Pickup the notify callback routine for this event flag group.  */
+ 188:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         events_set_notify =  group_ptr -> tx_event_flags_group_set_notify;
+ 189:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 190:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 191:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* "OR" the flags into the current events of the group.  */
+ 192:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         group_ptr -> tx_event_flags_group_current =
+ 193:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             group_ptr -> tx_event_flags_group_current | flags_to_set;
+ 194:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 195:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_NOT_INTERRUPTABLE
+ 196:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 197:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Determine if there are any delayed flags to clear.  */
+ 198:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         if (group_ptr -> tx_event_flags_group_delayed_clear != ((ULONG) 0))
+ 199:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 200:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 201:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* Yes, we need to neutralize the delayed clearing as well.  */
+ 202:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             group_ptr -> tx_event_flags_group_delayed_clear =
+ 203:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                         group_ptr -> tx_event_flags_group_delayed_clear & ~flags_to
+ 204:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 205:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 206:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 207:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Clear the preempt check flag.  */
+ 208:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         preempt_check =  TX_FALSE;
+ 209:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 210:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Pickup the thread suspended count.  */
+ 211:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         suspended_count =  group_ptr -> tx_event_flags_group_suspended_count;
+ 212:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 213:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Determine if there are any threads suspended on the event flag group.  */
+ 214:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         if (group_ptr -> tx_event_flags_group_suspension_list != TX_NULL)
+ 215:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 216:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 217:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* Determine if there is just a single thread waiting on the event
+ 218:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                flag group.  */
+ 219:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             if (suspended_count == ((UINT) 1))
+ 220:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 221:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 222:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Single thread waiting for event flags.  Bypass the multiple thread
+ 223:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                    logic.  */
+ 224:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 18
+
+
+ 225:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Setup thread pointer.  */
+ 226:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 thread_ptr =  group_ptr -> tx_event_flags_group_suspension_list;
+ 227:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 228:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Pickup the current event flags.  */
+ 229:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 current_event_flags =  group_ptr -> tx_event_flags_group_current;
+ 230:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 231:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Pickup the suspend information.  */
+ 232:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 requested_flags =  thread_ptr -> tx_thread_suspend_info;
+ 233:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 234:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Pickup the suspend option.  */
+ 235:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 get_option =  thread_ptr -> tx_thread_suspend_option;
+ 236:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 237:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Isolate the AND selection.  */
+ 238:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 and_request =  (get_option & TX_AND);
+ 239:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 240:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Check for AND condition. All flags must be present to satisfy request.  */
+ 241:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 if (and_request == TX_AND)
+ 242:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 243:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 244:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* AND request is present.  */
+ 245:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 246:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Calculate the flags present.  */
+ 247:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     flags_satisfied =  (current_event_flags & requested_flags);
+ 248:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 249:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Determine if they satisfy the AND request.  */
+ 250:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     if (flags_satisfied != requested_flags)
+ 251:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 252:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 253:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* No, not all the requested flags are present. Clear the flags present var
+ 254:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         flags_satisfied =  ((ULONG) 0);
+ 255:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 256:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 257:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 else
+ 258:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 259:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 260:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* OR request is present. Simply or the requested flags and the current flags. 
+ 261:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     flags_satisfied =  (current_event_flags & requested_flags);
+ 262:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 263:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 264:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Determine if the request is satisfied.  */
+ 265:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 if (flags_satisfied != ((ULONG) 0))
+ 266:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 267:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 268:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Yes, resume the thread and apply any event flag
+ 269:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                        clearing.  */
+ 270:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 271:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Return the actual event flags that satisfied the request.  */
+ 272:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     suspend_info_ptr =   TX_VOID_TO_ULONG_POINTER_CONVERT(thread_ptr -> tx_thread_a
+ 273:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     *suspend_info_ptr =  current_event_flags;
+ 274:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 275:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Pickup the clear bit.  */
+ 276:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     clear_request =  (get_option & TX_EVENT_FLAGS_CLEAR_MASK);
+ 277:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 278:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Determine whether or not clearing needs to take place.  */
+ 279:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     if (clear_request == TX_TRUE)
+ 280:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 281:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 19
+
+
+ 282:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Yes, clear the flags that satisfied this request.  */
+ 283:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         group_ptr -> tx_event_flags_group_current =  group_ptr -> tx_event_flags_gr
+ 284:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 285:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 286:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Clear the suspension information in the event flag group.  */
+ 287:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     group_ptr -> tx_event_flags_group_suspension_list =  TX_NULL;
+ 288:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     group_ptr -> tx_event_flags_group_suspended_count =  TX_NO_SUSPENSIONS;
+ 289:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 290:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Clear cleanup routine to avoid timeout.  */
+ 291:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     thread_ptr -> tx_thread_suspend_cleanup =  TX_NULL;
+ 292:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 293:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Put return status into the thread control block.  */
+ 294:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     thread_ptr -> tx_thread_suspend_status =  TX_SUCCESS;
+ 295:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 296:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifdef TX_NOT_INTERRUPTABLE
+ 297:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 298:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Resume the thread!  */
+ 299:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     _tx_thread_system_ni_resume(thread_ptr);
+ 300:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #else
+ 301:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 302:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Temporarily disable preemption.  */
+ 303:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     _tx_thread_preempt_disable++;
+ 304:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 305:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Restore interrupts.  */
+ 306:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     TX_RESTORE
+ 307:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 308:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Resume thread.  */
+ 309:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     _tx_thread_system_resume(thread_ptr);
+ 310:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 311:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Disable interrupts to remove the semaphore from the created list.  */
+ 312:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     TX_DISABLE
+ 313:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 314:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 315:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 316:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             else
+ 317:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 318:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 319:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Otherwise, the event flag requests of multiple threads must be
+ 320:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                    examined.  */
+ 321:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 322:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Setup thread pointer, keep a local copy of the head pointer.  */
+ 323:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 suspended_list =  group_ptr -> tx_event_flags_group_suspension_list;
+ 324:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 thread_ptr =      suspended_list;
+ 325:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 326:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Clear the suspended list head pointer to thwart manipulation of
+ 327:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                    the list in ISR's while we are processing here.  */
+ 328:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 group_ptr -> tx_event_flags_group_suspension_list =  TX_NULL;
+ 329:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 330:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Setup the satisfied thread pointers.  */
+ 331:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 satisfied_list =  TX_NULL;
+ 332:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 last_satisfied =  TX_NULL;
+ 333:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 334:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Pickup the current event flags.  */
+ 335:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 current_event_flags =  group_ptr -> tx_event_flags_group_current;
+ 336:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 337:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Disable preemption while we process the suspended list.  */
+ 338:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 _tx_thread_preempt_disable++;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 20
+
+
+ 339:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 340:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Since we have temporarily disabled preemption globally, set the preempt 
+ 341:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                    check flag to check for any preemption condition - including from 
+ 342:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                    unrelated ISR processing.  */
+ 343:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 preempt_check =  TX_TRUE;
+ 344:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 345:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Loop to examine all of the suspended threads. */
+ 346:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 do
+ 347:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 348:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 349:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_NOT_INTERRUPTABLE
+ 350:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 351:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Restore interrupts temporarily.  */
+ 352:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     TX_RESTORE
+ 353:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 354:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Disable interrupts again.  */
+ 355:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     TX_DISABLE
+ 356:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 357:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 358:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Determine if we need to reset the search.  */
+ 359:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     if (group_ptr -> tx_event_flags_group_reset_search != TX_FALSE)
+ 360:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 361:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 362:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Clear the reset search flag.  */
+ 363:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         group_ptr -> tx_event_flags_group_reset_search =  TX_FALSE;
+ 364:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 365:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Move the thread pointer to the beginning of the search list.  */
+ 366:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         thread_ptr =  suspended_list;
+ 367:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 368:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Reset the suspended count.  */
+ 369:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         suspended_count =  group_ptr -> tx_event_flags_group_suspended_count;
+ 370:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 371:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Update the current events with any new ones that might
+ 372:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                            have been set in a nested set events call from an ISR.  */
+ 373:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         current_event_flags =  current_event_flags | group_ptr -> tx_event_flags_gr
+ 374:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 375:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 376:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Save next thread pointer.  */
+ 377:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     next_thread_ptr =  thread_ptr -> tx_thread_suspended_next;
+ 378:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 379:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Pickup the suspend information.  */
+ 380:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     requested_flags =  thread_ptr -> tx_thread_suspend_info;
+ 381:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 382:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Pickup this thread's suspension get option.  */
+ 383:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     get_option =  thread_ptr -> tx_thread_suspend_option;
+ 384:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 385:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Isolate the AND selection.  */
+ 386:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     and_request =  (get_option & TX_AND);
+ 387:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 388:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Check for AND condition. All flags must be present to satisfy request.  */
+ 389:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     if (and_request == TX_AND)
+ 390:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 391:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 392:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* AND request is present.  */
+ 393:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 394:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Calculate the flags present.  */
+ 395:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         flags_satisfied =  (current_event_flags & requested_flags);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 21
+
+
+ 396:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 397:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Determine if they satisfy the AND request.  */
+ 398:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         if (flags_satisfied != requested_flags)
+ 399:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 400:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 401:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* No, not all the requested flags are present. Clear the flags present
+ 402:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             flags_satisfied =  ((ULONG) 0);
+ 403:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 404:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 405:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     else
+ 406:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 407:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 408:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* OR request is present. Simply or the requested flags and the current fla
+ 409:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         flags_satisfied =  (current_event_flags & requested_flags);
+ 410:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 411:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 412:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Check to see if the thread had a timeout or wait abort during the event sear
+ 413:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                        If so, just set the flags satisfied to ensure the processing here removes th
+ 414:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                        the suspension list.  */
+ 415:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     if (thread_ptr -> tx_thread_state != TX_EVENT_FLAG)
+ 416:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 417:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 418:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                        /* Simply set the satisfied flags to 1 in order to remove the thread from th
+ 419:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         flags_satisfied =  ((ULONG) 1);
+ 420:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 421:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 422:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Determine if the request is satisfied.  */
+ 423:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     if (flags_satisfied != ((ULONG) 0))
+ 424:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 425:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 426:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Yes, this request can be handled now.  */
+ 427:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 428:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Determine if the thread is still suspended on the event flag group. If n
+ 429:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                            abort must have been done from an ISR.  */
+ 430:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         if (thread_ptr -> tx_thread_state == TX_EVENT_FLAG)
+ 431:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 432:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 433:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Return the actual event flags that satisfied the request.  */
+ 434:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             suspend_info_ptr =   TX_VOID_TO_ULONG_POINTER_CONVERT(thread_ptr -> tx_
+ 435:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             *suspend_info_ptr =  current_event_flags;
+ 436:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 437:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Pickup the clear bit.  */
+ 438:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             clear_request =  (get_option & TX_EVENT_FLAGS_CLEAR_MASK);
+ 439:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 440:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Determine whether or not clearing needs to take place.  */
+ 441:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             if (clear_request == TX_TRUE)
+ 442:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             {
+ 443:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 444:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                 /* Yes, clear the flags that satisfied this request.  */
+ 445:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                 group_ptr -> tx_event_flags_group_current =  group_ptr -> tx_event_
+ 446:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 447:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 448:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Prepare for resumption of the first thread.  */
+ 449:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 450:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Clear cleanup routine to avoid timeout.  */
+ 451:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             thread_ptr -> tx_thread_suspend_cleanup =  TX_NULL;
+ 452:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 22
+
+
+ 453:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Put return status into the thread control block.  */
+ 454:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             thread_ptr -> tx_thread_suspend_status =  TX_SUCCESS;
+ 455:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 456:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 457:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* We need to remove the thread from the suspension list and place it in th
+ 458:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                            expired list.  */
+ 459:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 460:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* See if this is the only suspended thread on the list.  */
+ 461:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         if (thread_ptr == thread_ptr -> tx_thread_suspended_next)
+ 462:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 463:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 464:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Yes, the only suspended thread.  */
+ 465:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 466:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Update the head pointer.  */
+ 467:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             suspended_list =  TX_NULL;
+ 468:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 469:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         else
+ 470:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 471:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 472:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* At least one more thread is on the same expiration list.  */
+ 473:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 474:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Update the links of the adjacent threads.  */
+ 475:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             next_thread =                                  thread_ptr -> tx_thread_
+ 476:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             previous_thread =                              thread_ptr -> tx_thread_
+ 477:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             next_thread -> tx_thread_suspended_previous =  previous_thread;
+ 478:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             previous_thread -> tx_thread_suspended_next =  next_thread;
+ 479:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 480:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Update the list head pointer, if removing the head of the
+ 481:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                list.  */
+ 482:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             if (suspended_list == thread_ptr)
+ 483:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             {
+ 484:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 485:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                 /* Yes, head pointer needs to be updated.  */
+ 486:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                 suspended_list =  thread_ptr -> tx_thread_suspended_next;
+ 487:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 488:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 489:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 490:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Decrement the suspension count.  */
+ 491:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         group_ptr -> tx_event_flags_group_suspended_count--;
+ 492:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 493:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         /* Place this thread on the expired list.  */
+ 494:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         if (satisfied_list == TX_NULL)
+ 495:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 496:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 497:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* First thread on the satisfied list.  */
+ 498:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             satisfied_list =  thread_ptr;
+ 499:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             last_satisfied =  thread_ptr;
+ 500:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 501:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Setup initial next pointer.  */
+ 502:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             thread_ptr -> tx_thread_suspended_next =  TX_NULL;
+ 503:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 504:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         else
+ 505:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 506:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 507:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Not the first thread on the satisfied list.  */
+ 508:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 509:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             /* Link it up at the end.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 23
+
+
+ 510:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             last_satisfied -> tx_thread_suspended_next =  thread_ptr;
+ 511:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             thread_ptr -> tx_thread_suspended_next =      TX_NULL;
+ 512:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             last_satisfied =                              thread_ptr;
+ 513:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 514:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 515:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 516:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Copy next thread pointer to working thread ptr.  */
+ 517:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     thread_ptr =  next_thread_ptr;
+ 518:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 519:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Decrement the suspension count.  */
+ 520:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     suspended_count--;
+ 521:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 522:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 } while (suspended_count != TX_NO_SUSPENSIONS);
+ 523:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 524:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Setup the group's suspension list head again.  */
+ 525:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 group_ptr -> tx_event_flags_group_suspension_list =  suspended_list;
+ 526:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 527:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_NOT_INTERRUPTABLE
+ 528:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 529:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Determine if there is any delayed event clearing to perform.  */
+ 530:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 if (group_ptr -> tx_event_flags_group_delayed_clear != ((ULONG) 0))
+ 531:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 532:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 533:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Perform the delayed event clearing.  */
+ 534:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     group_ptr -> tx_event_flags_group_current =
+ 535:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         group_ptr -> tx_event_flags_group_current & ~(group_ptr -> tx_event_flags_g
+ 536:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 537:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Clear the delayed event flag clear value.  */
+ 538:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     group_ptr -> tx_event_flags_group_delayed_clear =  ((ULONG) 0);
+ 539:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 540:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 541:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 542:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Restore interrupts.  */
+ 543:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 TX_RESTORE
+ 544:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 545:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Walk through the satisfied list, setup initial thread pointer. */
+ 546:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 thread_ptr =  satisfied_list;
+ 547:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 while(thread_ptr != TX_NULL)
+ 548:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 549:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 550:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Get next pointer first.  */
+ 551:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     next_thread_ptr =  thread_ptr -> tx_thread_suspended_next;
+ 552:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 553:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Disable interrupts.  */
+ 554:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     TX_DISABLE
+ 555:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 556:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifdef TX_NOT_INTERRUPTABLE
+ 557:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 558:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Resume the thread!  */
+ 559:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     _tx_thread_system_ni_resume(thread_ptr);
+ 560:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 561:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Restore interrupts.  */
+ 562:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     TX_RESTORE
+ 563:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #else
+ 564:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 565:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Disable preemption again.  */
+ 566:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     _tx_thread_preempt_disable++;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 24
+
+
+ 567:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 568:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Restore interrupt posture.  */
+ 569:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     TX_RESTORE
+ 570:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 571:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Resume the thread.  */
+ 572:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     _tx_thread_system_resume(thread_ptr);
+ 573:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 574:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 575:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     /* Move next thread to current.  */
+ 576:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     thread_ptr =  next_thread_ptr;
+ 577:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 578:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 579:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Disable interrupts.  */
+ 580:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 TX_DISABLE
+ 581:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 582:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* Release thread preemption disable.  */
+ 583:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 _tx_thread_preempt_disable--;
+ 584:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 585:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 586:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         else
+ 587:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 588:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 589:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* Determine if we need to set the reset search field.  */
+ 590:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             if (group_ptr -> tx_event_flags_group_suspended_count != TX_NO_SUSPENSIONS)
+ 591:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 592:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 593:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 /* We interrupted a search of an event flag group suspension
+ 594:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                    list.  Make sure we reset the search.  */
+ 595:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 group_ptr -> tx_event_flags_group_reset_search =  TX_TRUE;
+ 596:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 597:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 598:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 599:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Restore interrupts.  */
+ 600:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         TX_RESTORE
+ 601:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 602:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #ifndef TX_DISABLE_NOTIFY_CALLBACKS
+ 603:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 604:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Determine if a notify callback is required.  */
+ 605:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         if (events_set_notify != TX_NULL)
+ 606:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 607:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 608:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* Call application event flags set notification.  */
+ 609:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             (events_set_notify)(group_ptr);
+ 610:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 611:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 612:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 613:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         /* Determine if a check for preemption is necessary.  */
+ 614:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         if (preempt_check == TX_TRUE)
+ 615:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 616:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 617:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             /* Yes, one or more threads were resumed, check for preemption.  */
+ 618:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             _tx_thread_system_preempt_check();
+ 619:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 620:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     }
+ 621:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 622:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     /* Return completion status.  */
+ 623:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****     return(TX_SUCCESS);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 25
+
+
+ 149              		.loc 1 623 5 is_stmt 1 view .LVU49
+ 624:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** }
+ 150              		.loc 1 624 1 is_stmt 0 view .LVU50
+ 151 0028 0020     		movs	r0, #0
+ 152 002a BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 153              	.LVL8:
+ 154              	.L32:
+ 149:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 155              		.loc 1 149 17 is_stmt 1 view .LVU51
+ 154:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 156              		.loc 1 154 9 view .LVU52
+ 161:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                         group_ptr -> tx_event_flags_group_delayed_clear | ~flags_to
+ 157              		.loc 1 161 13 view .LVU53
+ 162:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 158              		.loc 1 162 51 is_stmt 0 view .LVU54
+ 159 002e 036A     		ldr	r3, [r0, #32]
+ 162:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 160              		.loc 1 162 89 view .LVU55
+ 161 0030 63EA0101 		orn	r1, r3, r1
+ 162              	.LVL9:
+ 161:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                         group_ptr -> tx_event_flags_group_delayed_clear | ~flags_to
+ 163              		.loc 1 161 61 view .LVU56
+ 164 0034 0162     		str	r1, [r0, #32]
+ 165 0036 F5E7     		b	.L4
+ 166              	.LVL10:
+ 167              	.L2:
+ 192:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             group_ptr -> tx_event_flags_group_current | flags_to_set;
+ 168              		.loc 1 192 9 is_stmt 1 view .LVU57
+ 193:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 169              		.loc 1 193 23 is_stmt 0 view .LVU58
+ 170 0038 8468     		ldr	r4, [r0, #8]
+ 193:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 171              		.loc 1 193 55 view .LVU59
+ 172 003a 0C43     		orrs	r4, r4, r1
+ 192:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             group_ptr -> tx_event_flags_group_current | flags_to_set;
+ 173              		.loc 1 192 51 view .LVU60
+ 174 003c 8460     		str	r4, [r0, #8]
+ 198:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 175              		.loc 1 198 9 is_stmt 1 view .LVU61
+ 198:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 176              		.loc 1 198 23 is_stmt 0 view .LVU62
+ 177 003e 036A     		ldr	r3, [r0, #32]
+ 198:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 178              		.loc 1 198 12 view .LVU63
+ 179 0040 13B1     		cbz	r3, .L6
+ 202:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                         group_ptr -> tx_event_flags_group_delayed_clear & ~flags_to
+ 180              		.loc 1 202 13 is_stmt 1 view .LVU64
+ 203:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 181              		.loc 1 203 89 is_stmt 0 view .LVU65
+ 182 0042 23EA0101 		bic	r1, r3, r1
+ 183              	.LVL11:
+ 202:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                                         group_ptr -> tx_event_flags_group_delayed_clear & ~flags_to
+ 184              		.loc 1 202 61 view .LVU66
+ 185 0046 0162     		str	r1, [r0, #32]
+ 186              	.L6:
+ 208:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 187              		.loc 1 208 9 is_stmt 1 view .LVU67
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 26
+
+
+ 188              	.LVL12:
+ 211:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 189              		.loc 1 211 9 view .LVU68
+ 211:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 190              		.loc 1 211 25 is_stmt 0 view .LVU69
+ 191 0048 DCF81420 		ldr	r2, [ip, #20]
+ 192              	.LVL13:
+ 214:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 193              		.loc 1 214 9 is_stmt 1 view .LVU70
+ 214:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 194              		.loc 1 214 23 is_stmt 0 view .LVU71
+ 195 004c DCF81080 		ldr	r8, [ip, #16]
+ 214:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 196              		.loc 1 214 12 view .LVU72
+ 197 0050 B8F1000F 		cmp	r8, #0
+ 198 0054 00F0D180 		beq	.L7
+ 219:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 199              		.loc 1 219 13 is_stmt 1 view .LVU73
+ 219:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 200              		.loc 1 219 16 is_stmt 0 view .LVU74
+ 201 0058 012A     		cmp	r2, #1
+ 202 005a 09D0     		beq	.L33
+ 323:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 thread_ptr =      suspended_list;
+ 203              		.loc 1 323 17 is_stmt 1 view .LVU75
+ 204              	.LVL14:
+ 324:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 205              		.loc 1 324 17 view .LVU76
+ 328:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 206              		.loc 1 328 17 view .LVU77
+ 328:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 207              		.loc 1 328 67 is_stmt 0 view .LVU78
+ 208 005c 0020     		movs	r0, #0
+ 209              	.LVL15:
+ 328:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 210              		.loc 1 328 67 view .LVU79
+ 211 005e CCF81000 		str	r0, [ip, #16]
+ 331:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 last_satisfied =  TX_NULL;
+ 212              		.loc 1 331 17 is_stmt 1 view .LVU80
+ 213              	.LVL16:
+ 332:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 214              		.loc 1 332 17 view .LVU81
+ 335:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 215              		.loc 1 335 17 view .LVU82
+ 338:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 216              		.loc 1 338 17 view .LVU83
+ 338:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 217              		.loc 1 338 43 is_stmt 0 view .LVU84
+ 218 0062 6A49     		ldr	r1, .L39
+ 219 0064 0B68     		ldr	r3, [r1]
+ 220 0066 0133     		adds	r3, r3, #1
+ 221 0068 0B60     		str	r3, [r1]
+ 343:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 222              		.loc 1 343 17 is_stmt 1 view .LVU85
+ 223              	.LVL17:
+ 323:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 thread_ptr =      suspended_list;
+ 224              		.loc 1 323 32 is_stmt 0 view .LVU86
+ 225 006a 4646     		mov	r6, r8
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 27
+
+
+ 332:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 226              		.loc 1 332 32 view .LVU87
+ 227 006c 0746     		mov	r7, r0
+ 228 006e 55E0     		b	.L22
+ 229              	.LVL18:
+ 230              	.L33:
+ 226:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 231              		.loc 1 226 17 is_stmt 1 view .LVU88
+ 229:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 232              		.loc 1 229 17 view .LVU89
+ 232:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 233              		.loc 1 232 17 view .LVU90
+ 232:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 234              		.loc 1 232 33 is_stmt 0 view .LVU91
+ 235 0070 D8F87830 		ldr	r3, [r8, #120]
+ 236              	.LVL19:
+ 235:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 237              		.loc 1 235 17 is_stmt 1 view .LVU92
+ 235:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 238              		.loc 1 235 28 is_stmt 0 view .LVU93
+ 239 0074 D8F88020 		ldr	r2, [r8, #128]
+ 240              	.LVL20:
+ 238:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 241              		.loc 1 238 17 is_stmt 1 view .LVU94
+ 241:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 242              		.loc 1 241 17 view .LVU95
+ 241:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 243              		.loc 1 241 20 is_stmt 0 view .LVU96
+ 244 0078 12F0020F 		tst	r2, #2
+ 245 007c 06D0     		beq	.L9
+ 247:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 246              		.loc 1 247 21 is_stmt 1 view .LVU97
+ 247:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 247              		.loc 1 247 37 is_stmt 0 view .LVU98
+ 248 007e 04EA0301 		and	r1, r4, r3
+ 249              	.LVL21:
+ 250:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 250              		.loc 1 250 21 is_stmt 1 view .LVU99
+ 250:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 251              		.loc 1 250 24 is_stmt 0 view .LVU100
+ 252 0082 33EA0400 		bics	r0, r3, r4
+ 253              	.LVL22:
+ 250:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 254              		.loc 1 250 24 view .LVU101
+ 255 0086 40F0B080 		bne	.L10
+ 256 008a 01E0     		b	.L11
+ 257              	.LVL23:
+ 258              	.L9:
+ 261:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 259              		.loc 1 261 21 is_stmt 1 view .LVU102
+ 261:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 260              		.loc 1 261 37 is_stmt 0 view .LVU103
+ 261 008c 04EA0301 		and	r1, r4, r3
+ 262              	.LVL24:
+ 263              	.L11:
+ 265:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 264              		.loc 1 265 17 is_stmt 1 view .LVU104
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 28
+
+
+ 265:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 265              		.loc 1 265 20 is_stmt 0 view .LVU105
+ 266 0090 0029     		cmp	r1, #0
+ 267 0092 00F0B780 		beq	.L26
+ 272:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     *suspend_info_ptr =  current_event_flags;
+ 268              		.loc 1 272 21 is_stmt 1 view .LVU106
+ 272:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     *suspend_info_ptr =  current_event_flags;
+ 269              		.loc 1 272 38 is_stmt 0 view .LVU107
+ 270 0096 D8F87C10 		ldr	r1, [r8, #124]
+ 271              	.LVL25:
+ 273:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 272              		.loc 1 273 21 is_stmt 1 view .LVU108
+ 273:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 273              		.loc 1 273 39 is_stmt 0 view .LVU109
+ 274 009a 0C60     		str	r4, [r1]
+ 275              	.LVL26:
+ 276:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 276              		.loc 1 276 21 is_stmt 1 view .LVU110
+ 279:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 277              		.loc 1 279 21 view .LVU111
+ 279:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 278              		.loc 1 279 24 is_stmt 0 view .LVU112
+ 279 009c 12F0010F 		tst	r2, #1
+ 280 00a0 05D0     		beq	.L12
+ 283:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 281              		.loc 1 283 25 is_stmt 1 view .LVU113
+ 283:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 282              		.loc 1 283 80 is_stmt 0 view .LVU114
+ 283 00a2 DCF80820 		ldr	r2, [ip, #8]
+ 284              	.LVL27:
+ 283:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 285              		.loc 1 283 112 view .LVU115
+ 286 00a6 22EA0303 		bic	r3, r2, r3
+ 287              	.LVL28:
+ 283:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 288              		.loc 1 283 67 view .LVU116
+ 289 00aa CCF80830 		str	r3, [ip, #8]
+ 290              	.L12:
+ 287:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     group_ptr -> tx_event_flags_group_suspended_count =  TX_NO_SUSPENSIONS;
+ 291              		.loc 1 287 21 is_stmt 1 view .LVU117
+ 287:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     group_ptr -> tx_event_flags_group_suspended_count =  TX_NO_SUSPENSIONS;
+ 292              		.loc 1 287 71 is_stmt 0 view .LVU118
+ 293 00ae 0023     		movs	r3, #0
+ 294 00b0 CCF81030 		str	r3, [ip, #16]
+ 288:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 295              		.loc 1 288 21 is_stmt 1 view .LVU119
+ 288:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 296              		.loc 1 288 71 is_stmt 0 view .LVU120
+ 297 00b4 CCF81430 		str	r3, [ip, #20]
+ 291:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 298              		.loc 1 291 21 is_stmt 1 view .LVU121
+ 291:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 299              		.loc 1 291 61 is_stmt 0 view .LVU122
+ 300 00b8 C8F86830 		str	r3, [r8, #104]
+ 294:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 301              		.loc 1 294 21 is_stmt 1 view .LVU123
+ 294:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 29
+
+
+ 302              		.loc 1 294 60 is_stmt 0 view .LVU124
+ 303 00bc C8F88430 		str	r3, [r8, #132]
+ 303:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 304              		.loc 1 303 21 is_stmt 1 view .LVU125
+ 303:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 305              		.loc 1 303 47 is_stmt 0 view .LVU126
+ 306 00c0 524A     		ldr	r2, .L39
+ 307 00c2 1368     		ldr	r3, [r2]
+ 308 00c4 0133     		adds	r3, r3, #1
+ 309 00c6 1360     		str	r3, [r2]
+ 306:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 310              		.loc 1 306 21 is_stmt 1 view .LVU127
+ 311              	.LVL29:
+ 312              	.LBB42:
+ 313              	.LBI42:
+ 568:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 314              		.loc 2 568 55 view .LVU128
+ 315              	.LBB43:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 316              		.loc 2 574 5 view .LVU129
+ 317              		.syntax unified
+ 318              	@ 574 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 319 00c8 8EF31088 		MSR  PRIMASK,lr
+ 320              	@ 0 "" 2
+ 321              	.LVL30:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 322              		.loc 2 574 5 is_stmt 0 view .LVU130
+ 323              		.thumb
+ 324              		.syntax unified
+ 325              	.LBE43:
+ 326              	.LBE42:
+ 309:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 327              		.loc 1 309 21 is_stmt 1 view .LVU131
+ 328 00cc 4046     		mov	r0, r8
+ 329 00ce FFF7FEFF 		bl	_tx_thread_system_resume
+ 330              	.LVL31:
+ 312:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 331              		.loc 1 312 21 view .LVU132
+ 332              	.LBB44:
+ 333              	.LBI44:
+ 578:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 334              		.loc 2 578 63 view .LVU133
+ 335              	.LBB45:
+ 580:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 336              		.loc 2 580 1 view .LVU134
+ 582:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 337              		.loc 2 582 5 view .LVU135
+ 338              	.LBB46:
+ 339              	.LBI46:
+ 545:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 340              		.loc 2 545 63 view .LVU136
+ 341              	.LBB47:
+ 547:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 342              		.loc 2 547 1 view .LVU137
+ 551:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 343              		.loc 2 551 5 view .LVU138
+ 344              		.syntax unified
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 30
+
+
+ 345              	@ 551 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 346 00d2 EFF3108E 		MRS  lr, PRIMASK 
+ 347              	@ 0 "" 2
+ 348              	.LVL32:
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 349              		.loc 2 553 5 view .LVU139
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 350              		.loc 2 553 5 is_stmt 0 view .LVU140
+ 351              		.thumb
+ 352              		.syntax unified
+ 353              	.LBE47:
+ 354              	.LBE46:
+ 587:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 355              		.loc 2 587 5 is_stmt 1 view .LVU141
+ 356              		.syntax unified
+ 357              	@ 587 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 358 00d6 72B6     		CPSID i
+ 359              	@ 0 "" 2
+ 360              		.loc 2 589 5 view .LVU142
+ 361              	.LVL33:
+ 362              		.loc 2 589 5 is_stmt 0 view .LVU143
+ 363              		.thumb
+ 364              		.syntax unified
+ 365 00d8 87E0     		b	.L10
+ 366              	.LVL34:
+ 367              	.L27:
+ 368              		.loc 2 589 5 view .LVU144
+ 369              	.LBE45:
+ 370              	.LBE44:
+ 371 00da 4346     		mov	r3, r8
+ 372 00dc 30E0     		b	.L13
+ 373              	.LVL35:
+ 374              	.L14:
+ 409:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 375              		.loc 1 409 25 is_stmt 1 view .LVU145
+ 409:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 376              		.loc 1 409 41 is_stmt 0 view .LVU146
+ 377 00de 04EA090B 		and	fp, r4, r9
+ 378              	.LVL36:
+ 379              	.L15:
+ 415:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 380              		.loc 1 415 21 is_stmt 1 view .LVU147
+ 415:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 381              		.loc 1 415 36 is_stmt 0 view .LVU148
+ 382 00e2 196B     		ldr	r1, [r3, #48]
+ 415:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 383              		.loc 1 415 24 view .LVU149
+ 384 00e4 0729     		cmp	r1, #7
+ 385 00e6 3BD0     		beq	.L34
+ 386              	.L16:
+ 387              	.LVL37:
+ 430:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 388              		.loc 1 430 25 is_stmt 1 view .LVU150
+ 430:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 389              		.loc 1 430 28 is_stmt 0 view .LVU151
+ 390 00e8 0729     		cmp	r1, #7
+ 391 00ea 3DD0     		beq	.L35
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 31
+
+
+ 392              	.L18:
+ 461:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 393              		.loc 1 461 25 is_stmt 1 view .LVU152
+ 461:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 394              		.loc 1 461 54 is_stmt 0 view .LVU153
+ 395 00ec 196F     		ldr	r1, [r3, #112]
+ 461:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 396              		.loc 1 461 28 view .LVU154
+ 397 00ee 9942     		cmp	r1, r3
+ 398 00f0 4CD0     		beq	.L29
+ 475:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             previous_thread =                              thread_ptr -> tx_thread_
+ 399              		.loc 1 475 29 is_stmt 1 view .LVU155
+ 400              	.LVL38:
+ 476:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             next_thread -> tx_thread_suspended_previous =  previous_thread;
+ 401              		.loc 1 476 29 view .LVU156
+ 476:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             next_thread -> tx_thread_suspended_previous =  previous_thread;
+ 402              		.loc 1 476 45 is_stmt 0 view .LVU157
+ 403 00f2 D3F87490 		ldr	r9, [r3, #116]
+ 404              	.LVL39:
+ 477:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             previous_thread -> tx_thread_suspended_next =  next_thread;
+ 405              		.loc 1 477 29 is_stmt 1 view .LVU158
+ 477:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             previous_thread -> tx_thread_suspended_next =  next_thread;
+ 406              		.loc 1 477 73 is_stmt 0 view .LVU159
+ 407 00f6 C1F87490 		str	r9, [r1, #116]
+ 478:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 408              		.loc 1 478 29 is_stmt 1 view .LVU160
+ 478:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 409              		.loc 1 478 73 is_stmt 0 view .LVU161
+ 410 00fa C9F87010 		str	r1, [r9, #112]
+ 482:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             {
+ 411              		.loc 1 482 29 is_stmt 1 view .LVU162
+ 482:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             {
+ 412              		.loc 1 482 32 is_stmt 0 view .LVU163
+ 413 00fe B342     		cmp	r3, r6
+ 414 0100 42D0     		beq	.L36
+ 415              	.LVL40:
+ 416              	.L20:
+ 491:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 417              		.loc 1 491 25 is_stmt 1 view .LVU164
+ 491:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 418              		.loc 1 491 35 is_stmt 0 view .LVU165
+ 419 0102 DCF81410 		ldr	r1, [ip, #20]
+ 491:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 420              		.loc 1 491 74 view .LVU166
+ 421 0106 0139     		subs	r1, r1, #1
+ 422 0108 CCF81410 		str	r1, [ip, #20]
+ 494:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 423              		.loc 1 494 25 is_stmt 1 view .LVU167
+ 494:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 424              		.loc 1 494 28 is_stmt 0 view .LVU168
+ 425 010c 0028     		cmp	r0, #0
+ 426 010e 3FD0     		beq	.L37
+ 510:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             thread_ptr -> tx_thread_suspended_next =      TX_NULL;
+ 427              		.loc 1 510 29 is_stmt 1 view .LVU169
+ 510:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             thread_ptr -> tx_thread_suspended_next =      TX_NULL;
+ 428              		.loc 1 510 72 is_stmt 0 view .LVU170
+ 429 0110 3B67     		str	r3, [r7, #112]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 32
+
+
+ 511:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             last_satisfied =                              thread_ptr;
+ 430              		.loc 1 511 29 is_stmt 1 view .LVU171
+ 511:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             last_satisfied =                              thread_ptr;
+ 431              		.loc 1 511 68 is_stmt 0 view .LVU172
+ 432 0112 0021     		movs	r1, #0
+ 433 0114 1967     		str	r1, [r3, #112]
+ 512:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 434              		.loc 1 512 29 is_stmt 1 view .LVU173
+ 435              	.LVL41:
+ 512:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 436              		.loc 1 512 44 is_stmt 0 view .LVU174
+ 437 0116 1F46     		mov	r7, r3
+ 438              	.LVL42:
+ 439              	.L17:
+ 517:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 440              		.loc 1 517 21 is_stmt 1 view .LVU175
+ 520:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 441              		.loc 1 520 21 view .LVU176
+ 522:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 442              		.loc 1 522 25 view .LVU177
+ 522:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 443              		.loc 1 522 17 is_stmt 0 view .LVU178
+ 444 0118 013A     		subs	r2, r2, #1
+ 445              	.LVL43:
+ 522:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 446              		.loc 1 522 17 view .LVU179
+ 447 011a 3ED0     		beq	.L38
+ 448              	.LVL44:
+ 449              	.L22:
+ 346:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 450              		.loc 1 346 17 is_stmt 1 view .LVU180
+ 352:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 451              		.loc 1 352 21 view .LVU181
+ 452              	.LBB48:
+ 453              	.LBI48:
+ 568:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 454              		.loc 2 568 55 view .LVU182
+ 455              	.LBB49:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 456              		.loc 2 574 5 view .LVU183
+ 457              		.syntax unified
+ 458              	@ 574 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 459 011c 8EF31088 		MSR  PRIMASK,lr
+ 460              	@ 0 "" 2
+ 461              	.LVL45:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 462              		.loc 2 574 5 is_stmt 0 view .LVU184
+ 463              		.thumb
+ 464              		.syntax unified
+ 465              	.LBE49:
+ 466              	.LBE48:
+ 355:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 467              		.loc 1 355 21 is_stmt 1 view .LVU185
+ 468              	.LBB50:
+ 469              	.LBI50:
+ 578:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 470              		.loc 2 578 63 view .LVU186
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 33
+
+
+ 471              	.LBB51:
+ 580:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 472              		.loc 2 580 1 view .LVU187
+ 582:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 473              		.loc 2 582 5 view .LVU188
+ 474              	.LBB52:
+ 475              	.LBI52:
+ 545:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 476              		.loc 2 545 63 view .LVU189
+ 477              	.LBB53:
+ 547:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 478              		.loc 2 547 1 view .LVU190
+ 551:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 479              		.loc 2 551 5 view .LVU191
+ 480              		.syntax unified
+ 481              	@ 551 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 482 0120 EFF3108E 		MRS  lr, PRIMASK 
+ 483              	@ 0 "" 2
+ 484              	.LVL46:
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 485              		.loc 2 553 5 view .LVU192
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 486              		.loc 2 553 5 is_stmt 0 view .LVU193
+ 487              		.thumb
+ 488              		.syntax unified
+ 489              	.LBE53:
+ 490              	.LBE52:
+ 587:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 491              		.loc 2 587 5 is_stmt 1 view .LVU194
+ 492              		.syntax unified
+ 493              	@ 587 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 494 0124 72B6     		CPSID i
+ 495              	@ 0 "" 2
+ 496              		.loc 2 589 5 view .LVU195
+ 497              	.LVL47:
+ 498              		.loc 2 589 5 is_stmt 0 view .LVU196
+ 499              		.thumb
+ 500              		.syntax unified
+ 501              	.LBE51:
+ 502              	.LBE50:
+ 359:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 503              		.loc 1 359 21 is_stmt 1 view .LVU197
+ 359:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 504              		.loc 1 359 35 is_stmt 0 view .LVU198
+ 505 0126 DCF80C30 		ldr	r3, [ip, #12]
+ 359:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 506              		.loc 1 359 24 view .LVU199
+ 507 012a 002B     		cmp	r3, #0
+ 508 012c D5D0     		beq	.L27
+ 363:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 509              		.loc 1 363 25 is_stmt 1 view .LVU200
+ 363:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 510              		.loc 1 363 72 is_stmt 0 view .LVU201
+ 511 012e 0023     		movs	r3, #0
+ 512 0130 CCF80C30 		str	r3, [ip, #12]
+ 366:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 513              		.loc 1 366 25 is_stmt 1 view .LVU202
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 34
+
+
+ 514              	.LVL48:
+ 369:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 515              		.loc 1 369 25 view .LVU203
+ 369:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 516              		.loc 1 369 41 is_stmt 0 view .LVU204
+ 517 0134 DCF81420 		ldr	r2, [ip, #20]
+ 518              	.LVL49:
+ 373:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 519              		.loc 1 373 25 is_stmt 1 view .LVU205
+ 373:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 520              		.loc 1 373 80 is_stmt 0 view .LVU206
+ 521 0138 DCF80830 		ldr	r3, [ip, #8]
+ 373:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     }
+ 522              		.loc 1 373 45 view .LVU207
+ 523 013c 1C43     		orrs	r4, r4, r3
+ 524              	.LVL50:
+ 366:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 525              		.loc 1 366 36 view .LVU208
+ 526 013e 3346     		mov	r3, r6
+ 527              	.LVL51:
+ 528              	.L13:
+ 377:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 529              		.loc 1 377 21 is_stmt 1 view .LVU209
+ 377:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 530              		.loc 1 377 37 is_stmt 0 view .LVU210
+ 531 0140 D3F87080 		ldr	r8, [r3, #112]
+ 532              	.LVL52:
+ 380:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 533              		.loc 1 380 21 is_stmt 1 view .LVU211
+ 380:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 534              		.loc 1 380 37 is_stmt 0 view .LVU212
+ 535 0144 D3F87890 		ldr	r9, [r3, #120]
+ 536              	.LVL53:
+ 383:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 537              		.loc 1 383 21 is_stmt 1 view .LVU213
+ 383:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 538              		.loc 1 383 32 is_stmt 0 view .LVU214
+ 539 0148 D3F880A0 		ldr	r10, [r3, #128]
+ 540              	.LVL54:
+ 386:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 541              		.loc 1 386 21 is_stmt 1 view .LVU215
+ 389:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 542              		.loc 1 389 21 view .LVU216
+ 389:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 543              		.loc 1 389 24 is_stmt 0 view .LVU217
+ 544 014c 1AF0020F 		tst	r10, #2
+ 545 0150 C5D0     		beq	.L14
+ 395:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 546              		.loc 1 395 25 is_stmt 1 view .LVU218
+ 395:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 547              		.loc 1 395 41 is_stmt 0 view .LVU219
+ 548 0152 04EA090B 		and	fp, r4, r9
+ 549              	.LVL55:
+ 398:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 550              		.loc 1 398 25 is_stmt 1 view .LVU220
+ 398:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         {
+ 551              		.loc 1 398 28 is_stmt 0 view .LVU221
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 35
+
+
+ 552 0156 39EA0401 		bics	r1, r9, r4
+ 553 015a C2D0     		beq	.L15
+ 402:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 554              		.loc 1 402 45 view .LVU222
+ 555 015c AB46     		mov	fp, r5
+ 556              	.LVL56:
+ 402:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 557              		.loc 1 402 45 view .LVU223
+ 558 015e C0E7     		b	.L15
+ 559              	.LVL57:
+ 560              	.L34:
+ 423:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 561              		.loc 1 423 21 is_stmt 1 view .LVU224
+ 423:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                     {
+ 562              		.loc 1 423 24 is_stmt 0 view .LVU225
+ 563 0160 BBF1000F 		cmp	fp, #0
+ 564 0164 D8D0     		beq	.L17
+ 565 0166 BFE7     		b	.L16
+ 566              	.LVL58:
+ 567              	.L35:
+ 434:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             *suspend_info_ptr =  current_event_flags;
+ 568              		.loc 1 434 29 is_stmt 1 view .LVU226
+ 434:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             *suspend_info_ptr =  current_event_flags;
+ 569              		.loc 1 434 46 is_stmt 0 view .LVU227
+ 570 0168 D96F     		ldr	r1, [r3, #124]
+ 571              	.LVL59:
+ 435:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 572              		.loc 1 435 29 is_stmt 1 view .LVU228
+ 435:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 573              		.loc 1 435 47 is_stmt 0 view .LVU229
+ 574 016a 0C60     		str	r4, [r1]
+ 438:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 575              		.loc 1 438 29 is_stmt 1 view .LVU230
+ 576              	.LVL60:
+ 441:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             {
+ 577              		.loc 1 441 29 view .LVU231
+ 441:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             {
+ 578              		.loc 1 441 32 is_stmt 0 view .LVU232
+ 579 016c 1AF0010F 		tst	r10, #1
+ 580 0170 05D0     		beq	.L19
+ 445:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 581              		.loc 1 445 33 is_stmt 1 view .LVU233
+ 445:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 582              		.loc 1 445 88 is_stmt 0 view .LVU234
+ 583 0172 DCF80810 		ldr	r1, [ip, #8]
+ 584              	.LVL61:
+ 445:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 585              		.loc 1 445 120 view .LVU235
+ 586 0176 21EA0901 		bic	r1, r1, r9
+ 445:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 587              		.loc 1 445 75 view .LVU236
+ 588 017a CCF80810 		str	r1, [ip, #8]
+ 589              	.L19:
+ 451:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 590              		.loc 1 451 29 is_stmt 1 view .LVU237
+ 451:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 591              		.loc 1 451 69 is_stmt 0 view .LVU238
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 36
+
+
+ 592 017e 0021     		movs	r1, #0
+ 593 0180 9966     		str	r1, [r3, #104]
+ 454:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 594              		.loc 1 454 29 is_stmt 1 view .LVU239
+ 454:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 595              		.loc 1 454 68 is_stmt 0 view .LVU240
+ 596 0182 C3F88410 		str	r1, [r3, #132]
+ 597 0186 B1E7     		b	.L18
+ 598              	.LVL62:
+ 599              	.L36:
+ 486:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 600              		.loc 1 486 33 is_stmt 1 view .LVU241
+ 486:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 601              		.loc 1 486 48 is_stmt 0 view .LVU242
+ 602 0188 1E6F     		ldr	r6, [r3, #112]
+ 603              	.LVL63:
+ 486:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             }
+ 604              		.loc 1 486 48 view .LVU243
+ 605 018a BAE7     		b	.L20
+ 606              	.LVL64:
+ 607              	.L29:
+ 467:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 608              		.loc 1 467 44 view .LVU244
+ 609 018c 0026     		movs	r6, #0
+ 610              	.LVL65:
+ 467:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 611              		.loc 1 467 44 view .LVU245
+ 612 018e B8E7     		b	.L20
+ 613              	.LVL66:
+ 614              	.L37:
+ 498:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             last_satisfied =  thread_ptr;
+ 615              		.loc 1 498 29 is_stmt 1 view .LVU246
+ 499:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 616              		.loc 1 499 29 view .LVU247
+ 502:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 617              		.loc 1 502 29 view .LVU248
+ 502:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         }
+ 618              		.loc 1 502 68 is_stmt 0 view .LVU249
+ 619 0190 0021     		movs	r1, #0
+ 620 0192 1967     		str	r1, [r3, #112]
+ 499:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 621              		.loc 1 499 44 view .LVU250
+ 622 0194 1F46     		mov	r7, r3
+ 498:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                             last_satisfied =  thread_ptr;
+ 623              		.loc 1 498 44 view .LVU251
+ 624 0196 1846     		mov	r0, r3
+ 625 0198 BEE7     		b	.L17
+ 626              	.LVL67:
+ 627              	.L38:
+ 525:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 628              		.loc 1 525 17 is_stmt 1 view .LVU252
+ 525:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 629              		.loc 1 525 67 is_stmt 0 view .LVU253
+ 630 019a CCF81060 		str	r6, [ip, #16]
+ 530:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 631              		.loc 1 530 17 is_stmt 1 view .LVU254
+ 530:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 37
+
+
+ 632              		.loc 1 530 31 is_stmt 0 view .LVU255
+ 633 019e DCF82030 		ldr	r3, [ip, #32]
+ 530:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 634              		.loc 1 530 20 view .LVU256
+ 635 01a2 43B1     		cbz	r3, .L23
+ 534:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         group_ptr -> tx_event_flags_group_current & ~(group_ptr -> tx_event_flags_g
+ 636              		.loc 1 534 21 is_stmt 1 view .LVU257
+ 535:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 637              		.loc 1 535 35 is_stmt 0 view .LVU258
+ 638 01a4 DCF80820 		ldr	r2, [ip, #8]
+ 639              	.LVL68:
+ 535:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 640              		.loc 1 535 67 view .LVU259
+ 641 01a8 22EA0303 		bic	r3, r2, r3
+ 534:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                         group_ptr -> tx_event_flags_group_current & ~(group_ptr -> tx_event_flags_g
+ 642              		.loc 1 534 63 view .LVU260
+ 643 01ac CCF80830 		str	r3, [ip, #8]
+ 538:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 644              		.loc 1 538 21 is_stmt 1 view .LVU261
+ 538:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 645              		.loc 1 538 69 is_stmt 0 view .LVU262
+ 646 01b0 0023     		movs	r3, #0
+ 647 01b2 CCF82030 		str	r3, [ip, #32]
+ 648              	.L23:
+ 543:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 649              		.loc 1 543 17 is_stmt 1 view .LVU263
+ 650              	.LVL69:
+ 651              	.LBB54:
+ 652              	.LBI54:
+ 568:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 653              		.loc 2 568 55 view .LVU264
+ 654              	.LBB55:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 655              		.loc 2 574 5 view .LVU265
+ 656              		.syntax unified
+ 657              	@ 574 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 658 01b6 8EF31088 		MSR  PRIMASK,lr
+ 659              	@ 0 "" 2
+ 660              	.LVL70:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 661              		.loc 2 574 5 is_stmt 0 view .LVU266
+ 662              		.thumb
+ 663              		.syntax unified
+ 664              	.LBE55:
+ 665              	.LBE54:
+ 546:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 while(thread_ptr != TX_NULL)
+ 666              		.loc 1 546 17 is_stmt 1 view .LVU267
+ 547:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 667              		.loc 1 547 17 view .LVU268
+ 547:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 668              		.loc 1 547 22 is_stmt 0 view .LVU269
+ 669 01ba 0CE0     		b	.L24
+ 670              	.LVL71:
+ 671              	.L25:
+ 551:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 672              		.loc 1 551 21 is_stmt 1 view .LVU270
+ 551:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 38
+
+
+ 673              		.loc 1 551 37 is_stmt 0 view .LVU271
+ 674 01bc 046F     		ldr	r4, [r0, #112]
+ 675              	.LVL72:
+ 554:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 676              		.loc 1 554 21 is_stmt 1 view .LVU272
+ 677              	.LBB56:
+ 678              	.LBI56:
+ 578:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 679              		.loc 2 578 63 view .LVU273
+ 680              	.LBB57:
+ 580:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 681              		.loc 2 580 1 view .LVU274
+ 582:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 682              		.loc 2 582 5 view .LVU275
+ 683              	.LBB58:
+ 684              	.LBI58:
+ 545:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 685              		.loc 2 545 63 view .LVU276
+ 686              	.LBB59:
+ 547:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 687              		.loc 2 547 1 view .LVU277
+ 551:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 688              		.loc 2 551 5 view .LVU278
+ 689              		.syntax unified
+ 690              	@ 551 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 691 01be EFF31081 		MRS  r1, PRIMASK 
+ 692              	@ 0 "" 2
+ 693              	.LVL73:
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 694              		.loc 2 553 5 view .LVU279
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 695              		.loc 2 553 5 is_stmt 0 view .LVU280
+ 696              		.thumb
+ 697              		.syntax unified
+ 698              	.LBE59:
+ 699              	.LBE58:
+ 587:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 700              		.loc 2 587 5 is_stmt 1 view .LVU281
+ 701              		.syntax unified
+ 702              	@ 587 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 703 01c2 72B6     		CPSID i
+ 704              	@ 0 "" 2
+ 705              		.loc 2 589 5 view .LVU282
+ 706              	.LVL74:
+ 707              		.loc 2 589 5 is_stmt 0 view .LVU283
+ 708              		.thumb
+ 709              		.syntax unified
+ 710              	.LBE57:
+ 711              	.LBE56:
+ 566:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 712              		.loc 1 566 21 is_stmt 1 view .LVU284
+ 566:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 713              		.loc 1 566 47 is_stmt 0 view .LVU285
+ 714 01c4 114A     		ldr	r2, .L39
+ 715 01c6 1368     		ldr	r3, [r2]
+ 716 01c8 0133     		adds	r3, r3, #1
+ 717 01ca 1360     		str	r3, [r2]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 39
+
+
+ 569:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 718              		.loc 1 569 21 is_stmt 1 view .LVU286
+ 719              	.LVL75:
+ 720              	.LBB60:
+ 721              	.LBI60:
+ 568:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 722              		.loc 2 568 55 view .LVU287
+ 723              	.LBB61:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 724              		.loc 2 574 5 view .LVU288
+ 725              		.syntax unified
+ 726              	@ 574 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 727 01cc 81F31088 		MSR  PRIMASK,r1
+ 728              	@ 0 "" 2
+ 729              	.LVL76:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 730              		.loc 2 574 5 is_stmt 0 view .LVU289
+ 731              		.thumb
+ 732              		.syntax unified
+ 733              	.LBE61:
+ 734              	.LBE60:
+ 572:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** #endif
+ 735              		.loc 1 572 21 is_stmt 1 view .LVU290
+ 736 01d0 FFF7FEFF 		bl	_tx_thread_system_resume
+ 737              	.LVL77:
+ 576:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 738              		.loc 1 576 21 view .LVU291
+ 576:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 }
+ 739              		.loc 1 576 32 is_stmt 0 view .LVU292
+ 740 01d4 2046     		mov	r0, r4
+ 741              	.LVL78:
+ 742              	.L24:
+ 547:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****                 {
+ 743              		.loc 1 547 22 is_stmt 1 view .LVU293
+ 744 01d6 0028     		cmp	r0, #0
+ 745 01d8 F0D1     		bne	.L25
+ 580:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 746              		.loc 1 580 17 view .LVU294
+ 747              	.LBB62:
+ 748              	.LBI62:
+ 578:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 749              		.loc 2 578 63 view .LVU295
+ 750              	.LBB63:
+ 580:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 751              		.loc 2 580 1 view .LVU296
+ 582:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** 
+ 752              		.loc 2 582 5 view .LVU297
+ 753              	.LBB64:
+ 754              	.LBI64:
+ 545:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 755              		.loc 2 545 63 view .LVU298
+ 756              	.LBB65:
+ 547:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #ifdef TX_PORT_USE_BASEPRI
+ 757              		.loc 2 547 1 view .LVU299
+ 551:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 758              		.loc 2 551 5 view .LVU300
+ 759              		.syntax unified
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 40
+
+
+ 760              	@ 551 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 761 01da EFF3108E 		MRS  lr, PRIMASK 
+ 762              	@ 0 "" 2
+ 763              	.LVL79:
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 764              		.loc 2 553 5 view .LVU301
+ 553:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** }
+ 765              		.loc 2 553 5 is_stmt 0 view .LVU302
+ 766              		.thumb
+ 767              		.syntax unified
+ 768              	.LBE65:
+ 769              	.LBE64:
+ 587:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 770              		.loc 2 587 5 is_stmt 1 view .LVU303
+ 771              		.syntax unified
+ 772              	@ 587 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 773 01de 72B6     		CPSID i
+ 774              	@ 0 "" 2
+ 775              		.loc 2 589 5 view .LVU304
+ 776              	.LVL80:
+ 777              		.loc 2 589 5 is_stmt 0 view .LVU305
+ 778              		.thumb
+ 779              		.syntax unified
+ 780              	.LBE63:
+ 781              	.LBE62:
+ 583:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 782              		.loc 1 583 17 is_stmt 1 view .LVU306
+ 583:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 783              		.loc 1 583 43 is_stmt 0 view .LVU307
+ 784 01e0 0A4A     		ldr	r2, .L39
+ 785 01e2 1368     		ldr	r3, [r2]
+ 786 01e4 013B     		subs	r3, r3, #1
+ 787 01e6 1360     		str	r3, [r2]
+ 343:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 788              		.loc 1 343 31 view .LVU308
+ 789 01e8 0125     		movs	r5, #1
+ 790              	.LVL81:
+ 791              	.L10:
+ 600:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 792              		.loc 1 600 9 is_stmt 1 view .LVU309
+ 793              	.LBB66:
+ 794              	.LBI66:
+ 568:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** {
+ 795              		.loc 2 568 55 view .LVU310
+ 796              	.LBB67:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 797              		.loc 2 574 5 view .LVU311
+ 798              		.syntax unified
+ 799              	@ 574 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h" 1
+ 800 01ea 8EF31088 		MSR  PRIMASK,lr
+ 801              	@ 0 "" 2
+ 802              	.LVL82:
+ 574:Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h **** #endif
+ 803              		.loc 2 574 5 is_stmt 0 view .LVU312
+ 804              		.thumb
+ 805              		.syntax unified
+ 806              	.LBE67:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 41
+
+
+ 807              	.LBE66:
+ 614:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 808              		.loc 1 614 9 is_stmt 1 view .LVU313
+ 614:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         {
+ 809              		.loc 1 614 12 is_stmt 0 view .LVU314
+ 810 01ee 012D     		cmp	r5, #1
+ 811 01f0 7FF41AAF 		bne	.L5
+ 618:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 812              		.loc 1 618 13 is_stmt 1 view .LVU315
+ 813 01f4 FFF7FEFF 		bl	_tx_thread_system_preempt_check
+ 814              	.LVL83:
+ 618:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****         }
+ 815              		.loc 1 618 13 is_stmt 0 view .LVU316
+ 816 01f8 16E7     		b	.L5
+ 817              	.LVL84:
+ 818              	.L7:
+ 590:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 819              		.loc 1 590 13 is_stmt 1 view .LVU317
+ 590:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             {
+ 820              		.loc 1 590 16 is_stmt 0 view .LVU318
+ 821 01fa 2AB1     		cbz	r2, .L30
+ 595:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 822              		.loc 1 595 17 is_stmt 1 view .LVU319
+ 595:Middlewares/ST/threadx/common/src/tx_event_flags_set.c ****             }
+ 823              		.loc 1 595 64 is_stmt 0 view .LVU320
+ 824 01fc 0123     		movs	r3, #1
+ 825 01fe CCF80C30 		str	r3, [ip, #12]
+ 826 0202 F2E7     		b	.L10
+ 827              	.LVL85:
+ 828              	.L26:
+ 208:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 829              		.loc 1 208 23 view .LVU321
+ 830 0204 0D46     		mov	r5, r1
+ 831 0206 F0E7     		b	.L10
+ 832              	.LVL86:
+ 833              	.L30:
+ 208:Middlewares/ST/threadx/common/src/tx_event_flags_set.c **** 
+ 834              		.loc 1 208 23 view .LVU322
+ 835 0208 1546     		mov	r5, r2
+ 836 020a EEE7     		b	.L10
+ 837              	.L40:
+ 838              		.align	2
+ 839              	.L39:
+ 840 020c 00000000 		.word	_tx_thread_preempt_disable
+ 841              		.cfi_endproc
+ 842              	.LFE8:
+ 844              		.text
+ 845              	.Letext0:
+ 846              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 847              		.file 4 "Middlewares/ST/threadx/common/inc/tx_thread.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s 			page 42
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tx_event_flags_set.c
+C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s:20     .text._tx_event_flags_set:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s:26     .text._tx_event_flags_set:00000000 _tx_event_flags_set
+C:\Users\HP\AppData\Local\Temp\ccuN1UqF.s:840    .text._tx_event_flags_set:0000020c $d
+
+UNDEFINED SYMBOLS
+_tx_thread_system_resume
+_tx_thread_system_preempt_check
+_tx_thread_preempt_disable

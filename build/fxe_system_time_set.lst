@@ -1,0 +1,222 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKVeZd2.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fxe_system_time_set.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._fxe_system_time_set,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fxe_system_time_set
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fxe_system_time_set:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/filex/common/src/fxe_system_time_set.c"
+   1:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  12:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  13:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**   System                                                              */
+  19:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  23:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  25:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  26:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  28:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** #include "fx_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKVeZd2.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  31:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  32:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+  33:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  34:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  FUNCTION                                               RELEASE        */
+  35:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  36:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    _fxe_system_time_set                                PORTABLE C      */
+  37:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                           6.1          */
+  38:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  41:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  42:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    This function checks for errors in the set the system time call.    */
+  45:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  INPUT                                                                 */
+  47:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    hour                                  Hour (0-23)                   */
+  49:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    minute                                Minute (0-59)                 */
+  50:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    second                                Second (0-59)                 */
+  51:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  52:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  OUTPUT                                                                */
+  53:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  54:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    FX_INVALID_HOUR                       Supplied hour is invalid      */
+  55:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    FX_INVALID_MINUTE                     Supplied minute is invalid    */
+  56:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    FX_INVALID_SECOND                     Supplied second is invalid    */
+  57:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    status                                Actual completion status      */
+  58:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  CALLS                                                                 */
+  60:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    _fx_system_time_set                   Actual system time set call   */
+  62:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  CALLED BY                                                             */
+  64:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    Application Code                                                    */
+  66:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  67:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  RELEASE HISTORY                                                       */
+  68:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  69:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*    DATE              NAME                      DESCRIPTION             */
+  70:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  71:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  72:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  73:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                            resulting in version 6.1    */
+  74:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /*                                                                        */
+  75:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** /**************************************************************************/
+  76:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** UINT  _fxe_system_time_set(UINT hour, UINT minute, UINT second)
+  77:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** {
+  30              		.loc 1 77 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  78:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  79:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** UINT status;
+  34              		.loc 1 79 1 view .LVU1
+  80:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  81:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKVeZd2.s 			page 3
+
+
+  82:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     /* Check for invalid hour.  */
+  83:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     if (hour > FX_MAXIMUM_HOUR)
+  35              		.loc 1 83 5 view .LVU2
+  36              		.loc 1 83 8 is_stmt 0 view .LVU3
+  37 0000 1728     		cmp	r0, #23
+  38 0002 07D8     		bhi	.L3
+  84:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     {
+  85:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****         return(FX_INVALID_HOUR);
+  86:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+  87:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  88:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     /* Check for invalid minute.  */
+  89:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     if (minute > FX_MAXIMUM_MINUTE)
+  39              		.loc 1 89 5 is_stmt 1 view .LVU4
+  40              		.loc 1 89 8 is_stmt 0 view .LVU5
+  41 0004 3B29     		cmp	r1, #59
+  42 0006 07D8     		bhi	.L4
+  90:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     {
+  91:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****         return(FX_INVALID_MINUTE);
+  92:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+  93:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  94:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     /* Check for invalid second.  */
+  95:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     if (second > FX_MAXIMUM_SECOND)
+  43              		.loc 1 95 5 is_stmt 1 view .LVU6
+  44              		.loc 1 95 8 is_stmt 0 view .LVU7
+  45 0008 3B2A     		cmp	r2, #59
+  46 000a 07D8     		bhi	.L5
+  77:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+  47              		.loc 1 77 1 view .LVU8
+  48 000c 08B5     		push	{r3, lr}
+  49              	.LCFI0:
+  50              		.cfi_def_cfa_offset 8
+  51              		.cfi_offset 3, -8
+  52              		.cfi_offset 14, -4
+  96:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     {
+  97:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****         return(FX_INVALID_SECOND);
+  98:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+  99:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+ 100:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     /* Call the actual set system time service.  */
+ 101:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     status =  _fx_system_time_set(hour, minute, second);
+  53              		.loc 1 101 5 is_stmt 1 view .LVU9
+  54              		.loc 1 101 15 is_stmt 0 view .LVU10
+  55 000e FFF7FEFF 		bl	_fx_system_time_set
+  56              	.LVL1:
+ 102:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** 
+ 103:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     /* Return status.  */
+ 104:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     return(status);
+  57              		.loc 1 104 5 is_stmt 1 view .LVU11
+ 105:Middlewares/ST/filex/common/src/fxe_system_time_set.c **** }
+  58              		.loc 1 105 1 is_stmt 0 view .LVU12
+  59 0012 08BD     		pop	{r3, pc}
+  60              	.LVL2:
+  61              	.L3:
+  62              	.LCFI1:
+  63              		.cfi_def_cfa_offset 0
+  64              		.cfi_restore 3
+  65              		.cfi_restore 14
+  85:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKVeZd2.s 			page 4
+
+
+  66              		.loc 1 85 15 view .LVU13
+  67 0014 1520     		movs	r0, #21
+  68              	.LVL3:
+  85:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+  69              		.loc 1 85 15 view .LVU14
+  70 0016 7047     		bx	lr
+  71              	.LVL4:
+  72              	.L4:
+  91:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+  73              		.loc 1 91 15 view .LVU15
+  74 0018 1620     		movs	r0, #22
+  75              	.LVL5:
+  91:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+  76              		.loc 1 91 15 view .LVU16
+  77 001a 7047     		bx	lr
+  78              	.LVL6:
+  79              	.L5:
+  97:Middlewares/ST/filex/common/src/fxe_system_time_set.c ****     }
+  80              		.loc 1 97 15 view .LVU17
+  81 001c 1720     		movs	r0, #23
+  82              	.LVL7:
+  83              		.loc 1 105 1 view .LVU18
+  84 001e 7047     		bx	lr
+  85              		.cfi_endproc
+  86              	.LFE8:
+  88              		.text
+  89              	.Letext0:
+  90              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+  91              		.file 3 "Middlewares/ST/filex/common/inc/fx_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccKVeZd2.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fxe_system_time_set.c
+C:\Users\HP\AppData\Local\Temp\ccKVeZd2.s:20     .text._fxe_system_time_set:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccKVeZd2.s:26     .text._fxe_system_time_set:00000000 _fxe_system_time_set
+
+UNDEFINED SYMBOLS
+_fx_system_time_set

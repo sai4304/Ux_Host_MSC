@@ -1,0 +1,666 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"app_filex.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.MX_FileX_Init,"ax",%progbits
+  20              		.align	1
+  21              		.global	MX_FileX_Init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	MX_FileX_Init:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "FileX/App/app_filex.c"
+   1:FileX/App/app_filex.c **** 
+   2:FileX/App/app_filex.c **** /* USER CODE BEGIN Header */
+   3:FileX/App/app_filex.c **** /**
+   4:FileX/App/app_filex.c ****   ******************************************************************************
+   5:FileX/App/app_filex.c ****   * @file    app_filex.c
+   6:FileX/App/app_filex.c ****   * @author  MCD Application Team
+   7:FileX/App/app_filex.c ****   * @brief   FileX applicative file
+   8:FileX/App/app_filex.c ****   ******************************************************************************
+   9:FileX/App/app_filex.c ****   * @attention
+  10:FileX/App/app_filex.c ****   *
+  11:FileX/App/app_filex.c ****   * Copyright (c) 2021 STMicroelectronics.
+  12:FileX/App/app_filex.c ****   * All rights reserved.
+  13:FileX/App/app_filex.c ****   *
+  14:FileX/App/app_filex.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  15:FileX/App/app_filex.c ****   * in the root directory of this software component.
+  16:FileX/App/app_filex.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  17:FileX/App/app_filex.c ****   *
+  18:FileX/App/app_filex.c ****   ******************************************************************************
+  19:FileX/App/app_filex.c ****   */
+  20:FileX/App/app_filex.c **** /* USER CODE END Header */
+  21:FileX/App/app_filex.c **** 
+  22:FileX/App/app_filex.c **** /* Includes ------------------------------------------------------------------*/
+  23:FileX/App/app_filex.c **** #include "app_filex.h"
+  24:FileX/App/app_filex.c **** 
+  25:FileX/App/app_filex.c **** /* Private includes ----------------------------------------------------------*/
+  26:FileX/App/app_filex.c **** /* USER CODE BEGIN Includes */
+  27:FileX/App/app_filex.c **** 
+  28:FileX/App/app_filex.c **** /* USER CODE END Includes */
+  29:FileX/App/app_filex.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 2
+
+
+  30:FileX/App/app_filex.c **** /* Private typedef -----------------------------------------------------------*/
+  31:FileX/App/app_filex.c **** /* USER CODE BEGIN PTD */
+  32:FileX/App/app_filex.c **** 
+  33:FileX/App/app_filex.c **** /* USER CODE END PTD */
+  34:FileX/App/app_filex.c **** 
+  35:FileX/App/app_filex.c **** /* Private define ------------------------------------------------------------*/
+  36:FileX/App/app_filex.c **** 
+  37:FileX/App/app_filex.c **** /* USER CODE BEGIN PD */
+  38:FileX/App/app_filex.c **** 
+  39:FileX/App/app_filex.c **** /* USER CODE END PD */
+  40:FileX/App/app_filex.c **** 
+  41:FileX/App/app_filex.c **** /* Private macro -------------------------------------------------------------*/
+  42:FileX/App/app_filex.c **** /* USER CODE BEGIN PM */
+  43:FileX/App/app_filex.c **** 
+  44:FileX/App/app_filex.c **** /* USER CODE END PM */
+  45:FileX/App/app_filex.c **** 
+  46:FileX/App/app_filex.c **** /* Private variables ---------------------------------------------------------*/
+  47:FileX/App/app_filex.c **** 
+  48:FileX/App/app_filex.c **** /* USER CODE BEGIN PV */
+  49:FileX/App/app_filex.c **** static UCHAR Read_buffer[100];
+  50:FileX/App/app_filex.c **** static UCHAR Write_buffer[] = "USBX_STM32_Host_Mass_Storage";
+  51:FileX/App/app_filex.c **** /* USER CODE END PV */
+  52:FileX/App/app_filex.c **** 
+  53:FileX/App/app_filex.c **** /* Private function prototypes -----------------------------------------------*/
+  54:FileX/App/app_filex.c **** 
+  55:FileX/App/app_filex.c **** /* USER CODE BEGIN PFP */
+  56:FileX/App/app_filex.c **** 
+  57:FileX/App/app_filex.c **** /* USER CODE END PFP */
+  58:FileX/App/app_filex.c **** 
+  59:FileX/App/app_filex.c **** /**
+  60:FileX/App/app_filex.c ****   * @brief  Application FileX Initialization.
+  61:FileX/App/app_filex.c ****   * @param memory_ptr: memory pointer
+  62:FileX/App/app_filex.c ****   * @retval int
+  63:FileX/App/app_filex.c ****   */
+  64:FileX/App/app_filex.c **** UINT MX_FileX_Init(VOID *memory_ptr)
+  65:FileX/App/app_filex.c **** {
+  30              		.loc 1 65 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 65 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+  66:FileX/App/app_filex.c ****   UINT ret = FX_SUCCESS;
+  40              		.loc 1 66 3 is_stmt 1 view .LVU2
+  41              	.LVL1:
+  67:FileX/App/app_filex.c **** 
+  68:FileX/App/app_filex.c ****   TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL*)memory_ptr;
+  42              		.loc 1 68 3 view .LVU3
+  69:FileX/App/app_filex.c **** 
+  70:FileX/App/app_filex.c ****   /* USER CODE BEGIN MX_FileX_MEM_POOL */
+  71:FileX/App/app_filex.c ****   (void)byte_pool;
+  43              		.loc 1 71 3 view .LVU4
+  72:FileX/App/app_filex.c ****   /* USER CODE END MX_FileX_MEM_POOL */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 3
+
+
+  73:FileX/App/app_filex.c ****   /* USER CODE BEGIN MX_FileX_Init */
+  74:FileX/App/app_filex.c **** 
+  75:FileX/App/app_filex.c ****   /* USER CODE END MX_FileX_Init */
+  76:FileX/App/app_filex.c **** 
+  77:FileX/App/app_filex.c ****   /* Initialize FileX.  */
+  78:FileX/App/app_filex.c ****   fx_system_initialize();
+  44              		.loc 1 78 3 view .LVU5
+  45 0002 FFF7FEFF 		bl	_fx_system_initialize
+  46              	.LVL2:
+  79:FileX/App/app_filex.c **** 
+  80:FileX/App/app_filex.c ****   /* USER CODE BEGIN MX_FileX_Init 1*/
+  81:FileX/App/app_filex.c **** 
+  82:FileX/App/app_filex.c ****   /* USER CODE END MX_FileX_Init 1*/
+  83:FileX/App/app_filex.c **** 
+  84:FileX/App/app_filex.c ****   return ret;
+  47              		.loc 1 84 3 view .LVU6
+  85:FileX/App/app_filex.c **** }
+  48              		.loc 1 85 1 is_stmt 0 view .LVU7
+  49 0006 0020     		movs	r0, #0
+  50 0008 08BD     		pop	{r3, pc}
+  51              		.cfi_endproc
+  52              	.LFE11:
+  54              		.section	.rodata.App_File_Write.str1.4,"aMS",%progbits,1
+  55              		.align	2
+  56              	.LC0:
+  57 0000 54455354 		.ascii	"TEST.TXT\000"
+  57      2E545854 
+  57      00
+  58              		.section	.text.App_File_Write,"ax",%progbits
+  59              		.align	1
+  60              		.global	App_File_Write
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  65              	App_File_Write:
+  66              	.LVL3:
+  67              	.LFB12:
+  86:FileX/App/app_filex.c **** 
+  87:FileX/App/app_filex.c **** /* USER CODE BEGIN 1 */
+  88:FileX/App/app_filex.c **** 
+  89:FileX/App/app_filex.c **** /**
+  90:FileX/App/app_filex.c ****   * @brief  Application Write File process.
+  91:FileX/App/app_filex.c ****   * @param  fx_media: media pointer
+  92:FileX/App/app_filex.c ****   * @retval status
+  93:FileX/App/app_filex.c ****   */
+  94:FileX/App/app_filex.c **** UINT App_File_Write(FX_MEDIA *fx_media)
+  95:FileX/App/app_filex.c **** {
+  68              		.loc 1 95 1 is_stmt 1 view -0
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 480
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		.loc 1 95 1 is_stmt 0 view .LVU9
+  73 0000 30B5     		push	{r4, r5, lr}
+  74              	.LCFI1:
+  75              		.cfi_def_cfa_offset 12
+  76              		.cfi_offset 4, -12
+  77              		.cfi_offset 5, -8
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 4
+
+
+  78              		.cfi_offset 14, -4
+  79 0002 FBB0     		sub	sp, sp, #492
+  80              	.LCFI2:
+  81              		.cfi_def_cfa_offset 504
+  82 0004 0446     		mov	r4, r0
+  96:FileX/App/app_filex.c ****   FX_FILE my_file;
+  83              		.loc 1 96 3 is_stmt 1 view .LVU10
+  97:FileX/App/app_filex.c ****   UINT status;
+  84              		.loc 1 97 3 view .LVU11
+  98:FileX/App/app_filex.c **** 
+  99:FileX/App/app_filex.c ****   /* Open "TEST.TXT" file */
+ 100:FileX/App/app_filex.c ****   status = fx_file_open(fx_media, &my_file, "TEST.TXT", FX_OPEN_FOR_WRITE);
+  85              		.loc 1 100 3 view .LVU12
+  86              		.loc 1 100 12 is_stmt 0 view .LVU13
+  87 0006 4FF4F073 		mov	r3, #480
+  88 000a 0093     		str	r3, [sp]
+  89 000c 0123     		movs	r3, #1
+  90 000e 114A     		ldr	r2, .L8
+  91 0010 02A9     		add	r1, sp, #8
+  92 0012 FFF7FEFF 		bl	_fxe_file_open
+  93              	.LVL4:
+ 101:FileX/App/app_filex.c **** 
+ 102:FileX/App/app_filex.c ****   /* Check the file open status */
+ 103:FileX/App/app_filex.c ****   if (status == FX_SUCCESS)
+  94              		.loc 1 103 3 is_stmt 1 view .LVU14
+  95              		.loc 1 103 6 is_stmt 0 view .LVU15
+  96 0016 0546     		mov	r5, r0
+  97 0018 10B1     		cbz	r0, .L7
+  98              	.LVL5:
+  99              	.L3:
+ 104:FileX/App/app_filex.c ****   {
+ 105:FileX/App/app_filex.c ****     /* Seek the start of File */
+ 106:FileX/App/app_filex.c ****     fx_file_seek(&my_file, 0);
+ 107:FileX/App/app_filex.c **** 
+ 108:FileX/App/app_filex.c ****     /* Write a string to "TEST.TXT" file */
+ 109:FileX/App/app_filex.c ****     status = fx_file_write(&my_file, Write_buffer, sizeof(Write_buffer));
+ 110:FileX/App/app_filex.c **** 
+ 111:FileX/App/app_filex.c ****     /* Check the file write status */
+ 112:FileX/App/app_filex.c ****     if (status == FX_SUCCESS)
+ 113:FileX/App/app_filex.c ****     {
+ 114:FileX/App/app_filex.c ****       /* Close File after Finish writing */
+ 115:FileX/App/app_filex.c ****       fx_file_close(&my_file);
+ 116:FileX/App/app_filex.c **** 
+ 117:FileX/App/app_filex.c ****       /* Flush media.  */
+ 118:FileX/App/app_filex.c ****       fx_media_flush(fx_media);
+ 119:FileX/App/app_filex.c ****     }
+ 120:FileX/App/app_filex.c ****     else
+ 121:FileX/App/app_filex.c ****     {
+ 122:FileX/App/app_filex.c ****       /* Close File after Finish writing */
+ 123:FileX/App/app_filex.c ****       fx_file_close(&my_file);
+ 124:FileX/App/app_filex.c **** 
+ 125:FileX/App/app_filex.c ****       /* Delete File */
+ 126:FileX/App/app_filex.c ****       fx_file_delete(fx_media, "TEST.TXT");
+ 127:FileX/App/app_filex.c ****     }
+ 128:FileX/App/app_filex.c ****   }
+ 129:FileX/App/app_filex.c **** 
+ 130:FileX/App/app_filex.c ****   return status ;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 5
+
+
+ 131:FileX/App/app_filex.c **** }
+ 100              		.loc 1 131 1 view .LVU16
+ 101 001a 2846     		mov	r0, r5
+ 102 001c 7BB0     		add	sp, sp, #492
+ 103              	.LCFI3:
+ 104              		.cfi_remember_state
+ 105              		.cfi_def_cfa_offset 12
+ 106              		@ sp needed
+ 107 001e 30BD     		pop	{r4, r5, pc}
+ 108              	.LVL6:
+ 109              	.L7:
+ 110              	.LCFI4:
+ 111              		.cfi_restore_state
+ 106:FileX/App/app_filex.c **** 
+ 112              		.loc 1 106 5 is_stmt 1 view .LVU17
+ 113 0020 0021     		movs	r1, #0
+ 114 0022 02A8     		add	r0, sp, #8
+ 115              	.LVL7:
+ 106:FileX/App/app_filex.c **** 
+ 116              		.loc 1 106 5 is_stmt 0 view .LVU18
+ 117 0024 FFF7FEFF 		bl	_fxe_file_seek
+ 118              	.LVL8:
+ 109:FileX/App/app_filex.c **** 
+ 119              		.loc 1 109 5 is_stmt 1 view .LVU19
+ 109:FileX/App/app_filex.c **** 
+ 120              		.loc 1 109 14 is_stmt 0 view .LVU20
+ 121 0028 1D22     		movs	r2, #29
+ 122 002a 0B49     		ldr	r1, .L8+4
+ 123 002c 02A8     		add	r0, sp, #8
+ 124 002e FFF7FEFF 		bl	_fxe_file_write
+ 125              	.LVL9:
+ 112:FileX/App/app_filex.c ****     {
+ 126              		.loc 1 112 5 is_stmt 1 view .LVU21
+ 112:FileX/App/app_filex.c ****     {
+ 127              		.loc 1 112 8 is_stmt 0 view .LVU22
+ 128 0032 0546     		mov	r5, r0
+ 129 0034 30B9     		cbnz	r0, .L5
+ 115:FileX/App/app_filex.c **** 
+ 130              		.loc 1 115 7 is_stmt 1 view .LVU23
+ 131 0036 02A8     		add	r0, sp, #8
+ 132              	.LVL10:
+ 115:FileX/App/app_filex.c **** 
+ 133              		.loc 1 115 7 is_stmt 0 view .LVU24
+ 134 0038 FFF7FEFF 		bl	_fxe_file_close
+ 135              	.LVL11:
+ 118:FileX/App/app_filex.c ****     }
+ 136              		.loc 1 118 7 is_stmt 1 view .LVU25
+ 137 003c 2046     		mov	r0, r4
+ 138 003e FFF7FEFF 		bl	_fxe_media_flush
+ 139              	.LVL12:
+ 140 0042 EAE7     		b	.L3
+ 141              	.LVL13:
+ 142              	.L5:
+ 123:FileX/App/app_filex.c **** 
+ 143              		.loc 1 123 7 view .LVU26
+ 144 0044 02A8     		add	r0, sp, #8
+ 145              	.LVL14:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 6
+
+
+ 123:FileX/App/app_filex.c **** 
+ 146              		.loc 1 123 7 is_stmt 0 view .LVU27
+ 147 0046 FFF7FEFF 		bl	_fxe_file_close
+ 148              	.LVL15:
+ 126:FileX/App/app_filex.c ****     }
+ 149              		.loc 1 126 7 is_stmt 1 view .LVU28
+ 150 004a 0249     		ldr	r1, .L8
+ 151 004c 2046     		mov	r0, r4
+ 152 004e FFF7FEFF 		bl	_fxe_file_delete
+ 153              	.LVL16:
+ 130:FileX/App/app_filex.c **** }
+ 154              		.loc 1 130 3 view .LVU29
+ 130:FileX/App/app_filex.c **** }
+ 155              		.loc 1 130 10 is_stmt 0 view .LVU30
+ 156 0052 E2E7     		b	.L3
+ 157              	.L9:
+ 158              		.align	2
+ 159              	.L8:
+ 160 0054 00000000 		.word	.LC0
+ 161 0058 00000000 		.word	.LANCHOR0
+ 162              		.cfi_endproc
+ 163              	.LFE12:
+ 165              		.section	.text.App_File_Read,"ax",%progbits
+ 166              		.align	1
+ 167              		.global	App_File_Read
+ 168              		.syntax unified
+ 169              		.thumb
+ 170              		.thumb_func
+ 172              	App_File_Read:
+ 173              	.LVL17:
+ 174              	.LFB13:
+ 132:FileX/App/app_filex.c **** 
+ 133:FileX/App/app_filex.c **** /**
+ 134:FileX/App/app_filex.c ****   * @brief  Application Read File process.
+ 135:FileX/App/app_filex.c ****   * @param  fx_media: media pointer
+ 136:FileX/App/app_filex.c ****   * @retval status
+ 137:FileX/App/app_filex.c ****   */
+ 138:FileX/App/app_filex.c **** UINT App_File_Read(FX_MEDIA *fx_media)
+ 139:FileX/App/app_filex.c **** {
+ 175              		.loc 1 139 1 is_stmt 1 view -0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 488
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179              		.loc 1 139 1 is_stmt 0 view .LVU32
+ 180 0000 30B5     		push	{r4, r5, lr}
+ 181              	.LCFI5:
+ 182              		.cfi_def_cfa_offset 12
+ 183              		.cfi_offset 4, -12
+ 184              		.cfi_offset 5, -8
+ 185              		.cfi_offset 14, -4
+ 186 0002 FDB0     		sub	sp, sp, #500
+ 187              	.LCFI6:
+ 188              		.cfi_def_cfa_offset 512
+ 189 0004 0446     		mov	r4, r0
+ 140:FileX/App/app_filex.c ****   FX_FILE my_file;
+ 190              		.loc 1 140 3 is_stmt 1 view .LVU33
+ 141:FileX/App/app_filex.c ****   ULONG requested_length;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 7
+
+
+ 191              		.loc 1 141 3 view .LVU34
+ 142:FileX/App/app_filex.c ****   UINT file_attribute;
+ 192              		.loc 1 142 3 view .LVU35
+ 143:FileX/App/app_filex.c ****   UINT status;
+ 193              		.loc 1 143 3 view .LVU36
+ 144:FileX/App/app_filex.c **** 
+ 145:FileX/App/app_filex.c ****   /* Try to read the file attributes */
+ 146:FileX/App/app_filex.c ****   status = fx_file_attributes_read(fx_media, "TEST.TXT", &file_attribute);
+ 194              		.loc 1 146 3 view .LVU37
+ 195              		.loc 1 146 12 is_stmt 0 view .LVU38
+ 196 0006 02AA     		add	r2, sp, #8
+ 197 0008 1749     		ldr	r1, .L16
+ 198 000a FFF7FEFF 		bl	_fxe_file_attributes_read
+ 199              	.LVL18:
+ 147:FileX/App/app_filex.c **** 
+ 148:FileX/App/app_filex.c ****   if (status == FX_SUCCESS)
+ 200              		.loc 1 148 3 is_stmt 1 view .LVU39
+ 201              		.loc 1 148 6 is_stmt 0 view .LVU40
+ 202 000e 0546     		mov	r5, r0
+ 203 0010 18B9     		cbnz	r0, .L10
+ 149:FileX/App/app_filex.c ****   {
+ 150:FileX/App/app_filex.c ****     /* If this is a directory, pass */
+ 151:FileX/App/app_filex.c ****     if ((file_attribute & (FX_DIRECTORY | FX_VOLUME)) == 0U)
+ 204              		.loc 1 151 5 is_stmt 1 view .LVU41
+ 205              		.loc 1 151 25 is_stmt 0 view .LVU42
+ 206 0012 029B     		ldr	r3, [sp, #8]
+ 207              		.loc 1 151 8 view .LVU43
+ 208 0014 13F0180F 		tst	r3, #24
+ 209 0018 02D0     		beq	.L14
+ 210              	.LVL19:
+ 211              	.L10:
+ 152:FileX/App/app_filex.c ****     {
+ 153:FileX/App/app_filex.c ****       /* Try to open the file */
+ 154:FileX/App/app_filex.c ****       status = fx_file_open(fx_media, &my_file, "TEST.TXT", FX_OPEN_FOR_READ);
+ 155:FileX/App/app_filex.c **** 
+ 156:FileX/App/app_filex.c ****       /* Check the file open status */
+ 157:FileX/App/app_filex.c ****       if (status == FX_SUCCESS)
+ 158:FileX/App/app_filex.c ****       {
+ 159:FileX/App/app_filex.c ****         /* Seek start of File */
+ 160:FileX/App/app_filex.c ****         fx_file_seek(&my_file, 0);
+ 161:FileX/App/app_filex.c **** 
+ 162:FileX/App/app_filex.c ****         /* Read the file in blocks */
+ 163:FileX/App/app_filex.c ****         status = fx_file_read(&my_file, Read_buffer, sizeof(Read_buffer),
+ 164:FileX/App/app_filex.c ****                               &requested_length);
+ 165:FileX/App/app_filex.c **** 
+ 166:FileX/App/app_filex.c ****         /* Read the entire file */
+ 167:FileX/App/app_filex.c ****         if (status == FX_SUCCESS)
+ 168:FileX/App/app_filex.c ****         {
+ 169:FileX/App/app_filex.c ****           /* Compare Written buffer and read buffer */
+ 170:FileX/App/app_filex.c ****           status = ux_utility_memory_compare(Write_buffer, Read_buffer,
+ 171:FileX/App/app_filex.c ****                                              sizeof(Write_buffer));
+ 172:FileX/App/app_filex.c ****         }
+ 173:FileX/App/app_filex.c **** 
+ 174:FileX/App/app_filex.c ****         /* Closing File */
+ 175:FileX/App/app_filex.c ****         fx_file_close(&my_file);
+ 176:FileX/App/app_filex.c ****       }
+ 177:FileX/App/app_filex.c ****     }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 8
+
+
+ 178:FileX/App/app_filex.c ****   }
+ 179:FileX/App/app_filex.c **** 
+ 180:FileX/App/app_filex.c ****   return status;
+ 181:FileX/App/app_filex.c **** }
+ 212              		.loc 1 181 1 view .LVU44
+ 213 001a 2846     		mov	r0, r5
+ 214 001c 7DB0     		add	sp, sp, #500
+ 215              	.LCFI7:
+ 216              		.cfi_remember_state
+ 217              		.cfi_def_cfa_offset 12
+ 218              		@ sp needed
+ 219 001e 30BD     		pop	{r4, r5, pc}
+ 220              	.LVL20:
+ 221              	.L14:
+ 222              	.LCFI8:
+ 223              		.cfi_restore_state
+ 154:FileX/App/app_filex.c **** 
+ 224              		.loc 1 154 7 is_stmt 1 view .LVU45
+ 154:FileX/App/app_filex.c **** 
+ 225              		.loc 1 154 16 is_stmt 0 view .LVU46
+ 226 0020 4FF4F073 		mov	r3, #480
+ 227 0024 0093     		str	r3, [sp]
+ 228 0026 0023     		movs	r3, #0
+ 229 0028 0F4A     		ldr	r2, .L16
+ 230 002a 04A9     		add	r1, sp, #16
+ 231 002c 2046     		mov	r0, r4
+ 232              	.LVL21:
+ 154:FileX/App/app_filex.c **** 
+ 233              		.loc 1 154 16 view .LVU47
+ 234 002e FFF7FEFF 		bl	_fxe_file_open
+ 235              	.LVL22:
+ 157:FileX/App/app_filex.c ****       {
+ 236              		.loc 1 157 7 is_stmt 1 view .LVU48
+ 157:FileX/App/app_filex.c ****       {
+ 237              		.loc 1 157 10 is_stmt 0 view .LVU49
+ 238 0032 0546     		mov	r5, r0
+ 239 0034 0028     		cmp	r0, #0
+ 240 0036 F0D1     		bne	.L10
+ 160:FileX/App/app_filex.c **** 
+ 241              		.loc 1 160 9 is_stmt 1 view .LVU50
+ 242 0038 0021     		movs	r1, #0
+ 243 003a 04A8     		add	r0, sp, #16
+ 244              	.LVL23:
+ 160:FileX/App/app_filex.c **** 
+ 245              		.loc 1 160 9 is_stmt 0 view .LVU51
+ 246 003c FFF7FEFF 		bl	_fxe_file_seek
+ 247              	.LVL24:
+ 163:FileX/App/app_filex.c ****                               &requested_length);
+ 248              		.loc 1 163 9 is_stmt 1 view .LVU52
+ 163:FileX/App/app_filex.c ****                               &requested_length);
+ 249              		.loc 1 163 18 is_stmt 0 view .LVU53
+ 250 0040 03AB     		add	r3, sp, #12
+ 251 0042 6422     		movs	r2, #100
+ 252 0044 0949     		ldr	r1, .L16+4
+ 253 0046 04A8     		add	r0, sp, #16
+ 254 0048 FFF7FEFF 		bl	_fxe_file_read
+ 255              	.LVL25:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 9
+
+
+ 167:FileX/App/app_filex.c ****         {
+ 256              		.loc 1 167 9 is_stmt 1 view .LVU54
+ 167:FileX/App/app_filex.c ****         {
+ 257              		.loc 1 167 12 is_stmt 0 view .LVU55
+ 258 004c 0546     		mov	r5, r0
+ 259 004e 18B1     		cbz	r0, .L15
+ 260              	.L12:
+ 175:FileX/App/app_filex.c ****       }
+ 261              		.loc 1 175 9 is_stmt 1 view .LVU56
+ 262 0050 04A8     		add	r0, sp, #16
+ 263              	.LVL26:
+ 175:FileX/App/app_filex.c ****       }
+ 264              		.loc 1 175 9 is_stmt 0 view .LVU57
+ 265 0052 FFF7FEFF 		bl	_fxe_file_close
+ 266              	.LVL27:
+ 180:FileX/App/app_filex.c **** }
+ 267              		.loc 1 180 3 is_stmt 1 view .LVU58
+ 180:FileX/App/app_filex.c **** }
+ 268              		.loc 1 180 10 is_stmt 0 view .LVU59
+ 269 0056 E0E7     		b	.L10
+ 270              	.LVL28:
+ 271              	.L15:
+ 170:FileX/App/app_filex.c ****                                              sizeof(Write_buffer));
+ 272              		.loc 1 170 11 is_stmt 1 view .LVU60
+ 170:FileX/App/app_filex.c ****                                              sizeof(Write_buffer));
+ 273              		.loc 1 170 20 is_stmt 0 view .LVU61
+ 274 0058 1D22     		movs	r2, #29
+ 275 005a 0449     		ldr	r1, .L16+4
+ 276 005c 0448     		ldr	r0, .L16+8
+ 277              	.LVL29:
+ 170:FileX/App/app_filex.c ****                                              sizeof(Write_buffer));
+ 278              		.loc 1 170 20 view .LVU62
+ 279 005e FFF7FEFF 		bl	_ux_utility_memory_compare
+ 280              	.LVL30:
+ 281 0062 0546     		mov	r5, r0
+ 282              	.LVL31:
+ 170:FileX/App/app_filex.c ****                                              sizeof(Write_buffer));
+ 283              		.loc 1 170 20 view .LVU63
+ 284 0064 F4E7     		b	.L12
+ 285              	.L17:
+ 286 0066 00BF     		.align	2
+ 287              	.L16:
+ 288 0068 00000000 		.word	.LC0
+ 289 006c 00000000 		.word	.LANCHOR1
+ 290 0070 00000000 		.word	.LANCHOR0
+ 291              		.cfi_endproc
+ 292              	.LFE13:
+ 294              		.section	.text.App_File_Create,"ax",%progbits
+ 295              		.align	1
+ 296              		.global	App_File_Create
+ 297              		.syntax unified
+ 298              		.thumb
+ 299              		.thumb_func
+ 301              	App_File_Create:
+ 302              	.LVL32:
+ 303              	.LFB14:
+ 182:FileX/App/app_filex.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 10
+
+
+ 183:FileX/App/app_filex.c **** /**
+ 184:FileX/App/app_filex.c ****   * @brief  Application Create File process.
+ 185:FileX/App/app_filex.c ****   * @param  fx_media: media pointer
+ 186:FileX/App/app_filex.c ****   * @retval status
+ 187:FileX/App/app_filex.c ****   */
+ 188:FileX/App/app_filex.c **** UINT App_File_Create(FX_MEDIA *fx_media)
+ 189:FileX/App/app_filex.c **** {
+ 304              		.loc 1 189 1 is_stmt 1 view -0
+ 305              		.cfi_startproc
+ 306              		@ args = 0, pretend = 0, frame = 0
+ 307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 308              		.loc 1 189 1 is_stmt 0 view .LVU65
+ 309 0000 08B5     		push	{r3, lr}
+ 310              	.LCFI9:
+ 311              		.cfi_def_cfa_offset 8
+ 312              		.cfi_offset 3, -8
+ 313              		.cfi_offset 14, -4
+ 190:FileX/App/app_filex.c ****   UINT status;
+ 314              		.loc 1 190 3 is_stmt 1 view .LVU66
+ 191:FileX/App/app_filex.c **** 
+ 192:FileX/App/app_filex.c ****   /* Create a file called TEST.TXT in the root directory */
+ 193:FileX/App/app_filex.c ****   status = fx_file_create(fx_media, "TEST.TXT");
+ 315              		.loc 1 193 3 view .LVU67
+ 316              		.loc 1 193 12 is_stmt 0 view .LVU68
+ 317 0002 0449     		ldr	r1, .L23
+ 318 0004 FFF7FEFF 		bl	_fxe_file_create
+ 319              	.LVL33:
+ 194:FileX/App/app_filex.c **** 
+ 195:FileX/App/app_filex.c ****   /* Check for an already created status */
+ 196:FileX/App/app_filex.c ****   if (status == FX_ALREADY_CREATED)
+ 320              		.loc 1 196 3 is_stmt 1 view .LVU69
+ 321              		.loc 1 196 6 is_stmt 0 view .LVU70
+ 322 0008 0B28     		cmp	r0, #11
+ 323 000a 00D0     		beq	.L22
+ 324              	.LVL34:
+ 325              	.L18:
+ 197:FileX/App/app_filex.c ****   {
+ 198:FileX/App/app_filex.c ****     /* File Creation success */
+ 199:FileX/App/app_filex.c ****     status = FX_SUCCESS;
+ 200:FileX/App/app_filex.c ****   }
+ 201:FileX/App/app_filex.c **** 
+ 202:FileX/App/app_filex.c ****   return status;
+ 203:FileX/App/app_filex.c **** }
+ 326              		.loc 1 203 1 view .LVU71
+ 327 000c 08BD     		pop	{r3, pc}
+ 328              	.LVL35:
+ 329              	.L22:
+ 199:FileX/App/app_filex.c ****   }
+ 330              		.loc 1 199 12 view .LVU72
+ 331 000e 0020     		movs	r0, #0
+ 332              	.LVL36:
+ 202:FileX/App/app_filex.c **** }
+ 333              		.loc 1 202 3 is_stmt 1 view .LVU73
+ 202:FileX/App/app_filex.c **** }
+ 334              		.loc 1 202 10 is_stmt 0 view .LVU74
+ 335 0010 FCE7     		b	.L18
+ 336              	.L24:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 11
+
+
+ 337 0012 00BF     		.align	2
+ 338              	.L23:
+ 339 0014 00000000 		.word	.LC0
+ 340              		.cfi_endproc
+ 341              	.LFE14:
+ 343              		.section	.bss.Read_buffer,"aw",%nobits
+ 344              		.align	2
+ 345              		.set	.LANCHOR1,. + 0
+ 348              	Read_buffer:
+ 349 0000 00000000 		.space	100
+ 349      00000000 
+ 349      00000000 
+ 349      00000000 
+ 349      00000000 
+ 350              		.section	.data.Write_buffer,"aw"
+ 351              		.align	2
+ 352              		.set	.LANCHOR0,. + 0
+ 355              	Write_buffer:
+ 356 0000 55534258 		.ascii	"USBX_STM32_Host_Mass_Storage\000"
+ 356      5F53544D 
+ 356      33325F48 
+ 356      6F73745F 
+ 356      4D617373 
+ 357              		.text
+ 358              	.Letext0:
+ 359              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 360              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 361              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 362              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczKz8SM.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app_filex.c
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:20     .text.MX_FileX_Init:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:26     .text.MX_FileX_Init:00000000 MX_FileX_Init
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:55     .rodata.App_File_Write.str1.4:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:59     .text.App_File_Write:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:65     .text.App_File_Write:00000000 App_File_Write
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:160    .text.App_File_Write:00000054 $d
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:166    .text.App_File_Read:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:172    .text.App_File_Read:00000000 App_File_Read
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:288    .text.App_File_Read:00000068 $d
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:295    .text.App_File_Create:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:301    .text.App_File_Create:00000000 App_File_Create
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:339    .text.App_File_Create:00000014 $d
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:344    .bss.Read_buffer:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:348    .bss.Read_buffer:00000000 Read_buffer
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:351    .data.Write_buffer:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cczKz8SM.s:355    .data.Write_buffer:00000000 Write_buffer
+
+UNDEFINED SYMBOLS
+_fx_system_initialize
+_fxe_file_open
+_fxe_file_seek
+_fxe_file_write
+_fxe_file_close
+_fxe_media_flush
+_fxe_file_delete
+_fxe_file_attributes_read
+_fxe_file_read
+_ux_utility_memory_compare
+_fxe_file_create

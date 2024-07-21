@@ -1,0 +1,275 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_request_trans_prepare.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_request_trans_prepare,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_request_trans_prepare
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_request_trans_prepare:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  FUNCTION                                               RELEASE        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    _ux_hcd_stm32_request_trans_prepare                 PORTABLE C      */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                           6.1.12       */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  AUTHOR                                                                */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  DESCRIPTION                                                           */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*     Prepare for data transactions.                                     */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    hcd_stm32                             Pointer to STM32 controller   */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    ed                                    Pointer to STM32 ED           */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    transfer                              Pointer to transfer request   */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  OUTPUT                                                                */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    Completion Status                                                   */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  CALLS                                                                 */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    _ux_utility_memory_allocate           Allocate memory               */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    _ux_utility_memory_copy               Copy memory                   */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  CALLED BY                                                             */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    STM32 Controller Driver                                             */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  RELEASE HISTORY                                                       */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*    DATE              NAME                      DESCRIPTION             */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*  07-29-2022     Chaoqiong Xiao           Initial Version 6.1.12        */
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** /**************************************************************************/
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** UINT  _ux_hcd_stm32_request_trans_prepare(UX_HCD_STM32 *hcd_stm32, UX_HCD_STM32_ED *ed, UX_TRANSFER
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** {
+  30              		.loc 1 76 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 76 1 is_stmt 0 view .LVU1
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 3, -16
+  39              		.cfi_offset 4, -12
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s 			page 3
+
+
+  40              		.cfi_offset 5, -8
+  41              		.cfi_offset 14, -4
+  42 0002 1446     		mov	r4, r2
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* Save transfer data pointer.  */
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     ed -> ux_stm32_ed_data = transfer -> ux_transfer_request_data_pointer;
+  43              		.loc 1 79 5 is_stmt 1 view .LVU2
+  44              		.loc 1 79 39 is_stmt 0 view .LVU3
+  45 0004 9368     		ldr	r3, [r2, #8]
+  46              		.loc 1 79 28 view .LVU4
+  47 0006 0B61     		str	r3, [r1, #16]
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* If DMA not enabled, nothing to do.  */
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     if (!hcd_stm32 -> hcd_handle -> Init.dma_enable)
+  48              		.loc 1 82 5 is_stmt 1 view .LVU5
+  49              		.loc 1 82 20 is_stmt 0 view .LVU6
+  50 0008 826C     		ldr	r2, [r0, #72]
+  51              	.LVL1:
+  52              		.loc 1 82 41 view .LVU7
+  53 000a 1069     		ldr	r0, [r2, #16]
+  54              	.LVL2:
+  55              		.loc 1 82 8 view .LVU8
+  56 000c 30B1     		cbz	r0, .L1
+  57 000e 0D46     		mov	r5, r1
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_SUCCESS);
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* If there is no data, nothing to do.  */
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     if (transfer -> ux_transfer_request_requested_length == 0)
+  58              		.loc 1 86 5 is_stmt 1 view .LVU9
+  59              		.loc 1 86 18 is_stmt 0 view .LVU10
+  60 0010 E068     		ldr	r0, [r4, #12]
+  61              		.loc 1 86 8 view .LVU11
+  62 0012 18B1     		cbz	r0, .L1
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_SUCCESS);
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* If transfer buffer aligned, nothing to do.  */
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     if (((ALIGN_TYPE)ed -> ux_stm32_ed_data & 0x3UL) == 0)
+  63              		.loc 1 90 5 is_stmt 1 view .LVU12
+  64              		.loc 1 90 8 is_stmt 0 view .LVU13
+  65 0014 13F00303 		ands	r3, r3, #3
+  66 0018 01D1     		bne	.L7
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_SUCCESS);
+  67              		.loc 1 91 15 view .LVU14
+  68 001a 1846     		mov	r0, r3
+  69              	.LVL3:
+  70              	.L1:
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* Allocate aligned data buffer for transfer.  */
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     ed -> ux_stm32_ed_data = _ux_utility_memory_allocate(UX_NO_ALIGN,
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             UX_CACHE_SAFE_MEMORY,
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             transfer -> ux_transfer_request_requested_length);
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     if (ed -> ux_stm32_ed_data == UX_NULL)
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_MEMORY_INSUFFICIENT);
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* For data IN it's done.  */
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     if (ed -> ux_stm32_ed_dir)
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_SUCCESS);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s 			page 4
+
+
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* For data OUT, copy buffer.  */
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     _ux_utility_memory_copy(ed -> ux_stm32_ed_data,
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             transfer -> ux_transfer_request_data_pointer,
+ 107:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             transfer -> ux_transfer_request_requested_length); /* Use case of memcp
+ 108:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     /* Done.  */
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****     return(UX_SUCCESS);
+ 111:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** }
+  71              		.loc 1 111 1 view .LVU15
+  72 001c 38BD     		pop	{r3, r4, r5, pc}
+  73              	.LVL4:
+  74              	.L7:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             UX_CACHE_SAFE_MEMORY,
+  75              		.loc 1 94 5 is_stmt 1 view .LVU16
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             UX_CACHE_SAFE_MEMORY,
+  76              		.loc 1 94 30 is_stmt 0 view .LVU17
+  77 001e 0246     		mov	r2, r0
+  78 0020 0121     		movs	r1, #1
+  79              	.LVL5:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             UX_CACHE_SAFE_MEMORY,
+  80              		.loc 1 94 30 view .LVU18
+  81 0022 0020     		movs	r0, #0
+  82 0024 FFF7FEFF 		bl	_ux_utility_memory_allocate
+  83              	.LVL6:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             UX_CACHE_SAFE_MEMORY,
+  84              		.loc 1 94 28 view .LVU19
+  85 0028 2861     		str	r0, [r5, #16]
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_MEMORY_INSUFFICIENT);
+  86              		.loc 1 97 5 is_stmt 1 view .LVU20
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_MEMORY_INSUFFICIENT);
+  87              		.loc 1 97 8 is_stmt 0 view .LVU21
+  88 002a 50B1     		cbz	r0, .L4
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_SUCCESS);
+  89              		.loc 1 101 5 is_stmt 1 view .LVU22
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_SUCCESS);
+  90              		.loc 1 101 12 is_stmt 0 view .LVU23
+  91 002c 95F82A30 		ldrb	r3, [r5, #42]	@ zero_extendqisi2
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****         return(UX_SUCCESS);
+  92              		.loc 1 101 8 view .LVU24
+  93 0030 0BB1     		cbz	r3, .L8
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+  94              		.loc 1 102 15 view .LVU25
+  95 0032 0020     		movs	r0, #0
+  96 0034 F2E7     		b	.L1
+  97              	.L8:
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c ****                             transfer -> ux_transfer_request_data_pointer,
+  98              		.loc 1 105 5 is_stmt 1 view .LVU26
+  99 0036 E268     		ldr	r2, [r4, #12]
+ 100 0038 A168     		ldr	r1, [r4, #8]
+ 101 003a FFF7FEFF 		bl	_ux_utility_memory_copy
+ 102              	.LVL7:
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** }
+ 103              		.loc 1 110 5 view .LVU27
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** }
+ 104              		.loc 1 110 11 is_stmt 0 view .LVU28
+ 105 003e 0020     		movs	r0, #0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s 			page 5
+
+
+ 106 0040 ECE7     		b	.L1
+ 107              	.L4:
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_request_trans_prepare.c **** 
+ 108              		.loc 1 98 15 view .LVU29
+ 109 0042 1220     		movs	r0, #18
+ 110 0044 EAE7     		b	.L1
+ 111              		.cfi_endproc
+ 112              	.LFE143:
+ 114              		.text
+ 115              	.Letext0:
+ 116              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 117              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 118              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 119              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 120              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 121              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 122              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 123              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 124              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 125              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ 126              		.file 12 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_request_trans_prepare.c
+C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s:20     .text._ux_hcd_stm32_request_trans_prepare:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccEC5kiI.s:26     .text._ux_hcd_stm32_request_trans_prepare:00000000 _ux_hcd_stm32_request_trans_prepare
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_utility_memory_copy

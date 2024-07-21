@@ -1,0 +1,2009 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fx_media_format.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._fx_media_format,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_media_format
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_media_format:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/filex/common/src/fx_media_format.c"
+   1:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_media_format.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_media_format.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_media_format.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_media_format.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_media_format.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  12:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  13:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_media_format.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_media_format.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_media_format.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_media_format.c **** /**   Media                                                               */
+  19:Middlewares/ST/filex/common/src/fx_media_format.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  23:Middlewares/ST/filex/common/src/fx_media_format.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  25:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  26:Middlewares/ST/filex/common/src/fx_media_format.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  28:Middlewares/ST/filex/common/src/fx_media_format.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_media_format.c **** #include "fx_media.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fx_media_format.c **** #include "fx_utility.h"
+  31:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  32:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  33:Middlewares/ST/filex/common/src/fx_media_format.c **** /* Define global variables necessary for formatting.  */
+  34:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  35:Middlewares/ST/filex/common/src/fx_media_format.c **** /* Define OEM Name. This name must be 8 characters long and be blank padded.
+  36:Middlewares/ST/filex/common/src/fx_media_format.c ****    The default may be changed by modifying this file or calling the
+  37:Middlewares/ST/filex/common/src/fx_media_format.c ****    fx_media_format_oem_name_set utility prior to calling fx_media_format.  */
+  38:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  39:Middlewares/ST/filex/common/src/fx_media_format.c **** UCHAR   _fx_media_format_oem_name[8] = "EL FILEX";
+  40:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  41:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  42:Middlewares/ST/filex/common/src/fx_media_format.c **** /* Define the default media type.  This default may be changed by modifying
+  43:Middlewares/ST/filex/common/src/fx_media_format.c ****    this file or calling the fx_media_format_type_set utility prior to calling
+  44:Middlewares/ST/filex/common/src/fx_media_format.c ****    fx_media_format.  */
+  45:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  46:Middlewares/ST/filex/common/src/fx_media_format.c **** UCHAR _fx_media_format_media_type =  0xF8;
+  47:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  48:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  49:Middlewares/ST/filex/common/src/fx_media_format.c **** /* Define the default volume ID.  This default may be changed by modifying
+  50:Middlewares/ST/filex/common/src/fx_media_format.c ****    this file or calling the fx_media_format_volume_id_set utility prior to calling
+  51:Middlewares/ST/filex/common/src/fx_media_format.c ****    fx_media_format.  */
+  52:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  53:Middlewares/ST/filex/common/src/fx_media_format.c **** ULONG _fx_media_format_volume_id =  1;
+  54:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  55:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+  56:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+  57:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  FUNCTION                                               RELEASE        */
+  59:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    _fx_media_format                                    PORTABLE C      */
+  61:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                           6.1.11       */
+  62:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  AUTHOR                                                                */
+  63:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  65:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  DESCRIPTION                                                           */
+  67:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    This function creates a FAT12/16/32 format with raw calls to the    */
+  69:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    I/O driver. It can and must be called before the fx_media_open      */
+  70:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    and is designed to utilize the same underlying FileX driver.        */
+  71:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  INPUT                                                                 */
+  73:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  74:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    media_ptr                             Pointer to media control block*/
+  75:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            (does not need to be opened)*/
+  76:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    driver                                Pointer to FileX driver (must */
+  77:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            be able to field requests   */
+  78:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            prior to opening)           */
+  79:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    driver_info_ptr                       Optional information pointer  */
+  80:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    memory_ptr                            Pointer to memory used by the */
+  81:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            FileX for this media.       */
+  82:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    memory_size                           Size of media memory - must   */
+  83:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            at least 512 bytes and      */
+  84:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            one sector size.            */
+  85:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    volume_name                           Name of the volume            */
+  86:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    number_of_fats                        Number of FAT tables          */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 3
+
+
+  87:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    directory_entries                     Number of directory entries   */
+  88:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    hidden_sectors                        Number of hidden sectors      */
+  89:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    total_sectors                         Total number of sectors       */
+  90:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    bytes_per_sector                      Number of bytes per sector    */
+  91:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    sectors_per_cluster                   Number of sectors per cluster */
+  92:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    heads                                 Number of heads               */
+  93:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    sectors_per_track                     Number of sectors per track   */
+  94:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  95:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  OUTPUT                                                                */
+  96:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  97:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    Completion Status                                                   */
+  98:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+  99:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  CALLS                                                                 */
+ 100:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+ 101:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    Media driver                                                        */
+ 102:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    _fx_utility_16_unsigned_write         Write 16-bit unsigned         */
+ 103:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    _fx_utility_32_unsigned_write         Write 32-bit unsigned         */
+ 104:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+ 105:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  CALLED BY                                                             */
+ 106:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+ 107:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    Application Code                                                    */
+ 108:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+ 109:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  RELEASE HISTORY                                                       */
+ 110:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+ 111:Middlewares/ST/filex/common/src/fx_media_format.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 112:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+ 113:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+ 114:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  09-30-2020     William E. Lamie         Modified comment(s), and      */
+ 115:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            added conditional to        */
+ 116:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            disable force memset,       */
+ 117:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            resulting in version 6.1    */
+ 118:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  03-02-2021     William E. Lamie         Modified comment(s),          */
+ 119:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            resulting in version 6.1.5  */
+ 120:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  08-02-2021     Bhupendra Naphade        Modified comment(s), and      */
+ 121:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            updated boot write logic,   */
+ 122:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            resulting in version 6.1.8  */
+ 123:Middlewares/ST/filex/common/src/fx_media_format.c **** /*  04-25-2022     Bhupendra Naphade        Modified comment(s), and      */
+ 124:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            updated reserved FAT entry  */
+ 125:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            value,                      */
+ 126:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                            resulting in version 6.1.11 */
+ 127:Middlewares/ST/filex/common/src/fx_media_format.c **** /*                                                                        */
+ 128:Middlewares/ST/filex/common/src/fx_media_format.c **** /**************************************************************************/
+ 129:Middlewares/ST/filex/common/src/fx_media_format.c **** UINT  _fx_media_format(FX_MEDIA *media_ptr, VOID (*driver)(FX_MEDIA *media), VOID *driver_info_ptr,
+ 130:Middlewares/ST/filex/common/src/fx_media_format.c ****                        CHAR *volume_name, UINT number_of_fats, UINT directory_entries, UINT hidden_
+ 131:Middlewares/ST/filex/common/src/fx_media_format.c ****                        ULONG total_sectors, UINT bytes_per_sector, UINT sectors_per_cluster,
+ 132:Middlewares/ST/filex/common/src/fx_media_format.c ****                        UINT heads, UINT sectors_per_track)
+ 133:Middlewares/ST/filex/common/src/fx_media_format.c **** {
+  30              		.loc 1 133 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 40, pretend = 0, frame = 16
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 133 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 36
+  38              		.cfi_offset 4, -36
+  39              		.cfi_offset 5, -32
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 4
+
+
+  40              		.cfi_offset 6, -28
+  41              		.cfi_offset 7, -24
+  42              		.cfi_offset 8, -20
+  43              		.cfi_offset 9, -16
+  44              		.cfi_offset 10, -12
+  45              		.cfi_offset 11, -8
+  46              		.cfi_offset 14, -4
+  47 0004 85B0     		sub	sp, sp, #20
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 56
+  50 0006 149E     		ldr	r6, [sp, #80]
+ 134:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 135:Middlewares/ST/filex/common/src/fx_media_format.c **** UCHAR *byte_ptr;
+  51              		.loc 1 135 1 is_stmt 1 view .LVU2
+ 136:Middlewares/ST/filex/common/src/fx_media_format.c **** UINT   reserved_sectors, i, j, root_sectors, total_clusters, bytes_needed;
+  52              		.loc 1 136 1 view .LVU3
+ 137:Middlewares/ST/filex/common/src/fx_media_format.c **** UINT   sectors_per_fat, f, s;
+  53              		.loc 1 137 1 view .LVU4
+ 138:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 139:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 140:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Create & write bootrecord from drive geometry information.  */
+ 141:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 143:Middlewares/ST/filex/common/src/fx_media_format.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_MEDIA_FORMAT, media_ptr, directory_entries, total_sectors, sec
+ 144:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 145:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Validate bytes per sector value: greater than zero and no more than 4096.  */
+ 146:Middlewares/ST/filex/common/src/fx_media_format.c ****     if((bytes_per_sector == 0) || (bytes_per_sector > 4096))
+  54              		.loc 1 146 5 view .LVU5
+  55              		.loc 1 146 32 is_stmt 0 view .LVU6
+  56 0008 06F1FF39 		add	r9, r6, #-1
+  57              		.loc 1 146 7 view .LVU7
+  58 000c B9F5805F 		cmp	r9, #4096
+  59 0010 80F03982 		bcs	.L41
+  60 0014 0546     		mov	r5, r0
+  61 0016 8A46     		mov	r10, r1
+  62 0018 1C46     		mov	r4, r3
+ 147:Middlewares/ST/filex/common/src/fx_media_format.c ****         return(FX_SECTOR_INVALID);
+ 148:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 149:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Validate sectors per cluster value: greater than zero and no more than 128.  */
+ 150:Middlewares/ST/filex/common/src/fx_media_format.c ****     if((sectors_per_cluster == 0) || (sectors_per_cluster > 128))
+  63              		.loc 1 150 5 is_stmt 1 view .LVU8
+  64              		.loc 1 150 35 is_stmt 0 view .LVU9
+  65 001a 159B     		ldr	r3, [sp, #84]
+  66              	.LVL1:
+  67              		.loc 1 150 35 view .LVU10
+  68 001c 013B     		subs	r3, r3, #1
+  69              		.loc 1 150 7 view .LVU11
+  70 001e 7F2B     		cmp	r3, #127
+  71 0020 00F23382 		bhi	.L42
+ 151:Middlewares/ST/filex/common/src/fx_media_format.c ****         return(FX_SECTOR_INVALID);
+ 152:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 153:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Setup driver pointer and memory information.  */
+ 154:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_entry =                driver;
+  72              		.loc 1 154 5 is_stmt 1 view .LVU12
+  73              		.loc 1 154 40 is_stmt 0 view .LVU13
+  74 0024 C5F8BC10 		str	r1, [r5, #188]
+ 155:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_memory_buffer =               (UCHAR *)memory_ptr;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 5
+
+
+  75              		.loc 1 155 5 is_stmt 1 view .LVU14
+  76              		.loc 1 155 41 is_stmt 0 view .LVU15
+  77 0028 8460     		str	r4, [r0, #8]
+ 156:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_memory_size =                 memory_size;
+  78              		.loc 1 156 5 is_stmt 1 view .LVU16
+  79              		.loc 1 156 39 is_stmt 0 view .LVU17
+  80 002a 0E9B     		ldr	r3, [sp, #56]
+  81 002c C360     		str	r3, [r0, #12]
+ 157:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 158:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Store geometry information in media record - driver needs this.  */
+ 159:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_bytes_per_sector =            bytes_per_sector;
+  82              		.loc 1 159 5 is_stmt 1 view .LVU18
+  83              		.loc 1 159 44 is_stmt 0 view .LVU19
+  84 002e 8662     		str	r6, [r0, #40]
+ 160:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_sectors_per_track =           sectors_per_track;
+  85              		.loc 1 160 5 is_stmt 1 view .LVU20
+  86              		.loc 1 160 45 is_stmt 0 view .LVU21
+  87 0030 179B     		ldr	r3, [sp, #92]
+  88 0032 C362     		str	r3, [r0, #44]
+ 161:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_heads =                       heads;
+  89              		.loc 1 161 5 is_stmt 1 view .LVU22
+  90              		.loc 1 161 33 is_stmt 0 view .LVU23
+  91 0034 169B     		ldr	r3, [sp, #88]
+  92 0036 0363     		str	r3, [r0, #48]
+ 162:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_hidden_sectors =              hidden_sectors;
+  93              		.loc 1 162 5 is_stmt 1 view .LVU24
+  94              		.loc 1 162 42 is_stmt 0 view .LVU25
+  95 0038 129B     		ldr	r3, [sp, #72]
+  96 003a 0367     		str	r3, [r0, #112]
+ 163:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 164:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Initialize the supplied media I/O driver.  First, build the
+ 165:Middlewares/ST/filex/common/src/fx_media_format.c ****        initialize driver request.  */
+ 166:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_request =              FX_DRIVER_INIT;
+  97              		.loc 1 166 5 is_stmt 1 view .LVU26
+  98              		.loc 1 166 42 is_stmt 0 view .LVU27
+  99 003c 0423     		movs	r3, #4
+ 100 003e C0F88830 		str	r3, [r0, #136]
+ 167:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_status =               FX_IO_ERROR;
+ 101              		.loc 1 167 5 is_stmt 1 view .LVU28
+ 102              		.loc 1 167 41 is_stmt 0 view .LVU29
+ 103 0042 9023     		movs	r3, #144
+ 104 0044 C0F88C30 		str	r3, [r0, #140]
+ 168:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_info =                 driver_info_ptr;
+ 105              		.loc 1 168 5 is_stmt 1 view .LVU30
+ 106              		.loc 1 168 39 is_stmt 0 view .LVU31
+ 107 0048 C0F88420 		str	r2, [r0, #132]
+ 169:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_write_protect =        FX_FALSE;
+ 108              		.loc 1 169 5 is_stmt 1 view .LVU32
+ 109              		.loc 1 169 48 is_stmt 0 view .LVU33
+ 110 004c 0023     		movs	r3, #0
+ 111 004e C0F8A830 		str	r3, [r0, #168]
+ 170:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_free_sector_update =   FX_FALSE;
+ 112              		.loc 1 170 5 is_stmt 1 view .LVU34
+ 113              		.loc 1 170 53 is_stmt 0 view .LVU35
+ 114 0052 C0F8AC30 		str	r3, [r0, #172]
+ 171:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_data_sector_read =     FX_FALSE;
+ 115              		.loc 1 171 5 is_stmt 1 view .LVU36
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 6
+
+
+ 116              		.loc 1 171 51 is_stmt 0 view .LVU37
+ 117 0056 C0F8B430 		str	r3, [r0, #180]
+ 172:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 173:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 174:Middlewares/ST/filex/common/src/fx_media_format.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_INIT, media_ptr, 0, 0, 0, FX_TRACE_INTERNAL
+ 175:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 176:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Call the specified I/O driver with the initialize request.  */
+ 177:Middlewares/ST/filex/common/src/fx_media_format.c ****     (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 118              		.loc 1 177 5 is_stmt 1 view .LVU38
+ 119              		.loc 1 177 16 is_stmt 0 view .LVU39
+ 120 005a 8847     		blx	r1
+ 121              	.LVL2:
+ 178:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 179:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Determine if the I/O driver initialized successfully.  */
+ 180:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (media_ptr -> fx_media_driver_status != FX_SUCCESS)
+ 122              		.loc 1 180 5 is_stmt 1 view .LVU40
+ 123              		.loc 1 180 19 is_stmt 0 view .LVU41
+ 124 005c D5F88C70 		ldr	r7, [r5, #140]
+ 125              		.loc 1 180 8 view .LVU42
+ 126 0060 002F     		cmp	r7, #0
+ 127 0062 40F01482 		bne	.L43
+ 181:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 182:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 183:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Return the driver error status.  */
+ 184:Middlewares/ST/filex/common/src/fx_media_format.c ****         return(FX_IO_ERROR);
+ 185:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 186:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 187:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Setup driver buffer memory.  */
+ 188:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_buffer =  memory_ptr;
+ 128              		.loc 1 188 5 is_stmt 1 view .LVU43
+ 129              		.loc 1 188 41 is_stmt 0 view .LVU44
+ 130 0066 C5F89040 		str	r4, [r5, #144]
+ 189:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 190:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Move the buffer pointer into a local copy.  */
+ 191:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr =  media_ptr -> fx_media_driver_buffer;
+ 131              		.loc 1 191 5 is_stmt 1 view .LVU45
+ 132              	.LVL3:
+ 192:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 193:Middlewares/ST/filex/common/src/fx_media_format.c **** #ifndef FX_DISABLE_FORCE_MEMORY_OPERATION
+ 194:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Clear the buffer record out, assuming it is large enough for one sector.   */
+ 195:Middlewares/ST/filex/common/src/fx_media_format.c ****     for (i = 0; i < bytes_per_sector; i++)
+ 133              		.loc 1 195 5 view .LVU46
+ 134              		.loc 1 195 12 is_stmt 0 view .LVU47
+ 135 006a 3B46     		mov	r3, r7
+ 136              		.loc 1 195 5 view .LVU48
+ 137 006c 02E0     		b	.L3
+ 138              	.LVL4:
+ 139              	.L4:
+ 196:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 197:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 198:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Clear each byte of the boot record.  */
+ 199:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[i] =  (UCHAR)0;
+ 140              		.loc 1 199 9 is_stmt 1 discriminator 3 view .LVU49
+ 141              		.loc 1 199 21 is_stmt 0 discriminator 3 view .LVU50
+ 142 006e 0022     		movs	r2, #0
+ 143 0070 E254     		strb	r2, [r4, r3]
+ 195:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 7
+
+
+ 144              		.loc 1 195 39 is_stmt 1 discriminator 3 view .LVU51
+ 195:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 145              		.loc 1 195 40 is_stmt 0 discriminator 3 view .LVU52
+ 146 0072 0133     		adds	r3, r3, #1
+ 147              	.LVL5:
+ 148              	.L3:
+ 195:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 149              		.loc 1 195 17 is_stmt 1 discriminator 1 view .LVU53
+ 195:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 150              		.loc 1 195 5 is_stmt 0 discriminator 1 view .LVU54
+ 151 0074 B342     		cmp	r3, r6
+ 152 0076 FAD3     		bcc	.L4
+ 200:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 201:Middlewares/ST/filex/common/src/fx_media_format.c **** #else
+ 202:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_memory_set(byte_ptr, 0, bytes_per_sector);
+ 203:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif /* FX_DISABLE_FORCE_MEMORY_OPERATION */
+ 204:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 205:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set jump instruction at the beginning of the sector.  */
+ 206:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[0] =  (UCHAR)0xEB;
+ 153              		.loc 1 206 5 is_stmt 1 view .LVU55
+ 154              		.loc 1 206 17 is_stmt 0 view .LVU56
+ 155 0078 EB23     		movs	r3, #235
+ 156              	.LVL6:
+ 157              		.loc 1 206 17 view .LVU57
+ 158 007a 2370     		strb	r3, [r4]
+ 207:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[1] =  (UCHAR)0x34;
+ 159              		.loc 1 207 5 is_stmt 1 view .LVU58
+ 160              		.loc 1 207 17 is_stmt 0 view .LVU59
+ 161 007c 3423     		movs	r3, #52
+ 162 007e 6370     		strb	r3, [r4, #1]
+ 208:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[2] =  (UCHAR)0x90;
+ 163              		.loc 1 208 5 is_stmt 1 view .LVU60
+ 164              		.loc 1 208 17 is_stmt 0 view .LVU61
+ 165 0080 9023     		movs	r3, #144
+ 166 0082 A370     		strb	r3, [r4, #2]
+ 209:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 210:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the OEM name in the boot record.  */
+ 211:Middlewares/ST/filex/common/src/fx_media_format.c ****     for (i = 0; i < 8; i++)
+ 167              		.loc 1 211 5 is_stmt 1 view .LVU62
+ 168              	.LVL7:
+ 169              		.loc 1 211 12 is_stmt 0 view .LVU63
+ 170 0084 3B46     		mov	r3, r7
+ 171              		.loc 1 211 5 view .LVU64
+ 172 0086 04E0     		b	.L5
+ 173              	.LVL8:
+ 174              	.L6:
+ 212:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 213:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 214:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Copy a character from the OEM name.  */
+ 215:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[i + 3] =  _fx_media_format_oem_name[i];
+ 175              		.loc 1 215 9 is_stmt 1 discriminator 3 view .LVU65
+ 176              		.loc 1 215 17 is_stmt 0 discriminator 3 view .LVU66
+ 177 0088 DA1C     		adds	r2, r3, #3
+ 178              		.loc 1 215 53 discriminator 3 view .LVU67
+ 179 008a BF49     		ldr	r1, .L62
+ 180 008c C95C     		ldrb	r1, [r1, r3]	@ zero_extendqisi2
+ 181              		.loc 1 215 25 discriminator 3 view .LVU68
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 8
+
+
+ 182 008e A154     		strb	r1, [r4, r2]
+ 211:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 183              		.loc 1 211 24 is_stmt 1 discriminator 3 view .LVU69
+ 211:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 184              		.loc 1 211 25 is_stmt 0 discriminator 3 view .LVU70
+ 185 0090 0133     		adds	r3, r3, #1
+ 186              	.LVL9:
+ 187              	.L5:
+ 211:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 188              		.loc 1 211 17 is_stmt 1 discriminator 1 view .LVU71
+ 211:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 189              		.loc 1 211 5 is_stmt 0 discriminator 1 view .LVU72
+ 190 0092 072B     		cmp	r3, #7
+ 191 0094 F8D9     		bls	.L6
+ 216:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 217:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 218:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the media type in the boot record.  */
+ 219:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[FX_MEDIA_TYPE] =  _fx_media_format_media_type;
+ 192              		.loc 1 219 5 is_stmt 1 view .LVU73
+ 193              		.loc 1 219 29 is_stmt 0 view .LVU74
+ 194 0096 BD4B     		ldr	r3, .L62+4
+ 195              	.LVL10:
+ 196              		.loc 1 219 29 view .LVU75
+ 197 0098 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 198 009a 6375     		strb	r3, [r4, #21]
+ 220:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 221:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the number of bytes per sector.  */
+ 222:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_16_unsigned_write(&byte_ptr[FX_BYTES_SECTOR], bytes_per_sector);
+ 199              		.loc 1 222 5 is_stmt 1 view .LVU76
+ 200 009c 3146     		mov	r1, r6
+ 201 009e 04F10B00 		add	r0, r4, #11
+ 202 00a2 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 203              	.LVL11:
+ 223:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 224:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the number of sectors per track.  */
+ 225:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_16_unsigned_write(&byte_ptr[FX_SECTORS_PER_TRK], sectors_per_track);
+ 204              		.loc 1 225 5 view .LVU77
+ 205 00a6 1799     		ldr	r1, [sp, #92]
+ 206 00a8 04F11800 		add	r0, r4, #24
+ 207 00ac FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 208              	.LVL12:
+ 226:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 227:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the number of heads.  */
+ 228:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_16_unsigned_write(&byte_ptr[FX_HEADS], heads);
+ 209              		.loc 1 228 5 view .LVU78
+ 210 00b0 1699     		ldr	r1, [sp, #88]
+ 211 00b2 04F11A00 		add	r0, r4, #26
+ 212 00b6 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 213              	.LVL13:
+ 229:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 230:Middlewares/ST/filex/common/src/fx_media_format.c **** #ifdef FX_FORCE_512_BYTE_BOOT_SECTOR
+ 231:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 232:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Calculate the number of reserved sectors. If sector size is smaller than 512 bytes, there wi
+ 233:Middlewares/ST/filex/common/src/fx_media_format.c ****        reserved sectors, otherwise assumed that only the sector containing bootrecord is reserved. 
+ 234:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (bytes_per_sector < 512)
+ 235:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 236:Middlewares/ST/filex/common/src/fx_media_format.c ****         reserved_sectors =  512 / bytes_per_sector;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 9
+
+
+ 237:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 238:Middlewares/ST/filex/common/src/fx_media_format.c ****     else
+ 239:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 240:Middlewares/ST/filex/common/src/fx_media_format.c ****         reserved_sectors =  1;
+ 241:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 242:Middlewares/ST/filex/common/src/fx_media_format.c **** #else
+ 243:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 244:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* The boot sector is the only reserved sector.  */
+ 245:Middlewares/ST/filex/common/src/fx_media_format.c ****     reserved_sectors =  1;
+ 214              		.loc 1 245 5 view .LVU79
+ 246:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif
+ 247:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 248:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 249:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Calculate the maximum clusters.... This is actually greater than the actual since the FAT
+ 250:Middlewares/ST/filex/common/src/fx_media_format.c ****        sectors have yet to be accounted for.  */
+ 251:Middlewares/ST/filex/common/src/fx_media_format.c ****     total_clusters =  (total_sectors - reserved_sectors - ((directory_entries * FX_DIR_ENTRY_SIZE) 
+ 215              		.loc 1 251 5 view .LVU80
+ 216              		.loc 1 251 38 is_stmt 0 view .LVU81
+ 217 00ba 139B     		ldr	r3, [sp, #76]
+ 218 00bc 013B     		subs	r3, r3, #1
+ 219              		.loc 1 251 100 view .LVU82
+ 220 00be 119A     		ldr	r2, [sp, #68]
+ 221 00c0 06EB4212 		add	r2, r6, r2, lsl #5
+ 222 00c4 013A     		subs	r2, r2, #1
+ 223              		.loc 1 251 126 view .LVU83
+ 224 00c6 B2FBF6F2 		udiv	r2, r2, r6
+ 225              		.loc 1 251 57 view .LVU84
+ 226 00ca 9B1A     		subs	r3, r3, r2
+ 227              		.loc 1 251 20 view .LVU85
+ 228 00cc 159A     		ldr	r2, [sp, #84]
+ 229 00ce B3FBF2F3 		udiv	r3, r3, r2
+ 230              	.LVL14:
+ 252:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 253:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Calculate the maximum number of FAT sectors necessary for FAT12.  */
+ 254:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (total_clusters % 2)
+ 231              		.loc 1 254 5 is_stmt 1 view .LVU86
+ 232              		.loc 1 254 8 is_stmt 0 view .LVU87
+ 233 00d2 13F0010F 		tst	r3, #1
+ 234 00d6 5DD0     		beq	.L7
+ 255:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 256:Middlewares/ST/filex/common/src/fx_media_format.c ****         bytes_needed = (total_clusters + total_clusters / 2) + 1;
+ 235              		.loc 1 256 9 is_stmt 1 view .LVU88
+ 236              		.loc 1 256 40 is_stmt 0 view .LVU89
+ 237 00d8 03EB5302 		add	r2, r3, r3, lsr #1
+ 238              		.loc 1 256 22 view .LVU90
+ 239 00dc 0132     		adds	r2, r2, #1
+ 240              	.LVL15:
+ 241              	.L8:
+ 257:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 258:Middlewares/ST/filex/common/src/fx_media_format.c ****     else
+ 259:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 260:Middlewares/ST/filex/common/src/fx_media_format.c ****         bytes_needed = (total_clusters + total_clusters / 2);
+ 261:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 262:Middlewares/ST/filex/common/src/fx_media_format.c ****     sectors_per_fat =  bytes_needed / bytes_per_sector;
+ 242              		.loc 1 262 5 is_stmt 1 view .LVU91
+ 243              		.loc 1 262 21 is_stmt 0 view .LVU92
+ 244 00de B2FBF6F8 		udiv	r8, r2, r6
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 10
+
+
+ 245              	.LVL16:
+ 263:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (bytes_needed % bytes_per_sector)
+ 246              		.loc 1 263 5 is_stmt 1 view .LVU93
+ 247              		.loc 1 263 22 is_stmt 0 view .LVU94
+ 248 00e2 06FB1822 		mls	r2, r6, r8, r2
+ 249              	.LVL17:
+ 250              		.loc 1 263 8 view .LVU95
+ 251 00e6 0AB1     		cbz	r2, .L9
+ 264:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 265:Middlewares/ST/filex/common/src/fx_media_format.c ****         sectors_per_fat++;
+ 252              		.loc 1 265 9 is_stmt 1 view .LVU96
+ 253              		.loc 1 265 24 is_stmt 0 view .LVU97
+ 254 00e8 08F10108 		add	r8, r8, #1
+ 255              	.LVL18:
+ 256              	.L9:
+ 266:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 267:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 268:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Now adjust the total clusters by the number of sectors per FAT.  */
+ 269:Middlewares/ST/filex/common/src/fx_media_format.c ****     total_clusters =  total_clusters - ((sectors_per_fat * number_of_fats) + (sectors_per_cluster -
+ 257              		.loc 1 269 5 is_stmt 1 view .LVU98
+ 258              		.loc 1 269 76 is_stmt 0 view .LVU99
+ 259 00ec 159A     		ldr	r2, [sp, #84]
+ 260 00ee 1099     		ldr	r1, [sp, #64]
+ 261 00f0 01FB0822 		mla	r2, r1, r8, r2
+ 262 00f4 013A     		subs	r2, r2, #1
+ 263              		.loc 1 269 105 view .LVU100
+ 264 00f6 1599     		ldr	r1, [sp, #84]
+ 265 00f8 B2FBF1F2 		udiv	r2, r2, r1
+ 266              		.loc 1 269 20 view .LVU101
+ 267 00fc 9A1A     		subs	r2, r3, r2
+ 268 00fe 1146     		mov	r1, r2
+ 269 0100 0192     		str	r2, [sp, #4]
+ 270              	.LVL19:
+ 270:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 271:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Is the total cluster count greater than the FAT12 maximum?  */
+ 272:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (total_clusters >= FX_12_BIT_FAT_SIZE)
+ 271              		.loc 1 272 5 is_stmt 1 view .LVU102
+ 272              		.loc 1 272 8 is_stmt 0 view .LVU103
+ 273 0102 40F6F572 		movw	r2, #4085
+ 274 0106 9142     		cmp	r1, r2
+ 275 0108 4FD9     		bls	.L44
+ 273:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 274:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 275:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Yes, too big for FAT12, we need to evaluate for FAT16.  */
+ 276:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 277:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Reset the maximum clusters.... This is actually greater than the actual since the FAT
+ 278:Middlewares/ST/filex/common/src/fx_media_format.c ****            sectors have yet to be accounted for.  */
+ 279:Middlewares/ST/filex/common/src/fx_media_format.c ****         total_clusters =  (total_sectors - reserved_sectors -  ((directory_entries * FX_DIR_ENTRY_S
+ 276              		.loc 1 279 9 is_stmt 1 view .LVU104
+ 277              	.LVL20:
+ 280:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 281:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Calculate 16-bit FAT is present. Each cluster requires a 2 byte entry in the FAT table. 
+ 282:Middlewares/ST/filex/common/src/fx_media_format.c ****         sectors_per_fat =  (total_clusters * 2) / bytes_per_sector;
+ 278              		.loc 1 282 9 view .LVU105
+ 279              		.loc 1 282 44 is_stmt 0 view .LVU106
+ 280 010a 5A00     		lsls	r2, r3, #1
+ 281              		.loc 1 282 25 view .LVU107
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 11
+
+
+ 282 010c B2FBF6F8 		udiv	r8, r2, r6
+ 283              	.LVL21:
+ 283:Middlewares/ST/filex/common/src/fx_media_format.c ****         if ((total_clusters * 2) % bytes_per_sector)
+ 284              		.loc 1 283 9 is_stmt 1 view .LVU108
+ 285              		.loc 1 283 34 is_stmt 0 view .LVU109
+ 286 0110 06FB1822 		mls	r2, r6, r8, r2
+ 287              		.loc 1 283 12 view .LVU110
+ 288 0114 0AB1     		cbz	r2, .L11
+ 284:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 285:Middlewares/ST/filex/common/src/fx_media_format.c ****             sectors_per_fat++;
+ 289              		.loc 1 285 13 is_stmt 1 view .LVU111
+ 290              		.loc 1 285 28 is_stmt 0 view .LVU112
+ 291 0116 08F10108 		add	r8, r8, #1
+ 292              	.LVL22:
+ 293              	.L11:
+ 286:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 287:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 288:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Now adjust the total clusters by the number of sectors per FAT.  */
+ 289:Middlewares/ST/filex/common/src/fx_media_format.c ****         total_clusters =  total_clusters - ((sectors_per_fat * number_of_fats) + (sectors_per_clust
+ 294              		.loc 1 289 9 is_stmt 1 view .LVU113
+ 295              		.loc 1 289 80 is_stmt 0 view .LVU114
+ 296 011a 159A     		ldr	r2, [sp, #84]
+ 297 011c 1099     		ldr	r1, [sp, #64]
+ 298 011e 01FB0822 		mla	r2, r1, r8, r2
+ 299 0122 013A     		subs	r2, r2, #1
+ 300              		.loc 1 289 109 view .LVU115
+ 301 0124 1599     		ldr	r1, [sp, #84]
+ 302 0126 B2FBF1F2 		udiv	r2, r2, r1
+ 303              		.loc 1 289 24 view .LVU116
+ 304 012a 9B1A     		subs	r3, r3, r2
+ 305              	.LVL23:
+ 306              		.loc 1 289 24 view .LVU117
+ 307 012c 1A46     		mov	r2, r3
+ 308 012e 0193     		str	r3, [sp, #4]
+ 309              	.LVL24:
+ 290:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 291:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Is the total cluster count greater than the FAT16 maximum?  */
+ 292:Middlewares/ST/filex/common/src/fx_media_format.c ****         if (total_clusters >= FX_16_BIT_FAT_SIZE)
+ 310              		.loc 1 292 9 is_stmt 1 view .LVU118
+ 311              		.loc 1 292 12 is_stmt 0 view .LVU119
+ 312 0130 4FF6F473 		movw	r3, #65524
+ 313 0134 9A42     		cmp	r2, r3
+ 314 0136 7ED9     		bls	.L45
+ 293:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 294:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 295:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Yes, FAT32 is present.  */
+ 296:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 297:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Allocate room for the FAT32 additional information sector. This contains useful info
+ 298:Middlewares/ST/filex/common/src/fx_media_format.c ****                such as the number of available clusters between successive mounting of the media.  
+ 299:Middlewares/ST/filex/common/src/fx_media_format.c ****             if (bytes_per_sector == 512)
+ 315              		.loc 1 299 13 is_stmt 1 view .LVU120
+ 316              		.loc 1 299 16 is_stmt 0 view .LVU121
+ 317 0138 B6F5007F 		cmp	r6, #512
+ 318 013c 2DD0     		beq	.L56
+ 300:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 301:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 302:Middlewares/ST/filex/common/src/fx_media_format.c ****                 /* Write sector number 1 to the additional information sector.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 12
+
+
+ 303:Middlewares/ST/filex/common/src/fx_media_format.c ****                 _fx_utility_16_unsigned_write(&byte_ptr[48], 1);
+ 304:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 305:Middlewares/ST/filex/common/src/fx_media_format.c ****                 /* Increment the reserved sectors count, since this will count as a reserved sector
+ 306:Middlewares/ST/filex/common/src/fx_media_format.c ****                 reserved_sectors++;
+ 307:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 308:Middlewares/ST/filex/common/src/fx_media_format.c ****             else
+ 309:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 310:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 311:Middlewares/ST/filex/common/src/fx_media_format.c ****                 /* Write value to indicate there is no additional information sector.  */
+ 312:Middlewares/ST/filex/common/src/fx_media_format.c ****                 _fx_utility_16_unsigned_write(&byte_ptr[48], 0xFFFF);
+ 319              		.loc 1 312 17 is_stmt 1 view .LVU122
+ 320 013e 4FF6FF71 		movw	r1, #65535
+ 321 0142 04F13000 		add	r0, r4, #48
+ 322 0146 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 323              	.LVL25:
+ 245:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif
+ 324              		.loc 1 245 22 is_stmt 0 view .LVU123
+ 325 014a 4FF0010B 		mov	fp, #1
+ 326              	.LVL26:
+ 327              	.L13:
+ 313:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 314:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 315:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Allocate the first cluster to the root directory.  */
+ 316:Middlewares/ST/filex/common/src/fx_media_format.c ****             _fx_utility_32_unsigned_write(&byte_ptr[FX_ROOT_CLUSTER_32], FX_FAT_ENTRY_START);
+ 328              		.loc 1 316 13 is_stmt 1 view .LVU124
+ 329 014e 0221     		movs	r1, #2
+ 330 0150 04F12C00 		add	r0, r4, #44
+ 331 0154 FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 332              	.LVL27:
+ 317:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 318:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Determine if the number of root directory entries should be modified.  */
+ 319:Middlewares/ST/filex/common/src/fx_media_format.c ****             directory_entries =  (sectors_per_cluster * bytes_per_sector) / FX_DIR_ENTRY_SIZE;
+ 333              		.loc 1 319 13 view .LVU125
+ 334              		.loc 1 319 55 is_stmt 0 view .LVU126
+ 335 0158 159B     		ldr	r3, [sp, #84]
+ 336 015a 03FB06F3 		mul	r3, r3, r6
+ 337              		.loc 1 319 31 view .LVU127
+ 338 015e 5B09     		lsrs	r3, r3, #5
+ 339 0160 1193     		str	r3, [sp, #68]
+ 340              	.LVL28:
+ 320:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 321:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Reset the total_clusters for the FAT32 calculation.  */
+ 322:Middlewares/ST/filex/common/src/fx_media_format.c ****             total_clusters =  (total_sectors - reserved_sectors) / sectors_per_cluster;
+ 341              		.loc 1 322 13 is_stmt 1 view .LVU128
+ 342              		.loc 1 322 46 is_stmt 0 view .LVU129
+ 343 0162 139B     		ldr	r3, [sp, #76]
+ 344              	.LVL29:
+ 345              		.loc 1 322 46 view .LVU130
+ 346 0164 A3EB0B02 		sub	r2, r3, fp
+ 347              		.loc 1 322 28 view .LVU131
+ 348 0168 159B     		ldr	r3, [sp, #84]
+ 349 016a B2FBF3F2 		udiv	r2, r2, r3
+ 350              	.LVL30:
+ 323:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 324:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* 32-bit FAT is present. Each cluster requires a 4 byte entry in the FAT table.  */
+ 325:Middlewares/ST/filex/common/src/fx_media_format.c ****             sectors_per_fat =  (total_clusters * 4) / bytes_per_sector;
+ 351              		.loc 1 325 13 is_stmt 1 view .LVU132
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 13
+
+
+ 352              		.loc 1 325 48 is_stmt 0 view .LVU133
+ 353 016e 9300     		lsls	r3, r2, #2
+ 354              		.loc 1 325 29 view .LVU134
+ 355 0170 B3FBF6F8 		udiv	r8, r3, r6
+ 356              	.LVL31:
+ 326:Middlewares/ST/filex/common/src/fx_media_format.c ****             if ((total_clusters * 4) % bytes_per_sector)
+ 357              		.loc 1 326 13 is_stmt 1 view .LVU135
+ 358              		.loc 1 326 38 is_stmt 0 view .LVU136
+ 359 0174 06FB1833 		mls	r3, r6, r8, r3
+ 360              		.loc 1 326 16 view .LVU137
+ 361 0178 0BB1     		cbz	r3, .L14
+ 327:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 328:Middlewares/ST/filex/common/src/fx_media_format.c ****                 sectors_per_fat++;
+ 362              		.loc 1 328 17 is_stmt 1 view .LVU138
+ 363              		.loc 1 328 32 is_stmt 0 view .LVU139
+ 364 017a 08F10108 		add	r8, r8, #1
+ 365              	.LVL32:
+ 366              	.L14:
+ 329:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 330:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 331:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Now adjust the total clusters by the number of sectors per FAT.  */
+ 332:Middlewares/ST/filex/common/src/fx_media_format.c ****             total_clusters =  total_clusters - ((sectors_per_fat * number_of_fats) + (sectors_per_c
+ 367              		.loc 1 332 13 is_stmt 1 view .LVU140
+ 368              		.loc 1 332 84 is_stmt 0 view .LVU141
+ 369 017e 159B     		ldr	r3, [sp, #84]
+ 370 0180 1099     		ldr	r1, [sp, #64]
+ 371 0182 01FB0833 		mla	r3, r1, r8, r3
+ 372 0186 013B     		subs	r3, r3, #1
+ 373              		.loc 1 332 113 view .LVU142
+ 374 0188 1599     		ldr	r1, [sp, #84]
+ 375 018a B3FBF1F3 		udiv	r3, r3, r1
+ 376              		.loc 1 332 28 view .LVU143
+ 377 018e D31A     		subs	r3, r2, r3
+ 378 0190 0193     		str	r3, [sp, #4]
+ 379              	.LVL33:
+ 380              		.loc 1 332 28 view .LVU144
+ 381 0192 0CE0     		b	.L10
+ 382              	.LVL34:
+ 383              	.L7:
+ 260:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 384              		.loc 1 260 9 is_stmt 1 view .LVU145
+ 260:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 385              		.loc 1 260 22 is_stmt 0 view .LVU146
+ 386 0194 03EB5302 		add	r2, r3, r3, lsr #1
+ 387              	.LVL35:
+ 260:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 388              		.loc 1 260 22 view .LVU147
+ 389 0198 A1E7     		b	.L8
+ 390              	.LVL36:
+ 391              	.L56:
+ 303:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 392              		.loc 1 303 17 is_stmt 1 view .LVU148
+ 393 019a 0121     		movs	r1, #1
+ 394 019c 04F13000 		add	r0, r4, #48
+ 395 01a0 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 396              	.LVL37:
+ 306:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 14
+
+
+ 397              		.loc 1 306 17 view .LVU149
+ 306:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 398              		.loc 1 306 33 is_stmt 0 view .LVU150
+ 399 01a4 4FF0020B 		mov	fp, #2
+ 400 01a8 D1E7     		b	.L13
+ 401              	.LVL38:
+ 402              	.L44:
+ 245:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif
+ 403              		.loc 1 245 22 view .LVU151
+ 404 01aa 4FF0010B 		mov	fp, #1
+ 405              	.LVL39:
+ 406              	.L10:
+ 333:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 334:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 335:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 336:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set sectors per FAT type.  */
+ 337:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (total_clusters < FX_16_BIT_FAT_SIZE)
+ 407              		.loc 1 337 5 is_stmt 1 view .LVU152
+ 408              		.loc 1 337 8 is_stmt 0 view .LVU153
+ 409 01ae 4FF6F473 		movw	r3, #65524
+ 410 01b2 019A     		ldr	r2, [sp, #4]
+ 411 01b4 9A42     		cmp	r2, r3
+ 412 01b6 41D8     		bhi	.L15
+ 338:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 339:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 340:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Set the number of sectors per FAT12/16.  */
+ 341:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_16_unsigned_write(&byte_ptr[FX_SECTORS_PER_FAT], sectors_per_fat);
+ 413              		.loc 1 341 9 is_stmt 1 view .LVU154
+ 414 01b8 4146     		mov	r1, r8
+ 415 01ba 04F11600 		add	r0, r4, #22
+ 416 01be FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 417              	.LVL40:
+ 342:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 343:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Set the signature.  */
+ 344:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[FX_BOOT_SIG] =  0x29;
+ 418              		.loc 1 344 9 view .LVU155
+ 419              		.loc 1 344 31 is_stmt 0 view .LVU156
+ 420 01c2 2923     		movs	r3, #41
+ 421 01c4 84F82630 		strb	r3, [r4, #38]
+ 345:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 346:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Setup the volume ID.  */
+ 347:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_32_unsigned_write(&byte_ptr[FX_VOLUME_ID], _fx_media_format_volume_id);
+ 422              		.loc 1 347 9 is_stmt 1 view .LVU157
+ 423 01c8 714B     		ldr	r3, .L62+8
+ 424 01ca 1968     		ldr	r1, [r3]
+ 425 01cc 04F12700 		add	r0, r4, #39
+ 426 01d0 FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 427              	.LVL41:
+ 428              	.L16:
+ 348:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 349:Middlewares/ST/filex/common/src/fx_media_format.c ****     else
+ 350:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 351:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 352:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Set the number of sectors per FAT32.  */
+ 353:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_32_unsigned_write(&byte_ptr[FX_SECTORS_PER_FAT_32], sectors_per_fat);
+ 354:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 355:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Set the signature.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 15
+
+
+ 356:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[FX_BOOT_SIG_32] =  0x29;
+ 357:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 358:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Setup the volume ID.  */
+ 359:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_32_unsigned_write(&byte_ptr[FX_VOLUME_ID_32], _fx_media_format_volume_id);
+ 360:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 361:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 362:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the total number of sectors.  */
+ 363:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (total_sectors < (ULONG)0xFFFF)
+ 429              		.loc 1 363 5 view .LVU158
+ 430              		.loc 1 363 8 is_stmt 0 view .LVU159
+ 431 01d4 4FF6FE73 		movw	r3, #65534
+ 432 01d8 139A     		ldr	r2, [sp, #76]
+ 433 01da 9A42     		cmp	r2, r3
+ 434 01dc 3DD8     		bhi	.L17
+ 364:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 365:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 366:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Write the 16-bit total sector field.  */
+ 367:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_16_unsigned_write(&byte_ptr[FX_SECTORS], (UINT)(total_sectors));
+ 435              		.loc 1 367 9 is_stmt 1 view .LVU160
+ 436 01de 1146     		mov	r1, r2
+ 437 01e0 04F11300 		add	r0, r4, #19
+ 438 01e4 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 439              	.LVL42:
+ 368:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 369:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Set the number of huge sectors.  */
+ 370:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_32_unsigned_write(&byte_ptr[FX_HUGE_SECTORS], 0);
+ 440              		.loc 1 370 9 view .LVU161
+ 441 01e8 0021     		movs	r1, #0
+ 442 01ea 04F12000 		add	r0, r4, #32
+ 443 01ee FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 444              	.LVL43:
+ 445              	.L18:
+ 371:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 372:Middlewares/ST/filex/common/src/fx_media_format.c ****     else
+ 373:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 374:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 375:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Write the 16-bit total sector field as 0.  */
+ 376:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_16_unsigned_write(&byte_ptr[FX_SECTORS], (UINT)0);
+ 377:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 378:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Set the number of huge sectors.  */
+ 379:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_32_unsigned_write(&byte_ptr[FX_HUGE_SECTORS], total_sectors);
+ 380:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 381:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 382:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the number of reserved sectors.  */
+ 383:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_16_unsigned_write(&byte_ptr[FX_RESERVED_SECTORS], reserved_sectors);
+ 446              		.loc 1 383 5 view .LVU162
+ 447 01f2 5946     		mov	r1, fp
+ 448 01f4 04F10E00 		add	r0, r4, #14
+ 449 01f8 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 450              	.LVL44:
+ 384:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 385:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the number of sectors per cluster */
+ 386:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[FX_SECTORS_CLUSTER] =  (UCHAR)sectors_per_cluster;
+ 451              		.loc 1 386 5 view .LVU163
+ 452              		.loc 1 386 34 is_stmt 0 view .LVU164
+ 453 01fc 159B     		ldr	r3, [sp, #84]
+ 454 01fe 6373     		strb	r3, [r4, #13]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 16
+
+
+ 387:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 388:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the number of FATs.  */
+ 389:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[FX_NUMBER_OF_FATS] =  (UCHAR)number_of_fats;
+ 455              		.loc 1 389 5 is_stmt 1 view .LVU165
+ 456              		.loc 1 389 33 is_stmt 0 view .LVU166
+ 457 0200 109B     		ldr	r3, [sp, #64]
+ 458 0202 2374     		strb	r3, [r4, #16]
+ 390:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 391:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set the number of hidden sectors.  */
+ 392:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_32_unsigned_write(&byte_ptr[FX_HIDDEN_SECTORS], hidden_sectors);
+ 459              		.loc 1 392 5 is_stmt 1 view .LVU167
+ 460 0204 1299     		ldr	r1, [sp, #72]
+ 461 0206 04F11C00 		add	r0, r4, #28
+ 462 020a FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 463              	.LVL45:
+ 393:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 394:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Determine if a FAT12 or FAT16 is present.  If FAT32 is present, these fields are left alone!
+ 395:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (total_clusters < FX_16_BIT_FAT_SIZE)
+ 464              		.loc 1 395 5 view .LVU168
+ 465              		.loc 1 395 8 is_stmt 0 view .LVU169
+ 466 020e 4FF6F473 		movw	r3, #65524
+ 467 0212 019A     		ldr	r2, [sp, #4]
+ 468 0214 9A42     		cmp	r2, r3
+ 469 0216 2BD9     		bls	.L57
+ 470              	.L19:
+ 396:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 397:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 398:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Yes, set the number of root directory entries.  */
+ 399:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_16_unsigned_write(&byte_ptr[FX_ROOT_DIR_ENTRIES], directory_entries);
+ 400:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 401:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 402:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Now setup the volume label. */
+ 403:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (total_clusters < FX_16_BIT_FAT_SIZE)
+ 471              		.loc 1 403 5 is_stmt 1 view .LVU170
+ 472              		.loc 1 403 8 is_stmt 0 view .LVU171
+ 473 0218 4FF6F473 		movw	r3, #65524
+ 474 021c 019A     		ldr	r2, [sp, #4]
+ 475 021e 9A42     		cmp	r2, r3
+ 476 0220 2CD8     		bhi	.L46
+ 404:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 405:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 406:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* FAT12/16 volume label offset.  */
+ 407:Middlewares/ST/filex/common/src/fx_media_format.c ****         j =  FX_VOLUME_LABEL;
+ 477              		.loc 1 407 11 view .LVU172
+ 478 0222 2B21     		movs	r1, #43
+ 479 0224 0F98     		ldr	r0, [sp, #60]
+ 480              	.L21:
+ 481              	.LVL46:
+ 408:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 409:Middlewares/ST/filex/common/src/fx_media_format.c ****     else
+ 410:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 411:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 412:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* FAT32 volume label offset.  */
+ 413:Middlewares/ST/filex/common/src/fx_media_format.c ****         j =  FX_VOLUME_LABEL_32;
+ 414:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 415:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 416:Middlewares/ST/filex/common/src/fx_media_format.c ****     i = 0;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 17
+
+
+ 417:Middlewares/ST/filex/common/src/fx_media_format.c ****     while (i < 11)
+ 482              		.loc 1 417 11 is_stmt 1 view .LVU173
+ 483 0226 0A2F     		cmp	r7, #10
+ 484 0228 2FD8     		bhi	.L24
+ 418:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 419:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 420:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Determine if it is NULL.  */
+ 421:Middlewares/ST/filex/common/src/fx_media_format.c ****         if (volume_name[i] == 0)
+ 485              		.loc 1 421 9 view .LVU174
+ 486              		.loc 1 421 24 is_stmt 0 view .LVU175
+ 487 022a C35D     		ldrb	r3, [r0, r7]	@ zero_extendqisi2
+ 488              		.loc 1 421 12 view .LVU176
+ 489 022c 6BB3     		cbz	r3, .L24
+ 422:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 423:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 424:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Yes, the copying is finished.  */
+ 425:Middlewares/ST/filex/common/src/fx_media_format.c ****             break;
+ 426:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 427:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 428:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Otherwise, copy byte of volume name into boot record.  */
+ 429:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[j + i] =  (UCHAR)volume_name[i];
+ 490              		.loc 1 429 9 is_stmt 1 view .LVU177
+ 491              		.loc 1 429 20 is_stmt 0 view .LVU178
+ 492 022e 7A18     		adds	r2, r7, r1
+ 493              		.loc 1 429 25 view .LVU179
+ 494 0230 A354     		strb	r3, [r4, r2]
+ 430:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 431:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Increment byte position.  */
+ 432:Middlewares/ST/filex/common/src/fx_media_format.c ****         i++;
+ 495              		.loc 1 432 9 is_stmt 1 view .LVU180
+ 496              		.loc 1 432 10 is_stmt 0 view .LVU181
+ 497 0232 0137     		adds	r7, r7, #1
+ 498              	.LVL47:
+ 499              		.loc 1 432 10 view .LVU182
+ 500 0234 F7E7     		b	.L21
+ 501              	.LVL48:
+ 502              	.L45:
+ 245:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif
+ 503              		.loc 1 245 22 view .LVU183
+ 504 0236 4FF0010B 		mov	fp, #1
+ 505 023a B8E7     		b	.L10
+ 506              	.LVL49:
+ 507              	.L15:
+ 353:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 508              		.loc 1 353 9 is_stmt 1 view .LVU184
+ 509 023c 4146     		mov	r1, r8
+ 510 023e 04F12400 		add	r0, r4, #36
+ 511 0242 FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 512              	.LVL50:
+ 356:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 513              		.loc 1 356 9 view .LVU185
+ 356:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 514              		.loc 1 356 34 is_stmt 0 view .LVU186
+ 515 0246 2923     		movs	r3, #41
+ 516 0248 84F84230 		strb	r3, [r4, #66]
+ 359:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 517              		.loc 1 359 9 is_stmt 1 view .LVU187
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 18
+
+
+ 518 024c 504B     		ldr	r3, .L62+8
+ 519 024e 1968     		ldr	r1, [r3]
+ 520 0250 04F14300 		add	r0, r4, #67
+ 521 0254 FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 522              	.LVL51:
+ 523 0258 BCE7     		b	.L16
+ 524              	.L17:
+ 376:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 525              		.loc 1 376 9 view .LVU188
+ 526 025a 0021     		movs	r1, #0
+ 527 025c 04F11300 		add	r0, r4, #19
+ 528 0260 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 529              	.LVL52:
+ 379:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 530              		.loc 1 379 9 view .LVU189
+ 531 0264 1399     		ldr	r1, [sp, #76]
+ 532 0266 04F12000 		add	r0, r4, #32
+ 533 026a FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 534              	.LVL53:
+ 535 026e C0E7     		b	.L18
+ 536              	.L57:
+ 399:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 537              		.loc 1 399 9 view .LVU190
+ 538 0270 1199     		ldr	r1, [sp, #68]
+ 539 0272 04F11100 		add	r0, r4, #17
+ 540 0276 FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 541              	.LVL54:
+ 542 027a CDE7     		b	.L19
+ 543              	.L46:
+ 413:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 544              		.loc 1 413 11 is_stmt 0 view .LVU191
+ 545 027c 4721     		movs	r1, #71
+ 546              	.LVL55:
+ 416:Middlewares/ST/filex/common/src/fx_media_format.c ****     while (i < 11)
+ 547              		.loc 1 416 5 is_stmt 1 view .LVU192
+ 417:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 548              		.loc 1 417 5 view .LVU193
+ 549 027e 0F98     		ldr	r0, [sp, #60]
+ 417:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 550              		.loc 1 417 11 is_stmt 0 view .LVU194
+ 551 0280 D1E7     		b	.L21
+ 552              	.LVL56:
+ 553              	.L25:
+ 433:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 434:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 435:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Now blank-pad the remainder of the volume name.  */
+ 436:Middlewares/ST/filex/common/src/fx_media_format.c **** #ifndef FX_DISABLE_FORCE_MEMORY_OPERATION
+ 437:Middlewares/ST/filex/common/src/fx_media_format.c ****     while (i < 11)
+ 438:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 439:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 440:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[j + i] =  (UCHAR)' ';
+ 554              		.loc 1 440 9 is_stmt 1 view .LVU195
+ 555              		.loc 1 440 20 is_stmt 0 view .LVU196
+ 556 0282 7B18     		adds	r3, r7, r1
+ 557              		.loc 1 440 25 view .LVU197
+ 558 0284 2022     		movs	r2, #32
+ 559 0286 E254     		strb	r2, [r4, r3]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 19
+
+
+ 441:Middlewares/ST/filex/common/src/fx_media_format.c ****         i++;
+ 560              		.loc 1 441 9 is_stmt 1 view .LVU198
+ 561              		.loc 1 441 10 is_stmt 0 view .LVU199
+ 562 0288 0137     		adds	r7, r7, #1
+ 563              	.LVL57:
+ 564              	.L24:
+ 437:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 565              		.loc 1 437 11 is_stmt 1 view .LVU200
+ 566 028a 0A2F     		cmp	r7, #10
+ 567 028c F9D9     		bls	.L25
+ 442:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 443:Middlewares/ST/filex/common/src/fx_media_format.c **** #else
+ 444:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_memory_set(&byte_ptr[j + i], ' ', (11 - i));
+ 445:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif /* FX_DISABLE_FORCE_MEMORY_OPERATION */
+ 446:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 447:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 448:Middlewares/ST/filex/common/src/fx_media_format.c **** #ifdef FX_FORCE_512_BYTE_BOOT_SECTOR
+ 449:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 450:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set bootrecord signature.  */
+ 451:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[510] = 0x55;
+ 452:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[511] = 0xAA;
+ 453:Middlewares/ST/filex/common/src/fx_media_format.c **** #else
+ 454:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 455:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Set bootrecord signature.  */
+ 456:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[bytes_per_sector - 2] = 0x55;
+ 568              		.loc 1 456 5 view .LVU201
+ 569              		.loc 1 456 13 is_stmt 0 view .LVU202
+ 570 028e B31E     		subs	r3, r6, #2
+ 571              		.loc 1 456 36 view .LVU203
+ 572 0290 5522     		movs	r2, #85
+ 573 0292 E254     		strb	r2, [r4, r3]
+ 457:Middlewares/ST/filex/common/src/fx_media_format.c ****     byte_ptr[bytes_per_sector - 1] = 0xAA;
+ 574              		.loc 1 457 5 is_stmt 1 view .LVU204
+ 575              		.loc 1 457 36 is_stmt 0 view .LVU205
+ 576 0294 AA23     		movs	r3, #170
+ 577 0296 04F80930 		strb	r3, [r4, r9]
+ 458:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif
+ 459:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 460:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Select the boot record write command.  */
+ 461:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_request =       FX_DRIVER_BOOT_WRITE;
+ 578              		.loc 1 461 5 is_stmt 1 view .LVU206
+ 579              		.loc 1 461 42 is_stmt 0 view .LVU207
+ 580 029a 0723     		movs	r3, #7
+ 581 029c C5F88830 		str	r3, [r5, #136]
+ 462:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_system_write =  FX_TRUE;
+ 582              		.loc 1 462 5 is_stmt 1 view .LVU208
+ 583              		.loc 1 462 47 is_stmt 0 view .LVU209
+ 584 02a0 0123     		movs	r3, #1
+ 585 02a2 C5F8B030 		str	r3, [r5, #176]
+ 463:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_sectors =       1;
+ 586              		.loc 1 463 5 is_stmt 1 view .LVU210
+ 587              		.loc 1 463 42 is_stmt 0 view .LVU211
+ 588 02a6 C5F89830 		str	r3, [r5, #152]
+ 464:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_sector_type =   FX_BOOT_SECTOR;
+ 589              		.loc 1 464 5 is_stmt 1 view .LVU212
+ 590              		.loc 1 464 46 is_stmt 0 view .LVU213
+ 591 02aa C5F8B830 		str	r3, [r5, #184]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 20
+
+
+ 465:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 466:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 467:Middlewares/ST/filex/common/src/fx_media_format.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_BOOT_WRITE, media_ptr, memory_ptr, 0, 0, FX
+ 468:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 469:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Write out the bootrecord */
+ 470:Middlewares/ST/filex/common/src/fx_media_format.c ****     (driver)(media_ptr);
+ 592              		.loc 1 470 5 is_stmt 1 view .LVU214
+ 593 02ae 2846     		mov	r0, r5
+ 594 02b0 D047     		blx	r10
+ 595              	.LVL58:
+ 471:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 472:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Clear the write flag.  */
+ 473:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ 596              		.loc 1 473 5 view .LVU215
+ 597              		.loc 1 473 47 is_stmt 0 view .LVU216
+ 598 02b2 0023     		movs	r3, #0
+ 599 02b4 C5F8B030 		str	r3, [r5, #176]
+ 474:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 475:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Determine if it was successful.  */
+ 476:Middlewares/ST/filex/common/src/fx_media_format.c ****     if (media_ptr -> fx_media_driver_status != FX_SUCCESS)
+ 600              		.loc 1 476 5 is_stmt 1 view .LVU217
+ 601              		.loc 1 476 19 is_stmt 0 view .LVU218
+ 602 02b8 D5F88C30 		ldr	r3, [r5, #140]
+ 603 02bc 0293     		str	r3, [sp, #8]
+ 604              		.loc 1 476 8 view .LVU219
+ 605 02be 002B     		cmp	r3, #0
+ 606 02c0 40F0E780 		bne	.L47
+ 477:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 478:Middlewares/ST/filex/common/src/fx_media_format.c ****         return(FX_IO_ERROR);
+ 479:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 480:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 481:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Calculate the number of root sectors.  */
+ 482:Middlewares/ST/filex/common/src/fx_media_format.c ****     root_sectors =    ((directory_entries * FX_DIR_ENTRY_SIZE) + bytes_per_sector - 1) / bytes_per_
+ 607              		.loc 1 482 5 is_stmt 1 view .LVU220
+ 608              		.loc 1 482 64 is_stmt 0 view .LVU221
+ 609 02c4 119B     		ldr	r3, [sp, #68]
+ 610 02c6 06EB4313 		add	r3, r6, r3, lsl #5
+ 611              		.loc 1 482 83 view .LVU222
+ 612 02ca 013B     		subs	r3, r3, #1
+ 613              		.loc 1 482 18 view .LVU223
+ 614 02cc B3FBF6F3 		udiv	r3, r3, r6
+ 615 02d0 0393     		str	r3, [sp, #12]
+ 616              	.LVL59:
+ 483:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 484:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Determine if FAT32 is present AND if the bytes per sector is large enough to have
+ 485:Middlewares/ST/filex/common/src/fx_media_format.c ****        a FSINFO sector.  */
+ 486:Middlewares/ST/filex/common/src/fx_media_format.c ****     if ((total_clusters >= FX_16_BIT_FAT_SIZE) && (bytes_per_sector == 512))
+ 617              		.loc 1 486 5 is_stmt 1 view .LVU224
+ 618              		.loc 1 486 8 is_stmt 0 view .LVU225
+ 619 02d2 4FF6F473 		movw	r3, #65524
+ 620              	.LVL60:
+ 621              		.loc 1 486 8 view .LVU226
+ 622 02d6 019A     		ldr	r2, [sp, #4]
+ 623 02d8 9A42     		cmp	r2, r3
+ 624 02da 02D9     		bls	.L26
+ 625              		.loc 1 486 48 discriminator 1 view .LVU227
+ 626 02dc B6F5007F 		cmp	r6, #512
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 21
+
+
+ 627 02e0 43D0     		beq	.L48
+ 628              	.LVL61:
+ 629              	.L26:
+ 487:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 488:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 489:Middlewares/ST/filex/common/src/fx_media_format.c **** #ifndef FX_DISABLE_FORCE_MEMORY_OPERATION
+ 490:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Clear sector buffer.  */
+ 491:Middlewares/ST/filex/common/src/fx_media_format.c ****         for (i = 0; i < bytes_per_sector; i++)
+ 492:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 493:Middlewares/ST/filex/common/src/fx_media_format.c ****             byte_ptr[i] =  (CHAR)0;
+ 494:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 495:Middlewares/ST/filex/common/src/fx_media_format.c **** #else
+ 496:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_memory_set(byte_ptr, 0, bytes_per_sector);
+ 497:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif /* FX_DISABLE_FORCE_MEMORY_OPERATION */
+ 498:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 499:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Build the FSINFO fields.  */
+ 500:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 501:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Build first signature word, used to help verify this is a FSINFO sector.  */
+ 502:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[0] =  0x52;
+ 503:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[1] =  0x52;
+ 504:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[2] =  0x61;
+ 505:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[3] =  0x41;
+ 506:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 507:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Build the next signature word, this too is used to help verify that this is a FSINFO sec
+ 508:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[484] =  0x72;
+ 509:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[485] =  0x72;
+ 510:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[486] =  0x41;
+ 511:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[487] =  0x61;
+ 512:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 513:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Build the final signature word, this too is used to help verify that this is a FSINFO se
+ 514:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[508] =  0x55;
+ 515:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[509] =  0xAA;
+ 516:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 517:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Setup the total available clusters on the media. We need to subtract 1 for the FAT32 roo
+ 518:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_32_unsigned_write(&byte_ptr[488], (total_clusters - 1));
+ 519:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 520:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Setup the starting free cluster to 3, since cluster 2 is reserved for the FAT32 root dir
+ 521:Middlewares/ST/filex/common/src/fx_media_format.c ****         _fx_utility_32_unsigned_write(&byte_ptr[492], 3);
+ 522:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 523:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Now write the FSINFO sector to the media.  */
+ 524:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_logical_sector =  1;
+ 525:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_request =         FX_DRIVER_WRITE;
+ 526:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sectors =         1;
+ 527:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_system_write =    FX_TRUE;
+ 528:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sector_type =     FX_BOOT_SECTOR;
+ 529:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 530:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 531:Middlewares/ST/filex/common/src/fx_media_format.c ****         FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_WRITE, media_ptr, 1, 1, memory_ptr, FX_
+ 532:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 533:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Write out the sector.  */
+ 534:Middlewares/ST/filex/common/src/fx_media_format.c ****         (driver)(media_ptr);
+ 535:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 536:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Clear the system write flag.  */
+ 537:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ 538:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 539:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Determine if it was successful.  */
+ 540:Middlewares/ST/filex/common/src/fx_media_format.c ****         if (media_ptr -> fx_media_driver_status != FX_SUCCESS)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 22
+
+
+ 541:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 542:Middlewares/ST/filex/common/src/fx_media_format.c ****             return(FX_IO_ERROR);
+ 543:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 544:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 545:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 546:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* At this point we need set up first to FAT entries and clear the remaining FAT sectors area. 
+ 547:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 548:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Loop through number of FATs. The first is the only one used.  */
+ 549:Middlewares/ST/filex/common/src/fx_media_format.c ****     for (f = 0; f < number_of_fats; f++)
+ 550:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 551:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 552:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Loop through all the sectors in this FAT.  */
+ 553:Middlewares/ST/filex/common/src/fx_media_format.c ****         for (s = 0; s < sectors_per_fat; s++)
+ 630              		.loc 1 553 16 discriminator 1 view .LVU228
+ 631 02e2 DDF80890 		ldr	r9, [sp, #8]
+ 632              	.L28:
+ 633              	.LVL62:
+ 549:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 634              		.loc 1 549 17 is_stmt 1 discriminator 1 view .LVU229
+ 549:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 635              		.loc 1 549 5 is_stmt 0 discriminator 1 view .LVU230
+ 636 02e6 109B     		ldr	r3, [sp, #64]
+ 637 02e8 9945     		cmp	r9, r3
+ 638 02ea 80F09A80 		bcs	.L58
+ 639              		.loc 1 553 16 view .LVU231
+ 640 02ee 029F     		ldr	r7, [sp, #8]
+ 641 02f0 8EE0     		b	.L36
+ 642              	.LVL63:
+ 643              	.L29:
+ 493:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 644              		.loc 1 493 13 is_stmt 1 discriminator 3 view .LVU232
+ 493:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 645              		.loc 1 493 25 is_stmt 0 discriminator 3 view .LVU233
+ 646 02f2 0022     		movs	r2, #0
+ 647 02f4 E254     		strb	r2, [r4, r3]
+ 491:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 648              		.loc 1 491 43 is_stmt 1 discriminator 3 view .LVU234
+ 491:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 649              		.loc 1 491 44 is_stmt 0 discriminator 3 view .LVU235
+ 650 02f6 0133     		adds	r3, r3, #1
+ 651              	.LVL64:
+ 652              	.L27:
+ 491:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 653              		.loc 1 491 21 is_stmt 1 discriminator 1 view .LVU236
+ 491:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 654              		.loc 1 491 9 is_stmt 0 discriminator 1 view .LVU237
+ 655 02f8 B342     		cmp	r3, r6
+ 656 02fa FAD3     		bcc	.L29
+ 502:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[1] =  0x52;
+ 657              		.loc 1 502 9 is_stmt 1 view .LVU238
+ 502:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[1] =  0x52;
+ 658              		.loc 1 502 21 is_stmt 0 view .LVU239
+ 659 02fc 5223     		movs	r3, #82
+ 660              	.LVL65:
+ 502:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[1] =  0x52;
+ 661              		.loc 1 502 21 view .LVU240
+ 662 02fe 2370     		strb	r3, [r4]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 23
+
+
+ 503:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[2] =  0x61;
+ 663              		.loc 1 503 9 is_stmt 1 view .LVU241
+ 503:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[2] =  0x61;
+ 664              		.loc 1 503 21 is_stmt 0 view .LVU242
+ 665 0300 6370     		strb	r3, [r4, #1]
+ 504:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[3] =  0x41;
+ 666              		.loc 1 504 9 is_stmt 1 view .LVU243
+ 504:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[3] =  0x41;
+ 667              		.loc 1 504 21 is_stmt 0 view .LVU244
+ 668 0302 6123     		movs	r3, #97
+ 669 0304 A370     		strb	r3, [r4, #2]
+ 505:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 670              		.loc 1 505 9 is_stmt 1 view .LVU245
+ 505:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 671              		.loc 1 505 21 is_stmt 0 view .LVU246
+ 672 0306 4122     		movs	r2, #65
+ 673 0308 E270     		strb	r2, [r4, #3]
+ 508:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[485] =  0x72;
+ 674              		.loc 1 508 9 is_stmt 1 view .LVU247
+ 508:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[485] =  0x72;
+ 675              		.loc 1 508 23 is_stmt 0 view .LVU248
+ 676 030a 7221     		movs	r1, #114
+ 677 030c 84F8E411 		strb	r1, [r4, #484]
+ 509:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[486] =  0x41;
+ 678              		.loc 1 509 9 is_stmt 1 view .LVU249
+ 509:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[486] =  0x41;
+ 679              		.loc 1 509 23 is_stmt 0 view .LVU250
+ 680 0310 84F8E511 		strb	r1, [r4, #485]
+ 510:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[487] =  0x61;
+ 681              		.loc 1 510 9 is_stmt 1 view .LVU251
+ 510:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[487] =  0x61;
+ 682              		.loc 1 510 23 is_stmt 0 view .LVU252
+ 683 0314 84F8E621 		strb	r2, [r4, #486]
+ 511:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 684              		.loc 1 511 9 is_stmt 1 view .LVU253
+ 511:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 685              		.loc 1 511 23 is_stmt 0 view .LVU254
+ 686 0318 84F8E731 		strb	r3, [r4, #487]
+ 514:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[509] =  0xAA;
+ 687              		.loc 1 514 9 is_stmt 1 view .LVU255
+ 514:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[509] =  0xAA;
+ 688              		.loc 1 514 23 is_stmt 0 view .LVU256
+ 689 031c 5523     		movs	r3, #85
+ 690 031e 84F8FC31 		strb	r3, [r4, #508]
+ 515:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 691              		.loc 1 515 9 is_stmt 1 view .LVU257
+ 515:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 692              		.loc 1 515 23 is_stmt 0 view .LVU258
+ 693 0322 AA23     		movs	r3, #170
+ 694 0324 84F8FD31 		strb	r3, [r4, #509]
+ 518:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 695              		.loc 1 518 9 is_stmt 1 view .LVU259
+ 696 0328 019B     		ldr	r3, [sp, #4]
+ 697 032a 591E     		subs	r1, r3, #1
+ 698 032c 04F5F470 		add	r0, r4, #488
+ 699 0330 FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 700              	.LVL66:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 24
+
+
+ 521:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 701              		.loc 1 521 9 view .LVU260
+ 702 0334 0321     		movs	r1, #3
+ 703 0336 04F5F670 		add	r0, r4, #492
+ 704 033a FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 705              	.LVL67:
+ 524:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_request =         FX_DRIVER_WRITE;
+ 706              		.loc 1 524 9 view .LVU261
+ 524:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_request =         FX_DRIVER_WRITE;
+ 707              		.loc 1 524 53 is_stmt 0 view .LVU262
+ 708 033e 0123     		movs	r3, #1
+ 709 0340 C5F89430 		str	r3, [r5, #148]
+ 525:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sectors =         1;
+ 710              		.loc 1 525 9 is_stmt 1 view .LVU263
+ 525:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sectors =         1;
+ 711              		.loc 1 525 46 is_stmt 0 view .LVU264
+ 712 0344 C5F88830 		str	r3, [r5, #136]
+ 526:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_system_write =    FX_TRUE;
+ 713              		.loc 1 526 9 is_stmt 1 view .LVU265
+ 526:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_system_write =    FX_TRUE;
+ 714              		.loc 1 526 46 is_stmt 0 view .LVU266
+ 715 0348 C5F89830 		str	r3, [r5, #152]
+ 527:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sector_type =     FX_BOOT_SECTOR;
+ 716              		.loc 1 527 9 is_stmt 1 view .LVU267
+ 527:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sector_type =     FX_BOOT_SECTOR;
+ 717              		.loc 1 527 51 is_stmt 0 view .LVU268
+ 718 034c C5F8B030 		str	r3, [r5, #176]
+ 528:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 719              		.loc 1 528 9 is_stmt 1 view .LVU269
+ 528:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 720              		.loc 1 528 50 is_stmt 0 view .LVU270
+ 721 0350 C5F8B830 		str	r3, [r5, #184]
+ 534:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 722              		.loc 1 534 9 is_stmt 1 view .LVU271
+ 723 0354 2846     		mov	r0, r5
+ 724 0356 D047     		blx	r10
+ 725              	.LVL68:
+ 537:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 726              		.loc 1 537 9 view .LVU272
+ 537:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 727              		.loc 1 537 51 is_stmt 0 view .LVU273
+ 728 0358 0023     		movs	r3, #0
+ 729 035a C5F8B030 		str	r3, [r5, #176]
+ 540:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 730              		.loc 1 540 9 is_stmt 1 view .LVU274
+ 540:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 731              		.loc 1 540 23 is_stmt 0 view .LVU275
+ 732 035e D5F88C30 		ldr	r3, [r5, #140]
+ 540:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 733              		.loc 1 540 12 view .LVU276
+ 734 0362 002B     		cmp	r3, #0
+ 735 0364 BDD0     		beq	.L26
+ 542:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 736              		.loc 1 542 19 view .LVU277
+ 737 0366 9020     		movs	r0, #144
+ 738 0368 96E0     		b	.L1
+ 739              	.LVL69:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 25
+
+
+ 740              	.L48:
+ 491:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 741              		.loc 1 491 16 view .LVU278
+ 742 036a 029B     		ldr	r3, [sp, #8]
+ 743 036c C4E7     		b	.L27
+ 744              	.LVL70:
+ 745              	.L60:
+ 554:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 555:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 556:Middlewares/ST/filex/common/src/fx_media_format.c ****             if (s == 0)
+ 557:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 558:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 559:Middlewares/ST/filex/common/src/fx_media_format.c ****                 /* Reserve the first two FAT table entries.  */
+ 560:Middlewares/ST/filex/common/src/fx_media_format.c ****                 if (total_clusters < FX_12_BIT_FAT_SIZE)
+ 746              		.loc 1 560 17 is_stmt 1 view .LVU279
+ 747              		.loc 1 560 20 is_stmt 0 view .LVU280
+ 748 036e 40F6F573 		movw	r3, #4085
+ 749 0372 019A     		ldr	r2, [sp, #4]
+ 750 0374 9A42     		cmp	r2, r3
+ 751 0376 0DD8     		bhi	.L31
+ 561:Middlewares/ST/filex/common/src/fx_media_format.c ****                 {
+ 562:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 563:Middlewares/ST/filex/common/src/fx_media_format.c ****                     /* Reserve the first two FAT-12 entries.  */
+ 564:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[0] =  _fx_media_format_media_type;
+ 752              		.loc 1 564 21 is_stmt 1 view .LVU281
+ 753              		.loc 1 564 33 is_stmt 0 view .LVU282
+ 754 0378 044B     		ldr	r3, .L62+4
+ 755 037a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 756 037c 2370     		strb	r3, [r4]
+ 565:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[1] =  (UCHAR)0xFF;
+ 757              		.loc 1 565 21 is_stmt 1 view .LVU283
+ 758              		.loc 1 565 33 is_stmt 0 view .LVU284
+ 759 037e FF23     		movs	r3, #255
+ 760 0380 6370     		strb	r3, [r4, #1]
+ 566:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[2] =  (UCHAR)0xFF;
+ 761              		.loc 1 566 21 is_stmt 1 view .LVU285
+ 762              		.loc 1 566 33 is_stmt 0 view .LVU286
+ 763 0382 A370     		strb	r3, [r4, #2]
+ 567:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 568:Middlewares/ST/filex/common/src/fx_media_format.c ****                     /* Start clearing at FAT entry 3.  */
+ 569:Middlewares/ST/filex/common/src/fx_media_format.c ****                     i =  3;
+ 764              		.loc 1 569 21 is_stmt 1 view .LVU287
+ 765              	.LVL71:
+ 766              		.loc 1 569 23 is_stmt 0 view .LVU288
+ 767 0384 0323     		movs	r3, #3
+ 768 0386 28E0     		b	.L33
+ 769              	.L63:
+ 770              		.align	2
+ 771              	.L62:
+ 772 0388 00000000 		.word	.LANCHOR0
+ 773 038c 00000000 		.word	.LANCHOR1
+ 774 0390 00000000 		.word	.LANCHOR2
+ 775              	.LVL72:
+ 776              	.L31:
+ 570:Middlewares/ST/filex/common/src/fx_media_format.c ****                 }
+ 571:Middlewares/ST/filex/common/src/fx_media_format.c ****                 else if (total_clusters < FX_16_BIT_FAT_SIZE)
+ 777              		.loc 1 571 22 is_stmt 1 view .LVU289
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 26
+
+
+ 778              		.loc 1 571 25 is_stmt 0 view .LVU290
+ 779 0394 4FF6F473 		movw	r3, #65524
+ 780 0398 019A     		ldr	r2, [sp, #4]
+ 781 039a 9A42     		cmp	r2, r3
+ 782 039c 08D8     		bhi	.L32
+ 572:Middlewares/ST/filex/common/src/fx_media_format.c ****                 {
+ 573:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 574:Middlewares/ST/filex/common/src/fx_media_format.c ****                     /* Reserve the first two FAT-16 entries.  */
+ 575:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[0] =  _fx_media_format_media_type;
+ 783              		.loc 1 575 21 is_stmt 1 view .LVU291
+ 784              		.loc 1 575 33 is_stmt 0 view .LVU292
+ 785 039e 414B     		ldr	r3, .L64
+ 786 03a0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 787 03a2 2370     		strb	r3, [r4]
+ 576:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[1] =  (UCHAR)0xFF;
+ 788              		.loc 1 576 21 is_stmt 1 view .LVU293
+ 789              		.loc 1 576 33 is_stmt 0 view .LVU294
+ 790 03a4 FF23     		movs	r3, #255
+ 791 03a6 6370     		strb	r3, [r4, #1]
+ 577:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[2] =  (UCHAR)0xFF;
+ 792              		.loc 1 577 21 is_stmt 1 view .LVU295
+ 793              		.loc 1 577 33 is_stmt 0 view .LVU296
+ 794 03a8 A370     		strb	r3, [r4, #2]
+ 578:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[3] =  (UCHAR)0xFF;
+ 795              		.loc 1 578 21 is_stmt 1 view .LVU297
+ 796              		.loc 1 578 33 is_stmt 0 view .LVU298
+ 797 03aa E370     		strb	r3, [r4, #3]
+ 579:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 580:Middlewares/ST/filex/common/src/fx_media_format.c ****                     /* Start clearing at FAT entry 3.  */
+ 581:Middlewares/ST/filex/common/src/fx_media_format.c ****                     i =  4;
+ 798              		.loc 1 581 21 is_stmt 1 view .LVU299
+ 799              	.LVL73:
+ 800              		.loc 1 581 23 is_stmt 0 view .LVU300
+ 801 03ac 0423     		movs	r3, #4
+ 802 03ae 14E0     		b	.L33
+ 803              	.LVL74:
+ 804              	.L32:
+ 582:Middlewares/ST/filex/common/src/fx_media_format.c ****                 }
+ 583:Middlewares/ST/filex/common/src/fx_media_format.c ****                 else
+ 584:Middlewares/ST/filex/common/src/fx_media_format.c ****                 {
+ 585:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 586:Middlewares/ST/filex/common/src/fx_media_format.c ****                     /* Reserve the first two FAT-32 entries.   */
+ 587:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[0] =  _fx_media_format_media_type;
+ 805              		.loc 1 587 21 is_stmt 1 view .LVU301
+ 806              		.loc 1 587 33 is_stmt 0 view .LVU302
+ 807 03b0 3C4B     		ldr	r3, .L64
+ 808 03b2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 809 03b4 2370     		strb	r3, [r4]
+ 588:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[1] =  (UCHAR)0xFF;
+ 810              		.loc 1 588 21 is_stmt 1 view .LVU303
+ 811              		.loc 1 588 33 is_stmt 0 view .LVU304
+ 812 03b6 FF23     		movs	r3, #255
+ 813 03b8 6370     		strb	r3, [r4, #1]
+ 589:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[2] =  (UCHAR)0xFF;
+ 814              		.loc 1 589 21 is_stmt 1 view .LVU305
+ 815              		.loc 1 589 33 is_stmt 0 view .LVU306
+ 816 03ba A370     		strb	r3, [r4, #2]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 27
+
+
+ 590:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[3] =  (UCHAR)0x0F;
+ 817              		.loc 1 590 21 is_stmt 1 view .LVU307
+ 818              		.loc 1 590 33 is_stmt 0 view .LVU308
+ 819 03bc 0F22     		movs	r2, #15
+ 820 03be E270     		strb	r2, [r4, #3]
+ 591:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[4] =  (UCHAR)0xFF;
+ 821              		.loc 1 591 21 is_stmt 1 view .LVU309
+ 822              		.loc 1 591 33 is_stmt 0 view .LVU310
+ 823 03c0 2371     		strb	r3, [r4, #4]
+ 592:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[5] =  (UCHAR)0xFF;
+ 824              		.loc 1 592 21 is_stmt 1 view .LVU311
+ 825              		.loc 1 592 33 is_stmt 0 view .LVU312
+ 826 03c2 6371     		strb	r3, [r4, #5]
+ 593:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[6] =  (UCHAR)0xFF;
+ 827              		.loc 1 593 21 is_stmt 1 view .LVU313
+ 828              		.loc 1 593 33 is_stmt 0 view .LVU314
+ 829 03c4 A371     		strb	r3, [r4, #6]
+ 594:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[7] =  (UCHAR)0x0F;
+ 830              		.loc 1 594 21 is_stmt 1 view .LVU315
+ 831              		.loc 1 594 33 is_stmt 0 view .LVU316
+ 832 03c6 E271     		strb	r2, [r4, #7]
+ 595:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 596:Middlewares/ST/filex/common/src/fx_media_format.c ****                     /* Preallocate the first cluster for the root directory.  */
+ 597:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[8] =   (UCHAR)0xFF;
+ 833              		.loc 1 597 21 is_stmt 1 view .LVU317
+ 834              		.loc 1 597 33 is_stmt 0 view .LVU318
+ 835 03c8 2372     		strb	r3, [r4, #8]
+ 598:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[9] =   (UCHAR)0xFF;
+ 836              		.loc 1 598 21 is_stmt 1 view .LVU319
+ 837              		.loc 1 598 33 is_stmt 0 view .LVU320
+ 838 03ca 6372     		strb	r3, [r4, #9]
+ 599:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[10] =  (UCHAR)0xFF;
+ 839              		.loc 1 599 21 is_stmt 1 view .LVU321
+ 840              		.loc 1 599 34 is_stmt 0 view .LVU322
+ 841 03cc A372     		strb	r3, [r4, #10]
+ 600:Middlewares/ST/filex/common/src/fx_media_format.c ****                     byte_ptr[11] =  (UCHAR)0x0F;
+ 842              		.loc 1 600 21 is_stmt 1 view .LVU323
+ 843              		.loc 1 600 34 is_stmt 0 view .LVU324
+ 844 03ce E272     		strb	r2, [r4, #11]
+ 601:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 602:Middlewares/ST/filex/common/src/fx_media_format.c ****                     /* Start clearing at FAT entry 3.  */
+ 603:Middlewares/ST/filex/common/src/fx_media_format.c ****                     i =  12;
+ 845              		.loc 1 603 21 is_stmt 1 view .LVU325
+ 846              	.LVL75:
+ 847              		.loc 1 603 23 is_stmt 0 view .LVU326
+ 848 03d0 0C23     		movs	r3, #12
+ 849 03d2 02E0     		b	.L33
+ 850              	.LVL76:
+ 851              	.L34:
+ 604:Middlewares/ST/filex/common/src/fx_media_format.c ****                 }
+ 605:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 606:Middlewares/ST/filex/common/src/fx_media_format.c ****             else
+ 607:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 608:Middlewares/ST/filex/common/src/fx_media_format.c ****                 i = 0;
+ 609:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 610:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 611:Middlewares/ST/filex/common/src/fx_media_format.c **** #ifndef FX_DISABLE_FORCE_MEMORY_OPERATION
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 28
+
+
+ 612:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Clear remainder of sector buffer.  */
+ 613:Middlewares/ST/filex/common/src/fx_media_format.c ****             for (; i < bytes_per_sector; i++)
+ 614:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 615:Middlewares/ST/filex/common/src/fx_media_format.c ****                 byte_ptr[i] =  (CHAR)0;
+ 852              		.loc 1 615 17 is_stmt 1 discriminator 2 view .LVU327
+ 853              		.loc 1 615 29 is_stmt 0 discriminator 2 view .LVU328
+ 854 03d4 0022     		movs	r2, #0
+ 855 03d6 E254     		strb	r2, [r4, r3]
+ 613:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 856              		.loc 1 613 42 is_stmt 1 discriminator 2 view .LVU329
+ 613:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 857              		.loc 1 613 43 is_stmt 0 discriminator 2 view .LVU330
+ 858 03d8 0133     		adds	r3, r3, #1
+ 859              	.LVL77:
+ 860              	.L33:
+ 613:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 861              		.loc 1 613 20 is_stmt 1 discriminator 1 view .LVU331
+ 613:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 862              		.loc 1 613 13 is_stmt 0 discriminator 1 view .LVU332
+ 863 03da B342     		cmp	r3, r6
+ 864 03dc FAD3     		bcc	.L34
+ 616:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 617:Middlewares/ST/filex/common/src/fx_media_format.c **** #else
+ 618:Middlewares/ST/filex/common/src/fx_media_format.c ****             _fx_utility_memory_set(&byte_ptr[i], 0, (bytes_per_sector - i));
+ 619:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif  /* FX_DISABLE_FORCE_MEMORY_OPERATION */
+ 620:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 621:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Build sector write command.  */
+ 622:Middlewares/ST/filex/common/src/fx_media_format.c ****             media_ptr -> fx_media_driver_logical_sector =  reserved_sectors + (f * sectors_per_fat)
+ 865              		.loc 1 622 13 is_stmt 1 view .LVU333
+ 866              		.loc 1 622 77 is_stmt 0 view .LVU334
+ 867 03de 09FB08B3 		mla	r3, r9, r8, fp
+ 868              	.LVL78:
+ 869              		.loc 1 622 101 view .LVU335
+ 870 03e2 3B44     		add	r3, r3, r7
+ 871              		.loc 1 622 57 view .LVU336
+ 872 03e4 C5F89430 		str	r3, [r5, #148]
+ 623:Middlewares/ST/filex/common/src/fx_media_format.c ****             media_ptr -> fx_media_driver_request =         FX_DRIVER_WRITE;
+ 873              		.loc 1 623 13 is_stmt 1 view .LVU337
+ 874              		.loc 1 623 50 is_stmt 0 view .LVU338
+ 875 03e8 0123     		movs	r3, #1
+ 876 03ea C5F88830 		str	r3, [r5, #136]
+ 624:Middlewares/ST/filex/common/src/fx_media_format.c ****             media_ptr -> fx_media_driver_sectors =         1;
+ 877              		.loc 1 624 13 is_stmt 1 view .LVU339
+ 878              		.loc 1 624 50 is_stmt 0 view .LVU340
+ 879 03ee C5F89830 		str	r3, [r5, #152]
+ 625:Middlewares/ST/filex/common/src/fx_media_format.c ****             media_ptr -> fx_media_driver_system_write =    FX_TRUE;
+ 880              		.loc 1 625 13 is_stmt 1 view .LVU341
+ 881              		.loc 1 625 55 is_stmt 0 view .LVU342
+ 882 03f2 C5F8B030 		str	r3, [r5, #176]
+ 626:Middlewares/ST/filex/common/src/fx_media_format.c ****             media_ptr -> fx_media_driver_sector_type =     FX_FAT_SECTOR;
+ 883              		.loc 1 626 13 is_stmt 1 view .LVU343
+ 884              		.loc 1 626 54 is_stmt 0 view .LVU344
+ 885 03f6 0223     		movs	r3, #2
+ 886 03f8 C5F8B830 		str	r3, [r5, #184]
+ 627:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 628:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 629:Middlewares/ST/filex/common/src/fx_media_format.c ****             FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_WRITE, media_ptr, media_ptr -> fx_m
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 29
+
+
+ 630:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 631:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Write out the sector.  */
+ 632:Middlewares/ST/filex/common/src/fx_media_format.c ****             (driver)(media_ptr);
+ 887              		.loc 1 632 13 is_stmt 1 view .LVU345
+ 888 03fc 2846     		mov	r0, r5
+ 889 03fe D047     		blx	r10
+ 890              	.LVL79:
+ 633:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 634:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Clear the system write flag.  */
+ 635:Middlewares/ST/filex/common/src/fx_media_format.c ****             media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ 891              		.loc 1 635 13 view .LVU346
+ 892              		.loc 1 635 55 is_stmt 0 view .LVU347
+ 893 0400 0023     		movs	r3, #0
+ 894 0402 C5F8B030 		str	r3, [r5, #176]
+ 636:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 637:Middlewares/ST/filex/common/src/fx_media_format.c ****             /* Determine if it was successful.  */
+ 638:Middlewares/ST/filex/common/src/fx_media_format.c ****             if (media_ptr -> fx_media_driver_status != FX_SUCCESS)
+ 895              		.loc 1 638 13 is_stmt 1 view .LVU348
+ 896              		.loc 1 638 27 is_stmt 0 view .LVU349
+ 897 0406 D5F88C30 		ldr	r3, [r5, #140]
+ 898              		.loc 1 638 16 view .LVU350
+ 899 040a 002B     		cmp	r3, #0
+ 900 040c 43D1     		bne	.L51
+ 553:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 901              		.loc 1 553 42 is_stmt 1 discriminator 2 view .LVU351
+ 553:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 902              		.loc 1 553 43 is_stmt 0 discriminator 2 view .LVU352
+ 903 040e 0137     		adds	r7, r7, #1
+ 904              	.LVL80:
+ 905              	.L36:
+ 553:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 906              		.loc 1 553 21 is_stmt 1 discriminator 1 view .LVU353
+ 553:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 907              		.loc 1 553 9 is_stmt 0 discriminator 1 view .LVU354
+ 908 0410 B845     		cmp	r8, r7
+ 909 0412 03D9     		bls	.L59
+ 556:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 910              		.loc 1 556 13 is_stmt 1 view .LVU355
+ 556:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 911              		.loc 1 556 16 is_stmt 0 view .LVU356
+ 912 0414 002F     		cmp	r7, #0
+ 913 0416 AAD0     		beq	.L60
+ 608:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 914              		.loc 1 608 19 view .LVU357
+ 915 0418 029B     		ldr	r3, [sp, #8]
+ 916 041a DEE7     		b	.L33
+ 917              	.L59:
+ 549:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 918              		.loc 1 549 37 is_stmt 1 discriminator 2 view .LVU358
+ 549:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 919              		.loc 1 549 38 is_stmt 0 discriminator 2 view .LVU359
+ 920 041c 09F10109 		add	r9, r9, #1
+ 921              	.LVL81:
+ 549:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 922              		.loc 1 549 38 discriminator 2 view .LVU360
+ 923 0420 61E7     		b	.L28
+ 924              	.LVL82:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 30
+
+
+ 925              	.L58:
+ 639:Middlewares/ST/filex/common/src/fx_media_format.c ****             {
+ 640:Middlewares/ST/filex/common/src/fx_media_format.c ****                 return(FX_IO_ERROR);
+ 641:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 642:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 643:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 644:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 645:Middlewares/ST/filex/common/src/fx_media_format.c **** #ifndef FX_DISABLE_FORCE_MEMORY_OPERATION
+ 646:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Clear sector buffer.  */
+ 647:Middlewares/ST/filex/common/src/fx_media_format.c ****     for (i = 0; i < bytes_per_sector; i++)
+ 926              		.loc 1 647 12 view .LVU361
+ 927 0422 029B     		ldr	r3, [sp, #8]
+ 928 0424 02E0     		b	.L37
+ 929              	.LVL83:
+ 930              	.L38:
+ 648:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 649:Middlewares/ST/filex/common/src/fx_media_format.c ****         byte_ptr[i] =  (CHAR)0;
+ 931              		.loc 1 649 9 is_stmt 1 discriminator 3 view .LVU362
+ 932              		.loc 1 649 21 is_stmt 0 discriminator 3 view .LVU363
+ 933 0426 0022     		movs	r2, #0
+ 934 0428 E254     		strb	r2, [r4, r3]
+ 647:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 935              		.loc 1 647 39 is_stmt 1 discriminator 3 view .LVU364
+ 647:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 936              		.loc 1 647 40 is_stmt 0 discriminator 3 view .LVU365
+ 937 042a 0133     		adds	r3, r3, #1
+ 938              	.LVL84:
+ 939              	.L37:
+ 647:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 940              		.loc 1 647 17 is_stmt 1 discriminator 1 view .LVU366
+ 647:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 941              		.loc 1 647 5 is_stmt 0 discriminator 1 view .LVU367
+ 942 042c B342     		cmp	r3, r6
+ 943 042e FAD3     		bcc	.L38
+ 944 0430 029C     		ldr	r4, [sp, #8]
+ 945              	.LVL85:
+ 647:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 946              		.loc 1 647 5 discriminator 1 view .LVU368
+ 947 0432 039E     		ldr	r6, [sp, #12]
+ 948 0434 109F     		ldr	r7, [sp, #64]
+ 949              	.LVL86:
+ 950              	.L39:
+ 650:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 651:Middlewares/ST/filex/common/src/fx_media_format.c **** #else
+ 652:Middlewares/ST/filex/common/src/fx_media_format.c ****     _fx_utility_memory_set(byte_ptr, 0, bytes_per_sector);
+ 653:Middlewares/ST/filex/common/src/fx_media_format.c **** #endif /* FX_DISABLE_FORCE_MEMORY_OPERATION */
+ 654:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 655:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Now clear the root directory sectors.  */
+ 656:Middlewares/ST/filex/common/src/fx_media_format.c ****     for (s = 0; s < root_sectors; s++)
+ 951              		.loc 1 656 17 is_stmt 1 discriminator 1 view .LVU369
+ 952              		.loc 1 656 5 is_stmt 0 discriminator 1 view .LVU370
+ 953 0436 B442     		cmp	r4, r6
+ 954 0438 18D2     		bcs	.L61
+ 657:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 658:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 659:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Build sector write command.  */
+ 660:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_logical_sector =  reserved_sectors + (number_of_fats * sectors
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 31
+
+
+ 955              		.loc 1 660 9 is_stmt 1 view .LVU371
+ 956              		.loc 1 660 73 is_stmt 0 view .LVU372
+ 957 043a 07FB08B3 		mla	r3, r7, r8, fp
+ 958              		.loc 1 660 110 view .LVU373
+ 959 043e 2344     		add	r3, r3, r4
+ 960              		.loc 1 660 53 view .LVU374
+ 961 0440 C5F89430 		str	r3, [r5, #148]
+ 661:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_request =         FX_DRIVER_WRITE;
+ 962              		.loc 1 661 9 is_stmt 1 view .LVU375
+ 963              		.loc 1 661 46 is_stmt 0 view .LVU376
+ 964 0444 0123     		movs	r3, #1
+ 965 0446 C5F88830 		str	r3, [r5, #136]
+ 662:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sectors =         1;
+ 966              		.loc 1 662 9 is_stmt 1 view .LVU377
+ 967              		.loc 1 662 46 is_stmt 0 view .LVU378
+ 968 044a C5F89830 		str	r3, [r5, #152]
+ 663:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_system_write =    FX_TRUE;
+ 969              		.loc 1 663 9 is_stmt 1 view .LVU379
+ 970              		.loc 1 663 51 is_stmt 0 view .LVU380
+ 971 044e C5F8B030 		str	r3, [r5, #176]
+ 664:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_sector_type =     FX_DIRECTORY_SECTOR;
+ 972              		.loc 1 664 9 is_stmt 1 view .LVU381
+ 973              		.loc 1 664 50 is_stmt 0 view .LVU382
+ 974 0452 0323     		movs	r3, #3
+ 975 0454 C5F8B830 		str	r3, [r5, #184]
+ 665:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 666:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 667:Middlewares/ST/filex/common/src/fx_media_format.c ****         FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_WRITE, media_ptr, media_ptr -> fx_media
+ 668:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 669:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Write out the sector.  */
+ 670:Middlewares/ST/filex/common/src/fx_media_format.c ****         (driver)(media_ptr);
+ 976              		.loc 1 670 9 is_stmt 1 view .LVU383
+ 977 0458 2846     		mov	r0, r5
+ 978 045a D047     		blx	r10
+ 979              	.LVL87:
+ 671:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 672:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Clear the write flag.  */
+ 673:Middlewares/ST/filex/common/src/fx_media_format.c ****         media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ 980              		.loc 1 673 9 view .LVU384
+ 981              		.loc 1 673 51 is_stmt 0 view .LVU385
+ 982 045c 0023     		movs	r3, #0
+ 983 045e C5F8B030 		str	r3, [r5, #176]
+ 674:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 675:Middlewares/ST/filex/common/src/fx_media_format.c ****         /* Determine if it was successful.  */
+ 676:Middlewares/ST/filex/common/src/fx_media_format.c ****         if (media_ptr -> fx_media_driver_status != FX_SUCCESS)
+ 984              		.loc 1 676 9 is_stmt 1 view .LVU386
+ 985              		.loc 1 676 23 is_stmt 0 view .LVU387
+ 986 0462 D5F88C30 		ldr	r3, [r5, #140]
+ 987              		.loc 1 676 12 view .LVU388
+ 988 0466 D3B9     		cbnz	r3, .L53
+ 656:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 989              		.loc 1 656 35 is_stmt 1 discriminator 2 view .LVU389
+ 656:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ 990              		.loc 1 656 36 is_stmt 0 discriminator 2 view .LVU390
+ 991 0468 0134     		adds	r4, r4, #1
+ 992              	.LVL88:
+ 656:Middlewares/ST/filex/common/src/fx_media_format.c ****     {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 32
+
+
+ 993              		.loc 1 656 36 discriminator 2 view .LVU391
+ 994 046a E4E7     		b	.L39
+ 995              	.L61:
+ 677:Middlewares/ST/filex/common/src/fx_media_format.c ****         {
+ 678:Middlewares/ST/filex/common/src/fx_media_format.c ****             return(FX_IO_ERROR);
+ 679:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 680:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 681:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 682:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Build the "uninitialize" I/O driver request.  */
+ 683:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_request =      FX_DRIVER_UNINIT;
+ 996              		.loc 1 683 5 is_stmt 1 view .LVU392
+ 997              		.loc 1 683 42 is_stmt 0 view .LVU393
+ 998 046c 0823     		movs	r3, #8
+ 999 046e C5F88830 		str	r3, [r5, #136]
+ 684:Middlewares/ST/filex/common/src/fx_media_format.c ****     media_ptr -> fx_media_driver_status =       FX_IO_ERROR;
+ 1000              		.loc 1 684 5 is_stmt 1 view .LVU394
+ 1001              		.loc 1 684 41 is_stmt 0 view .LVU395
+ 1002 0472 9023     		movs	r3, #144
+ 1003 0474 C5F88C30 		str	r3, [r5, #140]
+ 685:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 686:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 687:Middlewares/ST/filex/common/src/fx_media_format.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_UNINIT, media_ptr, 0, 0, 0, FX_TRACE_INTERN
+ 688:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 689:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Call the specified I/O driver with the uninitialize request.  */
+ 690:Middlewares/ST/filex/common/src/fx_media_format.c ****     (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 1004              		.loc 1 690 5 is_stmt 1 view .LVU396
+ 1005              		.loc 1 690 16 is_stmt 0 view .LVU397
+ 1006 0478 D5F8BC30 		ldr	r3, [r5, #188]
+ 1007 047c 2846     		mov	r0, r5
+ 1008 047e 9847     		blx	r3
+ 1009              	.LVL89:
+ 691:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 692:Middlewares/ST/filex/common/src/fx_media_format.c ****     /* Return success!  */
+ 693:Middlewares/ST/filex/common/src/fx_media_format.c ****     return(media_ptr -> fx_media_driver_status);
+ 1010              		.loc 1 693 5 is_stmt 1 view .LVU398
+ 1011              		.loc 1 693 22 is_stmt 0 view .LVU399
+ 1012 0480 D5F88C00 		ldr	r0, [r5, #140]
+ 1013 0484 08E0     		b	.L1
+ 1014              	.LVL90:
+ 1015              	.L41:
+ 147:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 1016              		.loc 1 147 15 view .LVU400
+ 1017 0486 8920     		movs	r0, #137
+ 1018              	.LVL91:
+ 147:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 1019              		.loc 1 147 15 view .LVU401
+ 1020 0488 06E0     		b	.L1
+ 1021              	.LVL92:
+ 1022              	.L42:
+ 151:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 1023              		.loc 1 151 15 view .LVU402
+ 1024 048a 8920     		movs	r0, #137
+ 1025              	.LVL93:
+ 151:Middlewares/ST/filex/common/src/fx_media_format.c **** 
+ 1026              		.loc 1 151 15 view .LVU403
+ 1027 048c 04E0     		b	.L1
+ 1028              	.LVL94:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 33
+
+
+ 1029              	.L43:
+ 184:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 1030              		.loc 1 184 15 view .LVU404
+ 1031 048e 9020     		movs	r0, #144
+ 1032 0490 02E0     		b	.L1
+ 1033              	.LVL95:
+ 1034              	.L47:
+ 478:Middlewares/ST/filex/common/src/fx_media_format.c ****     }
+ 1035              		.loc 1 478 15 view .LVU405
+ 1036 0492 9020     		movs	r0, #144
+ 1037 0494 00E0     		b	.L1
+ 1038              	.LVL96:
+ 1039              	.L51:
+ 640:Middlewares/ST/filex/common/src/fx_media_format.c ****             }
+ 1040              		.loc 1 640 23 view .LVU406
+ 1041 0496 9020     		movs	r0, #144
+ 1042              	.LVL97:
+ 1043              	.L1:
+ 694:Middlewares/ST/filex/common/src/fx_media_format.c **** }
+ 1044              		.loc 1 694 1 view .LVU407
+ 1045 0498 05B0     		add	sp, sp, #20
+ 1046              	.LCFI2:
+ 1047              		.cfi_remember_state
+ 1048              		.cfi_def_cfa_offset 36
+ 1049              		@ sp needed
+ 1050 049a BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1051              	.LVL98:
+ 1052              	.L53:
+ 1053              	.LCFI3:
+ 1054              		.cfi_restore_state
+ 678:Middlewares/ST/filex/common/src/fx_media_format.c ****         }
+ 1055              		.loc 1 678 19 view .LVU408
+ 1056 049e 9020     		movs	r0, #144
+ 1057 04a0 FAE7     		b	.L1
+ 1058              	.L65:
+ 1059 04a2 00BF     		.align	2
+ 1060              	.L64:
+ 1061 04a4 00000000 		.word	.LANCHOR1
+ 1062              		.cfi_endproc
+ 1063              	.LFE8:
+ 1065              		.global	_fx_media_format_volume_id
+ 1066              		.global	_fx_media_format_media_type
+ 1067              		.global	_fx_media_format_oem_name
+ 1068              		.section	.data._fx_media_format_media_type,"aw"
+ 1069              		.set	.LANCHOR1,. + 0
+ 1072              	_fx_media_format_media_type:
+ 1073 0000 F8       		.byte	-8
+ 1074              		.section	.data._fx_media_format_oem_name,"aw"
+ 1075              		.align	2
+ 1076              		.set	.LANCHOR0,. + 0
+ 1079              	_fx_media_format_oem_name:
+ 1080 0000 454C2046 		.ascii	"EL FILEX"
+ 1080      494C4558 
+ 1081              		.section	.data._fx_media_format_volume_id,"aw"
+ 1082              		.align	2
+ 1083              		.set	.LANCHOR2,. + 0
+ 1086              	_fx_media_format_volume_id:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 34
+
+
+ 1087 0000 01000000 		.word	1
+ 1088              		.text
+ 1089              	.Letext0:
+ 1090              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 1091              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 1092              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 1093              		.file 5 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s 			page 35
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_media_format.c
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:20     .text._fx_media_format:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:26     .text._fx_media_format:00000000 _fx_media_format
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:772    .text._fx_media_format:00000388 $d
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:779    .text._fx_media_format:00000394 $t
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:1061   .text._fx_media_format:000004a4 $d
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:1086   .data._fx_media_format_volume_id:00000000 _fx_media_format_volume_id
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:1072   .data._fx_media_format_media_type:00000000 _fx_media_format_media_type
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:1079   .data._fx_media_format_oem_name:00000000 _fx_media_format_oem_name
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:1075   .data._fx_media_format_oem_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\ccJU1Ujw.s:1082   .data._fx_media_format_volume_id:00000000 $d
+
+UNDEFINED SYMBOLS
+_fx_utility_16_unsigned_write
+_fx_utility_32_unsigned_write

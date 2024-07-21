@@ -1,0 +1,1375 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_initialize.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.rodata._ux_host_stack_initialize.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 75785F73 		.ascii	"ux_system_host_enum_semaphore\000"
+  22      79737465 
+  22      6D5F686F 
+  22      73745F65 
+  22      6E756D5F 
+  23 001e 0000     		.align	2
+  24              	.LC1:
+  25 0020 75785F73 		.ascii	"ux_system_host_hcd_semaphore\000"
+  25      79737465 
+  25      6D5F686F 
+  25      73745F68 
+  25      63645F73 
+  26 003d 000000   		.align	2
+  27              	.LC2:
+  28 0040 75785F73 		.ascii	"ux_system_host_enum_thread\000"
+  28      79737465 
+  28      6D5F686F 
+  28      73745F65 
+  28      6E756D5F 
+  29 005b 00       		.align	2
+  30              	.LC3:
+  31 005c 75785F68 		.ascii	"ux_host_stack_hcd_thread\000"
+  31      6F73745F 
+  31      73746163 
+  31      6B5F6863 
+  31      645F7468 
+  32              		.section	.text._ux_host_stack_initialize,"ax",%progbits
+  33              		.align	1
+  34              		.global	_ux_host_stack_initialize
+  35              		.syntax unified
+  36              		.thumb
+  37              		.thumb_func
+  39              	_ux_host_stack_initialize:
+  40              	.LVL0:
+  41              	.LFB11:
+  42              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 2
+
+
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #include "ux_host_stack.h"
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UX_COMPILE_TIME_ASSERT(!UX_OVERFLOW_CHECK_MULC_ULONG(sizeof(UX_HCD), UX_MAX_HCD), UX_MAX_HCD_mul_ov
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UX_COMPILE_TIME_ASSERT(!UX_OVERFLOW_CHECK_MULC_ULONG(sizeof(UX_HOST_CLASS), UX_MAX_CLASS_DRIVER), U
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UX_COMPILE_TIME_ASSERT(!UX_OVERFLOW_CHECK_MULC_ULONG(sizeof(UX_DEVICE), UX_MAX_DEVICES), UX_MAX_DEV
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #ifndef UX_HOST_HNP_POLLING_THREAD_STACK_SIZE
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #define UX_HOST_HNP_POLLING_THREAD_STACK_SIZE UX_THREAD_STACK_SIZE
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #endif
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /* Defined USBX host variables.  */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UX_SYSTEM_HOST     *_ux_system_host;
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /* Define table of periodic tree entries, properly indexed.  */
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UINT _ux_system_host_hcd_periodic_tree_entries[32] = { 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             0x00, 0x10, 0x08, 0x18,
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             0x02, 0x12, 0x0a, 0x1a,
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             0x01, 0x11, 0x09, 0x19,
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             0x03, 0x13, 0x0b, 0x1b,
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /* Define the names of all the USB Classes of USBX.  */
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_hub_name[] =                                    "ux_host_class_hub";
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_printer_name[] =                                "ux_host_class_printer"
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_storage_name[] =                                "ux_host_class_storage"
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_hid_name[] =                                    "ux_host_class_hid";
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_audio_name[] =                                  "ux_host_class_audio";
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 3
+
+
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_cdc_acm_name[] =                                "ux_host_class_cdc_acm"
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_cdc_dlc_name[] =                                "ux_host_class_cdc_dlc"
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_cdc_ecm_name[] =                                "ux_host_class_cdc_ecm"
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_prolific_name[] =                               "ux_host_class_prolific
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_pima_name[] =                                   "ux_host_class_pima";
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_dpump_name[] =                                  "ux_host_class_dpump";
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_asix_name[] =                                   "ux_host_class_asix";
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_swar_name[] =                                   "ux_host_class_sierra_w
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_gser_name[] =                                   "ux_host_class_generic_
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_hid_client_remote_control_name[] =              "ux_host_class_hid_clie
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_hid_client_mouse_name[] =                       "ux_host_class_hid_clie
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_class_hid_client_keyboard_name[] =                    "ux_host_class_hid_clie
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /* Define the name of all the USB Host Controllers of USBX.  */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_ohci_name[] =                                     "ux_hcd_ohci";
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_ehci_name[] =                                     "ux_hcd_ehci";
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_isp1161_name[] =                                  "ux_hcd_isp1161";
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_isp1362_name[] =                                  "ux_hcd_isp1362";
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_sh2_name[] =                                      "ux_hcd_rx";
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_rx_name[] =                                       "ux_hcd_sh2";
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_pic32_name[] =                                    "ux_hcd_pic32";
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_stm32_name[] =                                    "ux_hcd_stm32";
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_musb_name[] =                                     "ux_hcd_musb";
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_atm7_name[] =                                     "ux_hcd_atm7";
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR _ux_system_host_hcd_simulator_name[] =                                "ux_hcd_simulator";
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/ 
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  FUNCTION                                               RELEASE        */ 
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    _ux_host_stack_initialize                           PORTABLE C      */ 
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                           6.1.10       */
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  AUTHOR                                                                */
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  DESCRIPTION                                                           */
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    This function initializes all the host code for USBX to work on a   */ 
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    specific platform.                                                  */ 
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  INPUT                                                                 */ 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    (ux_system_host_change_function)        Function pointer to the     */ 
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            callback function for a     */ 
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            device change               */ 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  OUTPUT                                                                */ 
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    Completion Status                                                   */ 
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  CALLS                                                                 */ 
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    _ux_utility_memory_allocate           Allocate host memory          */ 
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    _ux_utility_semaphore_create          Create host semaphore         */ 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 4
+
+
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    _ux_utility_mutex_create             Create host mutex              */ 
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    _ux_utility_thread_create             Create host thread            */ 
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  CALLED BY                                                             */ 
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    Application                                                         */ 
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  RELEASE HISTORY                                                       */ 
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */ 
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            optimized based on compile  */
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            definitions, used UX prefix */
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            to refer to TX symbols      */
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            instead of using them       */
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            directly,                   */
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            resulting in version 6.1    */
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            added standalone support,   */
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                            resulting in version 6.1.10 */
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /*                                                                        */
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** /**************************************************************************/
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UINT  _ux_host_stack_initialize(UINT (*ux_system_host_change_function)(ULONG, UX_HOST_CLASS *, VOID
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** {
+  43              		.loc 1 140 1 view -0
+  44              		.cfi_startproc
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47              		.loc 1 140 1 is_stmt 0 view .LVU1
+  48 0000 70B5     		push	{r4, r5, r6, lr}
+  49              	.LCFI0:
+  50              		.cfi_def_cfa_offset 16
+  51              		.cfi_offset 4, -16
+  52              		.cfi_offset 5, -12
+  53              		.cfi_offset 6, -8
+  54              		.cfi_offset 14, -4
+  55 0002 86B0     		sub	sp, sp, #24
+  56              	.LCFI1:
+  57              		.cfi_def_cfa_offset 40
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UINT        status;
+  58              		.loc 1 142 1 is_stmt 1 view .LVU2
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UCHAR       *memory;
+  59              		.loc 1 143 1 view .LVU3
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #if defined(UX_HOST_STANDALONE)
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UINT        i;
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** UX_DEVICE   *device;
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #endif
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_INITIALIZE, 0, 0, 0, 0, UX_TRACE_HOST_STACK_EVENTS,
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Initialize some of the global so that we don't have to recompile the
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****        core code when one item is adjusted.  */
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     _ux_system_host -> ux_system_host_max_ed =        UX_MAX_ED;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 5
+
+
+  60              		.loc 1 154 5 view .LVU4
+  61              		.loc 1 154 21 is_stmt 0 view .LVU5
+  62 0004 7749     		ldr	r1, .L37
+  63 0006 0B68     		ldr	r3, [r1]
+  64              		.loc 1 154 46 view .LVU6
+  65 0008 5022     		movs	r2, #80
+  66 000a 9A61     		str	r2, [r3, #24]
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     _ux_system_host -> ux_system_host_max_td =        UX_MAX_TD;
+  67              		.loc 1 155 5 is_stmt 1 view .LVU7
+  68              		.loc 1 155 46 is_stmt 0 view .LVU8
+  69 000c 2022     		movs	r2, #32
+  70 000e DA61     		str	r2, [r3, #28]
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     _ux_system_host -> ux_system_host_max_iso_td =    UX_MAX_ISO_TD;
+  71              		.loc 1 156 5 is_stmt 1 view .LVU9
+  72              		.loc 1 156 50 is_stmt 0 view .LVU10
+  73 0010 0222     		movs	r2, #2
+  74 0012 1A62     		str	r2, [r3, #32]
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     UX_SYSTEM_HOST_MAX_CLASS_SET(UX_MAX_CLASS_DRIVER);
+  75              		.loc 1 157 5 is_stmt 1 view .LVU11
+  76              		.loc 1 157 5 view .LVU12
+  77 0014 1A60     		str	r2, [r3]
+  78              		.loc 1 157 5 view .LVU13
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     UX_SYSTEM_HOST_MAX_HCD_SET(UX_MAX_HCD);
+  79              		.loc 1 158 5 view .LVU14
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     UX_SYSTEM_HOST_MAX_DEVICES_SET(UX_MAX_DEVICES);
+  80              		.loc 1 159 5 view .LVU15
+  81              		.loc 1 159 5 view .LVU16
+  82 0016 0B68     		ldr	r3, [r1]
+  83 0018 1A61     		str	r2, [r3, #16]
+  84              		.loc 1 159 5 view .LVU17
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Set the change device function address.  */
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     _ux_system_host -> ux_system_host_change_function =  ux_system_host_change_function;
+  85              		.loc 1 162 5 view .LVU18
+  86              		.loc 1 162 55 is_stmt 0 view .LVU19
+  87 001a C3F8C801 		str	r0, [r3, #456]
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Allocate memory for the HCDs.
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      * sizeof(UX_HCD)*UX_MAX_HCD overflow is checked outside of the function.
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      */
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     memory =  _ux_utility_memory_allocate(UX_NO_ALIGN, UX_REGULAR_MEMORY, sizeof(UX_HCD)*UX_MAX_HCD
+  88              		.loc 1 167 5 is_stmt 1 view .LVU20
+  89              		.loc 1 167 15 is_stmt 0 view .LVU21
+  90 001e 9422     		movs	r2, #148
+  91 0020 0021     		movs	r1, #0
+  92 0022 0846     		mov	r0, r1
+  93              	.LVL1:
+  94              		.loc 1 167 15 view .LVU22
+  95 0024 FFF7FEFF 		bl	_ux_utility_memory_allocate
+  96              	.LVL2:
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Check for successful allocation.  */
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (memory == UX_NULL)
+  97              		.loc 1 170 5 is_stmt 1 view .LVU23
+  98              		.loc 1 170 8 is_stmt 0 view .LVU24
+  99 0028 0028     		cmp	r0, #0
+ 100 002a 00F0D980 		beq	.L18
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 6
+
+
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         return(UX_MEMORY_INSUFFICIENT);
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Set to success by default.  */
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     status = UX_SUCCESS;
+ 101              		.loc 1 174 5 is_stmt 1 view .LVU25
+ 102              	.LVL3:
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Store memory in system structure.  */
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     _ux_system_host -> ux_system_host_hcd_array =  (UX_HCD *) memory;
+ 103              		.loc 1 177 5 view .LVU26
+ 104              		.loc 1 177 21 is_stmt 0 view .LVU27
+ 105 002e 6D4A     		ldr	r2, .L37
+ 106 0030 1268     		ldr	r2, [r2]
+ 107              		.loc 1 177 49 view .LVU28
+ 108 0032 D060     		str	r0, [r2, #12]
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Allocate memory for the classes.
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      * sizeof(UX_HOST_CLASS)*UX_MAX_CLASS_DRIVER overflow is checked outside of the function.
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      */
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     memory =  _ux_utility_memory_allocate(UX_NO_ALIGN, UX_REGULAR_MEMORY, sizeof(UX_HOST_CLASS)*UX_
+ 109              		.loc 1 182 5 is_stmt 1 view .LVU29
+ 110              		.loc 1 182 15 is_stmt 0 view .LVU30
+ 111 0034 B022     		movs	r2, #176
+ 112 0036 0021     		movs	r1, #0
+ 113 0038 0846     		mov	r0, r1
+ 114              	.LVL4:
+ 115              		.loc 1 182 15 view .LVU31
+ 116 003a FFF7FEFF 		bl	_ux_utility_memory_allocate
+ 117              	.LVL5:
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Check for successful allocation.  */
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (memory == UX_NULL)
+ 118              		.loc 1 185 5 is_stmt 1 view .LVU32
+ 119              		.loc 1 185 8 is_stmt 0 view .LVU33
+ 120 003e 78B1     		cbz	r0, .L19
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         status = UX_MEMORY_INSUFFICIENT;
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     else
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Store memory in system structure.  */
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_system_host -> ux_system_host_class_array =  (UX_HOST_CLASS *) memory;
+ 121              		.loc 1 190 9 is_stmt 1 view .LVU34
+ 122              		.loc 1 190 25 is_stmt 0 view .LVU35
+ 123 0040 684A     		ldr	r2, .L37
+ 124 0042 1268     		ldr	r2, [r2]
+ 125              		.loc 1 190 55 view .LVU36
+ 126 0044 5060     		str	r0, [r2, #4]
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Allocate memory for the device containers.
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      * sizeof(UX_DEVICE)*UX_MAX_DEVICES overflow is checked outside of the function.
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      */
+ 195:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 127              		.loc 1 195 5 is_stmt 1 view .LVU37
+ 196:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         memory =  _ux_utility_memory_allocate(UX_NO_ALIGN, UX_REGULAR_MEMORY, sizeof(UX_DEVICE)*UX_
+ 128              		.loc 1 197 9 view .LVU38
+ 129              		.loc 1 197 19 is_stmt 0 view .LVU39
+ 130 0046 4FF43272 		mov	r2, #712
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 7
+
+
+ 131 004a 0021     		movs	r1, #0
+ 132 004c 0846     		mov	r0, r1
+ 133              	.LVL6:
+ 134              		.loc 1 197 19 view .LVU40
+ 135 004e FFF7FEFF 		bl	_ux_utility_memory_allocate
+ 136              	.LVL7:
+ 198:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 199:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Check for successful allocation.  */
+ 200:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(memory == UX_NULL)
+ 137              		.loc 1 200 9 is_stmt 1 view .LVU41
+ 138              		.loc 1 200 11 is_stmt 0 view .LVU42
+ 139 0052 0028     		cmp	r0, #0
+ 140 0054 58D0     		beq	.L20
+ 201:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 202:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         else
+ 203:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 204:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             /* Store memory in system structure.  */
+ 205:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             _ux_system_host -> ux_system_host_device_array =  (UX_DEVICE *) memory;
+ 141              		.loc 1 205 13 is_stmt 1 view .LVU43
+ 142              		.loc 1 205 29 is_stmt 0 view .LVU44
+ 143 0056 634A     		ldr	r2, .L37
+ 144 0058 1268     		ldr	r2, [r2]
+ 145              		.loc 1 205 60 view .LVU45
+ 146 005a 5061     		str	r0, [r2, #20]
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 147              		.loc 1 174 12 view .LVU46
+ 148 005c 0024     		movs	r4, #0
+ 149 005e 00E0     		b	.L3
+ 150              	.L19:
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     else
+ 151              		.loc 1 186 16 view .LVU47
+ 152 0060 1224     		movs	r4, #18
+ 153              	.L3:
+ 154              	.LVL8:
+ 206:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 207:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #if defined(UX_HOST_STANDALONE)
+ 208:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Add devices to the enumeration list, with ENUM flags cleared.  */
+ 210:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if (status == UX_SUCCESS)
+ 211:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         {
+ 212:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 213:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             /* Start from the last device instance.  */
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             device = &_ux_system_host -> ux_system_host_device_array[UX_MAX_DEVICES - 1];
+ 215:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 216:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             /* Insert all devices to enumeration list head.  */
+ 217:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             for (i = 0; i < UX_MAX_DEVICES; i ++)
+ 218:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             {
+ 219:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 220:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                 /* Insert to head.  */
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                 device -> ux_device_enum_next = _ux_system_host -> ux_system_host_enum_device;
+ 222:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                 _ux_system_host -> ux_system_host_enum_device = device;
+ 223:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 224:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                 /* Next device.  */
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                 device --;
+ 226:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             }
+ 227:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         }
+ 228:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #endif
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 8
+
+
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 230:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 231:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 232:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #if !defined(UX_HOST_STANDALONE)
+ 233:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Obtain enough stack for the two USBX host threads.  */
+ 234:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 155              		.loc 1 234 5 is_stmt 1 view .LVU48
+ 156              		.loc 1 234 8 is_stmt 0 view .LVU49
+ 157 0062 002C     		cmp	r4, #0
+ 158 0064 41D0     		beq	.L28
+ 159              	.LVL9:
+ 160              	.L4:
+ 235:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_system_host -> ux_system_host_enum_thread_stack =  _ux_utility_memory_allocate(UX_NO_AL
+ 237:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_ENUM_THREAD_STA
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 239:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Check for successful allocation.  */
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if (_ux_system_host -> ux_system_host_enum_thread_stack == UX_NULL)
+ 241:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 242:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 243:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 244:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Allocate another stack area.  */
+ 245:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 161              		.loc 1 245 5 is_stmt 1 view .LVU50
+ 162              		.loc 1 245 8 is_stmt 0 view .LVU51
+ 163 0066 002C     		cmp	r4, #0
+ 164 0068 50D0     		beq	.L29
+ 165              	.LVL10:
+ 166              	.L5:
+ 246:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_system_host -> ux_system_host_hcd_thread_stack =  _ux_utility_memory_allocate(UX_NO_ALI
+ 248:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_HCD_THREAD_STAC
+ 249:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 250:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Check for successful allocation.  */
+ 251:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if (_ux_system_host -> ux_system_host_hcd_thread_stack == UX_NULL)
+ 252:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 253:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 254:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 255:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Create the semaphores used by the hub and root hub to awake the enumeration thread.  */
+ 256:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 167              		.loc 1 256 5 is_stmt 1 view .LVU52
+ 168              		.loc 1 256 8 is_stmt 0 view .LVU53
+ 169 006a 002C     		cmp	r4, #0
+ 170 006c 5FD0     		beq	.L30
+ 171              	.LVL11:
+ 172              	.L6:
+ 257:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 258:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         status =  _ux_utility_semaphore_create(&_ux_system_host -> ux_system_host_enum_semaphore, "
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 260:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_SEMAPHORE_ERROR;
+ 261:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 262:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 263:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Create the semaphores used by the HCD to perform the completion phase of transfer_requests. 
+ 264:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 173              		.loc 1 264 5 is_stmt 1 view .LVU54
+ 174              		.loc 1 264 8 is_stmt 0 view .LVU55
+ 175 006e 002C     		cmp	r4, #0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 9
+
+
+ 176 0070 69D0     		beq	.L31
+ 177              	.LVL12:
+ 178              	.L7:
+ 265:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 266:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         status =  _ux_utility_semaphore_create(&_ux_system_host -> ux_system_host_hcd_semaphore, "u
+ 267:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 268:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_SEMAPHORE_ERROR;
+ 269:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 270:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 271:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Create the enumeration thread of USBX.  */
+ 272:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 179              		.loc 1 272 5 is_stmt 1 view .LVU56
+ 180              		.loc 1 272 8 is_stmt 0 view .LVU57
+ 181 0072 002C     		cmp	r4, #0
+ 182 0074 74D0     		beq	.L32
+ 183              	.LVL13:
+ 184              	.L8:
+ 273:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 274:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         status =  _ux_utility_thread_create(&_ux_system_host -> ux_system_host_enum_thread, "ux_sys
+ 275:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_enum_thread_stack,
+ 276:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_HOST_ENUM_THREAD_STACK_SIZE, UX_THREAD_PRIORITY_ENUM,
+ 277:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_THREAD_PRIORITY_ENUM, UX_NO_TIME_SLICE, UX_AUTO_START);
+ 278:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             
+ 279:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Check the completion status.  */
+ 280:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 281:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_THREAD_ERROR;
+ 282:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 283:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 284:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Create the HCD thread of USBX.  */
+ 285:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 185              		.loc 1 285 5 is_stmt 1 view .LVU58
+ 186              		.loc 1 285 8 is_stmt 0 view .LVU59
+ 187 0076 002C     		cmp	r4, #0
+ 188 0078 00F08B80 		beq	.L33
+ 189              	.LVL14:
+ 190              	.L9:
+ 286:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 287:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         status =  _ux_utility_thread_create(&_ux_system_host -> ux_system_host_hcd_thread, "ux_host
+ 288:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_hcd_thread_stack,
+ 289:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_HOST_HCD_THREAD_STACK_SIZE, UX_THREAD_PRIORITY_HCD,
+ 290:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_THREAD_PRIORITY_HCD, UX_NO_TIME_SLICE,UX_AUTO_START);
+ 291:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 292:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Check the completion status.  */
+ 293:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 294:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_THREAD_ERROR;
+ 295:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 296:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #endif
+ 297:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 298:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #if defined(UX_OTG_SUPPORT) && !defined(UX_OTG_STANDALONE)
+ 299:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Allocate another stack area for the HNP polling thread.  */
+ 300:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 301:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 302:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_system_host -> ux_system_host_hnp_polling_thread_stack =  _ux_utility_memory_allocate(U
+ 303:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_HNP_POLLING_THR
+ 304:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 305:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Check for successful allocation.  */
+ 306:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if (_ux_system_host -> ux_system_host_hnp_polling_thread_stack == UX_NULL)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 10
+
+
+ 307:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 308:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 309:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         
+ 310:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Create the HNP polling thread of USBX.  */
+ 311:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 312:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     {
+ 313:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         status =  _ux_utility_thread_create(&_ux_system_host -> ux_system_host_hnp_polling_thread, 
+ 314:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_hnp_polling_thread_stack,
+ 315:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_HOST_HNP_POLLING_THREAD_STACK_SIZE, UX_THREAD_PRIORITY_ENUM,
+ 316:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_THREAD_PRIORITY_ENUM, UX_NO_TIME_SLICE, UX_AUTO_START);
+ 317:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 318:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Check the completion status.  */
+ 319:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if (status != UX_SUCCESS)
+ 320:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_THREAD_ERROR;
+ 321:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 322:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         /* Return success (SUCCESS).  */
+ 323:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         else
+ 324:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             return(status);
+ 325:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 326:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 327:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free up resources on error cases.  */
+ 328:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 329:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Last resource, _ux_system_host -> ux_system_host_hnp_polling_thread is not created or create
+ 330:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      * no need to delete it.  */
+ 331:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 332:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free _ux_system_host -> ux_system_host_hnp_polling_thread_stack.  */
+ 333:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_hnp_polling_thread_stack)
+ 334:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_memory_free(_ux_system_host -> ux_system_host_hnp_polling_thread_stack);
+ 335:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 336:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Delete _ux_system_host -> ux_system_host_hcd_thread.  */
+ 337:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_hcd_thread.tx_thread_id != 0)
+ 338:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_thread_delete(&_ux_system_host -> ux_system_host_hcd_thread);
+ 339:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #else
+ 340:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 341:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Return completion status to caller if success.  */
+ 342:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (status == UX_SUCCESS)
+ 191              		.loc 1 342 5 is_stmt 1 view .LVU60
+ 192              		.loc 1 342 8 is_stmt 0 view .LVU61
+ 193 007c 002C     		cmp	r4, #0
+ 194 007e 31D0     		beq	.L1
+ 195              	.LVL15:
+ 196              	.L10:
+ 343:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         return(status);
+ 344:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 345:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free up resources on error cases.  */
+ 346:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 347:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Last resource, _ux_system_host -> ux_system_host_hcd_thread is not created or created error,
+ 348:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****      * no need to delete it.  */
+ 349:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #endif
+ 350:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 351:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #if !defined(UX_HOST_STANDALONE)
+ 352:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Delete _ux_system_host -> ux_system_host_enum_thread.  */
+ 353:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_enum_thread.tx_thread_id != 0)
+ 197              		.loc 1 353 5 is_stmt 1 view .LVU62
+ 198              		.loc 1 353 25 is_stmt 0 view .LVU63
+ 199 0080 584B     		ldr	r3, .L37
+ 200 0082 1868     		ldr	r0, [r3]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 11
+
+
+ 201              		.loc 1 353 54 view .LVU64
+ 202 0084 836A     		ldr	r3, [r0, #40]
+ 203              		.loc 1 353 8 view .LVU65
+ 204 0086 002B     		cmp	r3, #0
+ 205 0088 40F09D80 		bne	.L34
+ 206              	.L11:
+ 354:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_thread_delete(&_ux_system_host -> ux_system_host_enum_thread);
+ 355:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     
+ 356:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Delete _ux_system_host -> ux_system_host_hcd_semaphore.  */
+ 357:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_hcd_semaphore.tx_semaphore_id != 0)
+ 207              		.loc 1 357 5 is_stmt 1 view .LVU66
+ 208              		.loc 1 357 25 is_stmt 0 view .LVU67
+ 209 008c 554B     		ldr	r3, .L37
+ 210 008e 1868     		ldr	r0, [r3]
+ 211              		.loc 1 357 56 view .LVU68
+ 212 0090 D0F8AC31 		ldr	r3, [r0, #428]
+ 213              		.loc 1 357 8 view .LVU69
+ 214 0094 002B     		cmp	r3, #0
+ 215 0096 40F09A80 		bne	.L35
+ 216              	.L12:
+ 358:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_semaphore_delete(&_ux_system_host -> ux_system_host_hcd_semaphore);
+ 359:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 360:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Delete _ux_system_host -> ux_system_host_enum_semaphore.  */
+ 361:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_enum_semaphore.tx_semaphore_id != 0)
+ 217              		.loc 1 361 5 is_stmt 1 view .LVU70
+ 218              		.loc 1 361 25 is_stmt 0 view .LVU71
+ 219 009a 524B     		ldr	r3, .L37
+ 220 009c 1868     		ldr	r0, [r3]
+ 221              		.loc 1 361 57 view .LVU72
+ 222 009e D0F8D830 		ldr	r3, [r0, #216]
+ 223              		.loc 1 361 8 view .LVU73
+ 224 00a2 002B     		cmp	r3, #0
+ 225 00a4 40F09880 		bne	.L36
+ 226              	.L13:
+ 362:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_semaphore_delete(&_ux_system_host -> ux_system_host_enum_semaphore);
+ 363:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 364:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free _ux_system_host -> ux_system_host_hcd_thread_stack.  */
+ 365:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_hcd_thread_stack)
+ 227              		.loc 1 365 5 is_stmt 1 view .LVU74
+ 228              		.loc 1 365 25 is_stmt 0 view .LVU75
+ 229 00a8 4E4B     		ldr	r3, .L37
+ 230 00aa 1B68     		ldr	r3, [r3]
+ 231 00ac D3F8F800 		ldr	r0, [r3, #248]
+ 232              		.loc 1 365 8 view .LVU76
+ 233 00b0 08B1     		cbz	r0, .L14
+ 366:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_memory_free(_ux_system_host -> ux_system_host_hcd_thread_stack);
+ 234              		.loc 1 366 9 is_stmt 1 view .LVU77
+ 235 00b2 FFF7FEFF 		bl	_ux_utility_memory_free
+ 236              	.LVL16:
+ 237              	.L14:
+ 367:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 368:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free _ux_system_host -> ux_system_host_enum_thread_stack.  */
+ 369:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_enum_thread_stack)
+ 238              		.loc 1 369 5 view .LVU78
+ 239              		.loc 1 369 25 is_stmt 0 view .LVU79
+ 240 00b6 4B4B     		ldr	r3, .L37
+ 241 00b8 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 12
+
+
+ 242 00ba 586A     		ldr	r0, [r3, #36]
+ 243              		.loc 1 369 8 view .LVU80
+ 244 00bc 08B1     		cbz	r0, .L15
+ 370:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_memory_free(_ux_system_host -> ux_system_host_enum_thread_stack);
+ 245              		.loc 1 370 9 is_stmt 1 view .LVU81
+ 246 00be FFF7FEFF 		bl	_ux_utility_memory_free
+ 247              	.LVL17:
+ 248              	.L15:
+ 371:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** #endif
+ 372:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 373:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free _ux_system_host -> ux_system_host_device_array.  */
+ 374:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_device_array)
+ 249              		.loc 1 374 5 view .LVU82
+ 250              		.loc 1 374 25 is_stmt 0 view .LVU83
+ 251 00c2 484B     		ldr	r3, .L37
+ 252 00c4 1B68     		ldr	r3, [r3]
+ 253 00c6 5869     		ldr	r0, [r3, #20]
+ 254              		.loc 1 374 8 view .LVU84
+ 255 00c8 08B1     		cbz	r0, .L16
+ 375:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_memory_free(_ux_system_host -> ux_system_host_device_array);
+ 256              		.loc 1 375 9 is_stmt 1 view .LVU85
+ 257 00ca FFF7FEFF 		bl	_ux_utility_memory_free
+ 258              	.LVL18:
+ 259              	.L16:
+ 376:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     
+ 377:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free _ux_system_host -> ux_system_host_class_array.  */
+ 378:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     if (_ux_system_host -> ux_system_host_class_array)
+ 260              		.loc 1 378 5 view .LVU86
+ 261              		.loc 1 378 25 is_stmt 0 view .LVU87
+ 262 00ce 454B     		ldr	r3, .L37
+ 263 00d0 1B68     		ldr	r3, [r3]
+ 264 00d2 5868     		ldr	r0, [r3, #4]
+ 265              		.loc 1 378 8 view .LVU88
+ 266 00d4 08B1     		cbz	r0, .L17
+ 379:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         _ux_utility_memory_free(_ux_system_host -> ux_system_host_class_array);
+ 267              		.loc 1 379 9 is_stmt 1 view .LVU89
+ 268 00d6 FFF7FEFF 		bl	_ux_utility_memory_free
+ 269              	.LVL19:
+ 270              	.L17:
+ 380:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 381:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Free _ux_system_host -> ux_system_host_hcd_array.  */
+ 382:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     _ux_utility_memory_free(_ux_system_host -> ux_system_host_hcd_array);
+ 271              		.loc 1 382 5 view .LVU90
+ 272              		.loc 1 382 45 is_stmt 0 view .LVU91
+ 273 00da 424B     		ldr	r3, .L37
+ 274 00dc 1B68     		ldr	r3, [r3]
+ 275              		.loc 1 382 5 view .LVU92
+ 276 00de D868     		ldr	r0, [r3, #12]
+ 277 00e0 FFF7FEFF 		bl	_ux_utility_memory_free
+ 278              	.LVL20:
+ 383:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 384:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     /* Return completion status to caller.  */
+ 385:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     return(status);
+ 279              		.loc 1 385 5 is_stmt 1 view .LVU93
+ 280              	.L1:
+ 386:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** }
+ 281              		.loc 1 386 1 is_stmt 0 view .LVU94
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 13
+
+
+ 282 00e4 2046     		mov	r0, r4
+ 283 00e6 06B0     		add	sp, sp, #24
+ 284              	.LCFI2:
+ 285              		.cfi_remember_state
+ 286              		.cfi_def_cfa_offset 16
+ 287              		@ sp needed
+ 288 00e8 70BD     		pop	{r4, r5, r6, pc}
+ 289              	.LVL21:
+ 290              	.L28:
+ 291              	.LCFI3:
+ 292              		.cfi_restore_state
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_ENUM_THREAD_STA
+ 293              		.loc 1 236 9 is_stmt 1 view .LVU95
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_ENUM_THREAD_STA
+ 294              		.loc 1 236 25 is_stmt 0 view .LVU96
+ 295 00ea 3E4D     		ldr	r5, .L37
+ 296 00ec 2E68     		ldr	r6, [r5]
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_ENUM_THREAD_STA
+ 297              		.loc 1 236 64 view .LVU97
+ 298 00ee 4FF40062 		mov	r2, #2048
+ 299 00f2 0021     		movs	r1, #0
+ 300 00f4 0846     		mov	r0, r1
+ 301              	.LVL22:
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_ENUM_THREAD_STA
+ 302              		.loc 1 236 64 view .LVU98
+ 303 00f6 FFF7FEFF 		bl	_ux_utility_memory_allocate
+ 304              	.LVL23:
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_ENUM_THREAD_STA
+ 305              		.loc 1 236 61 view .LVU99
+ 306 00fa 7062     		str	r0, [r6, #36]
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 307              		.loc 1 240 9 is_stmt 1 view .LVU100
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 308              		.loc 1 240 29 is_stmt 0 view .LVU101
+ 309 00fc 2B68     		ldr	r3, [r5]
+ 310 00fe 5B6A     		ldr	r3, [r3, #36]
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 311              		.loc 1 240 12 view .LVU102
+ 312 0100 002B     		cmp	r3, #0
+ 313 0102 B0D1     		bne	.L4
+ 241:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 314              		.loc 1 241 20 view .LVU103
+ 315 0104 1224     		movs	r4, #18
+ 316              	.LVL24:
+ 241:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 317              		.loc 1 241 20 view .LVU104
+ 318 0106 B0E7     		b	.L5
+ 319              	.LVL25:
+ 320              	.L20:
+ 201:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         else
+ 321              		.loc 1 201 20 view .LVU105
+ 322 0108 1224     		movs	r4, #18
+ 323 010a ACE7     		b	.L4
+ 324              	.LVL26:
+ 325              	.L29:
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_HCD_THREAD_STAC
+ 326              		.loc 1 247 9 is_stmt 1 view .LVU106
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 14
+
+
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_HCD_THREAD_STAC
+ 327              		.loc 1 247 25 is_stmt 0 view .LVU107
+ 328 010c 354D     		ldr	r5, .L37
+ 329 010e 2E68     		ldr	r6, [r5]
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_HCD_THREAD_STAC
+ 330              		.loc 1 247 63 view .LVU108
+ 331 0110 4FF48062 		mov	r2, #1024
+ 332 0114 0021     		movs	r1, #0
+ 333 0116 0846     		mov	r0, r1
+ 334 0118 FFF7FEFF 		bl	_ux_utility_memory_allocate
+ 335              	.LVL27:
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                                                                             UX_HOST_HCD_THREAD_STAC
+ 336              		.loc 1 247 60 view .LVU109
+ 337 011c C6F8F800 		str	r0, [r6, #248]
+ 251:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 338              		.loc 1 251 9 is_stmt 1 view .LVU110
+ 251:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 339              		.loc 1 251 29 is_stmt 0 view .LVU111
+ 340 0120 2B68     		ldr	r3, [r5]
+ 341 0122 D3F8F830 		ldr	r3, [r3, #248]
+ 251:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_MEMORY_INSUFFICIENT;
+ 342              		.loc 1 251 12 view .LVU112
+ 343 0126 002B     		cmp	r3, #0
+ 344 0128 9FD1     		bne	.L5
+ 252:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 345              		.loc 1 252 20 view .LVU113
+ 346 012a 1224     		movs	r4, #18
+ 347              	.LVL28:
+ 252:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 348              		.loc 1 252 20 view .LVU114
+ 349 012c 9FE7     		b	.L6
+ 350              	.LVL29:
+ 351              	.L30:
+ 258:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 352              		.loc 1 258 9 is_stmt 1 view .LVU115
+ 258:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 353              		.loc 1 258 65 is_stmt 0 view .LVU116
+ 354 012e 2D4B     		ldr	r3, .L37
+ 355 0130 1868     		ldr	r0, [r3]
+ 258:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 356              		.loc 1 258 19 view .LVU117
+ 357 0132 0022     		movs	r2, #0
+ 358 0134 2C49     		ldr	r1, .L37+4
+ 359 0136 D830     		adds	r0, r0, #216
+ 360 0138 FFF7FEFF 		bl	_ux_utility_semaphore_create
+ 361              	.LVL30:
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_SEMAPHORE_ERROR;
+ 362              		.loc 1 259 9 is_stmt 1 view .LVU118
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_SEMAPHORE_ERROR;
+ 363              		.loc 1 259 11 is_stmt 0 view .LVU119
+ 364 013c 0446     		mov	r4, r0
+ 365 013e 0028     		cmp	r0, #0
+ 366 0140 95D0     		beq	.L6
+ 260:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 367              		.loc 1 260 20 view .LVU120
+ 368 0142 1524     		movs	r4, #21
+ 369 0144 95E7     		b	.L7
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 15
+
+
+ 370              	.LVL31:
+ 371              	.L31:
+ 266:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 372              		.loc 1 266 9 is_stmt 1 view .LVU121
+ 266:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 373              		.loc 1 266 65 is_stmt 0 view .LVU122
+ 374 0146 274B     		ldr	r3, .L37
+ 375 0148 1868     		ldr	r0, [r3]
+ 266:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****         if(status != UX_SUCCESS)
+ 376              		.loc 1 266 19 view .LVU123
+ 377 014a 0022     		movs	r2, #0
+ 378 014c 2749     		ldr	r1, .L37+8
+ 379 014e 00F5D670 		add	r0, r0, #428
+ 380 0152 FFF7FEFF 		bl	_ux_utility_semaphore_create
+ 381              	.LVL32:
+ 267:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_SEMAPHORE_ERROR;
+ 382              		.loc 1 267 9 is_stmt 1 view .LVU124
+ 267:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_SEMAPHORE_ERROR;
+ 383              		.loc 1 267 11 is_stmt 0 view .LVU125
+ 384 0156 0446     		mov	r4, r0
+ 385 0158 0028     		cmp	r0, #0
+ 386 015a 8AD0     		beq	.L7
+ 268:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 387              		.loc 1 268 20 view .LVU126
+ 388 015c 1524     		movs	r4, #21
+ 389 015e 8AE7     		b	.L8
+ 390              	.LVL33:
+ 391              	.L32:
+ 274:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_enum_thread_stack,
+ 392              		.loc 1 274 9 is_stmt 1 view .LVU127
+ 274:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_enum_thread_stack,
+ 393              		.loc 1 274 62 is_stmt 0 view .LVU128
+ 394 0160 204B     		ldr	r3, .L37
+ 395 0162 1868     		ldr	r0, [r3]
+ 275:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_HOST_ENUM_THREAD_STACK_SIZE, UX_THREAD_PRIORITY_ENUM,
+ 396              		.loc 1 275 48 view .LVU129
+ 397 0164 416A     		ldr	r1, [r0, #36]
+ 274:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_enum_thread_stack,
+ 398              		.loc 1 274 19 view .LVU130
+ 399 0166 0123     		movs	r3, #1
+ 400 0168 0593     		str	r3, [sp, #20]
+ 401 016a 0023     		movs	r3, #0
+ 402 016c 0493     		str	r3, [sp, #16]
+ 403 016e 1422     		movs	r2, #20
+ 404 0170 0392     		str	r2, [sp, #12]
+ 405 0172 0292     		str	r2, [sp, #8]
+ 406 0174 4FF40062 		mov	r2, #2048
+ 407 0178 0192     		str	r2, [sp, #4]
+ 408 017a 0091     		str	r1, [sp]
+ 409 017c 1C4A     		ldr	r2, .L37+12
+ 410 017e 1D49     		ldr	r1, .L37+16
+ 411 0180 2830     		adds	r0, r0, #40
+ 412 0182 FFF7FEFF 		bl	_ux_utility_thread_create
+ 413              	.LVL34:
+ 280:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_THREAD_ERROR;
+ 414              		.loc 1 280 9 is_stmt 1 view .LVU131
+ 280:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_THREAD_ERROR;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 16
+
+
+ 415              		.loc 1 280 11 is_stmt 0 view .LVU132
+ 416 0186 0446     		mov	r4, r0
+ 417 0188 0028     		cmp	r0, #0
+ 418 018a 3FF474AF 		beq	.L8
+ 281:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 419              		.loc 1 281 20 view .LVU133
+ 420 018e 1624     		movs	r4, #22
+ 421 0190 74E7     		b	.L9
+ 422              	.LVL35:
+ 423              	.L33:
+ 287:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_hcd_thread_stack,
+ 424              		.loc 1 287 9 is_stmt 1 view .LVU134
+ 287:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_hcd_thread_stack,
+ 425              		.loc 1 287 62 is_stmt 0 view .LVU135
+ 426 0192 144B     		ldr	r3, .L37
+ 427 0194 1868     		ldr	r0, [r3]
+ 288:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             UX_HOST_HCD_THREAD_STACK_SIZE, UX_THREAD_PRIORITY_HCD,
+ 428              		.loc 1 288 48 view .LVU136
+ 429 0196 D0F8F810 		ldr	r1, [r0, #248]
+ 287:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****                             0, _ux_system_host -> ux_system_host_hcd_thread_stack,
+ 430              		.loc 1 287 19 view .LVU137
+ 431 019a 0123     		movs	r3, #1
+ 432 019c 0593     		str	r3, [sp, #20]
+ 433 019e 0023     		movs	r3, #0
+ 434 01a0 0493     		str	r3, [sp, #16]
+ 435 01a2 0222     		movs	r2, #2
+ 436 01a4 0392     		str	r2, [sp, #12]
+ 437 01a6 0292     		str	r2, [sp, #8]
+ 438 01a8 4FF48062 		mov	r2, #1024
+ 439 01ac 0192     		str	r2, [sp, #4]
+ 440 01ae 0091     		str	r1, [sp]
+ 441 01b0 114A     		ldr	r2, .L37+20
+ 442 01b2 1249     		ldr	r1, .L37+24
+ 443 01b4 FC30     		adds	r0, r0, #252
+ 444 01b6 FFF7FEFF 		bl	_ux_utility_thread_create
+ 445              	.LVL36:
+ 293:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_THREAD_ERROR;
+ 446              		.loc 1 293 9 is_stmt 1 view .LVU138
+ 293:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****             status = UX_THREAD_ERROR;
+ 447              		.loc 1 293 11 is_stmt 0 view .LVU139
+ 448 01ba 0446     		mov	r4, r0
+ 449 01bc 0028     		cmp	r0, #0
+ 450 01be 3FF45DAF 		beq	.L9
+ 294:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     }
+ 451              		.loc 1 294 20 view .LVU140
+ 452 01c2 1624     		movs	r4, #22
+ 453 01c4 5CE7     		b	.L10
+ 454              	.LVL37:
+ 455              	.L34:
+ 354:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c ****     
+ 456              		.loc 1 354 9 is_stmt 1 view .LVU141
+ 457 01c6 2830     		adds	r0, r0, #40
+ 458 01c8 FFF7FEFF 		bl	_ux_utility_thread_delete
+ 459              	.LVL38:
+ 460 01cc 5EE7     		b	.L11
+ 461              	.L35:
+ 358:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 17
+
+
+ 462              		.loc 1 358 9 view .LVU142
+ 463 01ce 00F5D670 		add	r0, r0, #428
+ 464 01d2 FFF7FEFF 		bl	_ux_utility_semaphore_delete
+ 465              	.LVL39:
+ 466 01d6 60E7     		b	.L12
+ 467              	.L36:
+ 362:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 468              		.loc 1 362 9 view .LVU143
+ 469 01d8 D830     		adds	r0, r0, #216
+ 470 01da FFF7FEFF 		bl	_ux_utility_semaphore_delete
+ 471              	.LVL40:
+ 472 01de 63E7     		b	.L13
+ 473              	.LVL41:
+ 474              	.L18:
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_initialize.c **** 
+ 475              		.loc 1 171 15 is_stmt 0 view .LVU144
+ 476 01e0 1224     		movs	r4, #18
+ 477 01e2 7FE7     		b	.L1
+ 478              	.L38:
+ 479              		.align	2
+ 480              	.L37:
+ 481 01e4 00000000 		.word	.LANCHOR0
+ 482 01e8 00000000 		.word	.LC0
+ 483 01ec 20000000 		.word	.LC1
+ 484 01f0 00000000 		.word	_ux_host_stack_enum_thread_entry
+ 485 01f4 40000000 		.word	.LC2
+ 486 01f8 00000000 		.word	_ux_host_stack_hcd_thread_entry
+ 487 01fc 5C000000 		.word	.LC3
+ 488              		.cfi_endproc
+ 489              	.LFE11:
+ 491              		.global	_ux_system_host_hcd_simulator_name
+ 492              		.global	_ux_system_host_hcd_atm7_name
+ 493              		.global	_ux_system_host_hcd_musb_name
+ 494              		.global	_ux_system_host_hcd_stm32_name
+ 495              		.global	_ux_system_host_hcd_pic32_name
+ 496              		.global	_ux_system_host_hcd_rx_name
+ 497              		.global	_ux_system_host_hcd_sh2_name
+ 498              		.global	_ux_system_host_hcd_isp1362_name
+ 499              		.global	_ux_system_host_hcd_isp1161_name
+ 500              		.global	_ux_system_host_hcd_ehci_name
+ 501              		.global	_ux_system_host_hcd_ohci_name
+ 502              		.global	_ux_system_host_class_hid_client_keyboard_name
+ 503              		.global	_ux_system_host_class_hid_client_mouse_name
+ 504              		.global	_ux_system_host_class_hid_client_remote_control_name
+ 505              		.global	_ux_system_host_class_gser_name
+ 506              		.global	_ux_system_host_class_swar_name
+ 507              		.global	_ux_system_host_class_asix_name
+ 508              		.global	_ux_system_host_class_dpump_name
+ 509              		.global	_ux_system_host_class_pima_name
+ 510              		.global	_ux_system_host_class_prolific_name
+ 511              		.global	_ux_system_host_class_cdc_ecm_name
+ 512              		.global	_ux_system_host_class_cdc_dlc_name
+ 513              		.global	_ux_system_host_class_cdc_acm_name
+ 514              		.global	_ux_system_host_class_audio_name
+ 515              		.global	_ux_system_host_class_hid_name
+ 516              		.global	_ux_system_host_class_storage_name
+ 517              		.global	_ux_system_host_class_printer_name
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 18
+
+
+ 518              		.global	_ux_system_host_class_hub_name
+ 519              		.global	_ux_system_host_hcd_periodic_tree_entries
+ 520              		.global	_ux_system_host
+ 521              		.section	.bss._ux_system_host,"aw",%nobits
+ 522              		.align	2
+ 523              		.set	.LANCHOR0,. + 0
+ 526              	_ux_system_host:
+ 527 0000 00000000 		.space	4
+ 528              		.section	.data._ux_system_host_class_asix_name,"aw"
+ 529              		.align	2
+ 532              	_ux_system_host_class_asix_name:
+ 533 0000 75785F68 		.ascii	"ux_host_class_asix\000"
+ 533      6F73745F 
+ 533      636C6173 
+ 533      735F6173 
+ 533      697800
+ 534              		.section	.data._ux_system_host_class_audio_name,"aw"
+ 535              		.align	2
+ 538              	_ux_system_host_class_audio_name:
+ 539 0000 75785F68 		.ascii	"ux_host_class_audio\000"
+ 539      6F73745F 
+ 539      636C6173 
+ 539      735F6175 
+ 539      64696F00 
+ 540              		.section	.data._ux_system_host_class_cdc_acm_name,"aw"
+ 541              		.align	2
+ 544              	_ux_system_host_class_cdc_acm_name:
+ 545 0000 75785F68 		.ascii	"ux_host_class_cdc_acm\000"
+ 545      6F73745F 
+ 545      636C6173 
+ 545      735F6364 
+ 545      635F6163 
+ 546              		.section	.data._ux_system_host_class_cdc_dlc_name,"aw"
+ 547              		.align	2
+ 550              	_ux_system_host_class_cdc_dlc_name:
+ 551 0000 75785F68 		.ascii	"ux_host_class_cdc_dlc\000"
+ 551      6F73745F 
+ 551      636C6173 
+ 551      735F6364 
+ 551      635F646C 
+ 552              		.section	.data._ux_system_host_class_cdc_ecm_name,"aw"
+ 553              		.align	2
+ 556              	_ux_system_host_class_cdc_ecm_name:
+ 557 0000 75785F68 		.ascii	"ux_host_class_cdc_ecm\000"
+ 557      6F73745F 
+ 557      636C6173 
+ 557      735F6364 
+ 557      635F6563 
+ 558              		.section	.data._ux_system_host_class_dpump_name,"aw"
+ 559              		.align	2
+ 562              	_ux_system_host_class_dpump_name:
+ 563 0000 75785F68 		.ascii	"ux_host_class_dpump\000"
+ 563      6F73745F 
+ 563      636C6173 
+ 563      735F6470 
+ 563      756D7000 
+ 564              		.section	.data._ux_system_host_class_gser_name,"aw"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 19
+
+
+ 565              		.align	2
+ 568              	_ux_system_host_class_gser_name:
+ 569 0000 75785F68 		.ascii	"ux_host_class_generic_serial\000"
+ 569      6F73745F 
+ 569      636C6173 
+ 569      735F6765 
+ 569      6E657269 
+ 570              		.section	.data._ux_system_host_class_hid_client_keyboard_name,"aw"
+ 571              		.align	2
+ 574              	_ux_system_host_class_hid_client_keyboard_name:
+ 575 0000 75785F68 		.ascii	"ux_host_class_hid_client_keyboard\000"
+ 575      6F73745F 
+ 575      636C6173 
+ 575      735F6869 
+ 575      645F636C 
+ 576              		.section	.data._ux_system_host_class_hid_client_mouse_name,"aw"
+ 577              		.align	2
+ 580              	_ux_system_host_class_hid_client_mouse_name:
+ 581 0000 75785F68 		.ascii	"ux_host_class_hid_client_mouse\000"
+ 581      6F73745F 
+ 581      636C6173 
+ 581      735F6869 
+ 581      645F636C 
+ 582              		.section	.data._ux_system_host_class_hid_client_remote_control_name,"aw"
+ 583              		.align	2
+ 586              	_ux_system_host_class_hid_client_remote_control_name:
+ 587 0000 75785F68 		.ascii	"ux_host_class_hid_client_remote_control\000"
+ 587      6F73745F 
+ 587      636C6173 
+ 587      735F6869 
+ 587      645F636C 
+ 588              		.section	.data._ux_system_host_class_hid_name,"aw"
+ 589              		.align	2
+ 592              	_ux_system_host_class_hid_name:
+ 593 0000 75785F68 		.ascii	"ux_host_class_hid\000"
+ 593      6F73745F 
+ 593      636C6173 
+ 593      735F6869 
+ 593      6400
+ 594              		.section	.data._ux_system_host_class_hub_name,"aw"
+ 595              		.align	2
+ 598              	_ux_system_host_class_hub_name:
+ 599 0000 75785F68 		.ascii	"ux_host_class_hub\000"
+ 599      6F73745F 
+ 599      636C6173 
+ 599      735F6875 
+ 599      6200
+ 600              		.section	.data._ux_system_host_class_pima_name,"aw"
+ 601              		.align	2
+ 604              	_ux_system_host_class_pima_name:
+ 605 0000 75785F68 		.ascii	"ux_host_class_pima\000"
+ 605      6F73745F 
+ 605      636C6173 
+ 605      735F7069 
+ 605      6D6100
+ 606              		.section	.data._ux_system_host_class_printer_name,"aw"
+ 607              		.align	2
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 20
+
+
+ 610              	_ux_system_host_class_printer_name:
+ 611 0000 75785F68 		.ascii	"ux_host_class_printer\000"
+ 611      6F73745F 
+ 611      636C6173 
+ 611      735F7072 
+ 611      696E7465 
+ 612              		.section	.data._ux_system_host_class_prolific_name,"aw"
+ 613              		.align	2
+ 616              	_ux_system_host_class_prolific_name:
+ 617 0000 75785F68 		.ascii	"ux_host_class_prolific\000"
+ 617      6F73745F 
+ 617      636C6173 
+ 617      735F7072 
+ 617      6F6C6966 
+ 618              		.section	.data._ux_system_host_class_storage_name,"aw"
+ 619              		.align	2
+ 622              	_ux_system_host_class_storage_name:
+ 623 0000 75785F68 		.ascii	"ux_host_class_storage\000"
+ 623      6F73745F 
+ 623      636C6173 
+ 623      735F7374 
+ 623      6F726167 
+ 624              		.section	.data._ux_system_host_class_swar_name,"aw"
+ 625              		.align	2
+ 628              	_ux_system_host_class_swar_name:
+ 629 0000 75785F68 		.ascii	"ux_host_class_sierra_wireless\000"
+ 629      6F73745F 
+ 629      636C6173 
+ 629      735F7369 
+ 629      65727261 
+ 630              		.section	.data._ux_system_host_hcd_atm7_name,"aw"
+ 631              		.align	2
+ 634              	_ux_system_host_hcd_atm7_name:
+ 635 0000 75785F68 		.ascii	"ux_hcd_atm7\000"
+ 635      63645F61 
+ 635      746D3700 
+ 636              		.section	.data._ux_system_host_hcd_ehci_name,"aw"
+ 637              		.align	2
+ 640              	_ux_system_host_hcd_ehci_name:
+ 641 0000 75785F68 		.ascii	"ux_hcd_ehci\000"
+ 641      63645F65 
+ 641      68636900 
+ 642              		.section	.data._ux_system_host_hcd_isp1161_name,"aw"
+ 643              		.align	2
+ 646              	_ux_system_host_hcd_isp1161_name:
+ 647 0000 75785F68 		.ascii	"ux_hcd_isp1161\000"
+ 647      63645F69 
+ 647      73703131 
+ 647      363100
+ 648              		.section	.data._ux_system_host_hcd_isp1362_name,"aw"
+ 649              		.align	2
+ 652              	_ux_system_host_hcd_isp1362_name:
+ 653 0000 75785F68 		.ascii	"ux_hcd_isp1362\000"
+ 653      63645F69 
+ 653      73703133 
+ 653      363200
+ 654              		.section	.data._ux_system_host_hcd_musb_name,"aw"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 21
+
+
+ 655              		.align	2
+ 658              	_ux_system_host_hcd_musb_name:
+ 659 0000 75785F68 		.ascii	"ux_hcd_musb\000"
+ 659      63645F6D 
+ 659      75736200 
+ 660              		.section	.data._ux_system_host_hcd_ohci_name,"aw"
+ 661              		.align	2
+ 664              	_ux_system_host_hcd_ohci_name:
+ 665 0000 75785F68 		.ascii	"ux_hcd_ohci\000"
+ 665      63645F6F 
+ 665      68636900 
+ 666              		.section	.data._ux_system_host_hcd_periodic_tree_entries,"aw"
+ 667              		.align	2
+ 670              	_ux_system_host_hcd_periodic_tree_entries:
+ 671 0000 00000000 		.word	0
+ 672 0004 10000000 		.word	16
+ 673 0008 08000000 		.word	8
+ 674 000c 18000000 		.word	24
+ 675 0010 04000000 		.word	4
+ 676 0014 14000000 		.word	20
+ 677 0018 0C000000 		.word	12
+ 678 001c 1C000000 		.word	28
+ 679 0020 02000000 		.word	2
+ 680 0024 12000000 		.word	18
+ 681 0028 0A000000 		.word	10
+ 682 002c 1A000000 		.word	26
+ 683 0030 06000000 		.word	6
+ 684 0034 16000000 		.word	22
+ 685 0038 0E000000 		.word	14
+ 686 003c 1E000000 		.word	30
+ 687 0040 01000000 		.word	1
+ 688 0044 11000000 		.word	17
+ 689 0048 09000000 		.word	9
+ 690 004c 19000000 		.word	25
+ 691 0050 05000000 		.word	5
+ 692 0054 15000000 		.word	21
+ 693 0058 0D000000 		.word	13
+ 694 005c 1D000000 		.word	29
+ 695 0060 03000000 		.word	3
+ 696 0064 13000000 		.word	19
+ 697 0068 0B000000 		.word	11
+ 698 006c 1B000000 		.word	27
+ 699 0070 07000000 		.word	7
+ 700 0074 17000000 		.word	23
+ 701 0078 0F000000 		.word	15
+ 702 007c 1F000000 		.word	31
+ 703              		.section	.data._ux_system_host_hcd_pic32_name,"aw"
+ 704              		.align	2
+ 707              	_ux_system_host_hcd_pic32_name:
+ 708 0000 75785F68 		.ascii	"ux_hcd_pic32\000"
+ 708      63645F70 
+ 708      69633332 
+ 708      00
+ 709              		.section	.data._ux_system_host_hcd_rx_name,"aw"
+ 710              		.align	2
+ 713              	_ux_system_host_hcd_rx_name:
+ 714 0000 75785F68 		.ascii	"ux_hcd_sh2\000"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 22
+
+
+ 714      63645F73 
+ 714      683200
+ 715              		.section	.data._ux_system_host_hcd_sh2_name,"aw"
+ 716              		.align	2
+ 719              	_ux_system_host_hcd_sh2_name:
+ 720 0000 75785F68 		.ascii	"ux_hcd_rx\000"
+ 720      63645F72 
+ 720      7800
+ 721              		.section	.data._ux_system_host_hcd_simulator_name,"aw"
+ 722              		.align	2
+ 725              	_ux_system_host_hcd_simulator_name:
+ 726 0000 75785F68 		.ascii	"ux_hcd_simulator\000"
+ 726      63645F73 
+ 726      696D756C 
+ 726      61746F72 
+ 726      00
+ 727              		.section	.data._ux_system_host_hcd_stm32_name,"aw"
+ 728              		.align	2
+ 731              	_ux_system_host_hcd_stm32_name:
+ 732 0000 75785F68 		.ascii	"ux_hcd_stm32\000"
+ 732      63645F73 
+ 732      746D3332 
+ 732      00
+ 733              		.text
+ 734              	.Letext0:
+ 735              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 736              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 737              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 738              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 739              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_initialize.c
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:20     .rodata._ux_host_stack_initialize.str1.4:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:33     .text._ux_host_stack_initialize:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:39     .text._ux_host_stack_initialize:00000000 _ux_host_stack_initialize
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:481    .text._ux_host_stack_initialize:000001e4 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:725    .data._ux_system_host_hcd_simulator_name:00000000 _ux_system_host_hcd_simulator_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:634    .data._ux_system_host_hcd_atm7_name:00000000 _ux_system_host_hcd_atm7_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:658    .data._ux_system_host_hcd_musb_name:00000000 _ux_system_host_hcd_musb_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:731    .data._ux_system_host_hcd_stm32_name:00000000 _ux_system_host_hcd_stm32_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:707    .data._ux_system_host_hcd_pic32_name:00000000 _ux_system_host_hcd_pic32_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:713    .data._ux_system_host_hcd_rx_name:00000000 _ux_system_host_hcd_rx_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:719    .data._ux_system_host_hcd_sh2_name:00000000 _ux_system_host_hcd_sh2_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:652    .data._ux_system_host_hcd_isp1362_name:00000000 _ux_system_host_hcd_isp1362_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:646    .data._ux_system_host_hcd_isp1161_name:00000000 _ux_system_host_hcd_isp1161_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:640    .data._ux_system_host_hcd_ehci_name:00000000 _ux_system_host_hcd_ehci_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:664    .data._ux_system_host_hcd_ohci_name:00000000 _ux_system_host_hcd_ohci_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:574    .data._ux_system_host_class_hid_client_keyboard_name:00000000 _ux_system_host_class_hid_client_keyboard_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:580    .data._ux_system_host_class_hid_client_mouse_name:00000000 _ux_system_host_class_hid_client_mouse_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:586    .data._ux_system_host_class_hid_client_remote_control_name:00000000 _ux_system_host_class_hid_client_remote_control_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:568    .data._ux_system_host_class_gser_name:00000000 _ux_system_host_class_gser_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:628    .data._ux_system_host_class_swar_name:00000000 _ux_system_host_class_swar_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:532    .data._ux_system_host_class_asix_name:00000000 _ux_system_host_class_asix_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:562    .data._ux_system_host_class_dpump_name:00000000 _ux_system_host_class_dpump_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:604    .data._ux_system_host_class_pima_name:00000000 _ux_system_host_class_pima_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:616    .data._ux_system_host_class_prolific_name:00000000 _ux_system_host_class_prolific_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:556    .data._ux_system_host_class_cdc_ecm_name:00000000 _ux_system_host_class_cdc_ecm_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:550    .data._ux_system_host_class_cdc_dlc_name:00000000 _ux_system_host_class_cdc_dlc_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:544    .data._ux_system_host_class_cdc_acm_name:00000000 _ux_system_host_class_cdc_acm_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:538    .data._ux_system_host_class_audio_name:00000000 _ux_system_host_class_audio_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:592    .data._ux_system_host_class_hid_name:00000000 _ux_system_host_class_hid_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:622    .data._ux_system_host_class_storage_name:00000000 _ux_system_host_class_storage_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:610    .data._ux_system_host_class_printer_name:00000000 _ux_system_host_class_printer_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:598    .data._ux_system_host_class_hub_name:00000000 _ux_system_host_class_hub_name
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:670    .data._ux_system_host_hcd_periodic_tree_entries:00000000 _ux_system_host_hcd_periodic_tree_entries
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:526    .bss._ux_system_host:00000000 _ux_system_host
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:522    .bss._ux_system_host:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:529    .data._ux_system_host_class_asix_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:535    .data._ux_system_host_class_audio_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:541    .data._ux_system_host_class_cdc_acm_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:547    .data._ux_system_host_class_cdc_dlc_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:553    .data._ux_system_host_class_cdc_ecm_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:559    .data._ux_system_host_class_dpump_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:565    .data._ux_system_host_class_gser_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:571    .data._ux_system_host_class_hid_client_keyboard_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:577    .data._ux_system_host_class_hid_client_mouse_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:583    .data._ux_system_host_class_hid_client_remote_control_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:589    .data._ux_system_host_class_hid_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:595    .data._ux_system_host_class_hub_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:601    .data._ux_system_host_class_pima_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:607    .data._ux_system_host_class_printer_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:613    .data._ux_system_host_class_prolific_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:619    .data._ux_system_host_class_storage_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:625    .data._ux_system_host_class_swar_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:631    .data._ux_system_host_hcd_atm7_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:637    .data._ux_system_host_hcd_ehci_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:643    .data._ux_system_host_hcd_isp1161_name:00000000 $d
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc33SQz3.s 			page 24
+
+
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:649    .data._ux_system_host_hcd_isp1362_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:655    .data._ux_system_host_hcd_musb_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:661    .data._ux_system_host_hcd_ohci_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:667    .data._ux_system_host_hcd_periodic_tree_entries:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:704    .data._ux_system_host_hcd_pic32_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:710    .data._ux_system_host_hcd_rx_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:716    .data._ux_system_host_hcd_sh2_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:722    .data._ux_system_host_hcd_simulator_name:00000000 $d
+C:\Users\HP\AppData\Local\Temp\cc33SQz3.s:728    .data._ux_system_host_hcd_stm32_name:00000000 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_utility_memory_free
+_ux_utility_semaphore_create
+_ux_utility_thread_create
+_ux_utility_thread_delete
+_ux_utility_semaphore_delete
+_ux_host_stack_enum_thread_entry
+_ux_host_stack_hcd_thread_entry

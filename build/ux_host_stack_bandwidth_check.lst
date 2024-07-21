@@ -1,0 +1,758 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_bandwidth_check.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_bandwidth_check,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_bandwidth_check
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_bandwidth_check:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** #if UX_MAX_DEVICES > 1
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  FUNCTION                                               RELEASE        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    _ux_host_stack_bandwidth_check                      PORTABLE C      */ 
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                           6.1          */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    This function will check if there is enough bandwidth on the USB    */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    for the specified endpoint. The bandwidth requirement is calculated */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    by the MaxPacketSize field of endpoint and the speed of the         */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    endpoint. If the device is on a 1.1 bus or it is a 1.1 device       */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    behind a 2.0 hub on a 2.0 bus, the device bandwidth must be         */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    multiplied by 8 on the 1.1 segment.                                 */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    This algorithm takes into account both TT bandwidth and HCD         */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    bandwidth. The TTs are attached to the device structure and not     */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    the hub structure in order to make the stack agnostic of the hub    */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    class.                                                              */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  INPUT                                                                 */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    HCD                                   Pointer to HCD                */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    endpoint                              Pointer to endpoint           */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  OUTPUT                                                                */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    Completion Status                                                   */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  CALLS                                                                 */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    None                                                                */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  CALLED BY                                                             */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    USBX Components                                                     */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  RELEASE HISTORY                                                       */ 
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */ 
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                            optimized based on compile  */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                            definitions,                */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                            resulting in version 6.1    */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*                                                                        */
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /**************************************************************************/
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** UINT  _ux_host_stack_bandwidth_check(UX_HCD *hcd, UX_ENDPOINT *endpoint)
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 3
+
+
+  30              		.loc 1 86 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 16
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 86 1 is_stmt 0 view .LVU1
+  35 0000 30B5     		push	{r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 12
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  41 0002 85B0     		sub	sp, sp, #20
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 32
+  44 0004 8446     		mov	ip, r0
+  45 0006 8E46     		mov	lr, r1
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** UX_DEVICE       *device;
+  46              		.loc 1 88 1 is_stmt 1 view .LVU2
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** UX_DEVICE       *parent_device;
+  47              		.loc 1 89 1 view .LVU3
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** USHORT          hcd_bandwidth_claimed;
+  48              		.loc 1 90 1 view .LVU4
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** USHORT          max_packet_size;
+  49              		.loc 1 91 1 view .LVU5
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** LONG            packet_size;
+  50              		.loc 1 92 1 view .LVU6
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** USHORT          tt_bandwidth_claimed =  0;
+  51              		.loc 1 93 1 view .LVU7
+  52              	.LVL1:
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** ULONG           port_index;
+  53              		.loc 1 94 1 view .LVU8
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** ULONG           port_map;
+  54              		.loc 1 95 1 view .LVU9
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** ULONG           tt_index;
+  55              		.loc 1 96 1 view .LVU10
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** const UCHAR     overheads[4][3] = {
+  56              		.loc 1 97 1 view .LVU11
+  57              		.loc 1 97 17 is_stmt 0 view .LVU12
+  58 0008 4A4B     		ldr	r3, .L29
+  59 000a 93E80700 		ldm	r3, {r0, r1, r2}
+  60              	.LVL2:
+  61              		.loc 1 97 17 view .LVU13
+  62 000e 04AB     		add	r3, sp, #16
+  63 0010 03E90700 		stmdb	r3, {r0, r1, r2}
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** /*   LS  FS   HS   */
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {63, 45, 173}, /* Control */
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     { 0,  9,  38}, /* Isochronous */
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     { 0, 13,  55}, /* Bulk */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {19, 13,  55}  /* Interrupt */
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** };
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Get the pointer to the device.  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     device =  endpoint -> ux_endpoint_device;
+  64              		.loc 1 106 5 is_stmt 1 view .LVU14
+  65              		.loc 1 106 12 is_stmt 0 view .LVU15
+  66 0014 DEF82C20 		ldr	r2, [lr, #44]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 4
+
+
+  67              	.LVL3:
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Calculate the bandwidth. From USB spec.
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      *
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * The frame unit consumed per byte is like follow:
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      *              Bytes/FrameUnit     FrameUnit/byte  FrameUnit/byte
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      *              (Overhead included) (HS baseline)   (FS baseline)
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * Low Speed       187.5                40             8
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * Full Speed     1500                   5             1
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * High Speed     7500                   1            1/5
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * 
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * The overhead is like follow:
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      *               Control Isochronous Bulk Interrupt
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * bmAttribute     (0)       (1)     (2)     (3)
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * Low Speed        63       --      --      19
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * Full Speed       45        9      13      13
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * High Speed      173       38      55      55
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * 
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      * Worst case bit stuffing is calculated as 1.1667 (7/6) times the raw time.
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****      */
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Get maximum packet size.  */
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     max_packet_size  = endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_PACKET_SIZE_MASK;
+  68              		.loc 1 128 5 is_stmt 1 view .LVU16
+  69              		.loc 1 128 58 is_stmt 0 view .LVU17
+  70 0018 DEF81C40 		ldr	r4, [lr, #28]
+  71              		.loc 1 128 22 view .LVU18
+  72 001c C4F30A00 		ubfx	r0, r4, #0, #11
+  73              	.LVL4:
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Rough time for possible Bit Stuffing.  */
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     packet_size = (max_packet_size * 7 + 5) / 6;
+  74              		.loc 1 131 5 is_stmt 1 view .LVU19
+  75              		.loc 1 131 36 is_stmt 0 view .LVU20
+  76 0020 C0EBC000 		rsb	r0, r0, r0, lsl #3
+  77              	.LVL5:
+  78              		.loc 1 131 40 view .LVU21
+  79 0024 0530     		adds	r0, r0, #5
+  80              		.loc 1 131 17 view .LVU22
+  81 0026 444B     		ldr	r3, .L29+4
+  82 0028 83FB0013 		smull	r1, r3, r3, r0
+  83 002c A3EBE070 		sub	r0, r3, r0, asr #31
+  84              	.LVL6:
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Add overhead.  */
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     packet_size += overheads[endpoint -> ux_endpoint_descriptor.bmAttributes & UX_MASK_ENDPOINT_TYP
+  85              		.loc 1 134 5 is_stmt 1 view .LVU23
+  86              		.loc 1 134 64 is_stmt 0 view .LVU24
+  87 0030 DEF81830 		ldr	r3, [lr, #24]
+  88              		.loc 1 134 78 view .LVU25
+  89 0034 03F00303 		and	r3, r3, #3
+  90              		.loc 1 134 110 view .LVU26
+  91 0038 1169     		ldr	r1, [r2, #16]
+  92              		.loc 1 134 102 view .LVU27
+  93 003a 03EB4303 		add	r3, r3, r3, lsl #1
+  94 003e 1033     		adds	r3, r3, #16
+  95 0040 6B44     		add	r3, sp, r3
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 5
+
+
+  96 0042 0B44     		add	r3, r3, r1
+  97 0044 13F80C3C 		ldrb	r3, [r3, #-12]	@ zero_extendqisi2
+  98              		.loc 1 134 17 view .LVU28
+  99 0048 0344     		add	r3, r3, r0
+ 100              	.LVL7:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     max_packet_size = (USHORT)packet_size;
+ 101              		.loc 1 135 5 is_stmt 1 view .LVU29
+ 102              		.loc 1 135 21 is_stmt 0 view .LVU30
+ 103 004a 9BB2     		uxth	r3, r3
+ 104              	.LVL8:
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Check for high-speed endpoint.  */
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     if (device -> ux_device_speed == UX_HIGH_SPEED_DEVICE)
+ 105              		.loc 1 138 5 is_stmt 1 view .LVU31
+ 106              		.loc 1 138 8 is_stmt 0 view .LVU32
+ 107 004c 0229     		cmp	r1, #2
+ 108 004e 25D0     		beq	.L21
+ 109              	.L2:
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* Get number of transactions.  */
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         max_packet_size = (USHORT)(max_packet_size *
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         UX_MAX_NUMBER_OF_TRANSACTIONS_SHIFT) + 1));
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Calculate the bandwidth claimed by this endpoint for the main bus.  */
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     if (hcd -> ux_hcd_version != 0x200)
+ 110              		.loc 1 148 5 is_stmt 1 view .LVU33
+ 111              		.loc 1 148 13 is_stmt 0 view .LVU34
+ 112 0050 DCF89000 		ldr	r0, [ip, #144]
+ 113              	.LVL9:
+ 114              		.loc 1 148 8 view .LVU35
+ 115 0054 B0F5007F 		cmp	r0, #512
+ 116 0058 30D0     		beq	.L3
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         if (device -> ux_device_speed == UX_LOW_SPEED_DEVICE)
+ 117              		.loc 1 151 9 is_stmt 1 view .LVU36
+ 118              		.loc 1 151 12 is_stmt 0 view .LVU37
+ 119 005a 31BB     		cbnz	r1, .L4
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* Low speed transfer takes 40x more units than high speed. */
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             hcd_bandwidth_claimed =  (USHORT)(max_packet_size * 8 * 5);
+ 120              		.loc 1 153 13 is_stmt 1 view .LVU38
+ 121              		.loc 1 153 35 is_stmt 0 view .LVU39
+ 122 005c 03EB8303 		add	r3, r3, r3, lsl #2
+ 123              	.LVL10:
+ 124              		.loc 1 153 35 view .LVU40
+ 125 0060 DB00     		lsls	r3, r3, #3
+ 126 0062 9BB2     		uxth	r3, r3
+ 127              	.LVL11:
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** ULONG           port_index;
+ 128              		.loc 1 93 17 view .LVU41
+ 129 0064 0024     		movs	r4, #0
+ 130              	.LVL12:
+ 131              	.L5:
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         else
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 6
+
+
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         {
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             if (device -> ux_device_speed == UX_FULL_SPEED_DEVICE)
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 /* Full speed transfer takes 5x more units than high speed. */
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 hcd_bandwidth_claimed =  (USHORT)(max_packet_size * 5);
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             else
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 /* Use high speed timing as base for bus bandwidth calculation. */
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 hcd_bandwidth_claimed =  (USHORT)max_packet_size;
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         }
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     else        
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         hcd_bandwidth_claimed =  (USHORT)max_packet_size;
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         if (device -> ux_device_speed == UX_LOW_SPEED_DEVICE)
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* Low speed transfer takes 8x more units than full speed. */
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             tt_bandwidth_claimed =  (USHORT)(max_packet_size * 8);
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         else
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* Use full speed timing as base for TT bandwidth calculation. */
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             tt_bandwidth_claimed =  (USHORT)max_packet_size;
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Do we have enough on the bus for this new endpoint?  */
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     if (hcd -> ux_hcd_available_bandwidth < hcd_bandwidth_claimed)
+ 132              		.loc 1 178 5 is_stmt 1 view .LVU42
+ 133              		.loc 1 178 13 is_stmt 0 view .LVU43
+ 134 0066 DCF88C50 		ldr	r5, [ip, #140]
+ 135              		.loc 1 178 8 view .LVU44
+ 136 006a 9D42     		cmp	r5, r3
+ 137 006c 2CD3     		bcc	.L22
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_NO_BANDWIDTH_AVAILABLE, endpoint, 0, 0, UX_TRACE
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* Error trap. */
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_NO_BANDWI
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         return(UX_NO_BANDWIDTH_AVAILABLE);
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* We need to take care of the case where the endpoint belongs to a USB 1.1 
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****        device that sits behind a 2.0 hub. We ignore cases where the device 
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****        is either high speed or the bus is 1.1.  */
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     if ((device -> ux_device_speed == UX_HIGH_SPEED_DEVICE) || (hcd -> ux_hcd_version != 0x200))
+ 138              		.loc 1 193 5 is_stmt 1 view .LVU45
+ 139              		.loc 1 193 8 is_stmt 0 view .LVU46
+ 140 006e 0229     		cmp	r1, #2
+ 141 0070 58D0     		beq	.L16
+ 142              		.loc 1 193 61 discriminator 1 view .LVU47
+ 143 0072 B0F5007F 		cmp	r0, #512
+ 144 0076 57D1     		bne	.L17
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {
+ 195:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 196:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* The device is high speed, therefore no need for TT.  */
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         return(UX_SUCCESS);
+ 198:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 7
+
+
+ 199:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 200:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* We have a 1.1 device, check if the parent is a 2.0 hub.  */
+ 201:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     parent_device =  device -> ux_device_parent;
+ 145              		.loc 1 201 5 is_stmt 1 view .LVU48
+ 146              		.loc 1 201 19 is_stmt 0 view .LVU49
+ 147 0078 D2F81C31 		ldr	r3, [r2, #284]
+ 148              	.LVL13:
+ 202:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     if (parent_device == UX_NULL)
+ 149              		.loc 1 202 5 is_stmt 1 view .LVU50
+ 150              		.loc 1 202 8 is_stmt 0 view .LVU51
+ 151 007c 002B     		cmp	r3, #0
+ 152 007e 56D0     		beq	.L18
+ 203:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {
+ 204:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 205:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* We are at the root, this controller must support 1.1 then! */
+ 206:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         return(UX_SUCCESS);    
+ 207:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 208:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 209:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* We get here when the parent is a hub. The problem occurs when the hub is itself 
+ 210:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****        connected to a chain of hubs. We need to find the first 2.0 hub parent to this 
+ 211:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****        chain to check the TT. We need to remember the port on which the first 1.1 
+ 212:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****        device is hooked to.  */
+ 213:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     port_index =  device -> ux_device_port_location - 1;
+ 153              		.loc 1 213 5 is_stmt 1 view .LVU52
+ 154              		.loc 1 213 26 is_stmt 0 view .LVU53
+ 155 0080 D2F81821 		ldr	r2, [r2, #280]
+ 156              	.LVL14:
+ 157              		.loc 1 213 16 view .LVU54
+ 158 0084 013A     		subs	r2, r2, #1
+ 159              	.LVL15:
+ 214:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 215:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* Scan the chain of hubs upward.  */
+ 216:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     while (parent_device != UX_NULL)
+ 160              		.loc 1 216 5 is_stmt 1 view .LVU55
+ 161              	.L8:
+ 162              		.loc 1 216 11 view .LVU56
+ 163 0086 002B     		cmp	r3, #0
+ 164 0088 4AD0     		beq	.L23
+ 217:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     {
+ 218:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 219:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* Determine if the device is high speed.  */
+ 220:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         if (parent_device -> ux_device_speed == UX_HIGH_SPEED_DEVICE)
+ 165              		.loc 1 220 9 view .LVU57
+ 166              		.loc 1 220 27 is_stmt 0 view .LVU58
+ 167 008a 1969     		ldr	r1, [r3, #16]
+ 168              		.loc 1 220 12 view .LVU59
+ 169 008c 0229     		cmp	r1, #2
+ 170 008e 22D0     		beq	.L24
+ 221:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         {
+ 222:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 223:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* The device is a high speed hub, find the TT that manages the port. 
+ 224:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                The first 1.1 device is connected to. First we calculate the port 
+ 225:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                mapping bit.  */
+ 226:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             port_map = (ULONG)(1 << port_index);
+ 227:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 228:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* Parse all the TTs attached to the hub.  */
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             for (tt_index = 0; tt_index < UX_MAX_TT; tt_index++)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 8
+
+
+ 230:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 231:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 232:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 /* Check if this TT owns the port where the device is attached.  */
+ 233:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 if ((parent_device -> ux_device_hub_tt[tt_index].ux_hub_tt_port_mapping & port_map)
+ 234:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 {
+ 235:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 236:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     /* We have found the port, check if the tt can give us the bandwidth
+ 237:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                        we want to claim.  */
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     if (parent_device -> ux_device_hub_tt[tt_index].ux_hub_tt_max_bandwidth < tt_ba
+ 239:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     {
+ 240:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 241:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         /* If trace is enabled, insert this event into the trace buffer.  */
+ 242:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_NO_BANDWIDTH_AVAILABLE, endpoint
+ 243:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 244:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         /* Error trap. */
+ 245:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERAT
+ 246:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         return(UX_NO_BANDWIDTH_AVAILABLE);
+ 248:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     }
+ 249:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                                             
+ 250:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     else
+ 251:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         return(UX_SUCCESS);
+ 252:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 }
+ 253:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             }
+ 254:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 255:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 256:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_NO_BANDWIDTH_AVAILABLE, endpoint, 0, 0, UX_T
+ 257:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 258:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* Error trap. */
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_NO_BA
+ 260:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 261:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* We should never get here !!!!! */
+ 262:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             return(UX_NO_BANDWIDTH_AVAILABLE);
+ 263:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         }
+ 264:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 265:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* We now remember where this hub is located on the parent.  */
+ 266:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         port_index =  parent_device -> ux_device_port_location - 1;
+ 171              		.loc 1 266 9 is_stmt 1 view .LVU60
+ 172              		.loc 1 266 37 is_stmt 0 view .LVU61
+ 173 0090 D3F81821 		ldr	r2, [r3, #280]
+ 174              	.LVL16:
+ 175              		.loc 1 266 20 view .LVU62
+ 176 0094 013A     		subs	r2, r2, #1
+ 177              	.LVL17:
+ 267:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         
+ 268:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         /* We go up one level in the hub chain.  */
+ 269:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         parent_device =  parent_device -> ux_device_parent;
+ 178              		.loc 1 269 9 is_stmt 1 view .LVU63
+ 179              		.loc 1 269 23 is_stmt 0 view .LVU64
+ 180 0096 D3F81C31 		ldr	r3, [r3, #284]
+ 181              	.LVL18:
+ 182              		.loc 1 269 23 view .LVU65
+ 183 009a F4E7     		b	.L8
+ 184              	.LVL19:
+ 185              	.L21:
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 186              		.loc 1 142 9 is_stmt 1 view .LVU66
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 9
+
+
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                         UX_MAX_NUMBER_OF_TRANSACTIONS_SHIFT) + 1));
+ 187              		.loc 1 143 112 is_stmt 0 view .LVU67
+ 188 009c C4F3C124 		ubfx	r4, r4, #11, #2
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 189              		.loc 1 142 27 view .LVU68
+ 190 00a0 0134     		adds	r4, r4, #1
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 191              		.loc 1 142 25 view .LVU69
+ 192 00a2 14FB03F3 		smulbb	r3, r4, r3
+ 193              	.LVL20:
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 194              		.loc 1 142 25 view .LVU70
+ 195 00a6 9BB2     		uxth	r3, r3
+ 196              	.LVL21:
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     (((endpoint -> ux_endpoint_descriptor.wMaxPacketSize & UX_MAX_NUMBER_OF_TRANSAC
+ 197              		.loc 1 142 25 view .LVU71
+ 198 00a8 D2E7     		b	.L2
+ 199              	.LVL22:
+ 200              	.L4:
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 /* Full speed transfer takes 5x more units than high speed. */
+ 201              		.loc 1 157 13 is_stmt 1 view .LVU72
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 /* Full speed transfer takes 5x more units than high speed. */
+ 202              		.loc 1 157 16 is_stmt 0 view .LVU73
+ 203 00aa 0129     		cmp	r1, #1
+ 204 00ac 01D0     		beq	.L25
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** ULONG           port_index;
+ 205              		.loc 1 93 17 view .LVU74
+ 206 00ae 0024     		movs	r4, #0
+ 207 00b0 D9E7     		b	.L5
+ 208              	.L25:
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             else
+ 209              		.loc 1 159 17 is_stmt 1 view .LVU75
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             else
+ 210              		.loc 1 159 39 is_stmt 0 view .LVU76
+ 211 00b2 03EB8303 		add	r3, r3, r3, lsl #2
+ 212              	.LVL23:
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             else
+ 213              		.loc 1 159 39 view .LVU77
+ 214 00b6 9BB2     		uxth	r3, r3
+ 215              	.LVL24:
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** ULONG           port_index;
+ 216              		.loc 1 93 17 view .LVU78
+ 217 00b8 0024     		movs	r4, #0
+ 218 00ba D4E7     		b	.L5
+ 219              	.LVL25:
+ 220              	.L3:
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         if (device -> ux_device_speed == UX_LOW_SPEED_DEVICE)
+ 221              		.loc 1 168 9 is_stmt 1 view .LVU79
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* Low speed transfer takes 8x more units than full speed. */
+ 222              		.loc 1 169 9 view .LVU80
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             /* Low speed transfer takes 8x more units than full speed. */
+ 223              		.loc 1 169 12 is_stmt 0 view .LVU81
+ 224 00bc 11B9     		cbnz	r1, .L15
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         else
+ 225              		.loc 1 171 13 is_stmt 1 view .LVU82
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         else
+ 226              		.loc 1 171 34 is_stmt 0 view .LVU83
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 10
+
+
+ 227 00be DC00     		lsls	r4, r3, #3
+ 228 00c0 A4B2     		uxth	r4, r4
+ 229              	.LVL26:
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         else
+ 230              		.loc 1 171 34 view .LVU84
+ 231 00c2 D0E7     		b	.L5
+ 232              	.LVL27:
+ 233              	.L15:
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 234              		.loc 1 174 34 view .LVU85
+ 235 00c4 1C46     		mov	r4, r3
+ 236 00c6 CEE7     		b	.L5
+ 237              	.LVL28:
+ 238              	.L22:
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 239              		.loc 1 185 9 is_stmt 1 view .LVU86
+ 240 00c8 4122     		movs	r2, #65
+ 241              	.LVL29:
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 242              		.loc 1 185 9 is_stmt 0 view .LVU87
+ 243 00ca 0421     		movs	r1, #4
+ 244              	.LVL30:
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 245              		.loc 1 185 9 view .LVU88
+ 246 00cc 0220     		movs	r0, #2
+ 247 00ce FFF7FEFF 		bl	_ux_system_error_handler
+ 248              	.LVL31:
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 249              		.loc 1 187 9 is_stmt 1 view .LVU89
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 250              		.loc 1 187 15 is_stmt 0 view .LVU90
+ 251 00d2 4120     		movs	r0, #65
+ 252 00d4 29E0     		b	.L1
+ 253              	.LVL32:
+ 254              	.L24:
+ 226:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 255              		.loc 1 226 13 is_stmt 1 view .LVU91
+ 226:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 256              		.loc 1 226 34 is_stmt 0 view .LVU92
+ 257 00d6 0121     		movs	r1, #1
+ 258 00d8 01FA02F2 		lsl	r2, r1, r2
+ 259              	.LVL33:
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 260              		.loc 1 229 13 is_stmt 1 view .LVU93
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 261              		.loc 1 229 27 is_stmt 0 view .LVU94
+ 262 00dc 0021     		movs	r1, #0
+ 263              	.LVL34:
+ 264              	.L10:
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 265              		.loc 1 229 32 is_stmt 1 discriminator 1 view .LVU95
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 266              		.loc 1 229 13 is_stmt 0 discriminator 1 view .LVU96
+ 267 00de 0729     		cmp	r1, #7
+ 268 00e0 17D8     		bhi	.L26
+ 233:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 {
+ 269              		.loc 1 233 17 is_stmt 1 view .LVU97
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 11
+
+
+ 233:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 {
+ 270              		.loc 1 233 65 is_stmt 0 view .LVU98
+ 271 00e2 01F12400 		add	r0, r1, #36
+ 272 00e6 03EBC000 		add	r0, r3, r0, lsl #3
+ 273 00ea 4068     		ldr	r0, [r0, #4]
+ 233:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 {
+ 274              		.loc 1 233 20 view .LVU99
+ 275 00ec 1042     		tst	r0, r2
+ 276 00ee 01D1     		bne	.L27
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 277              		.loc 1 229 54 is_stmt 1 discriminator 2 view .LVU100
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 278              		.loc 1 229 62 is_stmt 0 discriminator 2 view .LVU101
+ 279 00f0 0131     		adds	r1, r1, #1
+ 280              	.LVL35:
+ 229:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****             {
+ 281              		.loc 1 229 62 discriminator 2 view .LVU102
+ 282 00f2 F4E7     		b	.L10
+ 283              	.L27:
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     {
+ 284              		.loc 1 238 21 is_stmt 1 view .LVU103
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     {
+ 285              		.loc 1 238 68 is_stmt 0 view .LVU104
+ 286 00f4 2431     		adds	r1, r1, #36
+ 287              	.LVL36:
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     {
+ 288              		.loc 1 238 68 view .LVU105
+ 289 00f6 03EBC103 		add	r3, r3, r1, lsl #3
+ 290              	.LVL37:
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     {
+ 291              		.loc 1 238 68 view .LVU106
+ 292 00fa 9B68     		ldr	r3, [r3, #8]
+ 238:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     {
+ 293              		.loc 1 238 24 view .LVU107
+ 294 00fc A342     		cmp	r3, r4
+ 295 00fe 01D3     		bcc	.L28
+ 251:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                 }
+ 296              		.loc 1 251 31 view .LVU108
+ 297 0100 0020     		movs	r0, #0
+ 298 0102 12E0     		b	.L1
+ 299              	.L28:
+ 245:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 300              		.loc 1 245 25 is_stmt 1 view .LVU109
+ 301 0104 4122     		movs	r2, #65
+ 302              	.LVL38:
+ 245:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 303              		.loc 1 245 25 is_stmt 0 view .LVU110
+ 304 0106 0421     		movs	r1, #4
+ 305              	.LVL39:
+ 245:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 306              		.loc 1 245 25 view .LVU111
+ 307 0108 0220     		movs	r0, #2
+ 308 010a FFF7FEFF 		bl	_ux_system_error_handler
+ 309              	.LVL40:
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     }
+ 310              		.loc 1 247 25 is_stmt 1 view .LVU112
+ 247:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****                     }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 12
+
+
+ 311              		.loc 1 247 31 is_stmt 0 view .LVU113
+ 312 010e 4120     		movs	r0, #65
+ 313 0110 0BE0     		b	.L1
+ 314              	.LVL41:
+ 315              	.L26:
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 316              		.loc 1 259 13 is_stmt 1 view .LVU114
+ 317 0112 4122     		movs	r2, #65
+ 318              	.LVL42:
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 319              		.loc 1 259 13 is_stmt 0 view .LVU115
+ 320 0114 0421     		movs	r1, #4
+ 321              	.LVL43:
+ 259:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 322              		.loc 1 259 13 view .LVU116
+ 323 0116 0220     		movs	r0, #2
+ 324 0118 FFF7FEFF 		bl	_ux_system_error_handler
+ 325              	.LVL44:
+ 262:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         }
+ 326              		.loc 1 262 13 is_stmt 1 view .LVU117
+ 262:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****         }
+ 327              		.loc 1 262 19 is_stmt 0 view .LVU118
+ 328 011c 4120     		movs	r0, #65
+ 329 011e 04E0     		b	.L1
+ 330              	.LVL45:
+ 331              	.L23:
+ 270:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 271:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** 
+ 272:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     /* We get here when we have not found a 2.0 hub in the list and we got to the root port.  */
+ 273:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     return(UX_SUCCESS);
+ 332              		.loc 1 273 11 view .LVU119
+ 333 0120 0020     		movs	r0, #0
+ 334 0122 02E0     		b	.L1
+ 335              	.LVL46:
+ 336              	.L16:
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 337              		.loc 1 197 15 view .LVU120
+ 338 0124 0020     		movs	r0, #0
+ 339 0126 00E0     		b	.L1
+ 340              	.L17:
+ 341 0128 0020     		movs	r0, #0
+ 342              	.LVL47:
+ 343              	.L1:
+ 274:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c **** }
+ 344              		.loc 1 274 1 view .LVU121
+ 345 012a 05B0     		add	sp, sp, #20
+ 346              	.LCFI2:
+ 347              		.cfi_remember_state
+ 348              		.cfi_def_cfa_offset 12
+ 349              		@ sp needed
+ 350 012c 30BD     		pop	{r4, r5, pc}
+ 351              	.LVL48:
+ 352              	.L18:
+ 353              	.LCFI3:
+ 354              		.cfi_restore_state
+ 206:Middlewares/ST/usbx/common/core/src/ux_host_stack_bandwidth_check.c ****     }
+ 355              		.loc 1 206 15 view .LVU122
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 13
+
+
+ 356 012e 0020     		movs	r0, #0
+ 357 0130 FBE7     		b	.L1
+ 358              	.L30:
+ 359 0132 00BF     		.align	2
+ 360              	.L29:
+ 361 0134 00000000 		.word	.LANCHOR0
+ 362 0138 ABAAAA2A 		.word	715827883
+ 363              		.cfi_endproc
+ 364              	.LFE11:
+ 366              		.section	.rodata
+ 367              		.align	2
+ 368              		.set	.LANCHOR0,. + 0
+ 369              	.LC0:
+ 370 0000 3F2DAD   		.ascii	"?-\255"
+ 371 0003 000926   		.ascii	"\000\011&"
+ 372 0006 000D37   		.ascii	"\000\0157"
+ 373 0009 130D37   		.ascii	"\023\0157"
+ 374              		.text
+ 375              	.Letext0:
+ 376              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 377              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 378              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 379              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_bandwidth_check.c
+C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s:20     .text._ux_host_stack_bandwidth_check:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s:26     .text._ux_host_stack_bandwidth_check:00000000 _ux_host_stack_bandwidth_check
+C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s:361    .text._ux_host_stack_bandwidth_check:00000134 $d
+C:\Users\HP\AppData\Local\Temp\ccOhTZJk.s:367    .rodata:00000000 $d
+
+UNDEFINED SYMBOLS
+_ux_system_error_handler

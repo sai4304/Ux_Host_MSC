@@ -1,0 +1,517 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_class_storage_deactivate.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_class_storage_deactivate,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_class_storage_deactivate
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_class_storage_deactivate:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c"
+   1:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  12:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  13:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**   Storage Class                                                       */
+  19:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  23:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  24:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  26:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  28:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #include "ux_host_class_storage.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #include "ux_host_stack.h"
+  31:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  32:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  33:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/ 
+  34:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  35:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  FUNCTION                                               RELEASE        */ 
+  36:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  37:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    _ux_host_class_storage_deactivate                   PORTABLE C      */ 
+  38:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                           6.1.10       */
+  39:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */
+  41:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  42:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */
+  43:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  45:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    This function is called when this instance of the storage device    */ 
+  46:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    has been removed from the bus either directly or indirectly. The    */ 
+  47:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    bulk in\out pipes will be destroyed and the instanced removed.      */ 
+  48:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  INPUT                                                                 */ 
+  50:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    command                               Pointer to class command      */ 
+  52:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  OUTPUT                                                                */ 
+  54:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    Completion Status                                                   */ 
+  56:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  CALLS                                                                 */ 
+  58:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    ux_media_close                        Close media                   */ 
+  60:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    _ux_host_stack_endpoint_transfer_abort Abort transfer request       */ 
+  61:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    _ux_host_stack_class_instance_destroy Destroy class instance        */ 
+  62:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    _ux_utility_memory_free               Free memory block             */ 
+  63:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    _ux_host_semaphore_get                Get protection semaphore      */ 
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    _ux_host_semaphore_delete             Delete protection semaphore   */ 
+  65:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    _ux_utility_thread_schedule_other     Schedule other threads        */
+  66:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  CALLED BY                                                             */ 
+  68:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    Storage Class                                                       */ 
+  70:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  RELEASE HISTORY                                                       */ 
+  72:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  74:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */ 
+  75:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  76:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  77:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            added option to disable FX  */
+  78:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            media integration, used UX_ */
+  79:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            things instead of FX_       */
+  80:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            things directly, used host  */
+  81:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            class extension pointer for */
+  82:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            class specific structured   */
+  83:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            data,                       */
+  84:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            resulting in version 6.1    */
+  85:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  04-02-2021     Chaoqiong Xiao           Modified comment(s),          */
+  86:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            fixed compile issues with   */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 3
+
+
+  87:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            some macro options,         */
+  88:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            resulting in version 6.1.6  */
+  89:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  90:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            improved media insert/eject */
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            management without FX,      */
+  92:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                            resulting in version 6.1.10 */
+  93:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /*                                                                        */
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** /**************************************************************************/
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** UINT  _ux_host_class_storage_deactivate(UX_HOST_CLASS_COMMAND *command)
+  96:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** {
+  30              		.loc 1 96 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 96 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 24
+  38              		.cfi_offset 4, -24
+  39              		.cfi_offset 5, -20
+  40              		.cfi_offset 6, -16
+  41              		.cfi_offset 7, -12
+  42              		.cfi_offset 8, -8
+  43              		.cfi_offset 14, -4
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** UINT                            status;
+  44              		.loc 1 98 1 is_stmt 1 view .LVU2
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** UX_HOST_CLASS_STORAGE           *storage;
+  45              		.loc 1 99 1 view .LVU3
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** UX_HOST_CLASS_STORAGE_MEDIA     *storage_media;
+  46              		.loc 1 100 1 view .LVU4
+ 101:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** UX_HOST_CLASS                   *class_inst;
+  47              		.loc 1 101 1 view .LVU5
+ 102:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** UINT                            inst_index;
+  48              		.loc 1 102 1 view .LVU6
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #if !defined(UX_HOST_CLASS_STORAGE_NO_FILEX)
+ 104:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** UX_MEDIA                        *media;
+  49              		.loc 1 104 1 view .LVU7
+ 105:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** VOID                            *memory;
+  50              		.loc 1 105 1 view .LVU8
+ 106:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #endif
+ 107:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 108:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 109:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Get the instance for this class.  */
+ 110:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     storage =  (UX_HOST_CLASS_STORAGE *) command -> ux_host_class_command_instance;
+  51              		.loc 1 110 5 view .LVU9
+  52              		.loc 1 110 13 is_stmt 0 view .LVU10
+  53 0004 8468     		ldr	r4, [r0, #8]
+  54              	.LVL1:
+ 111:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     
+ 112:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* We need the class container.  */
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     class_inst =  storage -> ux_host_class_storage_class;
+  55              		.loc 1 113 5 is_stmt 1 view .LVU11
+  56              		.loc 1 113 16 is_stmt 0 view .LVU12
+  57 0006 6368     		ldr	r3, [r4, #4]
+  58              	.LVL2:
+ 114:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 4
+
+
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Point the media structure to the first media in the container.  */
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     storage_media =  (UX_HOST_CLASS_STORAGE_MEDIA *) class_inst -> ux_host_class_media;
+  59              		.loc 1 116 5 is_stmt 1 view .LVU13
+  60              		.loc 1 116 19 is_stmt 0 view .LVU14
+  61 0008 1D6D     		ldr	r5, [r3, #80]
+  62              	.LVL3:
+ 117:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* The storage device is being shut down.  */
+ 119:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     storage -> ux_host_class_storage_state =  UX_HOST_CLASS_INSTANCE_SHUTDOWN;
+  63              		.loc 1 119 5 is_stmt 1 view .LVU15
+  64              		.loc 1 119 44 is_stmt 0 view .LVU16
+  65 000a 0223     		movs	r3, #2
+  66              	.LVL4:
+  67              		.loc 1 119 44 view .LVU17
+  68 000c E366     		str	r3, [r4, #108]
+ 120:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* We come to this point when the device has been extracted. So there may have been a transacti
+ 122:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****        being scheduled. We make sure the transaction has been completed by the controller driver.
+ 123:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****        When the device is extracted, the controller tries multiple times the transaction and retire
+ 124:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****        with a DEVICE_NOT_RESPONDING error code.  
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****        
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****        First we take care of endpoint OUT.  */
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* We need to abort transactions on the bulk pipes.  */
+ 129:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     if (storage -> ux_host_class_storage_bulk_out_endpoint != UX_NULL)
+  69              		.loc 1 129 5 is_stmt 1 view .LVU18
+  70              		.loc 1 129 17 is_stmt 0 view .LVU19
+  71 000e 2069     		ldr	r0, [r4, #16]
+  72              	.LVL5:
+  73              		.loc 1 129 8 view .LVU20
+  74 0010 08B1     		cbz	r0, .L2
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         _ux_host_stack_endpoint_transfer_abort(storage -> ux_host_class_storage_bulk_out_endpoint);
+  75              		.loc 1 130 9 is_stmt 1 view .LVU21
+  76 0012 FFF7FEFF 		bl	_ux_host_stack_endpoint_transfer_abort
+  77              	.LVL6:
+  78              	.L2:
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Then endpoint IN.  */       
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     if (storage -> ux_host_class_storage_bulk_in_endpoint != UX_NULL)
+  79              		.loc 1 133 5 view .LVU22
+  80              		.loc 1 133 17 is_stmt 0 view .LVU23
+  81 0016 6069     		ldr	r0, [r4, #20]
+  82              		.loc 1 133 8 view .LVU24
+  83 0018 08B1     		cbz	r0, .L3
+ 134:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         _ux_host_stack_endpoint_transfer_abort(storage -> ux_host_class_storage_bulk_in_endpoint);
+  84              		.loc 1 134 9 is_stmt 1 view .LVU25
+  85 001a FFF7FEFF 		bl	_ux_host_stack_endpoint_transfer_abort
+  86              	.LVL7:
+  87              	.L3:
+ 135:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****        
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #ifdef UX_HOST_CLASS_STORAGE_INCLUDE_LEGACY_PROTOCOL_SUPPORT
+ 137:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Was the protocol CBI ? */
+ 138:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     if (storage -> ux_host_class_storage_interface -> ux_interface_descriptor.bInterfaceProtocol ==
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     {
+ 140:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         /* Was there an interrupt endpoint?  */
+ 142:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         if (storage -> ux_host_class_storage_interrupt_endpoint != UX_NULL)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 5
+
+
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         {
+ 144:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 145:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             /* Abort the data transfer on the interrupt endpoint.  */
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             _ux_host_stack_endpoint_transfer_abort(storage -> ux_host_class_storage_interrupt_endpo
+ 147:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             /* Free the memory that was used by the interrupt endpoint.  */
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             if (storage -> ux_host_class_storage_interrupt_endpoint -> ux_endpoint_transfer_request
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 _ux_utility_memory_free(storage -> ux_host_class_storage_interrupt_endpoint -> ux_e
+ 151:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         }
+ 152:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     }
+ 153:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #endif
+ 154:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 155:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* The enumeration thread needs to sleep a while to allow the application or the class that may
+ 156:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****        endpoints to exit properly.  */
+ 157:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     _ux_host_thread_schedule_other(UX_THREAD_PRIORITY_ENUM); 
+  88              		.loc 1 157 5 view .LVU26
+  89 001e 1420     		movs	r0, #20
+  90 0020 FFF7FEFF 		bl	_ux_utility_thread_schedule_other
+  91              	.LVL8:
+ 158:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 159:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Inform UX_MEDIA (default FileX) of the deactivation of all Media attached to this instance. 
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     for (inst_index = 0; inst_index < UX_HOST_CLASS_STORAGE_MAX_MEDIA; inst_index++)
+  92              		.loc 1 161 5 view .LVU27
+  93              		.loc 1 161 21 is_stmt 0 view .LVU28
+  94 0024 0026     		movs	r6, #0
+  95              		.loc 1 161 5 view .LVU29
+  96 0026 08E0     		b	.L4
+  97              	.LVL9:
+  98              	.L6:
+ 162:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     {
+ 163:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #if !defined(UX_HOST_CLASS_STORAGE_NO_FILEX)
+ 165:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         /* Get the UX_MEDIA (default FileX) attached to this media.  */
+ 166:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         media = &storage_media -> ux_host_class_storage_media;
+  99              		.loc 1 166 9 is_stmt 1 view .LVU30
+ 100              		.loc 1 166 15 is_stmt 0 view .LVU31
+ 101 0028 2846     		mov	r0, r5
+ 102              	.LVL10:
+ 167:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 168:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         /* Check if the media belongs to the device being removed.  */
+ 169:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         if (((UX_HOST_CLASS_STORAGE *) ux_media_driver_info_get(media)) == storage)
+ 103              		.loc 1 169 9 is_stmt 1 view .LVU32
+ 104              		.loc 1 169 40 is_stmt 0 view .LVU33
+ 105 002a D5F88430 		ldr	r3, [r5, #132]
+ 106              		.loc 1 169 12 view .LVU34
+ 107 002e A342     		cmp	r3, r4
+ 108 0030 22D0     		beq	.L9
+ 109              	.LVL11:
+ 110              	.L5:
+ 170:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         {
+ 171:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 172:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             /* Check if the media was properly opened.  */
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             if (storage_media -> ux_host_class_storage_media_status == UX_HOST_CLASS_STORAGE_MEDIA_
+ 174:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             {
+ 175:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             
+ 176:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 /* We preserve the memory used by this media.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 6
+
+
+ 177:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 memory =  storage_media -> ux_host_class_storage_media_memory;
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 179:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 /* Ask UX_MEDIA (default FileX) to unmount the partition.  */
+ 180:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 ux_media_close(media);
+ 181:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 /* This device is now unmounted.  */
+ 183:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 storage_media -> ux_host_class_storage_media_status =  UX_HOST_CLASS_STORAGE_MEDIA_
+ 184:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             
+ 185:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 /* Reset the media ID.  */
+ 186:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 ux_media_id_set(media, 0);
+ 187:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                                 
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 /* Free the memory block used for data transfer on behalf of UX_MEDIA (default File
+ 189:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 _ux_utility_memory_free(memory);
+ 190:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             }                
+ 191:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         }
+ 192:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #else
+ 193:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 194:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         /* Check if the media is for this storage.  */
+ 195:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         if (storage_media -> ux_host_class_storage_media_status == UX_USED &&
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             storage_media -> ux_host_class_storage_media_storage == storage)
+ 197:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         {
+ 198:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 199:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             /* Free the storage media.  */
+ 200:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             storage_media -> ux_host_class_storage_media_status = UX_UNUSED;
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 202:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             /* Invoke callback for media removal.  */
+ 203:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             if (_ux_system_host -> ux_system_host_change_function != UX_NULL)
+ 204:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             {
+ 205:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 206:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 /* Call system change function.  */
+ 207:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                 _ux_system_host ->  ux_system_host_change_function(UX_STORAGE_MEDIA_REMOVAL,
+ 208:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                                     storage -> ux_host_class_storage_class, (VOID *) storage_media)
+ 209:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             }
+ 210:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         }
+ 211:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** #endif
+ 212:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 213:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         /* Move to next entry in the media array.  */
+ 214:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         storage_media++;
+ 111              		.loc 1 214 9 is_stmt 1 discriminator 2 view .LVU35
+ 112              		.loc 1 214 22 is_stmt 0 discriminator 2 view .LVU36
+ 113 0032 05F51355 		add	r5, r5, #9408
+ 114              	.LVL12:
+ 115              		.loc 1 214 22 discriminator 2 view .LVU37
+ 116 0036 1035     		adds	r5, r5, #16
+ 117              	.LVL13:
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     {
+ 118              		.loc 1 161 72 is_stmt 1 discriminator 2 view .LVU38
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     {
+ 119              		.loc 1 161 82 is_stmt 0 discriminator 2 view .LVU39
+ 120 0038 0136     		adds	r6, r6, #1
+ 121              	.LVL14:
+ 122              	.L4:
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     {
+ 123              		.loc 1 161 26 is_stmt 1 discriminator 1 view .LVU40
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     {
+ 124              		.loc 1 161 5 is_stmt 0 discriminator 1 view .LVU41
+ 125 003a 002E     		cmp	r6, #0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 7
+
+
+ 126 003c F4D0     		beq	.L6
+ 215:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     }
+ 216:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 217:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Protect thread reentry to this instance.  */
+ 218:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     status = _ux_host_semaphore_get(&storage -> ux_host_class_storage_semaphore, UX_WAIT_FOREVER);
+ 127              		.loc 1 218 5 is_stmt 1 view .LVU42
+ 128              		.loc 1 218 14 is_stmt 0 view .LVU43
+ 129 003e 04F19C05 		add	r5, r4, #156
+ 130              	.LVL15:
+ 131              		.loc 1 218 14 view .LVU44
+ 132 0042 4FF0FF31 		mov	r1, #-1
+ 133 0046 2846     		mov	r0, r5
+ 134 0048 FFF7FEFF 		bl	_ux_utility_semaphore_get
+ 135              	.LVL16:
+ 219:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     UX_PARAMETER_NOT_USED(status);
+ 136              		.loc 1 219 5 is_stmt 1 view .LVU45
+ 220:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 221:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Destroy the instance.  */
+ 222:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     _ux_host_stack_class_instance_destroy(storage -> ux_host_class_storage_class, (VOID *) storage)
+ 137              		.loc 1 222 5 view .LVU46
+ 138 004c 2146     		mov	r1, r4
+ 139 004e 6068     		ldr	r0, [r4, #4]
+ 140 0050 FFF7FEFF 		bl	_ux_host_stack_class_instance_destroy
+ 141              	.LVL17:
+ 223:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 224:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Destroy the protection semaphore.  */
+ 225:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     _ux_host_semaphore_delete(&storage -> ux_host_class_storage_semaphore);
+ 142              		.loc 1 225 5 view .LVU47
+ 143 0054 2846     		mov	r0, r5
+ 144 0056 FFF7FEFF 		bl	_ux_utility_semaphore_delete
+ 145              	.LVL18:
+ 226:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 227:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Before we free the device resources, we need to inform the application
+ 228:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         that the device is removed.  */
+ 229:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     if (_ux_system_host -> ux_system_host_change_function != UX_NULL)
+ 146              		.loc 1 229 5 view .LVU48
+ 147              		.loc 1 229 25 is_stmt 0 view .LVU49
+ 148 005a 114B     		ldr	r3, .L10
+ 149 005c 1B68     		ldr	r3, [r3]
+ 150 005e D3F8C831 		ldr	r3, [r3, #456]
+ 151              		.loc 1 229 8 view .LVU50
+ 152 0062 1BB1     		cbz	r3, .L7
+ 230:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     {
+ 231:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         
+ 232:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         /* Inform the application the device is removed.  */
+ 233:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****         _ux_system_host -> ux_system_host_change_function(UX_DEVICE_REMOVAL, storage -> ux_host_cla
+ 153              		.loc 1 233 9 is_stmt 1 view .LVU51
+ 154 0064 2246     		mov	r2, r4
+ 155 0066 6168     		ldr	r1, [r4, #4]
+ 156 0068 0220     		movs	r0, #2
+ 157 006a 9847     		blx	r3
+ 158              	.LVL19:
+ 159              	.L7:
+ 234:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     }
+ 235:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 236:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 237:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_CLASS_STORAGE_DEACTIVATE, storage, 0, 0, 0, UX_TRACE_HOST
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 8
+
+
+ 238:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 239:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* If trace is enabled, register this object.  */
+ 240:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     UX_TRACE_OBJECT_UNREGISTER(storage);
+ 160              		.loc 1 240 40 view .LVU52
+ 241:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 242:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Free the storage instance memory.  */
+ 243:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     _ux_utility_memory_free(storage);
+ 161              		.loc 1 243 5 view .LVU53
+ 162 006c 2046     		mov	r0, r4
+ 163 006e FFF7FEFF 		bl	_ux_utility_memory_free
+ 164              	.LVL20:
+ 244:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 245:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     /* Return successful completion.  */
+ 246:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****     return(UX_SUCCESS);         
+ 165              		.loc 1 246 5 view .LVU54
+ 247:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** }
+ 166              		.loc 1 247 1 is_stmt 0 view .LVU55
+ 167 0072 0020     		movs	r0, #0
+ 168 0074 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 169              	.LVL21:
+ 170              	.L9:
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             {
+ 171              		.loc 1 173 13 is_stmt 1 view .LVU56
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             {
+ 172              		.loc 1 173 31 is_stmt 0 view .LVU57
+ 173 0078 05F50053 		add	r3, r5, #8192
+ 174 007c D3F8C034 		ldr	r3, [r3, #1216]
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             {
+ 175              		.loc 1 173 16 view .LVU58
+ 176 0080 012B     		cmp	r3, #1
+ 177 0082 D6D1     		bne	.L5
+ 177:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 178              		.loc 1 177 17 is_stmt 1 view .LVU59
+ 177:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 179              		.loc 1 177 24 is_stmt 0 view .LVU60
+ 180 0084 05F50057 		add	r7, r5, #8192
+ 181 0088 D7F8BC84 		ldr	r8, [r7, #1212]
+ 182              	.LVL22:
+ 180:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c **** 
+ 183              		.loc 1 180 17 is_stmt 1 view .LVU61
+ 184 008c FFF7FEFF 		bl	_fxe_media_close
+ 185              	.LVL23:
+ 183:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             
+ 186              		.loc 1 183 17 view .LVU62
+ 183:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             
+ 187              		.loc 1 183 69 is_stmt 0 view .LVU63
+ 188 0090 0023     		movs	r3, #0
+ 189 0092 C7F8C034 		str	r3, [r7, #1216]
+ 186:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****                                 
+ 190              		.loc 1 186 17 is_stmt 1 view .LVU64
+ 191 0096 2B60     		str	r3, [r5]
+ 189:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_deactivate.c ****             }                
+ 192              		.loc 1 189 17 view .LVU65
+ 193 0098 4046     		mov	r0, r8
+ 194 009a FFF7FEFF 		bl	_ux_utility_memory_free
+ 195              	.LVL24:
+ 196 009e C8E7     		b	.L5
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 9
+
+
+ 197              	.L11:
+ 198              		.align	2
+ 199              	.L10:
+ 200 00a0 00000000 		.word	_ux_system_host
+ 201              		.cfi_endproc
+ 202              	.LFE11:
+ 204              		.text
+ 205              	.Letext0:
+ 206              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 207              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 208              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 209              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 210              		.file 6 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_storage.h"
+ 211              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 212              		.file 8 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 213              		.file 9 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_class_storage_deactivate.c
+C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s:20     .text._ux_host_class_storage_deactivate:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s:26     .text._ux_host_class_storage_deactivate:00000000 _ux_host_class_storage_deactivate
+C:\Users\HP\AppData\Local\Temp\ccxn9rBg.s:200    .text._ux_host_class_storage_deactivate:000000a0 $d
+
+UNDEFINED SYMBOLS
+_ux_host_stack_endpoint_transfer_abort
+_ux_utility_thread_schedule_other
+_ux_utility_semaphore_get
+_ux_host_stack_class_instance_destroy
+_ux_utility_semaphore_delete
+_ux_utility_memory_free
+_fxe_media_close
+_ux_system_host

@@ -1,0 +1,482 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_periodic_schedule.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_periodic_schedule,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_periodic_schedule
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_periodic_schedule:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c"
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*    _ux_hcd_stm32_periodic_schedule                     PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                           6.1.12       */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*     This function schedules new transfers from the periodic interrupt  */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*     list.                                                              */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*    hcd_stm32                           Pointer to STM32 controller     */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  OUTPUT                                                                */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*    TRUE or FALSE                                                       */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  CALLS                                                                 */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*    HAL_HCD_GetCurrentFrame             Get frame number                */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  CALLED BY                                                             */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*    STM32 Controller Driver                                             */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  RELEASE HISTORY                                                       */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*    DATE              NAME                      DESCRIPTION             */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                            added standalone support,   */
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                            resulting in version 6.1.10 */
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*  07-29-2022     Chaoqiong Xiao           Modified comment(s),          */
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                            added ISO transfer support, */
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                            resulting in version 6.1.12 */
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /*                                                                        */
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** /**************************************************************************/
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** UINT  _ux_hcd_stm32_periodic_schedule(UX_HCD_STM32 *hcd_stm32)
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** {
+  30              		.loc 1 79 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 79 1 is_stmt 0 view .LVU1
+  35 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  36              	.LCFI0:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 3
+
+
+  37              		.cfi_def_cfa_offset 20
+  38              		.cfi_offset 4, -20
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 85B0     		sub	sp, sp, #20
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 40
+  46 0004 0746     		mov	r7, r0
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** UX_HCD_STM32_ED     *ed;
+  47              		.loc 1 81 1 is_stmt 1 view .LVU2
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** UX_TRANSFER         *transfer_request;
+  48              		.loc 1 82 1 view .LVU3
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** ULONG               frame_index;
+  49              		.loc 1 83 1 view .LVU4
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #if defined (USBH_HAL_HUB_SPLIT_SUPPORTED)
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** UX_DEVICE           *parent_device;
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** UX_ENDPOINT         *endpoint;
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** UX_ENDPOINT         *parent_endpoint;
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** ULONG               ep_schedule = 1U;
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** USHORT              port_status_change_bits;
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #endif /* defined (USBH_HAL_HUB_SPLIT_SUPPORTED) */
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     /* Get the current frame number.  */
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     frame_index = HAL_HCD_GetCurrentFrame(hcd_stm32 -> hcd_handle);
+  50              		.loc 1 93 5 view .LVU5
+  51              		.loc 1 93 19 is_stmt 0 view .LVU6
+  52 0006 806C     		ldr	r0, [r0, #72]
+  53              	.LVL1:
+  54              		.loc 1 93 19 view .LVU7
+  55 0008 FFF7FEFF 		bl	HAL_HCD_GetCurrentFrame
+  56              	.LVL2:
+  57 000c 0546     		mov	r5, r0
+  58              	.LVL3:
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     /* Get the first ED in the periodic list.  */
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     ed =  hcd_stm32 -> ux_hcd_stm32_periodic_ed_head;
+  59              		.loc 1 96 5 is_stmt 1 view .LVU8
+  60              		.loc 1 96 8 is_stmt 0 view .LVU9
+  61 000e FC6C     		ldr	r4, [r7, #76]
+  62              	.LVL4:
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     /* Search for an entry in the periodic tree.  */
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     while (ed != UX_NULL)
+  63              		.loc 1 99 5 is_stmt 1 view .LVU10
+  64              		.loc 1 99 11 is_stmt 0 view .LVU11
+  65 0010 21E0     		b	.L2
+  66              	.LVL5:
+  67              	.L4:
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     {
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #if defined (USBH_HAL_HUB_SPLIT_SUPPORTED)
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****       if (hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].do_ssplit == 1U)
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****       {
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         /* Get the transfer request.  */
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         transfer_request = ed -> ux_stm32_ed_transfer_request;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 4
+
+
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 107:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         if (transfer_request != NULL)
+ 108:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         {
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           if ((frame_index & ed -> ux_stm32_ed_interval_mask) == ed -> ux_stm32_ed_interval_positio
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           {
+ 111:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].ep_ss_schedule = 1U;
+ 112:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           }
+ 113:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           /* Schedule Start & Complete split where the entire split transaction is completely bound
+ 115:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           frame FS/LS devices */
+ 116:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           if (((((frame_index & 0x7U) < 0x3U) || ((frame_index & 0x7U) == 0x7U)) &&
+ 117:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                (hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].ep_ss_schedule == 1U)) ||
+ 118:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 ((hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].do_csplit == 1U) &&
+ 119:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                  (frame_index > (ed -> ux_stm32_ed_current_ss_frame + 1U))))
+ 120:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           {
+ 121:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             if (hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].ep_ss_schedule == 1U)
+ 122:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             {
+ 123:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               hcd_stm32 -> hcd_handle -> hc[ed -> ux_stm32_ed_channel].ep_ss_schedule = 0U;
+ 124:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_current_ss_frame = frame_index;
+ 125:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             }
+ 126:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 127:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             /* Check if there is transfer needs schedule.  */
+ 128:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             if (ed -> ux_stm32_ed_sch_mode)
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             {
+ 130:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               /* If it's scheduled each SOF/uSOF, the request should be submitted
+ 131:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               * immediately after packet is done. This is performed in callback.  */
+ 132:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               if (ed -> ux_stm32_ed_interval_mask == 0)
+ 133:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 ed -> ux_stm32_ed_sch_mode = 0;
+ 134:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 135:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               /* For ISO OUT, packet size is from request variable,
+ 136:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               * otherwise, use request length.  */
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               if ((ed -> ux_stm32_ed_type == EP_TYPE_ISOC) && (ed -> ux_stm32_ed_dir == 0U))
+ 138:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 ed -> ux_stm32_ed_packet_length = transfer_request -> ux_transfer_request_packet_le
+ 139:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               else
+ 140:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 ed -> ux_stm32_ed_packet_length = transfer_request -> ux_transfer_request_requested
+ 141:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 142:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               /* Prepare transactions.  */
+ 143:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               _ux_hcd_stm32_request_trans_prepare(hcd_stm32, ed, transfer_request);
+ 144:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 145:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               /* Get the pointer to the Endpoint.  */
+ 146:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               endpoint = (UX_ENDPOINT *) transfer_request -> ux_transfer_request_endpoint;
+ 147:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               /* Check if device connected to hub  */
+ 149:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               if (endpoint->ux_endpoint_device->ux_device_parent != NULL)
+ 150:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               {
+ 151:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 parent_device = endpoint->ux_endpoint_device->ux_device_parent;
+ 152:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 if (parent_device->ux_device_current_configuration->ux_configuration_first_interfac
+ 153:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 {
+ 154:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                   parent_endpoint = parent_device->ux_device_current_configuration->ux_configuratio
+ 155:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 156:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                   if (parent_endpoint->ux_endpoint_transfer_request.ux_transfer_request_actual_leng
+ 157:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                   {
+ 158:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     /* The interrupt pipe buffer contains the status change for each of the ports
+ 159:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     the length of the buffer can be 1 or 2 depending on the number of ports.
+ 160:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     Usually, since HUBs can be bus powered the maximum number of ports is 4.
+ 161:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     We must be taking precautions on how we read the buffer content for
+ 162:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     big endian machines.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 5
+
+
+ 163:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     if (parent_endpoint->ux_endpoint_transfer_request.ux_transfer_request_actual_le
+ 164:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                       port_status_change_bits = *(USHORT *) parent_endpoint->ux_endpoint_transfer_r
+ 165:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     else
+ 166:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                       port_status_change_bits = (USHORT)_ux_utility_short_get(parent_endpoint->ux_e
+ 167:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 168:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     if ((port_status_change_bits & (0x1U << endpoint->ux_endpoint_device->ux_device
+ 169:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     {
+ 170:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                       ep_schedule = 0U;
+ 171:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                     }
+ 172:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                   }
+ 173:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 }
+ 174:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               }
+ 175:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 176:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               if ((endpoint->ux_endpoint_device->ux_device_state == UX_DEVICE_CONFIGURED) && (ep_sc
+ 177:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               {
+ 178:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 /* Call HAL driver to submit the transfer request.  */
+ 179:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                 HAL_HCD_HC_SubmitRequest(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel,
+ 180:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                          ed -> ux_stm32_ed_dir,
+ 181:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                          ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 182:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                          ed -> ux_stm32_ed_data + transfer_request -> ux_transfer_r
+ 183:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                          ed -> ux_stm32_ed_packet_length, 0);
+ 184:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               }
+ 185:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             }
+ 186:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           }
+ 187:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         }
+ 188:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****       }
+ 189:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****       else
+ 190:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** #endif /* defined (USBH_HAL_HUB_SPLIT_SUPPORTED) */
+ 191:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****       {
+ 192:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         /* Check if the periodic transfer should be scheduled in this frame.  */
+ 193:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         /* Interval Mask is 0:     it's scheduled every SOF/uSOF.  */
+ 194:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         /* Interval Mask is not 0: check position to see if it's scheduled.  */
+ 195:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         if ((frame_index & ed -> ux_stm32_ed_interval_mask) == ed -> ux_stm32_ed_interval_position)
+ 196:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         {
+ 197:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 198:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           /* Get the transfer request.  */
+ 199:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           transfer_request = ed -> ux_stm32_ed_transfer_request;
+ 200:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 201:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           /* Check if there is transfer needs schedule.  */
+ 202:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           if (transfer_request && ed -> ux_stm32_ed_sch_mode)
+ 203:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           {
+ 204:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 205:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             /* If it's scheduled each SOF/uSOF, the request should be submitted
+ 206:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             * immediately after packet is done. This is performed in callback.  */
+ 207:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             if (ed -> ux_stm32_ed_interval_mask == 0)
+ 208:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_sch_mode = 0;
+ 209:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 210:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             /* For ISO OUT, packet size is from request variable,
+ 211:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             * otherwise, use request length.  */
+ 212:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             if ((ed -> ux_stm32_ed_type == EP_TYPE_ISOC) && (ed -> ux_stm32_ed_dir == 0U))
+  68              		.loc 1 212 13 is_stmt 1 view .LVU12
+  69              		.loc 1 212 21 is_stmt 0 view .LVU13
+  70 0012 94F82C30 		ldrb	r3, [r4, #44]	@ zero_extendqisi2
+  71              		.loc 1 212 16 view .LVU14
+  72 0016 012B     		cmp	r3, #1
+  73 0018 30D0     		beq	.L9
+  74              	.L5:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 6
+
+
+ 213:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_packet_length = transfer_request -> ux_transfer_request_packet_leng
+ 214:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             else
+ 215:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_packet_length = transfer_request -> ux_transfer_request_requested_l
+  75              		.loc 1 215 15 is_stmt 1 view .LVU15
+  76              		.loc 1 215 66 is_stmt 0 view .LVU16
+  77 001a F368     		ldr	r3, [r6, #12]
+  78              		.loc 1 215 47 view .LVU17
+  79 001c A361     		str	r3, [r4, #24]
+  80              	.L6:
+ 216:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 217:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             /* Prepare transactions.  */
+ 218:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             _ux_hcd_stm32_request_trans_prepare(hcd_stm32, ed, transfer_request);
+  81              		.loc 1 218 13 is_stmt 1 view .LVU18
+  82 001e 3246     		mov	r2, r6
+  83 0020 2146     		mov	r1, r4
+  84 0022 3846     		mov	r0, r7
+  85 0024 FFF7FEFF 		bl	_ux_hcd_stm32_request_trans_prepare
+  86              	.LVL6:
+ 219:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 220:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 221:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             /* Call HAL driver to submit the transfer request.  */
+ 222:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             HAL_HCD_HC_SubmitRequest(hcd_stm32 -> hcd_handle, ed -> ux_stm32_ed_channel,
+  87              		.loc 1 222 13 view .LVU19
+ 223:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                      ed -> ux_stm32_ed_dir,
+ 224:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                      ed -> ux_stm32_ed_type, USBH_PID_DATA,
+ 225:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                      transfer_request -> ux_transfer_request_data_pointer +
+  88              		.loc 1 225 55 is_stmt 0 view .LVU20
+  89 0028 B068     		ldr	r0, [r6, #8]
+ 226:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                        transfer_request -> ux_transfer_request_actual_length,
+  90              		.loc 1 226 57 view .LVU21
+  91 002a 3369     		ldr	r3, [r6, #16]
+ 225:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                        transfer_request -> ux_transfer_request_actual_length,
+  92              		.loc 1 225 91 view .LVU22
+  93 002c 1844     		add	r0, r0, r3
+ 227:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                        ed -> ux_stm32_ed_packet_length, 0);
+  94              		.loc 1 227 43 view .LVU23
+  95 002e A669     		ldr	r6, [r4, #24]
+  96              	.LVL7:
+ 222:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****                                      ed -> ux_stm32_ed_dir,
+  97              		.loc 1 222 13 view .LVU24
+  98 0030 94F82C30 		ldrb	r3, [r4, #44]	@ zero_extendqisi2
+  99 0034 94F82A20 		ldrb	r2, [r4, #42]	@ zero_extendqisi2
+ 100 0038 94F82910 		ldrb	r1, [r4, #41]	@ zero_extendqisi2
+ 101 003c 4FF0000C 		mov	ip, #0
+ 102 0040 CDF80CC0 		str	ip, [sp, #12]
+ 103 0044 B6B2     		uxth	r6, r6
+ 104 0046 0296     		str	r6, [sp, #8]
+ 105 0048 0190     		str	r0, [sp, #4]
+ 106 004a 0120     		movs	r0, #1
+ 107 004c 0090     		str	r0, [sp]
+ 108 004e B86C     		ldr	r0, [r7, #72]
+ 109 0050 FFF7FEFF 		bl	HAL_HCD_HC_SubmitRequest
+ 110              	.LVL8:
+ 111              	.L3:
+ 228:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           }
+ 229:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         }
+ 230:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****       }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 7
+
+
+ 231:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 232:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         /* Point to the next ED in the list.  */
+ 233:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         ed =  ed -> ux_stm32_ed_next_ed;
+ 112              		.loc 1 233 9 is_stmt 1 view .LVU25
+ 113              		.loc 1 233 12 is_stmt 0 view .LVU26
+ 114 0054 2468     		ldr	r4, [r4]
+ 115              	.LVL9:
+ 116              	.L2:
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     {
+ 117              		.loc 1 99 11 is_stmt 1 view .LVU27
+ 118 0056 C4B1     		cbz	r4, .L10
+ 195:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         {
+ 119              		.loc 1 195 9 view .LVU28
+ 195:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         {
+ 120              		.loc 1 195 31 is_stmt 0 view .LVU29
+ 121 0058 E369     		ldr	r3, [r4, #28]
+ 195:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         {
+ 122              		.loc 1 195 26 view .LVU30
+ 123 005a 03EA0501 		and	r1, r3, r5
+ 195:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         {
+ 124              		.loc 1 195 67 view .LVU31
+ 125 005e 226A     		ldr	r2, [r4, #32]
+ 195:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****         {
+ 126              		.loc 1 195 12 view .LVU32
+ 127 0060 9142     		cmp	r1, r2
+ 128 0062 F7D1     		bne	.L3
+ 199:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 129              		.loc 1 199 11 is_stmt 1 view .LVU33
+ 199:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 130              		.loc 1 199 28 is_stmt 0 view .LVU34
+ 131 0064 A668     		ldr	r6, [r4, #8]
+ 132              	.LVL10:
+ 202:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           {
+ 133              		.loc 1 202 11 is_stmt 1 view .LVU35
+ 202:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           {
+ 134              		.loc 1 202 14 is_stmt 0 view .LVU36
+ 135 0066 002E     		cmp	r6, #0
+ 136 0068 F4D0     		beq	.L3
+ 202:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           {
+ 137              		.loc 1 202 38 discriminator 1 view .LVU37
+ 138 006a 94F82D20 		ldrb	r2, [r4, #45]	@ zero_extendqisi2
+ 202:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****           {
+ 139              		.loc 1 202 32 discriminator 1 view .LVU38
+ 140 006e 002A     		cmp	r2, #0
+ 141 0070 F0D0     		beq	.L3
+ 207:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_sch_mode = 0;
+ 142              		.loc 1 207 13 is_stmt 1 view .LVU39
+ 207:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_sch_mode = 0;
+ 143              		.loc 1 207 16 is_stmt 0 view .LVU40
+ 144 0072 002B     		cmp	r3, #0
+ 145 0074 CDD1     		bne	.L4
+ 208:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 146              		.loc 1 208 15 is_stmt 1 view .LVU41
+ 208:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 147              		.loc 1 208 42 is_stmt 0 view .LVU42
+ 148 0076 84F82D30 		strb	r3, [r4, #45]
+ 149 007a CAE7     		b	.L4
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 8
+
+
+ 150              	.L9:
+ 212:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_packet_length = transfer_request -> ux_transfer_request_packet_leng
+ 151              		.loc 1 212 65 discriminator 1 view .LVU43
+ 152 007c 94F82A30 		ldrb	r3, [r4, #42]	@ zero_extendqisi2
+ 212:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****               ed -> ux_stm32_ed_packet_length = transfer_request -> ux_transfer_request_packet_leng
+ 153              		.loc 1 212 58 discriminator 1 view .LVU44
+ 154 0080 002B     		cmp	r3, #0
+ 155 0082 CAD1     		bne	.L5
+ 213:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             else
+ 156              		.loc 1 213 15 is_stmt 1 view .LVU45
+ 213:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             else
+ 157              		.loc 1 213 66 is_stmt 0 view .LVU46
+ 158 0084 B36B     		ldr	r3, [r6, #56]
+ 213:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****             else
+ 159              		.loc 1 213 47 view .LVU47
+ 160 0086 A361     		str	r3, [r4, #24]
+ 161 0088 C9E7     		b	.L6
+ 162              	.LVL11:
+ 163              	.L10:
+ 234:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     }
+ 235:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** 
+ 236:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     /* Return to caller.  */
+ 237:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c ****     return(UX_FALSE);
+ 164              		.loc 1 237 5 is_stmt 1 view .LVU48
+ 238:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_periodic_schedule.c **** }
+ 165              		.loc 1 238 1 is_stmt 0 view .LVU49
+ 166 008a 0020     		movs	r0, #0
+ 167 008c 05B0     		add	sp, sp, #20
+ 168              	.LCFI2:
+ 169              		.cfi_def_cfa_offset 20
+ 170              		@ sp needed
+ 171 008e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 172              		.loc 1 238 1 view .LVU50
+ 173              		.cfi_endproc
+ 174              	.LFE143:
+ 176              		.text
+ 177              	.Letext0:
+ 178              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 179              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 180              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 181              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 182              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 183              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 184              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 185              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 186              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 187              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc2YICpd.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_periodic_schedule.c
+C:\Users\HP\AppData\Local\Temp\cc2YICpd.s:20     .text._ux_hcd_stm32_periodic_schedule:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc2YICpd.s:26     .text._ux_hcd_stm32_periodic_schedule:00000000 _ux_hcd_stm32_periodic_schedule
+
+UNDEFINED SYMBOLS
+HAL_HCD_GetCurrentFrame
+_ux_hcd_stm32_request_trans_prepare
+HAL_HCD_HC_SubmitRequest

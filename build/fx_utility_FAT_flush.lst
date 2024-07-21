@@ -1,0 +1,1637 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fx_utility_FAT_flush.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._fx_utility_FAT_flush,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_utility_FAT_flush
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_utility_FAT_flush:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c"
+   1:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  12:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  13:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**   Utility                                                             */
+  19:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  23:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  25:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  26:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  28:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #include "fx_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #include "fx_utility.h"
+  31:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  32:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  33:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+  34:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  35:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  FUNCTION                                               RELEASE        */
+  36:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  37:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    _fx_utility_FAT_flush                               PORTABLE C      */
+  38:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                           6.1.2        */
+  39:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  AUTHOR                                                                */
+  40:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  41:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  42:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  43:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  DESCRIPTION                                                           */
+  44:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    This function flushes the contents of the FAT cache to the media.   */
+  46:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    12-bit, 16-bit and 32-bit FAT writing is supported.                 */
+  47:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  50:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    media_ptr                             Media control block pointer   */
+  51:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  52:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  OUTPUT                                                                */
+  53:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  54:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    return status                                                       */
+  55:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  56:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  CALLS                                                                 */
+  57:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    _fx_utility_16_unsigned_write         Write a UINT into buffer      */
+  59:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    _fx_utility_32_unsigned_read          Read a ULONG from buffer      */
+  60:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    _fx_utility_32_unsigned_write         Write a ULONG into buffer     */
+  61:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    _fx_utility_logical_sector_read       Read FAT sector into memory   */
+  62:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    _fx_utility_logical_sector_write      Write FAT sector back to disk */
+  63:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  64:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  CALLED BY                                                             */
+  65:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    FileX System Functions                                              */
+  67:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  RELEASE HISTORY                                                       */
+  69:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*    DATE              NAME                      DESCRIPTION             */
+  71:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  73:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  74:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*  11-09-2020     William E. Lamie         Modified comment(s),          */
+  76:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                            updated logic for           */
+  77:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                            FAT secondary update map,   */
+  78:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                            resulting in version 6.1.2  */
+  79:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /*                                                                        */
+  80:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** /**************************************************************************/
+  81:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** UINT  _fx_utility_FAT_flush(FX_MEDIA *media_ptr)
+  82:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** {
+  30              		.loc 1 82 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 3
+
+
+  34              		.loc 1 82 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 36
+  38              		.cfi_offset 4, -36
+  39              		.cfi_offset 5, -32
+  40              		.cfi_offset 6, -28
+  41              		.cfi_offset 7, -24
+  42              		.cfi_offset 8, -20
+  43              		.cfi_offset 9, -16
+  44              		.cfi_offset 10, -12
+  45              		.cfi_offset 11, -8
+  46              		.cfi_offset 14, -4
+  47 0004 85B0     		sub	sp, sp, #20
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 56
+  50 0006 0446     		mov	r4, r0
+  83:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  84:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** ULONG  FAT_sector;
+  51              		.loc 1 84 1 is_stmt 1 view .LVU2
+  85:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** ULONG  byte_offset;
+  52              		.loc 1 85 1 view .LVU3
+  86:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** UCHAR *FAT_ptr;
+  53              		.loc 1 86 1 view .LVU4
+  87:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** UINT   temp, i;
+  54              		.loc 1 87 1 view .LVU5
+  88:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** UINT   status, index, ind;
+  55              		.loc 1 88 1 view .LVU6
+  89:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** ULONG  cluster, next_cluster;
+  56              		.loc 1 89 1 view .LVU7
+  90:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** UCHAR  sectors_per_bit;
+  57              		.loc 1 90 1 view .LVU8
+  91:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** INT    multi_sector_entry;
+  58              		.loc 1 91 1 view .LVU9
+  92:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** ULONG  sector;
+  59              		.loc 1 92 1 view .LVU10
+  93:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  94:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+  95:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     /* Increment the number of cache flush requests.  */
+  96:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     media_ptr -> fx_media_fat_cache_flushes++;
+  60              		.loc 1 96 5 view .LVU11
+  61              		.loc 1 96 15 is_stmt 0 view .LVU12
+  62 0008 D0F89031 		ldr	r3, [r0, #400]
+  63              		.loc 1 96 44 view .LVU13
+  64 000c 0133     		adds	r3, r3, #1
+  65 000e C0F89031 		str	r3, [r0, #400]
+  97:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif
+  98:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+  99:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     /* Loop through the media's FAT cache and flush out dirty entries.  */
+ 100:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     for (index = 0; index < FX_MAX_FAT_CACHE; index++)
+  66              		.loc 1 100 5 is_stmt 1 view .LVU14
+  67              	.LVL1:
+  68              		.loc 1 100 16 is_stmt 0 view .LVU15
+  69 0012 0027     		movs	r7, #0
+  70              		.loc 1 100 5 view .LVU16
+  71 0014 17E1     		b	.L2
+  72              	.LVL2:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 4
+
+
+  73              	.L34:
+ 101:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     {
+ 102:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 103:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         /* Determine if the entry is dirty.  */
+ 104:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         if ((media_ptr -> fx_media_fat_cache[index].fx_fat_cache_entry_dirty) == 0)
+ 105:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         {
+ 106:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 107:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* No, just advance to the next entry.  */
+ 108:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             continue;
+ 109:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         }
+ 110:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 111:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         /* Otherwise, the entry is indeed dirty and must be flushed out.  Process
+ 112:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****            relative to the type of FAT that is being used.  */
+ 113:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 114:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         /* Pickup the contents of the FAT cache entry.  */
+ 115:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         cluster =       media_ptr -> fx_media_fat_cache[index].fx_fat_cache_entry_cluster;
+ 116:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 117:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         /* Determine which type of FAT is present.  */
+ 118:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #ifdef FX_ENABLE_EXFAT
+ 119:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         if (media_ptr -> fx_media_FAT_type == FX_FAT12)
+ 120:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #else
+ 121:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         if (media_ptr -> fx_media_12_bit_FAT)
+ 122:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 123:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         {
+ 124:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 125:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Calculate the byte offset to the cluster entry.  */
+ 126:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             byte_offset =  (((ULONG)cluster << 1) + cluster) >> 1;
+  74              		.loc 1 126 13 is_stmt 1 view .LVU17
+  75              		.loc 1 126 51 is_stmt 0 view .LVU18
+  76 0016 06EB4603 		add	r3, r6, r6, lsl #1
+  77              		.loc 1 126 25 view .LVU19
+  78 001a 5D08     		lsrs	r5, r3, #1
+  79              	.LVL3:
+ 127:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 128:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Calculate the FAT sector the requested FAT entry resides in.  */
+ 129:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             FAT_sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+  80              		.loc 1 129 13 is_stmt 1 view .LVU20
+  81              		.loc 1 129 52 is_stmt 0 view .LVU21
+  82 001c A36A     		ldr	r3, [r4, #40]
+  83              		.loc 1 129 40 view .LVU22
+  84 001e B5FBF3F5 		udiv	r5, r5, r3
+  85              	.LVL4:
+ 130:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+  86              		.loc 1 130 34 view .LVU23
+  87 0022 636C     		ldr	r3, [r4, #68]
+ 129:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+  88              		.loc 1 129 24 view .LVU24
+  89 0024 1D44     		add	r5, r5, r3
+  90              	.LVL5:
+ 131:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 132:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Initialize as not written.  */
+ 133:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             multi_sector_entry = -1;
+  91              		.loc 1 133 13 is_stmt 1 view .LVU25
+  92              		.loc 1 133 32 is_stmt 0 view .LVU26
+  93 0026 4FF0FF36 		mov	r6, #-1
+  94              	.LVL6:
+  95              		.loc 1 133 32 view .LVU27
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 5
+
+
+  96 002a 8DE0     		b	.L15
+  97              	.LVL7:
+  98              	.L7:
+ 134:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 135:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             for (;;)
+ 136:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 137:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 138:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Pickup the FAT sector.  */
+ 139:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 status =  _fx_utility_logical_sector_read(media_ptr, (ULONG64) FAT_sector,
+ 140:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                           media_ptr -> fx_media_memory_buffer, ((UL
+ 141:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Determine if an error occurred.  */
+ 143:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (status != FX_SUCCESS)
+ 144:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 145:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 146:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Return the error status.  */
+ 147:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     return(status);
+ 148:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 149:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 150:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Determine if a mulit-sector FAT update is present.  */
+ 151:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (multi_sector_entry != -1)
+ 152:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 153:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 154:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Yes, store the remaining portion of the new FAT entry in the
+ 155:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                        next FAT sector.  */
+ 156:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 157:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Setup a pointer into the buffer.  */
+ 158:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     FAT_ptr =  (UCHAR *)media_ptr -> fx_media_memory_buffer;
+ 159:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 160:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Pickup the cluster and next cluster.  */
+ 161:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     cluster = (media_ptr -> fx_media_fat_cache[multi_sector_entry].fx_fat_cache_ent
+ 162:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     next_cluster = media_ptr -> fx_media_fat_cache[multi_sector_entry].fx_fat_cache
+ 163:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 164:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Determine if the cluster entry is odd or even.  */
+ 165:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     if (cluster & 1)
+ 166:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 167:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 168:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Store the upper 8 bits of the FAT entry.  */
+ 169:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)((next_cluster >> 4) & 0xFF);
+ 170:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 171:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     else
+ 172:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 173:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 174:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Store the upper 4 bits of the FAT entry.  */
+ 175:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         temp =  ((UINT)*FAT_ptr) & 0xF0;
+  99              		.loc 1 175 25 is_stmt 1 view .LVU28
+ 100              		.loc 1 175 40 is_stmt 0 view .LVU29
+ 101 002c 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 102              	.LVL8:
+ 176:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)(temp | ((next_cluster >> 8) & 0xF));
+ 103              		.loc 1 176 25 is_stmt 1 view .LVU30
+ 104              		.loc 1 176 73 is_stmt 0 view .LVU31
+ 105 002e C3F30323 		ubfx	r3, r3, #8, #4
+ 106              	.LVL9:
+ 107              		.loc 1 176 37 view .LVU32
+ 108 0032 21F00F01 		bic	r1, r1, #15
+ 109              	.LVL10:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 6
+
+
+ 110              		.loc 1 176 37 view .LVU33
+ 111 0036 0B43     		orrs	r3, r3, r1
+ 112              		.loc 1 176 34 view .LVU34
+ 113 0038 1370     		strb	r3, [r2]
+ 114              	.LVL11:
+ 177:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 178:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 179:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Clear the multi-sector flag.  */
+ 180:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     multi_sector_entry = -1;
+ 115              		.loc 1 180 40 view .LVU35
+ 116 003a 4FF0FF36 		mov	r6, #-1
+ 117              	.LVL12:
+ 118              		.loc 1 180 40 view .LVU36
+ 119 003e AAE0     		b	.L6
+ 120              	.LVL13:
+ 121              	.L31:
+ 181:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 182:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 183:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Loop through the remainder of the cache to check for multiple entries
+ 184:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                    within the same FAT sector being written out.  */
+ 185:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 for (i = index; i < FX_MAX_FAT_CACHE; i++)
+ 186:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 187:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 188:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Is the cache entry dirty?  */
+ 189:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     if ((media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_dirty) == 0)
+ 190:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 191:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 192:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Not dirty, does not need to be flushed.  */
+ 193:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         continue;
+ 194:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 195:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 196:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Isolate the cluster.  */
+ 197:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     cluster = (media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_cluster);
+ 198:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 199:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Calculate the byte offset to the cluster entry.  */
+ 200:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     byte_offset =  (((ULONG)cluster << 1) + cluster) >> 1;
+ 201:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 202:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Pickup the sector.  */
+ 203:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+ 204:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 205:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 206:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Is it the current FAT sector?  */
+ 207:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     if (sector != FAT_sector)
+ 208:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 209:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 210:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Different FAT sector - not in this pass of the loop.  */
+ 211:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         continue;
+ 212:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 213:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 214:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Pickup new value for this FAT entry.  */
+ 215:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     next_cluster =  media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_value;
+ 216:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 217:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Now calculate the byte offset into this FAT sector.  */
+ 218:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     byte_offset =  byte_offset -
+ 219:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         ((FAT_sector - (ULONG)media_ptr -> fx_media_reserved_sectors) *
+ 220:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                          media_ptr -> fx_media_bytes_per_sector);
+ 221:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 7
+
+
+ 222:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Determine if we are now past the end of the FAT buffer in memory.  */
+ 223:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     if (byte_offset == (ULONG)(media_ptr -> fx_media_bytes_per_sector - 1))
+ 224:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 225:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 226:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Yes, we need to read the next sector */
+ 227:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         multi_sector_entry = (INT)i;
+ 122              		.loc 1 227 25 is_stmt 1 view .LVU37
+ 123              		.loc 1 227 44 is_stmt 0 view .LVU38
+ 124 0040 1E46     		mov	r6, r3
+ 125              	.LVL14:
+ 126              		.loc 1 227 44 view .LVU39
+ 127 0042 34E0     		b	.L9
+ 128              	.LVL15:
+ 129              	.L10:
+ 228:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 229:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 230:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Setup a pointer into the buffer.  */
+ 231:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     FAT_ptr =  (UCHAR *)media_ptr -> fx_media_memory_buffer + (UINT)byte_offset;
+ 232:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 233:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Clear the dirty flag.  */
+ 234:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_dirty = 0;
+ 235:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 236:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Determine if the cluster entry is odd or even.  */
+ 237:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     if (cluster & 1)
+ 238:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 239:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 240:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Odd cluster number.  */
+ 241:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 242:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Pickup the upper nibble of the FAT entry.  */
+ 243:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 244:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* First, set the lower nibble of the FAT entry.  */
+ 245:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         temp =      (((UINT)*FAT_ptr) & 0x0F);
+ 246:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)(temp | ((next_cluster << 4) & 0xF0));
+ 247:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 248:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Determine if this is a mulit-sector entry.  */
+ 249:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         if ((multi_sector_entry) == (INT)i)
+ 250:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         {
+ 251:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 252:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                             /* Yes, requires multiple sector - will write rest of the part later.  
+ 253:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                             continue;
+ 254:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         }
+ 255:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 256:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Move to the next byte of the FAT entry.  */
+ 257:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         FAT_ptr++;
+ 258:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 259:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Store the upper 8 bits of the FAT entry.  */
+ 260:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)((next_cluster >> 4) & 0xFF);
+ 261:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 262:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     else
+ 263:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 264:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 265:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Even cluster number.  */
+ 266:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 267:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Store the lower byte of the FAT entry.  */
+ 268:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)(next_cluster & 0xFF);
+ 130              		.loc 1 268 25 is_stmt 1 view .LVU40
+ 131              		.loc 1 268 34 is_stmt 0 view .LVU41
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 8
+
+
+ 132 0044 0AF80010 		strb	r1, [r10, r0]
+ 269:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 270:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Determine if this is a mulit-sector entry.  */
+ 271:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         if ((multi_sector_entry) == (INT)i)
+ 133              		.loc 1 271 25 is_stmt 1 view .LVU42
+ 134              		.loc 1 271 28 is_stmt 0 view .LVU43
+ 135 0048 B342     		cmp	r3, r6
+ 136 004a 08D0     		beq	.L8
+ 272:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         {
+ 273:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 274:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                             /* Yes, requires multiple sector - will write rest of the part later.  
+ 275:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                             continue;
+ 276:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         }
+ 277:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 278:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Move to the next nibble of the FAT entry.  */
+ 279:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         FAT_ptr++;
+ 137              		.loc 1 279 25 is_stmt 1 view .LVU44
+ 138              	.LVL16:
+ 280:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 281:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         /* Store the upper 4 bits of the FAT entry.  */
+ 282:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         temp =  ((UINT)*FAT_ptr) & 0xF0;
+ 139              		.loc 1 282 25 view .LVU45
+ 140              		.loc 1 282 40 is_stmt 0 view .LVU46
+ 141 004c 9CF80120 		ldrb	r2, [ip, #1]	@ zero_extendqisi2
+ 142              	.LVL17:
+ 283:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)(temp | ((next_cluster >> 8) & 0xF));
+ 143              		.loc 1 283 25 is_stmt 1 view .LVU47
+ 144              		.loc 1 283 73 is_stmt 0 view .LVU48
+ 145 0050 C1F30321 		ubfx	r1, r1, #8, #4
+ 146              	.LVL18:
+ 147              		.loc 1 283 37 view .LVU49
+ 148 0054 22F00F02 		bic	r2, r2, #15
+ 149              	.LVL19:
+ 150              		.loc 1 283 37 view .LVU50
+ 151 0058 1143     		orrs	r1, r1, r2
+ 152              		.loc 1 283 34 view .LVU51
+ 153 005a 8CF80110 		strb	r1, [ip, #1]
+ 154              	.LVL20:
+ 155              	.L8:
+ 185:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 156              		.loc 1 185 55 is_stmt 1 discriminator 2 view .LVU52
+ 185:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 157              		.loc 1 185 56 is_stmt 0 discriminator 2 view .LVU53
+ 158 005e 0133     		adds	r3, r3, #1
+ 159              	.LVL21:
+ 160              	.L11:
+ 185:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 161              		.loc 1 185 33 is_stmt 1 discriminator 1 view .LVU54
+ 185:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 162              		.loc 1 185 17 is_stmt 0 discriminator 1 view .LVU55
+ 163 0060 0F2B     		cmp	r3, #15
+ 164 0062 44D8     		bhi	.L30
+ 189:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 165              		.loc 1 189 21 is_stmt 1 view .LVU56
+ 189:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 166              		.loc 1 189 60 is_stmt 0 view .LVU57
+ 167 0064 03EB4302 		add	r2, r3, r3, lsl #1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 9
+
+
+ 168 0068 04EB8202 		add	r2, r4, r2, lsl #2
+ 169 006c D2F86027 		ldr	r2, [r2, #1888]
+ 189:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 170              		.loc 1 189 24 view .LVU58
+ 171 0070 002A     		cmp	r2, #0
+ 172 0072 F4D0     		beq	.L8
+ 197:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 173              		.loc 1 197 21 is_stmt 1 view .LVU59
+ 197:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 174              		.loc 1 197 29 is_stmt 0 view .LVU60
+ 175 0074 03EB4302 		add	r2, r3, r3, lsl #1
+ 176 0078 04EB8202 		add	r2, r4, r2, lsl #2
+ 177 007c D2F858E7 		ldr	lr, [r2, #1880]
+ 178              	.LVL22:
+ 200:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 179              		.loc 1 200 21 is_stmt 1 view .LVU61
+ 200:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 180              		.loc 1 200 59 is_stmt 0 view .LVU62
+ 181 0080 0EEB4E00 		add	r0, lr, lr, lsl #1
+ 200:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 182              		.loc 1 200 33 view .LVU63
+ 183 0084 4FEA500C 		lsr	ip, r0, #1
+ 184              	.LVL23:
+ 203:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 185              		.loc 1 203 21 is_stmt 1 view .LVU64
+ 203:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 186              		.loc 1 203 56 is_stmt 0 view .LVU65
+ 187 0088 A26A     		ldr	r2, [r4, #40]
+ 203:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 188              		.loc 1 203 44 view .LVU66
+ 189 008a BCFBF2F1 		udiv	r1, ip, r2
+ 204:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 190              		.loc 1 204 42 view .LVU67
+ 191 008e 606C     		ldr	r0, [r4, #68]
+ 203:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 192              		.loc 1 203 28 view .LVU68
+ 193 0090 0144     		add	r1, r1, r0
+ 194              	.LVL24:
+ 207:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 195              		.loc 1 207 21 is_stmt 1 view .LVU69
+ 207:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 196              		.loc 1 207 24 is_stmt 0 view .LVU70
+ 197 0092 8D42     		cmp	r5, r1
+ 198 0094 E3D1     		bne	.L8
+ 215:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 199              		.loc 1 215 21 is_stmt 1 view .LVU71
+ 215:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 200              		.loc 1 215 34 is_stmt 0 view .LVU72
+ 201 0096 03EB4301 		add	r1, r3, r3, lsl #1
+ 202              	.LVL25:
+ 215:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 203              		.loc 1 215 34 view .LVU73
+ 204 009a 04EB8101 		add	r1, r4, r1, lsl #2
+ 205 009e D1F85C17 		ldr	r1, [r1, #1884]
+ 206              	.LVL26:
+ 218:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         ((FAT_sector - (ULONG)media_ptr -> fx_media_reserved_sectors) *
+ 207              		.loc 1 218 21 is_stmt 1 view .LVU74
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 10
+
+
+ 219:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                          media_ptr -> fx_media_bytes_per_sector);
+ 208              		.loc 1 219 38 is_stmt 0 view .LVU75
+ 209 00a2 281A     		subs	r0, r5, r0
+ 210              	.LVL27:
+ 218:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         ((FAT_sector - (ULONG)media_ptr -> fx_media_reserved_sectors) *
+ 211              		.loc 1 218 33 view .LVU76
+ 212 00a4 00FB12C0 		mls	r0, r0, r2, ip
+ 213              	.LVL28:
+ 223:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 214              		.loc 1 223 21 is_stmt 1 view .LVU77
+ 223:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 215              		.loc 1 223 87 is_stmt 0 view .LVU78
+ 216 00a8 013A     		subs	r2, r2, #1
+ 217              	.LVL29:
+ 223:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 218              		.loc 1 223 24 view .LVU79
+ 219 00aa 8242     		cmp	r2, r0
+ 220 00ac C8D0     		beq	.L31
+ 221              	.L9:
+ 231:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 222              		.loc 1 231 21 is_stmt 1 view .LVU80
+ 231:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 223              		.loc 1 231 51 is_stmt 0 view .LVU81
+ 224 00ae D4F808A0 		ldr	r10, [r4, #8]
+ 231:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 225              		.loc 1 231 29 view .LVU82
+ 226 00b2 0AEB000C 		add	ip, r10, r0
+ 227              	.LVL30:
+ 234:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 228              		.loc 1 234 21 is_stmt 1 view .LVU83
+ 234:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 229              		.loc 1 234 81 is_stmt 0 view .LVU84
+ 230 00b6 03EB4302 		add	r2, r3, r3, lsl #1
+ 231 00ba 04EB8202 		add	r2, r4, r2, lsl #2
+ 232 00be 4FF0000B 		mov	fp, #0
+ 233 00c2 C2F860B7 		str	fp, [r2, #1888]
+ 234              	.LVL31:
+ 237:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 235              		.loc 1 237 21 is_stmt 1 view .LVU85
+ 237:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 236              		.loc 1 237 24 is_stmt 0 view .LVU86
+ 237 00c6 1EF0010F 		tst	lr, #1
+ 238 00ca BBD0     		beq	.L10
+ 245:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)(temp | ((next_cluster << 4) & 0xF0));
+ 239              		.loc 1 245 25 is_stmt 1 view .LVU87
+ 245:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         *FAT_ptr =  (UCHAR)(temp | ((next_cluster << 4) & 0xF0));
+ 240              		.loc 1 245 45 is_stmt 0 view .LVU88
+ 241 00cc 1AF800E0 		ldrb	lr, [r10, r0]	@ zero_extendqisi2
+ 242              	.LVL32:
+ 246:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 243              		.loc 1 246 25 is_stmt 1 view .LVU89
+ 246:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 244              		.loc 1 246 67 is_stmt 0 view .LVU90
+ 245 00d0 0A01     		lsls	r2, r1, #4
+ 246 00d2 D2B2     		uxtb	r2, r2
+ 246:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 247              		.loc 1 246 37 view .LVU91
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 11
+
+
+ 248 00d4 0EF00F0E 		and	lr, lr, #15
+ 249              	.LVL33:
+ 246:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 250              		.loc 1 246 37 view .LVU92
+ 251 00d8 42EA0E02 		orr	r2, r2, lr
+ 246:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 252              		.loc 1 246 34 view .LVU93
+ 253 00dc 0AF80020 		strb	r2, [r10, r0]
+ 254              	.LVL34:
+ 249:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         {
+ 255              		.loc 1 249 25 is_stmt 1 view .LVU94
+ 249:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                         {
+ 256              		.loc 1 249 28 is_stmt 0 view .LVU95
+ 257 00e0 B342     		cmp	r3, r6
+ 258 00e2 BCD0     		beq	.L8
+ 257:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 259              		.loc 1 257 25 is_stmt 1 view .LVU96
+ 260              	.LVL35:
+ 260:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 261              		.loc 1 260 25 view .LVU97
+ 260:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 262              		.loc 1 260 37 is_stmt 0 view .LVU98
+ 263 00e4 C1F30711 		ubfx	r1, r1, #4, #8
+ 264              	.LVL36:
+ 260:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 265              		.loc 1 260 34 view .LVU99
+ 266 00e8 8CF80110 		strb	r1, [ip, #1]
+ 267 00ec B7E7     		b	.L8
+ 268              	.LVL37:
+ 269              	.L30:
+ 284:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 285:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 286:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 287:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* First, write out the current sector. */
+ 288:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 status =  _fx_utility_logical_sector_write(media_ptr, (ULONG64) FAT_sector,
+ 270              		.loc 1 288 17 is_stmt 1 view .LVU100
+ 289:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                            media_ptr -> fx_media_memory_buffer, ((U
+ 271              		.loc 1 289 70 is_stmt 0 view .LVU101
+ 272 00ee A368     		ldr	r3, [r4, #8]
+ 273              	.LVL38:
+ 288:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                            media_ptr -> fx_media_memory_buffer, ((U
+ 274              		.loc 1 288 27 view .LVU102
+ 275 00f0 0222     		movs	r2, #2
+ 276 00f2 0292     		str	r2, [sp, #8]
+ 277 00f4 0122     		movs	r2, #1
+ 278 00f6 0192     		str	r2, [sp, #4]
+ 279 00f8 0093     		str	r3, [sp]
+ 280 00fa 4A46     		mov	r2, r9
+ 281 00fc 4346     		mov	r3, r8
+ 282 00fe 2046     		mov	r0, r4
+ 283 0100 FFF7FEFF 		bl	_fx_utility_logical_sector_write
+ 284              	.LVL39:
+ 290:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Determine if an error occurred.  */
+ 291:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (status != FX_SUCCESS)
+ 285              		.loc 1 291 17 is_stmt 1 view .LVU103
+ 286              		.loc 1 291 20 is_stmt 0 view .LVU104
+ 287 0104 0346     		mov	r3, r0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 12
+
+
+ 288 0106 0028     		cmp	r0, #0
+ 289 0108 40F03D81 		bne	.L1
+ 292:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 293:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 294:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Return the error status.  */
+ 295:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     return(status);
+ 296:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 297:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 298:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Mark the FAT sector update bit map to indicate this sector has been written.  */
+ 299:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (media_ptr -> fx_media_sectors_per_FAT % (FX_FAT_MAP_SIZE << 3) == 0)
+ 290              		.loc 1 299 17 is_stmt 1 view .LVU105
+ 291              		.loc 1 299 31 is_stmt 0 view .LVU106
+ 292 010c A36D     		ldr	r3, [r4, #88]
+ 293              		.loc 1 299 59 view .LVU107
+ 294 010e C3F30902 		ubfx	r2, r3, #0, #10
+ 295              		.loc 1 299 20 view .LVU108
+ 296 0112 002A     		cmp	r2, #0
+ 297 0114 41D1     		bne	.L13
+ 300:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 301:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     sectors_per_bit =  (UCHAR)((UINT)media_ptr -> fx_media_sectors_per_FAT / (FX_FA
+ 298              		.loc 1 301 21 is_stmt 1 view .LVU109
+ 299              		.loc 1 301 37 is_stmt 0 view .LVU110
+ 300 0116 C3F38722 		ubfx	r2, r3, #10, #8
+ 301              	.LVL40:
+ 302              	.L14:
+ 302:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 303:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 else
+ 304:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 305:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     sectors_per_bit =  (UCHAR)((UINT)media_ptr -> fx_media_sectors_per_FAT / (FX_FA
+ 306:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 307:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 308:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Check for invalid value.  */
+ 309:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (sectors_per_bit == 0)
+ 303              		.loc 1 309 17 is_stmt 1 view .LVU111
+ 304              		.loc 1 309 20 is_stmt 0 view .LVU112
+ 305 011a 002A     		cmp	r2, #0
+ 306 011c 00F03781 		beq	.L28
+ 310:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 311:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 312:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Invalid media, return error.  */
+ 313:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     return(FX_MEDIA_INVALID);
+ 314:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 315:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 316:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 ind = ((FAT_sector - media_ptr -> fx_media_reserved_sectors) / sectors_per_bit) >> 
+ 307              		.loc 1 316 17 is_stmt 1 view .LVU113
+ 308              		.loc 1 316 48 is_stmt 0 view .LVU114
+ 309 0120 636C     		ldr	r3, [r4, #68]
+ 310              		.loc 1 316 36 view .LVU115
+ 311 0122 EB1A     		subs	r3, r5, r3
+ 312              		.loc 1 316 78 view .LVU116
+ 313 0124 B3FBF2F3 		udiv	r3, r3, r2
+ 314              	.LVL41:
+ 317:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 media_ptr -> fx_media_fat_secondary_update_map[ind] = 
+ 315              		.loc 1 317 17 is_stmt 1 view .LVU117
+ 318:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     (UCHAR)((INT)media_ptr -> fx_media_fat_secondary_update_map[ind]
+ 316              		.loc 1 318 80 is_stmt 0 view .LVU118
+ 317 0128 04EBD300 		add	r0, r4, r3, lsr #3
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 13
+
+
+ 318              	.LVL42:
+ 319              		.loc 1 318 80 view .LVU119
+ 320 012c 90F91828 		ldrsb	r2, [r0, #2072]
+ 321              	.LVL43:
+ 319:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     | (1 <<(((FAT_sector - media_ptr -> fx_media_reserved_sectors) / sectors_per_bi
+ 322              		.loc 1 319 103 view .LVU120
+ 323 0130 03F00703 		and	r3, r3, #7
+ 324              	.LVL44:
+ 325              		.loc 1 319 26 view .LVU121
+ 326 0134 0121     		movs	r1, #1
+ 327 0136 01FA03F3 		lsl	r3, r1, r3
+ 328              		.loc 1 319 21 view .LVU122
+ 329 013a 1343     		orrs	r3, r3, r2
+ 317:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 media_ptr -> fx_media_fat_secondary_update_map[ind] = 
+ 330              		.loc 1 317 69 view .LVU123
+ 331 013c 80F81838 		strb	r3, [r0, #2072]
+ 320:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 321:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Determine if the multi-sector flag is set.  */
+ 322:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (multi_sector_entry != -1)
+ 332              		.loc 1 322 17 is_stmt 1 view .LVU124
+ 333              		.loc 1 322 20 is_stmt 0 view .LVU125
+ 334 0140 B6F1FF3F 		cmp	r6, #-1
+ 335 0144 7ED0     		beq	.L3
+ 323:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 324:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 325:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Yes, position to the next sector and read it in.  */
+ 326:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     FAT_sector++;
+ 336              		.loc 1 326 21 is_stmt 1 view .LVU126
+ 337              		.loc 1 326 31 is_stmt 0 view .LVU127
+ 338 0146 0D44     		add	r5, r5, r1
+ 339              	.LVL45:
+ 135:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 340              		.loc 1 135 19 is_stmt 1 view .LVU128
+ 341              	.L15:
+ 135:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 342              		.loc 1 135 13 view .LVU129
+ 139:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                           media_ptr -> fx_media_memory_buffer, ((UL
+ 343              		.loc 1 139 17 view .LVU130
+ 139:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                           media_ptr -> fx_media_memory_buffer, ((UL
+ 344              		.loc 1 139 27 is_stmt 0 view .LVU131
+ 345 0148 4FF00008 		mov	r8, #0
+ 346 014c A946     		mov	r9, r5
+ 140:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 347              		.loc 1 140 69 view .LVU132
+ 348 014e A368     		ldr	r3, [r4, #8]
+ 139:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                           media_ptr -> fx_media_memory_buffer, ((UL
+ 349              		.loc 1 139 27 view .LVU133
+ 350 0150 0222     		movs	r2, #2
+ 351 0152 0292     		str	r2, [sp, #8]
+ 352 0154 0122     		movs	r2, #1
+ 353 0156 0192     		str	r2, [sp, #4]
+ 354 0158 0093     		str	r3, [sp]
+ 355 015a 2A46     		mov	r2, r5
+ 356 015c 4346     		mov	r3, r8
+ 357 015e 2046     		mov	r0, r4
+ 358 0160 FFF7FEFF 		bl	_fx_utility_logical_sector_read
+ 359              	.LVL46:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 14
+
+
+ 143:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 360              		.loc 1 143 17 is_stmt 1 view .LVU134
+ 143:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 361              		.loc 1 143 20 is_stmt 0 view .LVU135
+ 362 0164 0346     		mov	r3, r0
+ 363 0166 0028     		cmp	r0, #0
+ 364 0168 40F00D81 		bne	.L1
+ 151:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 365              		.loc 1 151 17 is_stmt 1 view .LVU136
+ 151:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 366              		.loc 1 151 20 is_stmt 0 view .LVU137
+ 367 016c B6F1FF3F 		cmp	r6, #-1
+ 368 0170 11D0     		beq	.L6
+ 158:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 369              		.loc 1 158 21 is_stmt 1 view .LVU138
+ 158:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 370              		.loc 1 158 29 is_stmt 0 view .LVU139
+ 371 0172 A268     		ldr	r2, [r4, #8]
+ 372              	.LVL47:
+ 161:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     next_cluster = media_ptr -> fx_media_fat_cache[multi_sector_entry].fx_fat_cache
+ 373              		.loc 1 161 21 is_stmt 1 view .LVU140
+ 161:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     next_cluster = media_ptr -> fx_media_fat_cache[multi_sector_entry].fx_fat_cache
+ 374              		.loc 1 161 29 is_stmt 0 view .LVU141
+ 375 0174 06EB4603 		add	r3, r6, r6, lsl #1
+ 376 0178 04EB8303 		add	r3, r4, r3, lsl #2
+ 377 017c D3F85817 		ldr	r1, [r3, #1880]
+ 378              	.LVL48:
+ 162:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 379              		.loc 1 162 21 is_stmt 1 view .LVU142
+ 162:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 380              		.loc 1 162 34 is_stmt 0 view .LVU143
+ 381 0180 D3F85C37 		ldr	r3, [r3, #1884]
+ 382              	.LVL49:
+ 165:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 383              		.loc 1 165 21 is_stmt 1 view .LVU144
+ 165:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     {
+ 384              		.loc 1 165 24 is_stmt 0 view .LVU145
+ 385 0184 11F0010F 		tst	r1, #1
+ 386 0188 3FF450AF 		beq	.L7
+ 169:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 387              		.loc 1 169 25 is_stmt 1 view .LVU146
+ 169:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 388              		.loc 1 169 37 is_stmt 0 view .LVU147
+ 389 018c C3F30713 		ubfx	r3, r3, #4, #8
+ 390              	.LVL50:
+ 169:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     }
+ 391              		.loc 1 169 34 view .LVU148
+ 392 0190 1370     		strb	r3, [r2]
+ 393              	.LVL51:
+ 180:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 394              		.loc 1 180 40 view .LVU149
+ 395 0192 4FF0FF36 		mov	r6, #-1
+ 396              	.LVL52:
+ 397              	.L6:
+ 180:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 398              		.loc 1 180 40 discriminator 1 view .LVU150
+ 399 0196 3B46     		mov	r3, r7
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 15
+
+
+ 400 0198 62E7     		b	.L11
+ 401              	.LVL53:
+ 402              	.L13:
+ 305:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 403              		.loc 1 305 21 is_stmt 1 view .LVU151
+ 305:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 404              		.loc 1 305 40 is_stmt 0 view .LVU152
+ 405 019a C3F38723 		ubfx	r3, r3, #10, #8
+ 305:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 406              		.loc 1 305 37 view .LVU153
+ 407 019e 0133     		adds	r3, r3, #1
+ 408 01a0 DAB2     		uxtb	r2, r3
+ 409              	.LVL54:
+ 305:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 410              		.loc 1 305 37 view .LVU154
+ 411 01a2 BAE7     		b	.L14
+ 412              	.LVL55:
+ 413              	.L18:
+ 327:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 328:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 else
+ 329:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 330:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 331:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* No, we are finished with this loop.   */
+ 332:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     break;
+ 333:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 334:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 335:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         }
+ 336:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #ifdef FX_ENABLE_EXFAT
+ 337:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         else if (media_ptr -> fx_media_FAT_type == FX_FAT16)
+ 338:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #else
+ 339:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         else if (!media_ptr -> fx_media_32_bit_FAT)
+ 340:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 341:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         {
+ 342:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 343:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* 16-bit FAT is present.  */
+ 344:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 345:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Calculate the byte offset to the cluster entry.  */
+ 346:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             byte_offset =  (((ULONG)cluster) << 1);
+ 347:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 348:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Calculate the FAT sector the requested FAT entry resides in.  */
+ 349:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             FAT_sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+ 350:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 351:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 352:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Read the FAT sector.  */
+ 353:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             status =  _fx_utility_logical_sector_read(media_ptr, (ULONG64) FAT_sector,
+ 354:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 355:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 356:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Determine if an error occurred.  */
+ 357:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             if (status != FX_SUCCESS)
+ 358:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 359:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 360:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Return the error status.  */
+ 361:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 return(status);
+ 362:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 363:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 364:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Loop through the remainder of the cache to check for multiple entries
+ 365:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                within the same FAT sector being written out.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 16
+
+
+ 366:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             for (i = index; i < FX_MAX_FAT_CACHE; i++)
+ 414              		.loc 1 366 51 is_stmt 1 discriminator 2 view .LVU155
+ 415              		.loc 1 366 52 is_stmt 0 discriminator 2 view .LVU156
+ 416 01a4 0135     		adds	r5, r5, #1
+ 417              	.LVL56:
+ 418              	.L17:
+ 419              		.loc 1 366 29 is_stmt 1 discriminator 1 view .LVU157
+ 420              		.loc 1 366 13 is_stmt 0 discriminator 1 view .LVU158
+ 421 01a6 0F2D     		cmp	r5, #15
+ 422 01a8 26D8     		bhi	.L32
+ 367:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 368:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 369:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Determine if the entry is dirty.  */
+ 370:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_dirty == 0)
+ 423              		.loc 1 370 17 is_stmt 1 view .LVU159
+ 424              		.loc 1 370 55 is_stmt 0 view .LVU160
+ 425 01aa 05EB4503 		add	r3, r5, r5, lsl #1
+ 426 01ae 04EB8303 		add	r3, r4, r3, lsl #2
+ 427 01b2 D3F86037 		ldr	r3, [r3, #1888]
+ 428              		.loc 1 370 20 view .LVU161
+ 429 01b6 002B     		cmp	r3, #0
+ 430 01b8 F4D0     		beq	.L18
+ 371:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 372:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 373:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Not dirty, does not need to be flushed.  */
+ 374:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     continue;
+ 375:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 376:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 377:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Isolate the cluster.  */
+ 378:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 cluster = (media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_cluster);
+ 431              		.loc 1 378 17 is_stmt 1 view .LVU162
+ 432              		.loc 1 378 25 is_stmt 0 view .LVU163
+ 433 01ba 05EB4503 		add	r3, r5, r5, lsl #1
+ 434 01be 04EB8303 		add	r3, r4, r3, lsl #2
+ 435 01c2 D3F85807 		ldr	r0, [r3, #1880]
+ 436              	.LVL57:
+ 379:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 380:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Calculate the byte offset to the cluster entry.  */
+ 381:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 byte_offset =  (((ULONG)cluster) * 2);
+ 437              		.loc 1 381 17 is_stmt 1 view .LVU164
+ 438              		.loc 1 381 29 is_stmt 0 view .LVU165
+ 439 01c6 4000     		lsls	r0, r0, #1
+ 440              	.LVL58:
+ 382:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 383:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Pickup the sector.  */
+ 384:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+ 441              		.loc 1 384 17 is_stmt 1 view .LVU166
+ 442              		.loc 1 384 52 is_stmt 0 view .LVU167
+ 443 01c8 A16A     		ldr	r1, [r4, #40]
+ 444              		.loc 1 384 40 view .LVU168
+ 445 01ca B0FBF1F3 		udiv	r3, r0, r1
+ 446              	.LVL59:
+ 385:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 447              		.loc 1 385 38 view .LVU169
+ 448 01ce 626C     		ldr	r2, [r4, #68]
+ 384:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 449              		.loc 1 384 24 view .LVU170
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 17
+
+
+ 450 01d0 1344     		add	r3, r3, r2
+ 451              	.LVL60:
+ 386:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 387:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Is it the current FAT sector?  */
+ 388:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (sector != FAT_sector)
+ 452              		.loc 1 388 17 is_stmt 1 view .LVU171
+ 453              		.loc 1 388 20 is_stmt 0 view .LVU172
+ 454 01d2 9E42     		cmp	r6, r3
+ 455 01d4 E6D1     		bne	.L18
+ 389:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 390:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 391:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Different FAT sector - not in this pass of the loop.  */
+ 392:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     continue;
+ 393:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 394:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 395:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Now calculate the byte offset into this FAT sector.  */
+ 396:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 byte_offset =  byte_offset -
+ 456              		.loc 1 396 17 is_stmt 1 view .LVU173
+ 397:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     ((FAT_sector - (ULONG)media_ptr -> fx_media_reserved_sectors) *
+ 457              		.loc 1 397 34 is_stmt 0 view .LVU174
+ 458 01d6 B21A     		subs	r2, r6, r2
+ 396:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     ((FAT_sector - (ULONG)media_ptr -> fx_media_reserved_sectors) *
+ 459              		.loc 1 396 29 view .LVU175
+ 460 01d8 02FB1100 		mls	r0, r2, r1, r0
+ 461              	.LVL61:
+ 398:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                      media_ptr -> fx_media_bytes_per_sector);
+ 399:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 400:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Setup a pointer into the buffer.  */
+ 401:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 FAT_ptr =  (UCHAR *)media_ptr -> fx_media_memory_buffer + (UINT)byte_offset;
+ 462              		.loc 1 401 17 is_stmt 1 view .LVU176
+ 463              		.loc 1 401 47 is_stmt 0 view .LVU177
+ 464 01dc A368     		ldr	r3, [r4, #8]
+ 465              	.LVL62:
+ 402:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 403:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Pickup new value for this FAT entry.  */
+ 404:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 next_cluster =  media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_value;
+ 466              		.loc 1 404 17 is_stmt 1 view .LVU178
+ 467              		.loc 1 404 30 is_stmt 0 view .LVU179
+ 468 01de 05EB4509 		add	r9, r5, r5, lsl #1
+ 469              	.LVL63:
+ 470              		.loc 1 404 30 view .LVU180
+ 471 01e2 04EB8909 		add	r9, r4, r9, lsl #2
+ 472              	.LVL64:
+ 405:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 406:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Store the FAT entry.  */
+ 407:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 _fx_utility_16_unsigned_write(FAT_ptr, (UINT)next_cluster);
+ 473              		.loc 1 407 17 is_stmt 1 view .LVU181
+ 474 01e6 D9F85C17 		ldr	r1, [r9, #1884]
+ 475              	.LVL65:
+ 476              		.loc 1 407 17 is_stmt 0 view .LVU182
+ 477 01ea 1844     		add	r0, r0, r3
+ 478              	.LVL66:
+ 479              		.loc 1 407 17 view .LVU183
+ 480 01ec FFF7FEFF 		bl	_fx_utility_16_unsigned_write
+ 481              	.LVL67:
+ 408:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 409:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Clear the dirty flag.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 18
+
+
+ 410:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_dirty = 0;
+ 482              		.loc 1 410 17 is_stmt 1 view .LVU184
+ 483              		.loc 1 410 77 is_stmt 0 view .LVU185
+ 484 01f0 0023     		movs	r3, #0
+ 485 01f2 C9F86037 		str	r3, [r9, #1888]
+ 486 01f6 D5E7     		b	.L18
+ 487              	.L32:
+ 411:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 412:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 413:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Write the last written FAT sector out.  */
+ 414:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             status =  _fx_utility_logical_sector_write(media_ptr, (ULONG64) FAT_sector,
+ 488              		.loc 1 414 13 is_stmt 1 view .LVU186
+ 415:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                        media_ptr -> fx_media_memory_buffer, ((ULONG
+ 489              		.loc 1 415 66 is_stmt 0 view .LVU187
+ 490 01f8 A368     		ldr	r3, [r4, #8]
+ 414:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                        media_ptr -> fx_media_memory_buffer, ((ULONG
+ 491              		.loc 1 414 23 view .LVU188
+ 492 01fa 0222     		movs	r2, #2
+ 493 01fc 0292     		str	r2, [sp, #8]
+ 494 01fe 0122     		movs	r2, #1
+ 495 0200 0192     		str	r2, [sp, #4]
+ 496 0202 0093     		str	r3, [sp]
+ 497 0204 3246     		mov	r2, r6
+ 498 0206 4346     		mov	r3, r8
+ 499 0208 2046     		mov	r0, r4
+ 500 020a FFF7FEFF 		bl	_fx_utility_logical_sector_write
+ 501              	.LVL68:
+ 416:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 417:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Determine if an error occurred.  */
+ 418:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             if (status != FX_SUCCESS)
+ 502              		.loc 1 418 13 is_stmt 1 view .LVU189
+ 503              		.loc 1 418 16 is_stmt 0 view .LVU190
+ 504 020e 0346     		mov	r3, r0
+ 505 0210 0028     		cmp	r0, #0
+ 506 0212 40F0B880 		bne	.L1
+ 419:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 420:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Return the error status.  */
+ 421:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 return(status);
+ 422:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 423:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 424:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Mark the FAT sector update bit map to indicate this sector has been
+ 425:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                written.  */
+ 426:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             if (media_ptr -> fx_media_sectors_per_FAT % (FX_FAT_MAP_SIZE << 3) == 0)
+ 507              		.loc 1 426 13 is_stmt 1 view .LVU191
+ 508              		.loc 1 426 27 is_stmt 0 view .LVU192
+ 509 0216 A36D     		ldr	r3, [r4, #88]
+ 510              		.loc 1 426 55 view .LVU193
+ 511 0218 C3F30902 		ubfx	r2, r3, #0, #10
+ 512              		.loc 1 426 16 view .LVU194
+ 513 021c 002A     		cmp	r2, #0
+ 514 021e 41D1     		bne	.L20
+ 427:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 428:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 sectors_per_bit =  (UCHAR)(media_ptr -> fx_media_sectors_per_FAT / (FX_FAT_MAP_SIZE
+ 515              		.loc 1 428 17 is_stmt 1 view .LVU195
+ 516              		.loc 1 428 33 is_stmt 0 view .LVU196
+ 517 0220 C3F38722 		ubfx	r2, r3, #10, #8
+ 518              	.LVL69:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 19
+
+
+ 519              	.L21:
+ 429:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 430:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             else
+ 431:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 432:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 sectors_per_bit =  (UCHAR)((media_ptr -> fx_media_sectors_per_FAT / (FX_FAT_MAP_SIZ
+ 433:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 434:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             ind = ((FAT_sector - media_ptr -> fx_media_reserved_sectors) / sectors_per_bit) >> 3;
+ 520              		.loc 1 434 13 is_stmt 1 view .LVU197
+ 521              		.loc 1 434 44 is_stmt 0 view .LVU198
+ 522 0224 636C     		ldr	r3, [r4, #68]
+ 523              		.loc 1 434 32 view .LVU199
+ 524 0226 F31A     		subs	r3, r6, r3
+ 525              		.loc 1 434 74 view .LVU200
+ 526 0228 B3FBF2F3 		udiv	r3, r3, r2
+ 527              	.LVL70:
+ 435:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             media_ptr -> fx_media_fat_secondary_update_map[ind] = 
+ 528              		.loc 1 435 13 is_stmt 1 view .LVU201
+ 436:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (UCHAR)((INT)media_ptr -> fx_media_fat_secondary_update_map[ind]
+ 529              		.loc 1 436 76 is_stmt 0 view .LVU202
+ 530 022c 04EBD300 		add	r0, r4, r3, lsr #3
+ 531              	.LVL71:
+ 532              		.loc 1 436 76 view .LVU203
+ 533 0230 90F91828 		ldrsb	r2, [r0, #2072]
+ 534              	.LVL72:
+ 437:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 | (1 <<(((FAT_sector - media_ptr -> fx_media_reserved_sectors) / sectors_per_bit) &
+ 535              		.loc 1 437 99 view .LVU204
+ 536 0234 03F00703 		and	r3, r3, #7
+ 537              	.LVL73:
+ 538              		.loc 1 437 22 view .LVU205
+ 539 0238 0121     		movs	r1, #1
+ 540 023a 01FA03F3 		lsl	r3, r1, r3
+ 541              		.loc 1 437 17 view .LVU206
+ 542 023e 1343     		orrs	r3, r3, r2
+ 435:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             media_ptr -> fx_media_fat_secondary_update_map[ind] = 
+ 543              		.loc 1 435 65 view .LVU207
+ 544 0240 80F81838 		strb	r3, [r0, #2072]
+ 545              	.LVL74:
+ 546              	.L3:
+ 100:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     {
+ 547              		.loc 1 100 47 is_stmt 1 discriminator 2 view .LVU208
+ 100:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     {
+ 548              		.loc 1 100 52 is_stmt 0 discriminator 2 view .LVU209
+ 549 0244 0137     		adds	r7, r7, #1
+ 550              	.LVL75:
+ 551              	.L2:
+ 100:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     {
+ 552              		.loc 1 100 21 is_stmt 1 discriminator 1 view .LVU210
+ 100:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     {
+ 553              		.loc 1 100 5 is_stmt 0 discriminator 1 view .LVU211
+ 554 0246 0F2F     		cmp	r7, #15
+ 555 0248 00F29C80 		bhi	.L33
+ 104:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         {
+ 556              		.loc 1 104 9 is_stmt 1 view .LVU212
+ 104:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         {
+ 557              		.loc 1 104 52 is_stmt 0 view .LVU213
+ 558 024c 07EB4703 		add	r3, r7, r7, lsl #1
+ 559 0250 04EB8303 		add	r3, r4, r3, lsl #2
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 20
+
+
+ 560 0254 D3F86037 		ldr	r3, [r3, #1888]
+ 104:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         {
+ 561              		.loc 1 104 12 view .LVU214
+ 562 0258 002B     		cmp	r3, #0
+ 563 025a F3D0     		beq	.L3
+ 115:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 564              		.loc 1 115 9 is_stmt 1 view .LVU215
+ 115:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 565              		.loc 1 115 17 is_stmt 0 view .LVU216
+ 566 025c 07EB4703 		add	r3, r7, r7, lsl #1
+ 567 0260 04EB8303 		add	r3, r4, r3, lsl #2
+ 568 0264 D3F85867 		ldr	r6, [r3, #1880]
+ 569              	.LVL76:
+ 121:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 570              		.loc 1 121 9 is_stmt 1 view .LVU217
+ 121:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 571              		.loc 1 121 23 is_stmt 0 view .LVU218
+ 572 0268 226E     		ldr	r2, [r4, #96]
+ 121:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 573              		.loc 1 121 12 view .LVU219
+ 574 026a 002A     		cmp	r2, #0
+ 575 026c 7FF4D3AE 		bne	.L34
+ 339:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 576              		.loc 1 339 14 is_stmt 1 view .LVU220
+ 339:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 577              		.loc 1 339 29 is_stmt 0 view .LVU221
+ 578 0270 626E     		ldr	r2, [r4, #100]
+ 339:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 579              		.loc 1 339 17 view .LVU222
+ 580 0272 E2B9     		cbnz	r2, .L16
+ 346:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 581              		.loc 1 346 13 is_stmt 1 view .LVU223
+ 346:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 582              		.loc 1 346 25 is_stmt 0 view .LVU224
+ 583 0274 7600     		lsls	r6, r6, #1
+ 584              	.LVL77:
+ 349:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 585              		.loc 1 349 13 is_stmt 1 view .LVU225
+ 349:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 586              		.loc 1 349 52 is_stmt 0 view .LVU226
+ 587 0276 A36A     		ldr	r3, [r4, #40]
+ 588              	.LVL78:
+ 349:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 589              		.loc 1 349 40 view .LVU227
+ 590 0278 B6FBF3F6 		udiv	r6, r6, r3
+ 591              	.LVL79:
+ 350:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 592              		.loc 1 350 34 view .LVU228
+ 593 027c 636C     		ldr	r3, [r4, #68]
+ 349:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 594              		.loc 1 349 24 view .LVU229
+ 595 027e 1E44     		add	r6, r6, r3
+ 596              	.LVL80:
+ 353:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 597              		.loc 1 353 13 is_stmt 1 view .LVU230
+ 353:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 598              		.loc 1 353 23 is_stmt 0 view .LVU231
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 21
+
+
+ 599 0280 4FF00008 		mov	r8, #0
+ 354:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 600              		.loc 1 354 65 view .LVU232
+ 601 0284 A368     		ldr	r3, [r4, #8]
+ 353:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 602              		.loc 1 353 23 view .LVU233
+ 603 0286 0222     		movs	r2, #2
+ 604 0288 0292     		str	r2, [sp, #8]
+ 605              	.LVL81:
+ 353:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 606              		.loc 1 353 23 view .LVU234
+ 607 028a 0122     		movs	r2, #1
+ 608 028c 0192     		str	r2, [sp, #4]
+ 609 028e 0093     		str	r3, [sp]
+ 610 0290 3246     		mov	r2, r6
+ 611 0292 4346     		mov	r3, r8
+ 612 0294 2046     		mov	r0, r4
+ 613 0296 FFF7FEFF 		bl	_fx_utility_logical_sector_read
+ 614              	.LVL82:
+ 357:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 615              		.loc 1 357 13 is_stmt 1 view .LVU235
+ 357:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 616              		.loc 1 357 16 is_stmt 0 view .LVU236
+ 617 029a 0346     		mov	r3, r0
+ 618 029c 0028     		cmp	r0, #0
+ 619 029e 72D1     		bne	.L1
+ 366:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 620              		.loc 1 366 20 view .LVU237
+ 621 02a0 3D46     		mov	r5, r7
+ 622 02a2 80E7     		b	.L17
+ 623              	.LVL83:
+ 624              	.L20:
+ 432:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 625              		.loc 1 432 17 is_stmt 1 view .LVU238
+ 432:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 626              		.loc 1 432 36 is_stmt 0 view .LVU239
+ 627 02a4 C3F38723 		ubfx	r3, r3, #10, #8
+ 432:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 628              		.loc 1 432 33 view .LVU240
+ 629 02a8 0133     		adds	r3, r3, #1
+ 630 02aa DAB2     		uxtb	r2, r3
+ 631              	.LVL84:
+ 432:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 632              		.loc 1 432 33 view .LVU241
+ 633 02ac BAE7     		b	.L21
+ 634              	.LVL85:
+ 635              	.L16:
+ 438:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         }
+ 439:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         else
+ 440:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         {
+ 441:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 442:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* 32-bit FAT or exFAT are present.  */
+ 443:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 444:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Calculate the byte offset to the cluster entry.  */
+ 445:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             byte_offset =  (((ULONG)cluster) * 4);
+ 636              		.loc 1 445 13 is_stmt 1 view .LVU242
+ 637              		.loc 1 445 25 is_stmt 0 view .LVU243
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 22
+
+
+ 638 02ae B600     		lsls	r6, r6, #2
+ 639              	.LVL86:
+ 446:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 447:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Calculate the FAT sector the requested FAT entry resides in.  */
+ 448:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             FAT_sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+ 640              		.loc 1 448 13 is_stmt 1 view .LVU244
+ 641              		.loc 1 448 52 is_stmt 0 view .LVU245
+ 642 02b0 A36A     		ldr	r3, [r4, #40]
+ 643              	.LVL87:
+ 644              		.loc 1 448 40 view .LVU246
+ 645 02b2 B6FBF3F6 		udiv	r6, r6, r3
+ 646              	.LVL88:
+ 449:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 647              		.loc 1 449 34 view .LVU247
+ 648 02b6 636C     		ldr	r3, [r4, #68]
+ 448:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 649              		.loc 1 448 24 view .LVU248
+ 650 02b8 1E44     		add	r6, r6, r3
+ 651              	.LVL89:
+ 450:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 451:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Read the FAT sector.  */
+ 452:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             status =  _fx_utility_logical_sector_read(media_ptr, (ULONG64) FAT_sector,
+ 652              		.loc 1 452 13 is_stmt 1 view .LVU249
+ 653              		.loc 1 452 23 is_stmt 0 view .LVU250
+ 654 02ba 4FF00008 		mov	r8, #0
+ 453:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 655              		.loc 1 453 65 view .LVU251
+ 656 02be A368     		ldr	r3, [r4, #8]
+ 452:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 657              		.loc 1 452 23 view .LVU252
+ 658 02c0 0222     		movs	r2, #2
+ 659 02c2 0292     		str	r2, [sp, #8]
+ 660              	.LVL90:
+ 452:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                       media_ptr -> fx_media_memory_buffer, ((ULONG)
+ 661              		.loc 1 452 23 view .LVU253
+ 662 02c4 0122     		movs	r2, #1
+ 663 02c6 0192     		str	r2, [sp, #4]
+ 664 02c8 0093     		str	r3, [sp]
+ 665 02ca 3246     		mov	r2, r6
+ 666 02cc 4346     		mov	r3, r8
+ 667 02ce 2046     		mov	r0, r4
+ 668 02d0 FFF7FEFF 		bl	_fx_utility_logical_sector_read
+ 669              	.LVL91:
+ 454:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 455:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Determine if an error occurred.  */
+ 456:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             if (status != FX_SUCCESS)
+ 670              		.loc 1 456 13 is_stmt 1 view .LVU254
+ 671              		.loc 1 456 16 is_stmt 0 view .LVU255
+ 672 02d4 0346     		mov	r3, r0
+ 673 02d6 0028     		cmp	r0, #0
+ 674 02d8 55D1     		bne	.L1
+ 457:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 458:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 459:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Return the error status.  */
+ 460:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 return(status);
+ 461:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 462:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 23
+
+
+ 463:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Loop through the remainder of the cache to check for multiple entries
+ 464:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                within the same FAT sector being written out.  */
+ 465:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             for (i = index; i < FX_MAX_FAT_CACHE; i++)
+ 675              		.loc 1 465 20 view .LVU256
+ 676 02da 3D46     		mov	r5, r7
+ 677 02dc 00E0     		b	.L22
+ 678              	.LVL92:
+ 679              	.L23:
+ 680              		.loc 1 465 51 is_stmt 1 discriminator 2 view .LVU257
+ 681              		.loc 1 465 52 is_stmt 0 discriminator 2 view .LVU258
+ 682 02de 0135     		adds	r5, r5, #1
+ 683              	.LVL93:
+ 684              	.L22:
+ 685              		.loc 1 465 29 is_stmt 1 discriminator 1 view .LVU259
+ 686              		.loc 1 465 13 is_stmt 0 discriminator 1 view .LVU260
+ 687 02e0 0F2D     		cmp	r5, #15
+ 688 02e2 26D8     		bhi	.L35
+ 466:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 467:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 468:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Determine if the entry is dirty.  */
+ 469:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_dirty == 0)
+ 689              		.loc 1 469 17 is_stmt 1 view .LVU261
+ 690              		.loc 1 469 55 is_stmt 0 view .LVU262
+ 691 02e4 05EB4503 		add	r3, r5, r5, lsl #1
+ 692 02e8 04EB8303 		add	r3, r4, r3, lsl #2
+ 693 02ec D3F86037 		ldr	r3, [r3, #1888]
+ 694              		.loc 1 469 20 view .LVU263
+ 695 02f0 002B     		cmp	r3, #0
+ 696 02f2 F4D0     		beq	.L23
+ 470:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 471:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 472:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Not dirty, does not need to be flushed.  */
+ 473:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     continue;
+ 474:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 475:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 476:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Isolate the cluster.  */
+ 477:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 cluster = (media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_cluster);
+ 697              		.loc 1 477 17 is_stmt 1 view .LVU264
+ 698              		.loc 1 477 25 is_stmt 0 view .LVU265
+ 699 02f4 05EB4503 		add	r3, r5, r5, lsl #1
+ 700 02f8 04EB8303 		add	r3, r4, r3, lsl #2
+ 701 02fc D3F85807 		ldr	r0, [r3, #1880]
+ 702              	.LVL94:
+ 478:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 479:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Calculate the byte offset to the cluster entry.  */
+ 480:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 byte_offset =  (((ULONG)cluster) * 4);
+ 703              		.loc 1 480 17 is_stmt 1 view .LVU266
+ 704              		.loc 1 480 29 is_stmt 0 view .LVU267
+ 705 0300 8000     		lsls	r0, r0, #2
+ 706              	.LVL95:
+ 481:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 482:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Pickup the sector.  */
+ 483:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 sector =  (byte_offset / media_ptr -> fx_media_bytes_per_sector) +
+ 707              		.loc 1 483 17 is_stmt 1 view .LVU268
+ 708              		.loc 1 483 52 is_stmt 0 view .LVU269
+ 709 0302 A16A     		ldr	r1, [r4, #40]
+ 710              		.loc 1 483 40 view .LVU270
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 24
+
+
+ 711 0304 B0FBF1F3 		udiv	r3, r0, r1
+ 712              	.LVL96:
+ 484:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 713              		.loc 1 484 38 view .LVU271
+ 714 0308 626C     		ldr	r2, [r4, #68]
+ 483:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     (ULONG)media_ptr -> fx_media_reserved_sectors;
+ 715              		.loc 1 483 24 view .LVU272
+ 716 030a 1344     		add	r3, r3, r2
+ 717              	.LVL97:
+ 485:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 486:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Is it the current FAT sector?  */
+ 487:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (sector != FAT_sector)
+ 718              		.loc 1 487 17 is_stmt 1 view .LVU273
+ 719              		.loc 1 487 20 is_stmt 0 view .LVU274
+ 720 030c 9E42     		cmp	r6, r3
+ 721 030e E6D1     		bne	.L23
+ 488:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 489:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 490:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     /* Different FAT sector - not in this pass of the loop.  */
+ 491:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     continue;
+ 492:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 493:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 494:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Now calculate the byte offset into this FAT sector.  */
+ 495:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 byte_offset =  byte_offset -
+ 722              		.loc 1 495 17 is_stmt 1 view .LVU275
+ 496:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     ((FAT_sector - (ULONG)media_ptr -> fx_media_reserved_sectors) *
+ 723              		.loc 1 496 34 is_stmt 0 view .LVU276
+ 724 0310 B21A     		subs	r2, r6, r2
+ 495:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     ((FAT_sector - (ULONG)media_ptr -> fx_media_reserved_sectors) *
+ 725              		.loc 1 495 29 view .LVU277
+ 726 0312 02FB1100 		mls	r0, r2, r1, r0
+ 727              	.LVL98:
+ 497:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                      media_ptr -> fx_media_bytes_per_sector);
+ 498:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 499:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Setup a pointer into the buffer.  */
+ 500:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 FAT_ptr =  (UCHAR *)media_ptr -> fx_media_memory_buffer + (UINT)byte_offset;
+ 728              		.loc 1 500 17 is_stmt 1 view .LVU278
+ 729              		.loc 1 500 47 is_stmt 0 view .LVU279
+ 730 0316 A368     		ldr	r3, [r4, #8]
+ 731              	.LVL99:
+ 501:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 502:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Pickup new value for this FAT entry.  */
+ 503:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 next_cluster =  media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_value;
+ 732              		.loc 1 503 17 is_stmt 1 view .LVU280
+ 733              		.loc 1 503 30 is_stmt 0 view .LVU281
+ 734 0318 05EB4509 		add	r9, r5, r5, lsl #1
+ 735              	.LVL100:
+ 736              		.loc 1 503 30 view .LVU282
+ 737 031c 04EB8909 		add	r9, r4, r9, lsl #2
+ 738              	.LVL101:
+ 504:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 505:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Store the FAT entry.  */
+ 506:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 _fx_utility_32_unsigned_write(FAT_ptr, next_cluster);
+ 739              		.loc 1 506 17 is_stmt 1 view .LVU283
+ 740 0320 D9F85C17 		ldr	r1, [r9, #1884]
+ 741              	.LVL102:
+ 742              		.loc 1 506 17 is_stmt 0 view .LVU284
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 25
+
+
+ 743 0324 1844     		add	r0, r0, r3
+ 744              	.LVL103:
+ 745              		.loc 1 506 17 view .LVU285
+ 746 0326 FFF7FEFF 		bl	_fx_utility_32_unsigned_write
+ 747              	.LVL104:
+ 507:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 508:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Clear the dirty flag.  */
+ 509:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 media_ptr -> fx_media_fat_cache[i].fx_fat_cache_entry_dirty = 0;
+ 748              		.loc 1 509 17 is_stmt 1 view .LVU286
+ 749              		.loc 1 509 77 is_stmt 0 view .LVU287
+ 750 032a 0023     		movs	r3, #0
+ 751 032c C9F86037 		str	r3, [r9, #1888]
+ 752 0330 D5E7     		b	.L23
+ 753              	.L35:
+ 510:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 511:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 512:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Write the last written FAT sector out.  */
+ 513:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             status =  _fx_utility_logical_sector_write(media_ptr, (ULONG64) FAT_sector,
+ 754              		.loc 1 513 13 is_stmt 1 view .LVU288
+ 514:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                        media_ptr -> fx_media_memory_buffer, ((ULONG
+ 755              		.loc 1 514 66 is_stmt 0 view .LVU289
+ 756 0332 A368     		ldr	r3, [r4, #8]
+ 513:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                                                        media_ptr -> fx_media_memory_buffer, ((ULONG
+ 757              		.loc 1 513 23 view .LVU290
+ 758 0334 0222     		movs	r2, #2
+ 759 0336 0292     		str	r2, [sp, #8]
+ 760 0338 0122     		movs	r2, #1
+ 761 033a 0192     		str	r2, [sp, #4]
+ 762 033c 0093     		str	r3, [sp]
+ 763 033e 3246     		mov	r2, r6
+ 764 0340 4346     		mov	r3, r8
+ 765 0342 2046     		mov	r0, r4
+ 766 0344 FFF7FEFF 		bl	_fx_utility_logical_sector_write
+ 767              	.LVL105:
+ 515:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 516:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* Determine if an error occurred.  */
+ 517:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             if (status != FX_SUCCESS)
+ 768              		.loc 1 517 13 is_stmt 1 view .LVU291
+ 769              		.loc 1 517 16 is_stmt 0 view .LVU292
+ 770 0348 0346     		mov	r3, r0
+ 771 034a E0B9     		cbnz	r0, .L1
+ 518:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 519:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 520:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Return the error status.  */
+ 521:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 return(status);
+ 522:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 523:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 524:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #ifdef FX_ENABLE_EXFAT
+ 525:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             /* We are not using fx_media_fat_secondary_update_map for exFAT.  */
+ 526:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             if (media_ptr -> fx_media_FAT_type == FX_FAT32)
+ 527:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             {
+ 528:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 529:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 530:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 /* Mark the FAT sector update bit map to indicate this sector has been
+ 531:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                    written.  */
+ 532:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 if (media_ptr -> fx_media_sectors_per_FAT % (FX_FAT_MAP_SIZE << 3) == 0)
+ 772              		.loc 1 532 17 is_stmt 1 view .LVU293
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 26
+
+
+ 773              		.loc 1 532 31 is_stmt 0 view .LVU294
+ 774 034c A36D     		ldr	r3, [r4, #88]
+ 775              		.loc 1 532 59 view .LVU295
+ 776 034e C3F30902 		ubfx	r2, r3, #0, #10
+ 777              		.loc 1 532 20 view .LVU296
+ 778 0352 92B9     		cbnz	r2, .L25
+ 533:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 534:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     sectors_per_bit =  (UCHAR)(media_ptr -> fx_media_sectors_per_FAT / (FX_FAT_MAP_
+ 779              		.loc 1 534 21 is_stmt 1 view .LVU297
+ 780              		.loc 1 534 37 is_stmt 0 view .LVU298
+ 781 0354 C3F38722 		ubfx	r2, r3, #10, #8
+ 782              	.LVL106:
+ 783              	.L26:
+ 535:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 536:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 else
+ 537:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 {
+ 538:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     sectors_per_bit =  (UCHAR)((media_ptr -> fx_media_sectors_per_FAT / (FX_FAT_MAP
+ 539:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 540:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 ind = ((FAT_sector - media_ptr -> fx_media_reserved_sectors) / sectors_per_bit) >> 
+ 784              		.loc 1 540 17 is_stmt 1 view .LVU299
+ 785              		.loc 1 540 48 is_stmt 0 view .LVU300
+ 786 0358 636C     		ldr	r3, [r4, #68]
+ 787              		.loc 1 540 36 view .LVU301
+ 788 035a F31A     		subs	r3, r6, r3
+ 789              		.loc 1 540 78 view .LVU302
+ 790 035c B3FBF2F3 		udiv	r3, r3, r2
+ 791              	.LVL107:
+ 541:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 media_ptr -> fx_media_fat_secondary_update_map[ind] = 
+ 792              		.loc 1 541 17 is_stmt 1 view .LVU303
+ 542:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     (UCHAR)((INT)media_ptr -> fx_media_fat_secondary_update_map[ind]
+ 793              		.loc 1 542 80 is_stmt 0 view .LVU304
+ 794 0360 04EBD300 		add	r0, r4, r3, lsr #3
+ 795              	.LVL108:
+ 796              		.loc 1 542 80 view .LVU305
+ 797 0364 90F91828 		ldrsb	r2, [r0, #2072]
+ 798              	.LVL109:
+ 543:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                     | (1 <<(((FAT_sector - media_ptr -> fx_media_reserved_sectors) / sectors_per_bi
+ 799              		.loc 1 543 103 view .LVU306
+ 800 0368 03F00703 		and	r3, r3, #7
+ 801              	.LVL110:
+ 802              		.loc 1 543 26 view .LVU307
+ 803 036c 0121     		movs	r1, #1
+ 804 036e 01FA03F3 		lsl	r3, r1, r3
+ 805              		.loc 1 543 21 view .LVU308
+ 806 0372 1343     		orrs	r3, r3, r2
+ 541:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 media_ptr -> fx_media_fat_secondary_update_map[ind] = 
+ 807              		.loc 1 541 69 view .LVU309
+ 808 0374 80F81838 		strb	r3, [r0, #2072]
+ 541:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 media_ptr -> fx_media_fat_secondary_update_map[ind] = 
+ 809              		.loc 1 541 69 view .LVU310
+ 810 0378 64E7     		b	.L3
+ 811              	.LVL111:
+ 812              	.L25:
+ 538:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 813              		.loc 1 538 21 is_stmt 1 view .LVU311
+ 538:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 814              		.loc 1 538 40 is_stmt 0 view .LVU312
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 27
+
+
+ 815 037a C3F38723 		ubfx	r3, r3, #10, #8
+ 538:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 816              		.loc 1 538 37 view .LVU313
+ 817 037e 0133     		adds	r3, r3, #1
+ 818 0380 DAB2     		uxtb	r2, r3
+ 819              	.LVL112:
+ 538:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 820              		.loc 1 538 37 view .LVU314
+ 821 0382 E9E7     		b	.L26
+ 822              	.LVL113:
+ 823              	.L33:
+ 544:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #ifdef FX_ENABLE_EXFAT
+ 545:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****             }
+ 546:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_EXFAT */
+ 547:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         }
+ 548:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     }
+ 549:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 550:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 551:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 552:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     /* While fault_tolerant is enabled, this function will be called before the return of all APIs.
+ 553:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     if (media_ptr -> fx_media_fault_tolerant_enabled)
+ 554:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     {
+ 555:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 556:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         /* Delete the record of FAT sector since all FAT entries are flushed. */
+ 557:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****         media_ptr -> fx_media_fault_tolerant_cached_FAT_sector = 0;
+ 558:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     }
+ 559:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 560:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** 
+ 561:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     /* Return successful status.  */
+ 562:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****     return(FX_SUCCESS);
+ 824              		.loc 1 562 11 view .LVU315
+ 825 0384 0023     		movs	r3, #0
+ 826              	.L1:
+ 563:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c **** }
+ 827              		.loc 1 563 1 view .LVU316
+ 828 0386 1846     		mov	r0, r3
+ 829 0388 05B0     		add	sp, sp, #20
+ 830              	.LCFI2:
+ 831              		.cfi_remember_state
+ 832              		.cfi_def_cfa_offset 36
+ 833              		@ sp needed
+ 834 038a BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 835              	.LVL114:
+ 836              	.L28:
+ 837              	.LCFI3:
+ 838              		.cfi_restore_state
+ 313:Middlewares/ST/filex/common/src/fx_utility_FAT_flush.c ****                 }
+ 839              		.loc 1 313 27 view .LVU317
+ 840 038e 0223     		movs	r3, #2
+ 841 0390 F9E7     		b	.L1
+ 842              		.cfi_endproc
+ 843              	.LFE8:
+ 845              		.text
+ 846              	.Letext0:
+ 847              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 848              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 849              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 28
+
+
+ 850              		.file 5 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_utility_FAT_flush.c
+C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s:20     .text._fx_utility_FAT_flush:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccQEa9EH.s:26     .text._fx_utility_FAT_flush:00000000 _fx_utility_FAT_flush
+
+UNDEFINED SYMBOLS
+_fx_utility_logical_sector_write
+_fx_utility_logical_sector_read
+_fx_utility_16_unsigned_write
+_fx_utility_32_unsigned_write

@@ -1,0 +1,396 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fx_directory_attributes_read.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._fx_directory_attributes_read,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_directory_attributes_read
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_directory_attributes_read:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/filex/common/src/fx_directory_attributes_read.c"
+   1:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  12:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  13:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**   Directory                                                           */
+  19:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  23:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  25:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  26:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  28:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #include "fx_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #include "fx_directory.h"
+  31:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #include "fx_file.h"
+  32:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #include "fx_utility.h"
+  33:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  34:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  35:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+  36:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  37:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  FUNCTION                                               RELEASE        */
+  38:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  39:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    _fx_directory_attributes_read                       PORTABLE C      */
+  40:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                           6.1          */
+  41:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  AUTHOR                                                                */
+  42:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  43:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  44:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  45:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  DESCRIPTION                                                           */
+  46:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  47:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    This function first attempts to find the specified directory.  If   */
+  48:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    found, the attribute read request is valid and the directory entry  */
+  49:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    will be read in order to pickup the directory's attributes.         */
+  50:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    Otherwise, if the directory is not found, the appropriate error     */
+  51:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    code is returned to the caller.                                     */
+  52:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  53:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  INPUT                                                                 */
+  54:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  55:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    media_ptr                             Media control block pointer   */
+  56:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    directory_name                        Directory name pointer        */
+  57:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    attributes_ptr                        Return attributes pointer     */
+  58:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  59:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  OUTPUT                                                                */
+  60:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  61:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    return status                                                       */
+  62:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  63:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  CALLS                                                                 */
+  64:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  65:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    _fx_directory_search                  Search for the file name in   */
+  66:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                          the directory structure       */
+  67:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  CALLED BY                                                             */
+  69:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    Application Code                                                    */
+  71:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  RELEASE HISTORY                                                       */
+  73:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  74:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*    DATE              NAME                      DESCRIPTION             */
+  75:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  76:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  77:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  78:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                            resulting in version 6.1    */
+  79:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /*                                                                        */
+  80:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** /**************************************************************************/
+  81:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** UINT  _fx_directory_attributes_read(FX_MEDIA *media_ptr, CHAR *directory_name, UINT *attributes_ptr
+  82:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** {
+  30              		.loc 1 82 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 112
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 3
+
+
+  34              		.loc 1 82 1 is_stmt 0 view .LVU1
+  35 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 20
+  38              		.cfi_offset 4, -20
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 9FB0     		sub	sp, sp, #124
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 144
+  46 0004 1646     		mov	r6, r2
+  83:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  84:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** UINT                   status;
+  47              		.loc 1 84 1 is_stmt 1 view .LVU2
+  85:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** FX_DIR_ENTRY           dir_entry;
+  48              		.loc 1 85 1 view .LVU3
+  86:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  87:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #ifdef TX_ENABLE_EVENT_TRACE
+  88:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** TX_TRACE_BUFFER_ENTRY *trace_event;
+  89:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** ULONG                  trace_timestamp;
+  90:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #endif
+  91:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  92:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  93:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+  94:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  95:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Increment the number of times this service has been called.  */
+  96:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     media_ptr -> fx_media_directory_attributes_reads++;
+  49              		.loc 1 96 5 view .LVU4
+  50              		.loc 1 96 15 is_stmt 0 view .LVU5
+  51 0006 D0F8D830 		ldr	r3, [r0, #216]
+  52              		.loc 1 96 53 view .LVU6
+  53 000a 0133     		adds	r3, r3, #1
+  54 000c C0F8D830 		str	r3, [r0, #216]
+  97:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** #endif
+  98:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  99:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Setup pointer to media name buffer.  */
+ 100:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     dir_entry.fx_dir_entry_name =  media_ptr -> fx_media_name_buffer + FX_MAX_LONG_NAME_LEN;
+  55              		.loc 1 100 5 is_stmt 1 view .LVU7
+  56              		.loc 1 100 70 is_stmt 0 view .LVU8
+  57 0010 00F69C13 		addw	r3, r0, #2460
+  58              		.loc 1 100 33 view .LVU9
+  59 0014 0293     		str	r3, [sp, #8]
+ 101:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 102:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Clear the short name string.  */
+ 103:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     dir_entry.fx_dir_entry_short_name[0] =  0;
+  60              		.loc 1 103 5 is_stmt 1 view .LVU10
+  61              		.loc 1 103 42 is_stmt 0 view .LVU11
+  62 0016 0023     		movs	r3, #0
+  63 0018 8DF80C30 		strb	r3, [sp, #12]
+ 104:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 105:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Check the media to make sure it is open.  */
+ 106:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     if (media_ptr -> fx_media_id != FX_MEDIA_ID)
+  64              		.loc 1 106 5 is_stmt 1 view .LVU12
+  65              		.loc 1 106 19 is_stmt 0 view .LVU13
+  66 001c 0268     		ldr	r2, [r0]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 4
+
+
+  67              	.LVL1:
+  68              		.loc 1 106 8 view .LVU14
+  69 001e 174B     		ldr	r3, .L11
+  70 0020 9A42     		cmp	r2, r3
+  71 0022 03D0     		beq	.L8
+ 107:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 108:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 109:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         /* Return the media not opened error.  */
+ 110:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         return(FX_MEDIA_NOT_OPEN);
+  72              		.loc 1 110 15 view .LVU15
+  73 0024 1124     		movs	r4, #17
+  74              	.LVL2:
+  75              	.L1:
+ 111:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 112:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 113:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 114:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     FX_TRACE_IN_LINE_INSERT(FX_TRACE_DIRECTORY_ATTRIBUTES_READ, media_ptr, directory_name, 0, 0, FX
+ 115:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 116:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Protect against other threads accessing the media.  */
+ 117:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     FX_PROTECT
+ 118:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 119:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Search the system for the supplied file name.  */
+ 120:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     status =  _fx_directory_search(media_ptr, directory_name, &dir_entry, FX_NULL, FX_NULL);
+ 121:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 122:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Determine if the search was successful.  */
+ 123:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     if (status != FX_SUCCESS)
+ 124:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 125:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 126:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         /* Release media protection.  */
+ 127:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         FX_UNPROTECT
+ 128:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 129:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         /* Return the error code.  */
+ 130:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         return(status);
+ 131:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 132:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 133:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Check to make sure the found entry is a file.  */
+ 134:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     if ((dir_entry.fx_dir_entry_attributes & (UCHAR)(FX_DIRECTORY)) == 0)
+ 135:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 136:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 137:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         /* Release media protection.  */
+ 138:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         FX_UNPROTECT
+ 139:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 140:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         /* Return the not a file error code.  */
+ 141:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****         return(FX_NOT_DIRECTORY);
+ 142:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 143:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 144:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Place the current attributes into the destination.  */
+ 145:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     *attributes_ptr =  (UINT)dir_entry.fx_dir_entry_attributes;
+ 146:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 147:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Update the trace event with the attributes read.  */
+ 148:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     FX_TRACE_EVENT_UPDATE(trace_event, trace_timestamp, FX_TRACE_DIRECTORY_ATTRIBUTES_READ, 0, 0, d
+ 149:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 150:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* Release media protection.  */
+ 151:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     FX_UNPROTECT
+ 152:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 153:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     /* File attribute read is complete, return successful status.  */
+ 154:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     return(FX_SUCCESS);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 5
+
+
+ 155:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** }
+  76              		.loc 1 155 1 view .LVU16
+  77 0026 2046     		mov	r0, r4
+  78 0028 1FB0     		add	sp, sp, #124
+  79              	.LCFI2:
+  80              		.cfi_remember_state
+  81              		.cfi_def_cfa_offset 20
+  82              		@ sp needed
+  83 002a F0BD     		pop	{r4, r5, r6, r7, pc}
+  84              	.LVL3:
+  85              	.L8:
+  86              	.LCFI3:
+  87              		.cfi_restore_state
+  88              		.loc 1 155 1 view .LVU17
+  89 002c 0446     		mov	r4, r0
+  90 002e 0D46     		mov	r5, r1
+ 117:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  91              		.loc 1 117 5 is_stmt 1 discriminator 2 view .LVU18
+ 117:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  92              		.loc 1 117 5 discriminator 2 view .LVU19
+  93 0030 00F5E477 		add	r7, r0, #456
+  94 0034 4FF0FF31 		mov	r1, #-1
+  95              	.LVL4:
+ 117:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  96              		.loc 1 117 5 is_stmt 0 discriminator 2 view .LVU20
+  97 0038 3846     		mov	r0, r7
+  98              	.LVL5:
+ 117:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+  99              		.loc 1 117 5 discriminator 2 view .LVU21
+ 100 003a FFF7FEFF 		bl	_tx_mutex_get
+ 101              	.LVL6:
+ 102 003e D8B9     		cbnz	r0, .L6
+ 120:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 103              		.loc 1 120 5 is_stmt 1 view .LVU22
+ 120:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 104              		.loc 1 120 15 is_stmt 0 view .LVU23
+ 105 0040 0023     		movs	r3, #0
+ 106 0042 0093     		str	r3, [sp]
+ 107 0044 02AA     		add	r2, sp, #8
+ 108 0046 2946     		mov	r1, r5
+ 109 0048 2046     		mov	r0, r4
+ 110 004a FFF7FEFF 		bl	_fx_directory_search
+ 111              	.LVL7:
+ 123:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 112              		.loc 1 123 5 is_stmt 1 view .LVU24
+ 123:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 113              		.loc 1 123 8 is_stmt 0 view .LVU25
+ 114 004e 0446     		mov	r4, r0
+ 115              	.LVL8:
+ 123:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 116              		.loc 1 123 8 view .LVU26
+ 117 0050 48B9     		cbnz	r0, .L9
+ 134:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 118              		.loc 1 134 5 is_stmt 1 view .LVU27
+ 134:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 119              		.loc 1 134 19 is_stmt 0 view .LVU28
+ 120 0052 9DF82430 		ldrb	r3, [sp, #36]	@ zero_extendqisi2
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 6
+
+
+ 134:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     {
+ 121              		.loc 1 134 8 view .LVU29
+ 122 0056 13F0100F 		tst	r3, #16
+ 123 005a 08D0     		beq	.L10
+ 145:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 124              		.loc 1 145 5 is_stmt 1 view .LVU30
+ 145:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 125              		.loc 1 145 21 is_stmt 0 view .LVU31
+ 126 005c 3360     		str	r3, [r6]
+ 151:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 127              		.loc 1 151 5 is_stmt 1 view .LVU32
+ 128 005e 3846     		mov	r0, r7
+ 129              	.LVL9:
+ 151:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 130              		.loc 1 151 5 is_stmt 0 view .LVU33
+ 131 0060 FFF7FEFF 		bl	_tx_mutex_put
+ 132              	.LVL10:
+ 154:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** }
+ 133              		.loc 1 154 5 is_stmt 1 view .LVU34
+ 154:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** }
+ 134              		.loc 1 154 11 is_stmt 0 view .LVU35
+ 135 0064 DFE7     		b	.L1
+ 136              	.LVL11:
+ 137              	.L9:
+ 127:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 138              		.loc 1 127 9 is_stmt 1 view .LVU36
+ 139 0066 3846     		mov	r0, r7
+ 140              	.LVL12:
+ 127:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 141              		.loc 1 127 9 is_stmt 0 view .LVU37
+ 142 0068 FFF7FEFF 		bl	_tx_mutex_put
+ 143              	.LVL13:
+ 130:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 144              		.loc 1 130 9 is_stmt 1 view .LVU38
+ 130:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 145              		.loc 1 130 15 is_stmt 0 view .LVU39
+ 146 006c DBE7     		b	.L1
+ 147              	.LVL14:
+ 148              	.L10:
+ 138:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 149              		.loc 1 138 9 is_stmt 1 view .LVU40
+ 150 006e 3846     		mov	r0, r7
+ 151              	.LVL15:
+ 138:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 152              		.loc 1 138 9 is_stmt 0 view .LVU41
+ 153 0070 FFF7FEFF 		bl	_tx_mutex_put
+ 154              	.LVL16:
+ 141:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 155              		.loc 1 141 9 is_stmt 1 view .LVU42
+ 141:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 156              		.loc 1 141 15 is_stmt 0 view .LVU43
+ 157 0074 0E24     		movs	r4, #14
+ 158              	.LVL17:
+ 141:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c ****     }
+ 159              		.loc 1 141 15 view .LVU44
+ 160 0076 D6E7     		b	.L1
+ 161              	.LVL18:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 7
+
+
+ 162              	.L6:
+ 117:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 163              		.loc 1 117 5 view .LVU45
+ 164 0078 1124     		movs	r4, #17
+ 165              	.LVL19:
+ 117:Middlewares/ST/filex/common/src/fx_directory_attributes_read.c **** 
+ 166              		.loc 1 117 5 view .LVU46
+ 167 007a D4E7     		b	.L1
+ 168              	.L12:
+ 169              		.align	2
+ 170              	.L11:
+ 171 007c 4944454D 		.word	1296385097
+ 172              		.cfi_endproc
+ 173              	.LFE8:
+ 175              		.text
+ 176              	.Letext0:
+ 177              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 178              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 179              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 180              		.file 5 "Middlewares/ST/filex/common/inc/fx_directory.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccozlFsv.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_directory_attributes_read.c
+C:\Users\HP\AppData\Local\Temp\ccozlFsv.s:20     .text._fx_directory_attributes_read:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccozlFsv.s:26     .text._fx_directory_attributes_read:00000000 _fx_directory_attributes_read
+C:\Users\HP\AppData\Local\Temp\ccozlFsv.s:171    .text._fx_directory_attributes_read:0000007c $d
+
+UNDEFINED SYMBOLS
+_tx_mutex_get
+_fx_directory_search
+_tx_mutex_put

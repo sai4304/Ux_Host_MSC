@@ -1,0 +1,265 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_endpoint_reset.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_endpoint_reset,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_endpoint_reset
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_endpoint_reset:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    _ux_host_stack_endpoint_reset                       PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    This function resets an endpoint after a stall or other error       */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    condition.                                                          */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  INPUT                                                                 */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    endpoint                              Endpoint to abort transfer    */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  OUTPUT                                                                */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    Completion Status                                                   */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  CALLS                                                                 */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    _ux_host_stack_transfer_request       Send transfer request         */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    (ux_hcd_entry_function)               HCD entry function            */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  CALLED BY                                                             */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    USBX Components                                                     */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  RELEASE HISTORY                                                       */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                            optimized based on compile  */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                            definitions,                */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                            resulting in version 6.1    */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /*                                                                        */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** /**************************************************************************/
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** UINT  _ux_host_stack_endpoint_reset(UX_ENDPOINT *endpoint)
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** {
+  30              		.loc 1 76 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 76 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s 			page 3
+
+
+  40 0002 0446     		mov	r4, r0
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** UX_ENDPOINT     *control_endpoint;
+  41              		.loc 1 78 1 is_stmt 1 view .LVU2
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** UX_TRANSFER     *transfer_request;
+  42              		.loc 1 79 1 view .LVU3
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** UX_DEVICE       *device;    
+  43              		.loc 1 80 1 view .LVU4
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** UX_HCD          *hcd;
+  44              		.loc 1 81 1 view .LVU5
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** UINT            status;
+  45              		.loc 1 82 1 view .LVU6
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* Get the device container from the endpoint */
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     device =  endpoint -> ux_endpoint_device;
+  46              		.loc 1 86 5 view .LVU7
+  47              		.loc 1 86 12 is_stmt 0 view .LVU8
+  48 0004 C06A     		ldr	r0, [r0, #44]
+  49              	.LVL1:
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_ENDPOINT_RESET, device, endpoint, 0, 0, UX_TRACE_HO
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* Get the control endpoint attached to the device.  */
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     control_endpoint =  &device -> ux_device_control_endpoint;
+  50              		.loc 1 92 5 is_stmt 1 view .LVU9
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* Retrieve the transfer_request pointer.  */
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     transfer_request =  &control_endpoint -> ux_endpoint_transfer_request;
+  51              		.loc 1 95 5 view .LVU10
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* Create a transfer_request for the CLEAR_FEATURE request.  */
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     transfer_request -> ux_transfer_request_data_pointer =      UX_NULL;
+  52              		.loc 1 98 5 view .LVU11
+  53              		.loc 1 98 58 is_stmt 0 view .LVU12
+  54 0006 0022     		movs	r2, #0
+  55 0008 C0F8BC20 		str	r2, [r0, #188]
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     transfer_request -> ux_transfer_request_requested_length =  0;
+  56              		.loc 1 99 5 is_stmt 1 view .LVU13
+  57              		.loc 1 99 62 is_stmt 0 view .LVU14
+  58 000c C0F8C020 		str	r2, [r0, #192]
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     transfer_request -> ux_transfer_request_function =          UX_CLEAR_FEATURE;
+  59              		.loc 1 100 5 is_stmt 1 view .LVU15
+  60              		.loc 1 100 54 is_stmt 0 view .LVU16
+  61 0010 0121     		movs	r1, #1
+  62 0012 C0F8CC10 		str	r1, [r0, #204]
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     transfer_request -> ux_transfer_request_type =              UX_REQUEST_OUT| UX_REQUEST_TYPE_STA
+  63              		.loc 1 101 5 is_stmt 1 view .LVU17
+  64              		.loc 1 101 50 is_stmt 0 view .LVU18
+  65 0016 0221     		movs	r1, #2
+  66 0018 C0F8C810 		str	r1, [r0, #200]
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     transfer_request -> ux_transfer_request_value =             UX_ENDPOINT_HALT;
+  67              		.loc 1 102 5 is_stmt 1 view .LVU19
+  68              		.loc 1 102 51 is_stmt 0 view .LVU20
+  69 001c C0F8D020 		str	r2, [r0, #208]
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     transfer_request -> ux_transfer_request_index =             endpoint -> ux_endpoint_descriptor.
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s 			page 4
+
+
+  70              		.loc 1 103 5 is_stmt 1 view .LVU21
+  71              		.loc 1 103 99 is_stmt 0 view .LVU22
+  72 0020 6269     		ldr	r2, [r4, #20]
+  73              		.loc 1 103 51 view .LVU23
+  74 0022 C0F8D420 		str	r2, [r0, #212]
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* Send request to HCD layer.  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     status =  _ux_host_stack_transfer_request(transfer_request);
+  75              		.loc 1 106 5 is_stmt 1 view .LVU24
+  76              		.loc 1 106 15 is_stmt 0 view .LVU25
+  77 0026 B430     		adds	r0, r0, #180
+  78              	.LVL2:
+  79              		.loc 1 106 15 view .LVU26
+  80 0028 FFF7FEFF 		bl	_ux_host_stack_transfer_request
+  81              	.LVL3:
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* Reset the endpoint at the HCD level.  */
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     if (status == UX_SUCCESS)
+  82              		.loc 1 109 5 is_stmt 1 view .LVU27
+  83              		.loc 1 109 8 is_stmt 0 view .LVU28
+  84 002c 30B9     		cbnz	r0, .L1
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     {
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****         /* Pickup HCD pointer.  */
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****         hcd = UX_DEVICE_HCD_GET(device);
+  85              		.loc 1 113 9 is_stmt 1 view .LVU29
+  86              		.loc 1 113 15 is_stmt 0 view .LVU30
+  87 002e 044B     		ldr	r3, .L4
+  88 0030 1B68     		ldr	r3, [r3]
+  89              		.loc 1 113 13 view .LVU31
+  90 0032 D868     		ldr	r0, [r3, #12]
+  91              	.LVL4:
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****         /* Call HCD entry function.  */
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****         status =  hcd -> ux_hcd_entry_function(hcd, UX_HCD_RESET_ENDPOINT, endpoint);
+  92              		.loc 1 116 9 is_stmt 1 view .LVU32
+  93              		.loc 1 116 23 is_stmt 0 view .LVU33
+  94 0034 036F     		ldr	r3, [r0, #112]
+  95              		.loc 1 116 19 view .LVU34
+  96 0036 2246     		mov	r2, r4
+  97 0038 1021     		movs	r1, #16
+  98 003a 9847     		blx	r3
+  99              	.LVL5:
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     }
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** 
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     /* And return the completion status.  */
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c ****     return(status);
+ 100              		.loc 1 120 5 is_stmt 1 view .LVU35
+ 101              	.L1:
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_reset.c **** }
+ 102              		.loc 1 121 1 is_stmt 0 view .LVU36
+ 103 003c 10BD     		pop	{r4, pc}
+ 104              	.LVL6:
+ 105              	.L5:
+ 106              		.loc 1 121 1 view .LVU37
+ 107 003e 00BF     		.align	2
+ 108              	.L4:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s 			page 5
+
+
+ 109 0040 00000000 		.word	_ux_system_host
+ 110              		.cfi_endproc
+ 111              	.LFE11:
+ 113              		.text
+ 114              	.Letext0:
+ 115              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 116              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 117              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 118              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 119              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_endpoint_reset.c
+C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s:20     .text._ux_host_stack_endpoint_reset:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s:26     .text._ux_host_stack_endpoint_reset:00000000 _ux_host_stack_endpoint_reset
+C:\Users\HP\AppData\Local\Temp\cc5Jzj6N.s:109    .text._ux_host_stack_endpoint_reset:00000040 $d
+
+UNDEFINED SYMBOLS
+_ux_host_stack_transfer_request
+_ux_system_host

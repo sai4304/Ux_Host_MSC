@@ -1,0 +1,504 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_configuration_enumerate.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_configuration_enumerate,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_configuration_enumerate
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_configuration_enumerate:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_host_stack_configuration_enumerate              PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    This function reads the configuration descriptor, creates the       */
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    configuration container(s) for the device, and enumerates all found */
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    configurations.                                                     */
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    At this stage, only the containers for each subcomponents are       */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    linked. No configuration, interface or endpoints are active unless  */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    a class issues a SET_CONFIGURATION.                                 */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  INPUT                                                                 */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    device                                Pointer to device             */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  OUTPUT                                                                */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    Completion Status                                                   */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  CALLS                                                                 */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_host_stack_configuration_descriptor_parse                       */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                          Parse configuration descriptor*/ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_host_stack_configuration_instance_delete                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                          Delete configuration instance */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_host_stack_new_configuration_create                             */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                          Create new configuration      */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_host_stack_transfer_request       Process transfer request      */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_utility_descriptor_parse          Parse descriptor              */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_utility_memory_allocate           Allocate block of memory      */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    _ux_utility_memory_free               Free block of memory          */ 
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  CALLED BY                                                             */ 
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    USBX Components                                                     */ 
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  RELEASE HISTORY                                                       */ 
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */ 
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                            resulting in version 6.1    */
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /*                                                                        */
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** /**************************************************************************/
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** UINT  _ux_host_stack_configuration_enumerate(UX_DEVICE *device)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 3
+
+
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** {
+  30              		.loc 1 87 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 87 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 32
+  38              		.cfi_offset 4, -32
+  39              		.cfi_offset 5, -28
+  40              		.cfi_offset 6, -24
+  41              		.cfi_offset 7, -20
+  42              		.cfi_offset 8, -16
+  43              		.cfi_offset 9, -12
+  44              		.cfi_offset 10, -8
+  45              		.cfi_offset 14, -4
+  46 0004 0446     		mov	r4, r0
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** UX_TRANSFER         *transfer_request;
+  47              		.loc 1 89 1 is_stmt 1 view .LVU2
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** UINT                status =  UX_ERROR;
+  48              		.loc 1 90 1 view .LVU3
+  49              	.LVL1:
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** UCHAR *             descriptor;
+  50              		.loc 1 91 1 view .LVU4
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** UX_ENDPOINT         *control_endpoint;
+  51              		.loc 1 92 1 view .LVU5
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** UX_CONFIGURATION    *configuration;
+  52              		.loc 1 93 1 view .LVU6
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** ULONG               nb_configurations;
+  53              		.loc 1 94 1 view .LVU7
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** ULONG               configuration_index;
+  54              		.loc 1 95 1 view .LVU8
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_CONFIGURATION_ENUMERATE, device, 0, 0, 0, UX_TRACE_
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     /* Retrieve the pointer to the control endpoint and its transfer_request.  */
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     control_endpoint =  &device -> ux_device_control_endpoint;
+  55              		.loc 1 101 5 view .LVU9
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     transfer_request =  &control_endpoint -> ux_endpoint_transfer_request;
+  56              		.loc 1 102 5 view .LVU10
+  57              		.loc 1 102 22 is_stmt 0 view .LVU11
+  58 0006 00F1B409 		add	r9, r0, #180
+  59              	.LVL2:
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     /* Need to allocate memory for the configuration descriptor the first time we read 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****        only the configuration descriptor when we have the configuration descriptor, we have 
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****        the length of the entire configuration\interface\endpoint descriptors.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     descriptor =  _ux_utility_memory_allocate(UX_SAFE_ALIGN, UX_CACHE_SAFE_MEMORY, UX_CONFIGURATION
+  60              		.loc 1 107 5 is_stmt 1 view .LVU12
+  61              		.loc 1 107 19 is_stmt 0 view .LVU13
+  62 000a 0922     		movs	r2, #9
+  63 000c 0121     		movs	r1, #1
+  64 000e 4FF0FF30 		mov	r0, #-1
+  65              	.LVL3:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 4
+
+
+  66              		.loc 1 107 19 view .LVU14
+  67 0012 FFF7FEFF 		bl	_ux_utility_memory_allocate
+  68              	.LVL4:
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     if (descriptor == UX_NULL)
+  69              		.loc 1 108 5 is_stmt 1 view .LVU15
+  70              		.loc 1 108 8 is_stmt 0 view .LVU16
+  71 0016 0028     		cmp	r0, #0
+  72 0018 52D0     		beq	.L8
+  73 001a 0746     		mov	r7, r0
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         return(UX_MEMORY_INSUFFICIENT);
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     /* There maybe multiple configurations for this device.  */
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     nb_configurations =  device -> ux_device_descriptor.bNumConfigurations;
+  74              		.loc 1 112 5 is_stmt 1 view .LVU17
+  75              		.loc 1 112 23 is_stmt 0 view .LVU18
+  76 001c D4F88080 		ldr	r8, [r4, #128]
+  77              	.LVL5:
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     /* Parse all the configurations attached to the device. We start with the first index. 
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****        The index and the actual configuration value may be different according to the USB specifica
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     for (configuration_index = 0; configuration_index < nb_configurations; configuration_index++)
+  78              		.loc 1 116 5 is_stmt 1 view .LVU19
+  79              		.loc 1 116 30 is_stmt 0 view .LVU20
+  80 0020 0025     		movs	r5, #0
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** UCHAR *             descriptor;
+  81              		.loc 1 90 21 view .LVU21
+  82 0022 4FF0FF0A 		mov	r10, #255
+  83              		.loc 1 116 5 view .LVU22
+  84 0026 0DE0     		b	.L3
+  85              	.LVL6:
+  86              	.L4:
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     {
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         /* Create a transfer_request for the GET_DESCRIPTOR request.  */
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_data_pointer =      descriptor;
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_requested_length =  UX_CONFIGURATION_DESCRIPTOR_LEN
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_function =          UX_GET_DESCRIPTOR;
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_type =              UX_REQUEST_IN | UX_REQUEST_TYPE
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_value =             configuration_index | (UINT)(UX
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_index =             0;
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         /* Send request to HCD layer.  */
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         status =  _ux_host_stack_transfer_request(transfer_request);
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         /* Check for correct transfer and entire descriptor returned.  */
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         if ((status == UX_SUCCESS) && (transfer_request -> ux_transfer_request_actual_length == UX_
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         {
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             /* Allocate some memory for the container of this descriptor.  */
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             configuration =  _ux_utility_memory_allocate(UX_NO_ALIGN, UX_REGULAR_MEMORY, sizeof(UX_
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             /* Check to see if the block was allocated.  */
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             if (configuration != UX_NULL)
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             {
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 /* This configuration must be linked to the device.  */
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 _ux_host_stack_new_configuration_create(device, configuration);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 5
+
+
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 /* The descriptor is in a packed format, parse it locally.  */      
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 _ux_utility_descriptor_parse(descriptor, _ux_system_configuration_descriptor_struct
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                                     UX_CONFIGURATION_DESCRIPTOR_ENTRIES, (UCHAR *) &configuration -
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 /* Parse the device descriptor so that we can retrieve the length 
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                     of the entire configuration.  */
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 status =  _ux_host_stack_configuration_descriptor_parse(device, configuration, conf
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 /* Check the completion status.  */
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 if (status != UX_SUCCESS)
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 {
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                     /* Error, delete the configuration instance.  */
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                     _ux_host_stack_configuration_instance_delete(configuration);
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 }
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             }
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             else
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             {
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 /* Cannot allocate configuration memory. Abort enumeration */
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 status =  UX_MEMORY_INSUFFICIENT;
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 break;
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             }            
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         }
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         else
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         {
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             /* Error trap. */
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_DESCR
+  87              		.loc 1 172 13 is_stmt 1 view .LVU23
+  88 0028 4222     		movs	r2, #66
+  89 002a 0421     		movs	r1, #4
+  90 002c 0220     		movs	r0, #2
+  91              	.LVL7:
+  92              		.loc 1 172 13 is_stmt 0 view .LVU24
+  93 002e FFF7FEFF 		bl	_ux_system_error_handler
+  94              	.LVL8:
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DESCRIPTOR_CORRUPTED, descriptor, 0, 0, UX_T
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             /* The device descriptor does not contain the right amount of data. Maybe corruption.  
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             status =  UX_DESCRIPTOR_CORRUPTED;
+  95              		.loc 1 178 13 is_stmt 1 view .LVU25
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             break;
+  96              		.loc 1 180 13 view .LVU26
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+  97              		.loc 1 178 20 is_stmt 0 view .LVU27
+  98 0032 4FF0420A 		mov	r10, #66
+  99              	.LVL9:
+ 100              	.L5:
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         }            
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     }
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 6
+
+
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     /* Free all used resources.  */
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     _ux_utility_memory_free(descriptor);
+ 101              		.loc 1 186 5 is_stmt 1 view .LVU28
+ 102 0036 3846     		mov	r0, r7
+ 103 0038 FFF7FEFF 		bl	_ux_utility_memory_free
+ 104              	.LVL10:
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     /* Return completion status.  */
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     return(status);             
+ 105              		.loc 1 189 5 view .LVU29
+ 106              	.L1:
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** }
+ 107              		.loc 1 190 1 is_stmt 0 view .LVU30
+ 108 003c 5046     		mov	r0, r10
+ 109 003e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 110              	.LVL11:
+ 111              	.L6:
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     {
+ 112              		.loc 1 116 76 is_stmt 1 discriminator 2 view .LVU31
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     {
+ 113              		.loc 1 116 95 is_stmt 0 discriminator 2 view .LVU32
+ 114 0042 0135     		adds	r5, r5, #1
+ 115              	.LVL12:
+ 116              	.L3:
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     {
+ 117              		.loc 1 116 35 is_stmt 1 discriminator 1 view .LVU33
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****     {
+ 118              		.loc 1 116 5 is_stmt 0 discriminator 1 view .LVU34
+ 119 0044 4545     		cmp	r5, r8
+ 120 0046 F6D2     		bcs	.L5
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_requested_length =  UX_CONFIGURATION_DESCRIPTOR_LEN
+ 121              		.loc 1 120 9 is_stmt 1 view .LVU35
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_requested_length =  UX_CONFIGURATION_DESCRIPTOR_LEN
+ 122              		.loc 1 120 62 is_stmt 0 view .LVU36
+ 123 0048 C4F8BC70 		str	r7, [r4, #188]
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_function =          UX_GET_DESCRIPTOR;
+ 124              		.loc 1 121 9 is_stmt 1 view .LVU37
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_function =          UX_GET_DESCRIPTOR;
+ 125              		.loc 1 121 66 is_stmt 0 view .LVU38
+ 126 004c 0923     		movs	r3, #9
+ 127 004e C4F8C030 		str	r3, [r4, #192]
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_type =              UX_REQUEST_IN | UX_REQUEST_TYPE
+ 128              		.loc 1 122 9 is_stmt 1 view .LVU39
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_type =              UX_REQUEST_IN | UX_REQUEST_TYPE
+ 129              		.loc 1 122 58 is_stmt 0 view .LVU40
+ 130 0052 0623     		movs	r3, #6
+ 131 0054 C4F8CC30 		str	r3, [r4, #204]
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_value =             configuration_index | (UINT)(UX
+ 132              		.loc 1 123 9 is_stmt 1 view .LVU41
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_value =             configuration_index | (UINT)(UX
+ 133              		.loc 1 123 54 is_stmt 0 view .LVU42
+ 134 0058 8023     		movs	r3, #128
+ 135 005a C4F8C830 		str	r3, [r4, #200]
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_index =             0;
+ 136              		.loc 1 124 9 is_stmt 1 view .LVU43
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_index =             0;
+ 137              		.loc 1 124 89 is_stmt 0 view .LVU44
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 7
+
+
+ 138 005e 45F40073 		orr	r3, r5, #512
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         transfer_request -> ux_transfer_request_index =             0;
+ 139              		.loc 1 124 55 view .LVU45
+ 140 0062 C4F8D030 		str	r3, [r4, #208]
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 141              		.loc 1 125 9 is_stmt 1 view .LVU46
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 142              		.loc 1 125 55 is_stmt 0 view .LVU47
+ 143 0066 0023     		movs	r3, #0
+ 144 0068 C4F8D430 		str	r3, [r4, #212]
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 145              		.loc 1 128 9 is_stmt 1 view .LVU48
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 146              		.loc 1 128 19 is_stmt 0 view .LVU49
+ 147 006c 4846     		mov	r0, r9
+ 148 006e FFF7FEFF 		bl	_ux_host_stack_transfer_request
+ 149              	.LVL13:
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         {
+ 150              		.loc 1 131 9 is_stmt 1 view .LVU50
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         {
+ 151              		.loc 1 131 12 is_stmt 0 view .LVU51
+ 152 0072 0028     		cmp	r0, #0
+ 153 0074 D8D1     		bne	.L4
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         {
+ 154              		.loc 1 131 57 discriminator 1 view .LVU52
+ 155 0076 D4F8C430 		ldr	r3, [r4, #196]
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****         {
+ 156              		.loc 1 131 36 discriminator 1 view .LVU53
+ 157 007a 092B     		cmp	r3, #9
+ 158 007c D4D1     		bne	.L4
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 159              		.loc 1 135 13 is_stmt 1 view .LVU54
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 160              		.loc 1 135 30 is_stmt 0 view .LVU55
+ 161 007e 4422     		movs	r2, #68
+ 162 0080 0021     		movs	r1, #0
+ 163 0082 0846     		mov	r0, r1
+ 164              	.LVL14:
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 165              		.loc 1 135 30 view .LVU56
+ 166 0084 FFF7FEFF 		bl	_ux_utility_memory_allocate
+ 167              	.LVL15:
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             {
+ 168              		.loc 1 138 13 is_stmt 1 view .LVU57
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****             {
+ 169              		.loc 1 138 16 is_stmt 0 view .LVU58
+ 170 0088 0646     		mov	r6, r0
+ 171 008a B0B1     		cbz	r0, .L9
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 
+ 172              		.loc 1 142 17 is_stmt 1 view .LVU59
+ 173 008c 0146     		mov	r1, r0
+ 174 008e 2046     		mov	r0, r4
+ 175              	.LVL16:
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 
+ 176              		.loc 1 142 17 is_stmt 0 view .LVU60
+ 177 0090 FFF7FEFF 		bl	_ux_host_stack_new_configuration_create
+ 178              	.LVL17:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 8
+
+
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                                     UX_CONFIGURATION_DESCRIPTOR_ENTRIES, (UCHAR *) &configuration -
+ 179              		.loc 1 145 17 is_stmt 1 view .LVU61
+ 180 0094 06F10C03 		add	r3, r6, #12
+ 181 0098 0822     		movs	r2, #8
+ 182 009a 0B49     		ldr	r1, .L11
+ 183 009c 3846     		mov	r0, r7
+ 184 009e FFF7FEFF 		bl	_ux_utility_descriptor_parse
+ 185              	.LVL18:
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 186              		.loc 1 150 17 view .LVU62
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 187              		.loc 1 150 27 is_stmt 0 view .LVU63
+ 188 00a2 2A46     		mov	r2, r5
+ 189 00a4 3146     		mov	r1, r6
+ 190 00a6 2046     		mov	r0, r4
+ 191 00a8 FFF7FEFF 		bl	_ux_host_stack_configuration_descriptor_parse
+ 192              	.LVL19:
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 {
+ 193              		.loc 1 153 17 is_stmt 1 view .LVU64
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 {
+ 194              		.loc 1 153 20 is_stmt 0 view .LVU65
+ 195 00ac 8246     		mov	r10, r0
+ 196 00ae 0028     		cmp	r0, #0
+ 197 00b0 C7D0     		beq	.L6
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 }
+ 198              		.loc 1 156 21 is_stmt 1 view .LVU66
+ 199 00b2 3046     		mov	r0, r6
+ 200              	.LVL20:
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c ****                 }
+ 201              		.loc 1 156 21 is_stmt 0 view .LVU67
+ 202 00b4 FFF7FEFF 		bl	_ux_host_stack_configuration_instance_delete
+ 203              	.LVL21:
+ 204 00b8 C3E7     		b	.L6
+ 205              	.LVL22:
+ 206              	.L9:
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 207              		.loc 1 163 24 view .LVU68
+ 208 00ba 4FF0120A 		mov	r10, #18
+ 209 00be BAE7     		b	.L5
+ 210              	.LVL23:
+ 211              	.L8:
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_configuration_enumerate.c **** 
+ 212              		.loc 1 109 15 view .LVU69
+ 213 00c0 4FF0120A 		mov	r10, #18
+ 214 00c4 BAE7     		b	.L1
+ 215              	.L12:
+ 216 00c6 00BF     		.align	2
+ 217              	.L11:
+ 218 00c8 00000000 		.word	_ux_system_configuration_descriptor_structure
+ 219              		.cfi_endproc
+ 220              	.LFE11:
+ 222              		.text
+ 223              	.Letext0:
+ 224              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 225              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 226              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 227              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 9
+
+
+ 228              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 229              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_configuration_enumerate.c
+C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s:20     .text._ux_host_stack_configuration_enumerate:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s:26     .text._ux_host_stack_configuration_enumerate:00000000 _ux_host_stack_configuration_enumerate
+C:\Users\HP\AppData\Local\Temp\ccmRYaSl.s:218    .text._ux_host_stack_configuration_enumerate:000000c8 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_allocate
+_ux_system_error_handler
+_ux_utility_memory_free
+_ux_host_stack_transfer_request
+_ux_host_stack_new_configuration_create
+_ux_utility_descriptor_parse
+_ux_host_stack_configuration_descriptor_parse
+_ux_host_stack_configuration_instance_delete
+_ux_system_configuration_descriptor_structure

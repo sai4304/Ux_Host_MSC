@@ -1,0 +1,143 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqPCbSh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_utility_thread_relinquish.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_utility_thread_relinquish,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_utility_thread_relinquish
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_utility_thread_relinquish:
+  27              	.LFB11:
+  28              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**   Utility                                                             */
+  19:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  30:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqPCbSh.s 			page 2
+
+
+  31:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** #if !defined(UX_STANDALONE)
+  32:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*    _ux_utility_thread_relinquish                       PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                           6.1.11       */
+  38:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*    This function helps the thread relinquish its control.              */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  OUTPUT                                                                */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  CALLS                                                                 */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*    tx_thread_relinquish                  ThreadX relinquish thread     */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  CALLED BY                                                             */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*    USBX Components                                                     */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  RELEASE HISTORY                                                       */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  65:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  66:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                            resulting in version 6.1    */
+  67:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*  04-25-2022     Chaoqiong Xiao           Modified comment(s),          */
+  68:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                            off in standalone build,    */
+  69:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                            resulting in version 6.1.11 */
+  70:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** /**************************************************************************/
+  72:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** VOID  _ux_utility_thread_relinquish(VOID)
+  73:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** {
+  29              		.loc 1 73 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  74:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  75:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c ****     /* Call ThreadX to relinquish a USBX thread.  */
+  76:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c ****     tx_thread_relinquish();
+  38              		.loc 1 76 5 view .LVU1
+  39 0002 FFF7FEFF 		bl	_txe_thread_relinquish
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqPCbSh.s 			page 3
+
+
+  40              	.LVL0:
+  77:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** 
+  78:Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c **** }
+  41              		.loc 1 78 1 is_stmt 0 view .LVU2
+  42 0006 08BD     		pop	{r3, pc}
+  43              		.cfi_endproc
+  44              	.LFE11:
+  46              		.text
+  47              	.Letext0:
+  48              		.file 2 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccqPCbSh.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_utility_thread_relinquish.c
+C:\Users\HP\AppData\Local\Temp\ccqPCbSh.s:20     .text._ux_utility_thread_relinquish:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccqPCbSh.s:26     .text._ux_utility_thread_relinquish:00000000 _ux_utility_thread_relinquish
+
+UNDEFINED SYMBOLS
+_txe_thread_relinquish

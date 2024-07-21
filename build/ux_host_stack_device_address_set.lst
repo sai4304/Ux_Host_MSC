@@ -1,0 +1,477 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_device_address_set.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_device_address_set,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_device_address_set
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_device_address_set:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    _ux_host_stack_device_address_set                   PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                           6.1.10       */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    This function sets the device address to the new device.            */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  INPUT                                                                 */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    device                                Pointer to device             */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  OUTPUT                                                                */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    Completion Status                                                   */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  CALLS                                                                 */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    _ux_utility_delay_ms                  Thread sleep                  */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    _ux_host_stack_transfer_request       Process transfer request      */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  CALLED BY                                                             */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    USBX Components                                                     */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  RELEASE HISTORY                                                       */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                            optimized based on compile  */
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                            definitions,                */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                            resulting in version 6.1    */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                            added standalone support,   */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                            resulting in version 6.1.10 */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /*                                                                        */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** /**************************************************************************/
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UINT  _ux_host_stack_device_address_set(UX_DEVICE *device)
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** {
+  30              		.loc 1 78 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 78 1 is_stmt 0 view .LVU1
+  35 0000 70B5     		push	{r4, r5, r6, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 3
+
+
+  38              		.cfi_offset 4, -16
+  39              		.cfi_offset 5, -12
+  40              		.cfi_offset 6, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0546     		mov	r5, r0
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UINT            status = UX_ERROR;
+  43              		.loc 1 81 1 is_stmt 1 view .LVU2
+  44              	.LVL1:
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UX_TRANSFER     *transfer_request;
+  45              		.loc 1 82 1 view .LVU3
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UX_ENDPOINT     *control_endpoint;
+  46              		.loc 1 83 1 view .LVU4
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** USHORT          device_address;
+  47              		.loc 1 84 1 view .LVU5
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #if UX_MAX_DEVICES > 1
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UX_HCD          *hcd;
+  48              		.loc 1 86 1 view .LVU6
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UINT            address_byte_index;
+  49              		.loc 1 87 1 view .LVU7
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UINT            address_bit_index;
+  50              		.loc 1 88 1 view .LVU8
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** UCHAR           device_address_byte;
+  51              		.loc 1 89 1 view .LVU9
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #endif
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Retrieve the pointer to the control endpoint.  */
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     control_endpoint =  &device -> ux_device_control_endpoint;
+  52              		.loc 1 93 5 view .LVU10
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Retrieve the transfer request pointer.  */
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     transfer_request =  &control_endpoint -> ux_endpoint_transfer_request;
+  53              		.loc 1 96 5 view .LVU11
+  54              		.loc 1 96 22 is_stmt 0 view .LVU12
+  55 0004 B430     		adds	r0, r0, #180
+  56              	.LVL2:
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Initialize device address to 1.  */
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     device_address =  1;
+  57              		.loc 1 99 5 is_stmt 1 view .LVU13
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #if UX_MAX_DEVICES > 1
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* We need the HCD pointer as well.  */
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     hcd = UX_DEVICE_HCD_GET(device);
+  58              		.loc 1 104 5 view .LVU14
+  59              		.loc 1 104 11 is_stmt 0 view .LVU15
+  60 0006 224B     		ldr	r3, .L14
+  61 0008 1B68     		ldr	r3, [r3]
+  62              		.loc 1 104 9 view .LVU16
+  63 000a DE68     		ldr	r6, [r3, #12]
+  64              	.LVL3:
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Calculate the new address of this device. We start with address 1.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     for (address_byte_index = 0; address_byte_index < 16; address_byte_index++)
+  65              		.loc 1 107 5 is_stmt 1 view .LVU17
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 4
+
+
+  66              		.loc 1 107 29 is_stmt 0 view .LVU18
+  67 000c 4FF0000C 		mov	ip, #0
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+  68              		.loc 1 99 20 view .LVU19
+  69 0010 0124     		movs	r4, #1
+  70              		.loc 1 107 5 view .LVU20
+  71 0012 21E0     		b	.L2
+  72              	.LVL4:
+  73              	.L13:
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     {
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* Get the address mask byte.  */
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         device_address_byte =  hcd -> ux_hcd_address[address_byte_index];
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* Scan each bit for an empty spot.  */
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         for (address_bit_index = 0; address_bit_index < 8; address_bit_index++)
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             if ((device_address_byte & (1 << address_bit_index)) == 0)
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             {
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 /* We have found an empty spot. Reserve this address.  */
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 device_address_byte = (UCHAR)((UCHAR)device_address_byte | (UCHAR)(1 << address_bit
+  74              		.loc 1 121 17 is_stmt 1 view .LVU21
+  75              		.loc 1 121 86 is_stmt 0 view .LVU22
+  76 0014 0122     		movs	r2, #1
+  77 0016 02FA03F3 		lsl	r3, r2, r3
+  78              	.LVL5:
+  79              		.loc 1 121 76 view .LVU23
+  80 001a DBB2     		uxtb	r3, r3
+  81              		.loc 1 121 37 view .LVU24
+  82 001c 1943     		orrs	r1, r1, r3
+  83              	.LVL6:
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 /* Store the address mask byte.  */
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 hcd -> ux_hcd_address[address_byte_index] =  device_address_byte;
+  84              		.loc 1 124 17 is_stmt 1 view .LVU25
+  85              		.loc 1 124 59 is_stmt 0 view .LVU26
+  86 001e 6644     		add	r6, r6, ip
+  87              	.LVL7:
+  88              		.loc 1 124 59 view .LVU27
+  89 0020 86F87810 		strb	r1, [r6, #120]
+  90              	.LVL8:
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 /* OK, apply address.  */
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 status = UX_SUCCESS;
+  91              		.loc 1 127 17 is_stmt 1 view .LVU28
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 break;
+  92              		.loc 1 128 17 view .LVU29
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             }
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             /* This address was already taken, increment to the next address.  */
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             device_address++;
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         }
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* If address found, break the loop.  */
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         if (status == UX_SUCCESS)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 5
+
+
+  93              		.loc 1 136 9 view .LVU30
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****                 break;
+  94              		.loc 1 127 24 is_stmt 0 view .LVU31
+  95 0024 0026     		movs	r6, #0
+  96              	.LVL9:
+  97              	.L5:
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             break;
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         }
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     }
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     if (status == UX_ERROR)
+  98              		.loc 1 141 5 is_stmt 1 view .LVU32
+  99              		.loc 1 141 8 is_stmt 0 view .LVU33
+ 100 0026 FF2E     		cmp	r6, #255
+ 101 0028 12D0     		beq	.L1
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* We should never get here!  */
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         return(UX_ERROR);
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #endif
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_DEVICE_ADDRESS_SET, device, device_address, 0, 0, U
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Create a transfer request for the SET_ADDRESS request.  */
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     transfer_request -> ux_transfer_request_data_pointer =      UX_NULL;
+ 102              		.loc 1 151 5 is_stmt 1 view .LVU34
+ 103              		.loc 1 151 58 is_stmt 0 view .LVU35
+ 104 002a 0023     		movs	r3, #0
+ 105 002c C5F8BC30 		str	r3, [r5, #188]
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     transfer_request -> ux_transfer_request_requested_length =  0;
+ 106              		.loc 1 152 5 is_stmt 1 view .LVU36
+ 107              		.loc 1 152 62 is_stmt 0 view .LVU37
+ 108 0030 C5F8C030 		str	r3, [r5, #192]
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     transfer_request -> ux_transfer_request_function =          UX_SET_ADDRESS;
+ 109              		.loc 1 153 5 is_stmt 1 view .LVU38
+ 110              		.loc 1 153 54 is_stmt 0 view .LVU39
+ 111 0034 0522     		movs	r2, #5
+ 112 0036 C5F8CC20 		str	r2, [r5, #204]
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     transfer_request -> ux_transfer_request_type =              UX_REQUEST_OUT | UX_REQUEST_TYPE_ST
+ 113              		.loc 1 154 5 is_stmt 1 view .LVU40
+ 114              		.loc 1 154 50 is_stmt 0 view .LVU41
+ 115 003a C5F8C830 		str	r3, [r5, #200]
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     transfer_request -> ux_transfer_request_value =             device_address;
+ 116              		.loc 1 155 5 is_stmt 1 view .LVU42
+ 117              		.loc 1 155 51 is_stmt 0 view .LVU43
+ 118 003e C5F8D040 		str	r4, [r5, #208]
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     transfer_request -> ux_transfer_request_index =             0;
+ 119              		.loc 1 156 5 is_stmt 1 view .LVU44
+ 120              		.loc 1 156 51 is_stmt 0 view .LVU45
+ 121 0042 C5F8D430 		str	r3, [r5, #212]
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #if defined(UX_HOST_STANDALONE)
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     device -> ux_device_enum_trans = transfer_request;
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     status = UX_SUCCESS;
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     return(status);
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #else
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 6
+
+
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Send request to HCD layer.  */
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     status =  _ux_host_stack_transfer_request(transfer_request);
+ 122              		.loc 1 165 5 is_stmt 1 view .LVU46
+ 123              		.loc 1 165 15 is_stmt 0 view .LVU47
+ 124 0046 FFF7FEFF 		bl	_ux_host_stack_transfer_request
+ 125              	.LVL10:
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Now, this address will be the one used in future transfers.  The transfer may have failed an
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         all the device resources including the new address will be free.*/
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     device -> ux_device_address =  (ULONG) device_address;
+ 126              		.loc 1 169 5 is_stmt 1 view .LVU48
+ 127              		.loc 1 169 33 is_stmt 0 view .LVU49
+ 128 004a EC60     		str	r4, [r5, #12]
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     /* Check completion status.  */
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     if (status == UX_SUCCESS)
+ 129              		.loc 1 172 5 is_stmt 1 view .LVU50
+ 130              		.loc 1 172 8 is_stmt 0 view .LVU51
+ 131 004c 0646     		mov	r6, r0
+ 132 004e C0B1     		cbz	r0, .L10
+ 133              	.LVL11:
+ 134              	.L1:
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     {
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* Mark the device as ADDRESSED now.  */
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         device -> ux_device_state = UX_DEVICE_ADDRESSED;
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* Some devices need some time to accept this address.  */
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         _ux_utility_delay_ms(UX_DEVICE_ADDRESS_SET_WAIT);
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* Return successful status.  */
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         return(status);
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     }
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     else
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     {
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         /* We have an error at the first device transaction. This is mostly
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             due to the device having failed on the reset after power up.
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             we will try again either at the root hub or regular hub. */   
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         return(status);
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     }
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** #endif
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** }
+ 135              		.loc 1 193 1 view .LVU52
+ 136 0050 3046     		mov	r0, r6
+ 137 0052 70BD     		pop	{r4, r5, r6, pc}
+ 138              	.LVL12:
+ 139              	.L12:
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 140              		.loc 1 136 9 is_stmt 1 discriminator 2 view .LVU53
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     {
+ 141              		.loc 1 107 59 discriminator 2 view .LVU54
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     {
+ 142              		.loc 1 107 77 is_stmt 0 discriminator 2 view .LVU55
+ 143 0054 0CF1010C 		add	ip, ip, #1
+ 144              	.LVL13:
+ 145              	.L2:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 7
+
+
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     {
+ 146              		.loc 1 107 34 is_stmt 1 discriminator 1 view .LVU56
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     {
+ 147              		.loc 1 107 5 is_stmt 0 discriminator 1 view .LVU57
+ 148 0058 BCF10F0F 		cmp	ip, #15
+ 149 005c 0FD8     		bhi	.L11
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 150              		.loc 1 111 9 is_stmt 1 view .LVU58
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 151              		.loc 1 111 29 is_stmt 0 view .LVU59
+ 152 005e 06EB0C03 		add	r3, r6, ip
+ 153 0062 93F87810 		ldrb	r1, [r3, #120]	@ zero_extendqisi2
+ 154              	.LVL14:
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 155              		.loc 1 114 9 is_stmt 1 view .LVU60
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 156              		.loc 1 114 32 is_stmt 0 view .LVU61
+ 157 0066 0023     		movs	r3, #0
+ 158              	.LVL15:
+ 159              	.L3:
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 160              		.loc 1 114 37 is_stmt 1 discriminator 1 view .LVU62
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 161              		.loc 1 114 9 is_stmt 0 discriminator 1 view .LVU63
+ 162 0068 072B     		cmp	r3, #7
+ 163 006a F3D8     		bhi	.L12
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             {
+ 164              		.loc 1 117 13 is_stmt 1 view .LVU64
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             {
+ 165              		.loc 1 117 66 is_stmt 0 view .LVU65
+ 166 006c 41FA03F2 		asr	r2, r1, r3
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****             {
+ 167              		.loc 1 117 16 view .LVU66
+ 168 0070 12F0010F 		tst	r2, #1
+ 169 0074 CED0     		beq	.L13
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         }
+ 170              		.loc 1 132 13 is_stmt 1 discriminator 2 view .LVU67
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         }
+ 171              		.loc 1 132 27 is_stmt 0 discriminator 2 view .LVU68
+ 172 0076 0134     		adds	r4, r4, #1
+ 173              	.LVL16:
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         }
+ 174              		.loc 1 132 27 discriminator 2 view .LVU69
+ 175 0078 A4B2     		uxth	r4, r4
+ 176              	.LVL17:
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 177              		.loc 1 114 60 is_stmt 1 discriminator 2 view .LVU70
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 178              		.loc 1 114 77 is_stmt 0 discriminator 2 view .LVU71
+ 179 007a 0133     		adds	r3, r3, #1
+ 180              	.LVL18:
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 181              		.loc 1 114 77 discriminator 2 view .LVU72
+ 182 007c F4E7     		b	.L3
+ 183              	.LVL19:
+ 184              	.L11:
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 8
+
+
+ 185              		.loc 1 114 77 discriminator 2 view .LVU73
+ 186 007e FF26     		movs	r6, #255
+ 187              	.LVL20:
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****         {
+ 188              		.loc 1 114 77 discriminator 2 view .LVU74
+ 189 0080 D1E7     		b	.L5
+ 190              	.LVL21:
+ 191              	.L10:
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 192              		.loc 1 176 9 is_stmt 1 view .LVU75
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 193              		.loc 1 176 35 is_stmt 0 view .LVU76
+ 194 0082 0223     		movs	r3, #2
+ 195 0084 AB60     		str	r3, [r5, #8]
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 196              		.loc 1 179 9 is_stmt 1 view .LVU77
+ 197 0086 3220     		movs	r0, #50
+ 198              	.LVL22:
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c **** 
+ 199              		.loc 1 179 9 is_stmt 0 view .LVU78
+ 200 0088 FFF7FEFF 		bl	_ux_utility_delay_ms
+ 201              	.LVL23:
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     }
+ 202              		.loc 1 182 9 is_stmt 1 view .LVU79
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_device_address_set.c ****     }
+ 203              		.loc 1 182 15 is_stmt 0 view .LVU80
+ 204 008c E0E7     		b	.L1
+ 205              	.L15:
+ 206 008e 00BF     		.align	2
+ 207              	.L14:
+ 208 0090 00000000 		.word	_ux_system_host
+ 209              		.cfi_endproc
+ 210              	.LFE11:
+ 212              		.text
+ 213              	.Letext0:
+ 214              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 215              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 216              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 217              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 218              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 219              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_device_address_set.c
+C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s:20     .text._ux_host_stack_device_address_set:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s:26     .text._ux_host_stack_device_address_set:00000000 _ux_host_stack_device_address_set
+C:\Users\HP\AppData\Local\Temp\ccSY75Lc.s:208    .text._ux_host_stack_device_address_set:00000090 $d
+
+UNDEFINED SYMBOLS
+_ux_host_stack_transfer_request
+_ux_utility_delay_ms
+_ux_system_host

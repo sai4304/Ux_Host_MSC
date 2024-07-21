@@ -1,0 +1,271 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_ed_obtain.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_ed_obtain,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_ed_obtain
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_ed_obtain:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c"
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    _ux_hcd_stm32_ed_obtain                             PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                           6.0          */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    This function obtains a free ED from the ED list.                   */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  INPUT                                                                 */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    hcd_stm32                           Pointer to STM32 controller     */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  OUTPUT                                                                */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    UX_HCD_STM32_ED *                   Pointer to ED                   */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  CALLS                                                                 */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    _ux_utility_memory_set                Set memory block              */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  CALLED BY                                                             */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    STM32 Controller Driver                                             */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  RELEASE HISTORY                                                       */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*    DATE              NAME                      DESCRIPTION             */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /*                                                                        */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** /**************************************************************************/
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** UX_HCD_STM32_ED  *_ux_hcd_stm32_ed_obtain(UX_HCD_STM32 *hcd_stm32)
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** {
+  30              		.loc 1 72 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 72 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** UX_HCD_STM32_ED       *ed;
+  40              		.loc 1 74 1 is_stmt 1 view .LVU2
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** ULONG                 ed_index;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s 			page 3
+
+
+  41              		.loc 1 75 1 view .LVU3
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     /* Start the search from the beginning of the list.  */
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     ed =  hcd_stm32 -> ux_hcd_stm32_ed_list;
+  42              		.loc 1 79 5 view .LVU4
+  43              		.loc 1 79 8 is_stmt 0 view .LVU5
+  44 0002 4468     		ldr	r4, [r0, #4]
+  45              	.LVL1:
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     for (ed_index = 0; ed_index < _ux_system_host -> ux_system_host_max_ed; ed_index++)
+  46              		.loc 1 80 5 is_stmt 1 view .LVU6
+  47              		.loc 1 80 19 is_stmt 0 view .LVU7
+  48 0004 0023     		movs	r3, #0
+  49              		.loc 1 80 5 view .LVU8
+  50 0006 01E0     		b	.L2
+  51              	.LVL2:
+  52              	.L3:
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     {
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         /* Check the ED status, a free ED is marked with the UNUSED flag.  */
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         if (ed -> ux_stm32_ed_status == UX_HCD_STM32_ED_STATUS_FREE)
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         {
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             /* The ED may have been used, so we reset all fields.  */
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             _ux_utility_memory_set(ed, 0, sizeof(UX_HCD_STM32_ED));
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             /* This ED is now marked as ALLOCATED.  */
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             ed -> ux_stm32_ed_status =  UX_HCD_STM32_ED_STATUS_ALLOCATED;
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             /* Reset the channel.  */
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             ed -> ux_stm32_ed_channel =  UX_HCD_STM32_NO_CHANNEL_ASSIGNED;
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             /* Return ED pointer.  */
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****             return(ed);
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         }
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         /* Point to the next ED.  */
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         ed++;
+  53              		.loc 1 101 9 is_stmt 1 discriminator 2 view .LVU9
+  54              		.loc 1 101 11 is_stmt 0 discriminator 2 view .LVU10
+  55 0008 3034     		adds	r4, r4, #48
+  56              	.LVL3:
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     for (ed_index = 0; ed_index < _ux_system_host -> ux_system_host_max_ed; ed_index++)
+  57              		.loc 1 80 77 is_stmt 1 discriminator 2 view .LVU11
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     for (ed_index = 0; ed_index < _ux_system_host -> ux_system_host_max_ed; ed_index++)
+  58              		.loc 1 80 85 is_stmt 0 discriminator 2 view .LVU12
+  59 000a 0133     		adds	r3, r3, #1
+  60              	.LVL4:
+  61              	.L2:
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     for (ed_index = 0; ed_index < _ux_system_host -> ux_system_host_max_ed; ed_index++)
+  62              		.loc 1 80 24 is_stmt 1 discriminator 1 view .LVU13
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     for (ed_index = 0; ed_index < _ux_system_host -> ux_system_host_max_ed; ed_index++)
+  63              		.loc 1 80 51 is_stmt 0 discriminator 1 view .LVU14
+  64 000c 0B4A     		ldr	r2, .L8
+  65 000e 1268     		ldr	r2, [r2]
+  66 0010 9269     		ldr	r2, [r2, #24]
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     for (ed_index = 0; ed_index < _ux_system_host -> ux_system_host_max_ed; ed_index++)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s 			page 4
+
+
+  67              		.loc 1 80 5 discriminator 1 view .LVU15
+  68 0012 9A42     		cmp	r2, r3
+  69 0014 0FD9     		bls	.L7
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         {
+  70              		.loc 1 84 9 is_stmt 1 view .LVU16
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         {
+  71              		.loc 1 84 16 is_stmt 0 view .LVU17
+  72 0016 94F82820 		ldrb	r2, [r4, #40]	@ zero_extendqisi2
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         {
+  73              		.loc 1 84 12 view .LVU18
+  74 001a 002A     		cmp	r2, #0
+  75 001c F4D1     		bne	.L3
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  76              		.loc 1 88 13 is_stmt 1 view .LVU19
+  77 001e 3022     		movs	r2, #48
+  78 0020 0021     		movs	r1, #0
+  79 0022 2046     		mov	r0, r4
+  80              	.LVL5:
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  81              		.loc 1 88 13 is_stmt 0 view .LVU20
+  82 0024 FFF7FEFF 		bl	_ux_utility_memory_set
+  83              	.LVL6:
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  84              		.loc 1 91 13 is_stmt 1 view .LVU21
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  85              		.loc 1 91 38 is_stmt 0 view .LVU22
+  86 0028 0123     		movs	r3, #1
+  87 002a 84F82830 		strb	r3, [r4, #40]
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  88              		.loc 1 94 13 is_stmt 1 view .LVU23
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+  89              		.loc 1 94 39 is_stmt 0 view .LVU24
+  90 002e FF23     		movs	r3, #255
+  91 0030 84F82930 		strb	r3, [r4, #41]
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         }
+  92              		.loc 1 97 13 is_stmt 1 view .LVU25
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****         }
+  93              		.loc 1 97 19 is_stmt 0 view .LVU26
+  94 0034 00E0     		b	.L1
+  95              	.LVL7:
+  96              	.L7:
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     }
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** 
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     /* There is no available ED in the ED list.  */
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c ****     return(UX_NULL);
+  97              		.loc 1 105 11 view .LVU27
+  98 0036 0024     		movs	r4, #0
+  99              	.LVL8:
+ 100              	.L1:
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_ed_obtain.c **** }
+ 101              		.loc 1 106 1 view .LVU28
+ 102 0038 2046     		mov	r0, r4
+ 103 003a 10BD     		pop	{r4, pc}
+ 104              	.L9:
+ 105              		.align	2
+ 106              	.L8:
+ 107 003c 00000000 		.word	_ux_system_host
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s 			page 5
+
+
+ 108              		.cfi_endproc
+ 109              	.LFE143:
+ 111              		.text
+ 112              	.Letext0:
+ 113              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 114              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 115              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 116              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 117              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 118              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 119              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 120              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 121              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 122              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ 123              		.file 12 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 124              		.file 13 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_ed_obtain.c
+C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s:20     .text._ux_hcd_stm32_ed_obtain:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s:26     .text._ux_hcd_stm32_ed_obtain:00000000 _ux_hcd_stm32_ed_obtain
+C:\Users\HP\AppData\Local\Temp\ccUWYuY0.s:107    .text._ux_hcd_stm32_ed_obtain:0000003c $d
+
+UNDEFINED SYMBOLS
+_ux_utility_memory_set
+_ux_system_host

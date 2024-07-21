@@ -1,0 +1,840 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_class_storage_driver_entry.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_class_storage_driver_entry,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_class_storage_driver_entry
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_class_storage_driver_entry:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c"
+   1:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  12:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  13:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**   Storage Class                                                       */
+  19:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  23:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  24:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  26:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  28:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #include "ux_host_class_storage.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #include "ux_host_stack.h"
+  31:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  32:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  33:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /* Defined if FileX is not integrated in USBX
+  34:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****    and it's used as external module for file system.  */
+  35:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  36:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /* #define UX_HOST_CLASS_STORAGE_EXT_FILEX */
+  37:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  38:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_CLASS_STORAGE_NO_FILEX)
+  39:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  40:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #ifdef FX_API_H /* For test, confirm FX is not included before.  */
+  41:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #error fx_api.h should not be included in this mode
+  42:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+  43:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  44:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /* FX not integrated in UX, but used as external module.  */
+  45:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_CLASS_STORAGE_EXT_FILEX)
+  46:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  47:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /* FX related things needs define here.  */
+  48:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #include "fx_api.h"
+  49:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #define UX_MEDIA                                    FX_MEDIA
+  50:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** VOID    _ux_host_class_storage_driver_entry(UX_MEDIA *media);
+  51:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  52:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /* FX driver is available to support FX as external module.  */
+  53:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #ifndef UX_HOST_CLASS_STORAGE_DRIVER_ENTRY_ENABLE
+  54:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #define UX_HOST_CLASS_STORAGE_DRIVER_ENTRY_ENABLE
+  55:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+  56:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+  57:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #else
+  58:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  59:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /* FX driver is used for RTOS mode by default.  */
+  60:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #ifndef UX_HOST_CLASS_STORAGE_DRIVER_ENTRY_ENABLE
+  61:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #define UX_HOST_CLASS_STORAGE_DRIVER_ENTRY_ENABLE
+  62:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+  63:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+  64:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  65:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  66:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_CLASS_STORAGE_DRIVER_ENTRY_ENABLE)
+  67:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+  68:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  69:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  FUNCTION                                               RELEASE        */
+  70:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  71:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    _ux_host_class_storage_driver_entry                 PORTABLE C      */
+  72:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                           6.1.12       */
+  73:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  AUTHOR                                                                */
+  74:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  75:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  76:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  77:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  DESCRIPTION                                                           */
+  78:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  79:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    This function is the entry point for the FileX file system. All     */
+  80:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    FileX driver I/O calls are are multiplexed here and rerouted to     */
+  81:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    the proper USB storage class functions.                             */
+  82:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  83:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    When the entry is for storage with FX support (not in standalone    */
+  84:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    mode, and with FileX), the FX media is openned in storage mount     */
+  85:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    flow, and can be directly used in application after mounted.        */
+  86:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 3
+
+
+  87:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    When the entry is for no FX mode (FX in external module, and USBX   */
+  88:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    is compiled without FileX integration), it is an example with       */
+  89:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    disk partition support. In this case the FX media does not operate  */
+  90:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    inside the storage flow. Actions are taken when application mounts  */
+  91:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    media to FX_MEDIA and then have access to media APIs.               */
+  92:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  93:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    In no FX mode demo, it assumes media is managed with partition      */
+  94:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    start from sector address of FX_MEDIA::fx_media_reserved_for_user.  */
+  95:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+  96:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    The following links are not initialized in no FX mode, they must be */
+  97:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    initialized before using the entry in no FX mode:                   */
+  98:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    - FX_MEDIA::fx_media_reserved_for_user                              */
+  99:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                          Partition start sector inside */
+ 100:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                          the whole storage media, must */
+ 101:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                          set before media open         */
+ 102:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    - FX_MEDIA::fx_media_driver_info      Pointer to storage media,     */
+ 103:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                          assigned while calling media  */
+ 104:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                          open (fx_media_open)          */
+ 105:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 106:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  INPUT                                                                 */
+ 107:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 108:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    media                                 FileX media pointer           */
+ 109:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 110:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  OUTPUT                                                                */
+ 111:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 112:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    None                                                                */
+ 113:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 114:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  CALLS                                                                 */
+ 115:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 116:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    _ux_host_class_storage_sense_code_translate                         */
+ 117:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                          Translate error status codes  */
+ 118:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    _ux_host_class_storage_media_read     Read sector(s)                */
+ 119:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    _ux_host_class_storage_media_write    Write sector(s)               */
+ 120:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    _ux_host_semaphore_get                Get protection semaphore      */
+ 121:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    _ux_host_semaphore_put                Release protection semaphore  */
+ 122:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 123:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  CALLED BY                                                             */
+ 124:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 125:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    FileX                                                               */
+ 126:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 127:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  RELEASE HISTORY                                                       */
+ 128:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 129:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*    DATE              NAME                      DESCRIPTION             */
+ 130:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 131:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+ 132:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+ 133:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            added option to disable FX  */
+ 134:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            media integration,          */
+ 135:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            resulting in version 6.1    */
+ 136:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 137:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            resulting in version 6.1.10 */
+ 138:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  04-25-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 139:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            added implement to support  */
+ 140:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            external FX mode,           */
+ 141:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            resulting in version 6.1.11 */
+ 142:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*  07-29-2022     Chaoqiong Xiao           Modified comment(s),          */
+ 143:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            improved external FX mode,  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 4
+
+
+ 144:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                            resulting in version 6.1.12 */
+ 145:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /*                                                                        */
+ 146:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** /**************************************************************************/
+ 147:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** VOID  _ux_host_class_storage_driver_entry(FX_MEDIA *media)
+ 148:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** {
+  30              		.loc 1 148 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 148 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 24
+  38              		.cfi_offset 4, -24
+  39              		.cfi_offset 5, -20
+  40              		.cfi_offset 6, -16
+  41              		.cfi_offset 7, -12
+  42              		.cfi_offset 8, -8
+  43              		.cfi_offset 14, -4
+  44 0004 0446     		mov	r4, r0
+ 149:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 150:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** UINT                            status;
+  45              		.loc 1 150 1 is_stmt 1 view .LVU2
+ 151:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** UX_HOST_CLASS_STORAGE           *storage;
+  46              		.loc 1 151 1 view .LVU3
+ 152:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** UX_HOST_CLASS_STORAGE_MEDIA     *storage_media;
+  47              		.loc 1 152 1 view .LVU4
+ 153:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** ULONG                           partition_start;
+  48              		.loc 1 153 1 view .LVU5
+ 154:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 155:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 156:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Get the pointers to the instances and partition start.  */
+ 157:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if !defined(UX_HOST_CLASS_STORAGE_NO_FILEX)
+ 158:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     storage =  (UX_HOST_CLASS_STORAGE *) media -> fx_media_driver_info;
+  49              		.loc 1 158 5 view .LVU6
+  50              		.loc 1 158 13 is_stmt 0 view .LVU7
+  51 0006 D0F88460 		ldr	r6, [r0, #132]
+  52              	.LVL1:
+ 159:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     storage_media =  (UX_HOST_CLASS_STORAGE_MEDIA *) media -> fx_media_reserved_for_user;
+  53              		.loc 1 159 5 is_stmt 1 view .LVU8
+  54              		.loc 1 159 60 is_stmt 0 view .LVU9
+  55 000a D0F89858 		ldr	r5, [r0, #2200]
+  56              	.LVL2:
+ 160:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     partition_start = storage_media -> ux_host_class_storage_media_partition_start;
+  57              		.loc 1 160 5 is_stmt 1 view .LVU10
+  58              		.loc 1 160 21 is_stmt 0 view .LVU11
+  59 000e 05F50053 		add	r3, r5, #8192
+  60 0012 D3F8B884 		ldr	r8, [r3, #1208]
+  61              	.LVL3:
+ 161:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #else
+ 162:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     storage_media = (UX_HOST_CLASS_STORAGE_MEDIA *) media -> fx_media_driver_info;
+ 163:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     storage = storage_media -> ux_host_class_storage_media_storage;
+ 164:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     partition_start = (ULONG) media -> fx_media_reserved_for_user;
+ 165:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 166:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 167:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Ensure the instance is valid.  */
+ 168:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     if ((storage -> ux_host_class_storage_state !=  UX_HOST_CLASS_INSTANCE_LIVE) &&
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 5
+
+
+  62              		.loc 1 168 5 is_stmt 1 view .LVU12
+  63              		.loc 1 168 18 is_stmt 0 view .LVU13
+  64 0016 F36E     		ldr	r3, [r6, #108]
+  65              		.loc 1 168 8 view .LVU14
+  66 0018 012B     		cmp	r3, #1
+  67 001a 06D0     		beq	.L2
+  68              		.loc 1 168 82 discriminator 1 view .LVU15
+  69 001c 032B     		cmp	r3, #3
+  70 001e 04D0     		beq	.L2
+ 169:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         (storage -> ux_host_class_storage_state !=  UX_HOST_CLASS_INSTANCE_MOUNTING))
+ 170:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+ 171:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 172:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Class instance is invalid. Return an error!  */
+ 173:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_PTR_ERROR;
+  71              		.loc 1 173 9 is_stmt 1 view .LVU16
+  72              		.loc 1 173 41 is_stmt 0 view .LVU17
+  73 0020 1823     		movs	r3, #24
+  74 0022 C0F88C30 		str	r3, [r0, #140]
+ 174:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         return;
+  75              		.loc 1 174 9 is_stmt 1 view .LVU18
+  76              	.LVL4:
+  77              	.L1:
+ 175:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     }
+ 176:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 177:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_CLASS_STORAGE_NO_FILEX)
+ 178:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 179:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Ensure the media is valid.  */
+ 180:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     if ((storage_media -> ux_host_class_storage_media_storage != storage) ||
+ 181:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         (storage_media -> ux_host_class_storage_media_status != UX_USED))
+ 182:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+ 183:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 184:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Media instance is invalid.  */
+ 185:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_PTR_ERROR;
+ 186:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         return;
+ 187:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     }
+ 188:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 189:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 190:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Protect Thread reentry to this instance.  */
+ 191:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     status = _ux_host_class_storage_lock(storage, UX_WAIT_FOREVER);
+ 192:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     if (status != UX_SUCCESS)
+ 193:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+ 194:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 195:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Unable to lock, return an error.  */
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_INVALID_STATE;
+ 197:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         return;
+ 198:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     }
+ 199:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 200:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Restore the LUN number from the media instance.  */
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     storage -> ux_host_class_storage_lun =  storage_media -> ux_host_class_storage_media_lun;
+ 202:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 203:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* And the sector size.  */
+ 204:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     storage -> ux_host_class_storage_sector_size =
+ 205:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 storage_media -> ux_host_class_storage_media_sector_size;
+ 206:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 207:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_CLASS_STORAGE_NO_FILEX)
+ 208:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 209:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Restore current used last sector number.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 6
+
+
+ 210:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     storage -> ux_host_class_storage_last_sector_number =
+ 211:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 storage_media -> ux_host_class_storage_media_number_sectors - 1;
+ 212:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 213:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 214:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Look at the request specified by the FileX caller.  */
+ 215:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     switch (media -> fx_media_driver_request)
+ 216:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+ 217:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 218:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_READ:
+ 219:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 220:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Read one or more sectors.  */
+ 221:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         status =  _ux_host_class_storage_media_read(storage,
+ 222:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 223:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_sectors,
+ 224:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_buffer);
+ 225:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 226:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Check completion status.  */
+ 227:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         if (status == UX_SUCCESS)
+ 228:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 229:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 230:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         {
+ 231:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 232:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_STANDALONE)
+ 233:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 234:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             /* Poll status.  */
+ 235:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             _ux_host_class_storage_media_check(storage);
+ 236:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 237:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 238:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =
+ 239:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage, status);
+ 240:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 241:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 242:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 243:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 244:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_WRITE:
+ 245:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 246:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Write one or more sectors.  */
+ 247:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         status =  _ux_host_class_storage_media_write(storage,
+ 248:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 249:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_sectors,
+ 250:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_buffer);
+ 251:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 252:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Check completion status.  */
+ 253:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         if (status == UX_SUCCESS)
+ 254:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 255:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 256:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         {
+ 257:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 258:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_STANDALONE)
+ 259:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 260:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             /* Poll status.  */
+ 261:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             _ux_host_class_storage_media_check(storage);
+ 262:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 263:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 264:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =
+ 265:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 266:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 7
+
+
+ 267:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 268:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 269:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 270:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_FLUSH:
+ 271:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 272:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Nothing to do. Just return a good status!  */
+ 273:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_SUCCESS;
+ 274:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 275:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 276:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 277:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_ABORT:
+ 278:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 279:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Nothing to do. Just return a good status!  */
+ 280:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_SUCCESS;
+ 281:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 282:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 283:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 284:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_INIT:
+ 285:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 286:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_STANDALONE)
+ 287:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 288:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             /* Poll status.  */
+ 289:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             _ux_host_class_storage_media_check(storage);
+ 290:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 291:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 292:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Check for media protection.  We must do this operation here because FileX clears all the
+ 293:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****            media fields before init.  */
+ 294:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         if (storage -> ux_host_class_storage_write_protected_media ==  UX_TRUE)
+ 295:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 296:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             /* The media is Write Protected. We tell FileX.  */
+ 297:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_write_protect = UX_TRUE;
+ 298:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 299:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* This function always succeeds.  */
+ 300:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_SUCCESS;
+ 301:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 302:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 303:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 304:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_UNINIT:
+ 305:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 306:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Nothing to do. Just return a good status!  */
+ 307:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_SUCCESS;
+ 308:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 309:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 310:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 311:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_BOOT_READ:
+ 312:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 313:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Read the media boot sector.  */
+ 314:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         status =  _ux_host_class_storage_media_read(storage,
+ 315:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 316:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 317:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Check completion status.  */
+ 318:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         if (status == UX_SUCCESS)
+ 319:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 320:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 321:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         {
+ 322:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 323:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_STANDALONE)
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 8
+
+
+ 324:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 325:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             /* Poll status.  */
+ 326:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             _ux_host_class_storage_media_check(storage);
+ 327:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 328:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 329:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =
+ 330:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 331:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 332:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 333:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 334:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 335:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     case FX_DRIVER_BOOT_WRITE:
+ 336:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 337:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Write the boot sector.  */
+ 338:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         status =  _ux_host_class_storage_media_write(storage,
+ 339:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 340:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 341:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Check completion status.  */
+ 342:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         if (status == UX_SUCCESS)
+ 343:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 344:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 345:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         {
+ 346:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 347:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #if defined(UX_HOST_STANDALONE)
+ 348:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 349:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             /* Poll status.  */
+ 350:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             _ux_host_class_storage_media_check(storage);
+ 351:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** #endif
+ 352:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 353:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =
+ 354:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 355:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 356:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 357:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 358:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 359:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     default:
+ 360:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 361:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         /* Invalid request from FileX */
+ 362:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         media -> fx_media_driver_status =  FX_IO_ERROR;
+ 363:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 364:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     }
+ 365:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 366:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     /* Unprotect thread reentry to this instance.  */
+ 367:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     _ux_host_class_storage_unlock(storage);
+ 368:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** }
+  78              		.loc 1 368 1 is_stmt 0 view .LVU19
+  79 0026 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  80              	.LVL5:
+  81              	.L2:
+ 191:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     if (status != UX_SUCCESS)
+  82              		.loc 1 191 5 is_stmt 1 view .LVU20
+ 191:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     if (status != UX_SUCCESS)
+  83              		.loc 1 191 14 is_stmt 0 view .LVU21
+  84 002a 06F19C07 		add	r7, r6, #156
+  85 002e 4FF0FF31 		mov	r1, #-1
+  86 0032 3846     		mov	r0, r7
+  87              	.LVL6:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 9
+
+
+ 191:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     if (status != UX_SUCCESS)
+  88              		.loc 1 191 14 view .LVU22
+  89 0034 FFF7FEFF 		bl	_ux_utility_semaphore_get
+  90              	.LVL7:
+ 192:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+  91              		.loc 1 192 5 is_stmt 1 view .LVU23
+ 192:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+  92              		.loc 1 192 8 is_stmt 0 view .LVU24
+  93 0038 A0B9     		cbnz	r0, .L22
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  94              		.loc 1 201 5 is_stmt 1 view .LVU25
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  95              		.loc 1 201 59 is_stmt 0 view .LVU26
+  96 003a 05F50055 		add	r5, r5, #8192
+  97              	.LVL8:
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+  98              		.loc 1 201 59 view .LVU27
+  99 003e D5F8C434 		ldr	r3, [r5, #1220]
+ 201:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 100              		.loc 1 201 42 view .LVU28
+ 101 0042 C6F88030 		str	r3, [r6, #128]
+ 204:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 storage_media -> ux_host_class_storage_media_sector_size;
+ 102              		.loc 1 204 5 is_stmt 1 view .LVU29
+ 205:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 103              		.loc 1 205 31 is_stmt 0 view .LVU30
+ 104 0046 D5F8C834 		ldr	r3, [r5, #1224]
+ 204:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 storage_media -> ux_host_class_storage_media_sector_size;
+ 105              		.loc 1 204 50 view .LVU31
+ 106 004a C6F88830 		str	r3, [r6, #136]
+ 215:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+ 107              		.loc 1 215 5 is_stmt 1 view .LVU32
+ 215:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+ 108              		.loc 1 215 19 is_stmt 0 view .LVU33
+ 109 004e D4F88830 		ldr	r3, [r4, #136]
+ 215:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     {
+ 110              		.loc 1 215 5 view .LVU34
+ 111 0052 082B     		cmp	r3, #8
+ 112 0054 75D8     		bhi	.L5
+ 113 0056 DFE803F0 		tbb	[pc, r3]
+ 114              	.L7:
+ 115 005a 09       		.byte	(.L14-.L7)/2
+ 116 005b 1F       		.byte	(.L13-.L7)/2
+ 117 005c 35       		.byte	(.L12-.L7)/2
+ 118 005d 3C       		.byte	(.L11-.L7)/2
+ 119 005e 40       		.byte	(.L10-.L7)/2
+ 120 005f 4E       		.byte	(.L9-.L7)/2
+ 121 0060 74       		.byte	(.L5-.L7)/2
+ 122 0061 61       		.byte	(.L8-.L7)/2
+ 123 0062 4A       		.byte	(.L6-.L7)/2
+ 124              	.LVL9:
+ 125 0063 00       		.p2align 1
+ 126              	.L22:
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         return;
+ 127              		.loc 1 196 9 is_stmt 1 view .LVU35
+ 196:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         return;
+ 128              		.loc 1 196 41 is_stmt 0 view .LVU36
+ 129 0064 9723     		movs	r3, #151
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 10
+
+
+ 130 0066 C4F88C30 		str	r3, [r4, #140]
+ 197:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     }
+ 131              		.loc 1 197 9 is_stmt 1 view .LVU37
+ 132 006a DCE7     		b	.L1
+ 133              	.LVL10:
+ 134              	.L14:
+ 221:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 135              		.loc 1 221 9 view .LVU38
+ 222:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_sectors,
+ 136              		.loc 1 222 39 is_stmt 0 view .LVU39
+ 137 006c D4F89410 		ldr	r1, [r4, #148]
+ 221:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 138              		.loc 1 221 19 view .LVU40
+ 139 0070 D4F89030 		ldr	r3, [r4, #144]
+ 140 0074 D4F89820 		ldr	r2, [r4, #152]
+ 141 0078 4144     		add	r1, r1, r8
+ 142 007a 3046     		mov	r0, r6
+ 143              	.LVL11:
+ 221:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 144              		.loc 1 221 19 view .LVU41
+ 145 007c FFF7FEFF 		bl	_ux_host_class_storage_media_read
+ 146              	.LVL12:
+ 227:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 147              		.loc 1 227 9 is_stmt 1 view .LVU42
+ 227:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 148              		.loc 1 227 12 is_stmt 0 view .LVU43
+ 149 0080 0146     		mov	r1, r0
+ 150 0082 18B9     		cbnz	r0, .L15
+ 228:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 151              		.loc 1 228 13 is_stmt 1 view .LVU44
+ 228:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 152              		.loc 1 228 45 is_stmt 0 view .LVU45
+ 153 0084 0023     		movs	r3, #0
+ 154 0086 C4F88C30 		str	r3, [r4, #140]
+ 155 008a 1EE0     		b	.L16
+ 156              	.L15:
+ 238:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage, status);
+ 157              		.loc 1 238 13 is_stmt 1 view .LVU46
+ 239:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 158              		.loc 1 239 17 is_stmt 0 view .LVU47
+ 159 008c 3046     		mov	r0, r6
+ 160              	.LVL13:
+ 239:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 161              		.loc 1 239 17 view .LVU48
+ 162 008e FFF7FEFF 		bl	_ux_host_class_storage_sense_code_translate
+ 163              	.LVL14:
+ 238:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage, status);
+ 164              		.loc 1 238 45 view .LVU49
+ 165 0092 C4F88C00 		str	r0, [r4, #140]
+ 166 0096 18E0     		b	.L16
+ 167              	.LVL15:
+ 168              	.L13:
+ 247:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 169              		.loc 1 247 9 is_stmt 1 view .LVU50
+ 248:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_sectors,
+ 170              		.loc 1 248 39 is_stmt 0 view .LVU51
+ 171 0098 D4F89410 		ldr	r1, [r4, #148]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 11
+
+
+ 247:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 172              		.loc 1 247 19 view .LVU52
+ 173 009c D4F89030 		ldr	r3, [r4, #144]
+ 174 00a0 D4F89820 		ldr	r2, [r4, #152]
+ 175 00a4 4144     		add	r1, r1, r8
+ 176 00a6 3046     		mov	r0, r6
+ 177              	.LVL16:
+ 247:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                                 media -> fx_media_driver_logical_sector + partition_start,
+ 178              		.loc 1 247 19 view .LVU53
+ 179 00a8 FFF7FEFF 		bl	_ux_host_class_storage_media_write
+ 180              	.LVL17:
+ 253:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 181              		.loc 1 253 9 is_stmt 1 view .LVU54
+ 253:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 182              		.loc 1 253 12 is_stmt 0 view .LVU55
+ 183 00ac 0146     		mov	r1, r0
+ 184 00ae 18B9     		cbnz	r0, .L17
+ 254:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 185              		.loc 1 254 13 is_stmt 1 view .LVU56
+ 254:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 186              		.loc 1 254 45 is_stmt 0 view .LVU57
+ 187 00b0 0023     		movs	r3, #0
+ 188 00b2 C4F88C30 		str	r3, [r4, #140]
+ 189 00b6 08E0     		b	.L16
+ 190              	.L17:
+ 264:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 191              		.loc 1 264 13 is_stmt 1 view .LVU58
+ 265:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 192              		.loc 1 265 17 is_stmt 0 view .LVU59
+ 193 00b8 3046     		mov	r0, r6
+ 194              	.LVL18:
+ 265:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 195              		.loc 1 265 17 view .LVU60
+ 196 00ba FFF7FEFF 		bl	_ux_host_class_storage_sense_code_translate
+ 197              	.LVL19:
+ 264:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 198              		.loc 1 264 45 view .LVU61
+ 199 00be C4F88C00 		str	r0, [r4, #140]
+ 200 00c2 02E0     		b	.L16
+ 201              	.LVL20:
+ 202              	.L12:
+ 273:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 203              		.loc 1 273 9 is_stmt 1 view .LVU62
+ 273:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 204              		.loc 1 273 41 is_stmt 0 view .LVU63
+ 205 00c4 0023     		movs	r3, #0
+ 206 00c6 C4F88C30 		str	r3, [r4, #140]
+ 274:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 207              		.loc 1 274 9 is_stmt 1 view .LVU64
+ 208              	.LVL21:
+ 209              	.L16:
+ 367:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** }
+ 210              		.loc 1 367 5 view .LVU65
+ 211 00ca 3846     		mov	r0, r7
+ 212 00cc FFF7FEFF 		bl	_ux_utility_semaphore_put
+ 213              	.LVL22:
+ 214 00d0 A9E7     		b	.L1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 12
+
+
+ 215              	.LVL23:
+ 216              	.L11:
+ 280:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 217              		.loc 1 280 9 view .LVU66
+ 280:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 218              		.loc 1 280 41 is_stmt 0 view .LVU67
+ 219 00d2 0023     		movs	r3, #0
+ 220 00d4 C4F88C30 		str	r3, [r4, #140]
+ 281:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 221              		.loc 1 281 9 is_stmt 1 view .LVU68
+ 222 00d8 F7E7     		b	.L16
+ 223              	.L10:
+ 294:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 224              		.loc 1 294 9 view .LVU69
+ 294:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 225              		.loc 1 294 21 is_stmt 0 view .LVU70
+ 226 00da B36F     		ldr	r3, [r6, #120]
+ 294:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 227              		.loc 1 294 12 view .LVU71
+ 228 00dc 012B     		cmp	r3, #1
+ 229 00de 03D0     		beq	.L23
+ 230              	.L18:
+ 300:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 231              		.loc 1 300 9 is_stmt 1 view .LVU72
+ 300:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 232              		.loc 1 300 41 is_stmt 0 view .LVU73
+ 233 00e0 0023     		movs	r3, #0
+ 234 00e2 C4F88C30 		str	r3, [r4, #140]
+ 301:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 235              		.loc 1 301 9 is_stmt 1 view .LVU74
+ 236 00e6 F0E7     		b	.L16
+ 237              	.L23:
+ 297:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 238              		.loc 1 297 13 view .LVU75
+ 297:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 239              		.loc 1 297 52 is_stmt 0 view .LVU76
+ 240 00e8 C4F8A830 		str	r3, [r4, #168]
+ 241 00ec F8E7     		b	.L18
+ 242              	.L6:
+ 307:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 243              		.loc 1 307 9 is_stmt 1 view .LVU77
+ 307:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 244              		.loc 1 307 41 is_stmt 0 view .LVU78
+ 245 00ee 0023     		movs	r3, #0
+ 246 00f0 C4F88C30 		str	r3, [r4, #140]
+ 308:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c **** 
+ 247              		.loc 1 308 9 is_stmt 1 view .LVU79
+ 248 00f4 E9E7     		b	.L16
+ 249              	.L9:
+ 314:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 250              		.loc 1 314 9 view .LVU80
+ 314:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 251              		.loc 1 314 19 is_stmt 0 view .LVU81
+ 252 00f6 D4F89030 		ldr	r3, [r4, #144]
+ 253 00fa 0122     		movs	r2, #1
+ 254 00fc 4146     		mov	r1, r8
+ 255 00fe 3046     		mov	r0, r6
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 13
+
+
+ 256              	.LVL24:
+ 314:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 257              		.loc 1 314 19 view .LVU82
+ 258 0100 FFF7FEFF 		bl	_ux_host_class_storage_media_read
+ 259              	.LVL25:
+ 318:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 260              		.loc 1 318 9 is_stmt 1 view .LVU83
+ 318:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 261              		.loc 1 318 12 is_stmt 0 view .LVU84
+ 262 0104 0146     		mov	r1, r0
+ 263 0106 18B9     		cbnz	r0, .L19
+ 319:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 264              		.loc 1 319 13 is_stmt 1 view .LVU85
+ 319:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 265              		.loc 1 319 45 is_stmt 0 view .LVU86
+ 266 0108 0023     		movs	r3, #0
+ 267 010a C4F88C30 		str	r3, [r4, #140]
+ 268 010e DCE7     		b	.L16
+ 269              	.L19:
+ 329:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 270              		.loc 1 329 13 is_stmt 1 view .LVU87
+ 330:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 271              		.loc 1 330 17 is_stmt 0 view .LVU88
+ 272 0110 3046     		mov	r0, r6
+ 273              	.LVL26:
+ 330:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 274              		.loc 1 330 17 view .LVU89
+ 275 0112 FFF7FEFF 		bl	_ux_host_class_storage_sense_code_translate
+ 276              	.LVL27:
+ 329:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 277              		.loc 1 329 45 view .LVU90
+ 278 0116 C4F88C00 		str	r0, [r4, #140]
+ 279 011a D6E7     		b	.L16
+ 280              	.LVL28:
+ 281              	.L8:
+ 338:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 282              		.loc 1 338 9 is_stmt 1 view .LVU91
+ 338:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 283              		.loc 1 338 19 is_stmt 0 view .LVU92
+ 284 011c D4F89030 		ldr	r3, [r4, #144]
+ 285 0120 0122     		movs	r2, #1
+ 286 0122 4146     		mov	r1, r8
+ 287 0124 3046     		mov	r0, r6
+ 288              	.LVL29:
+ 338:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 partition_start, 1, media -> fx_media_driver_buffer);
+ 289              		.loc 1 338 19 view .LVU93
+ 290 0126 FFF7FEFF 		bl	_ux_host_class_storage_media_write
+ 291              	.LVL30:
+ 342:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 292              		.loc 1 342 9 is_stmt 1 view .LVU94
+ 342:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****             media -> fx_media_driver_status =  FX_SUCCESS;
+ 293              		.loc 1 342 12 is_stmt 0 view .LVU95
+ 294 012a 0146     		mov	r1, r0
+ 295 012c 18B9     		cbnz	r0, .L20
+ 343:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ 296              		.loc 1 343 13 is_stmt 1 view .LVU96
+ 343:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         else
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 14
+
+
+ 297              		.loc 1 343 45 is_stmt 0 view .LVU97
+ 298 012e 0023     		movs	r3, #0
+ 299 0130 C4F88C30 		str	r3, [r4, #140]
+ 300 0134 C9E7     		b	.L16
+ 301              	.L20:
+ 353:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 302              		.loc 1 353 13 is_stmt 1 view .LVU98
+ 354:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 303              		.loc 1 354 17 is_stmt 0 view .LVU99
+ 304 0136 3046     		mov	r0, r6
+ 305              	.LVL31:
+ 354:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         }
+ 306              		.loc 1 354 17 view .LVU100
+ 307 0138 FFF7FEFF 		bl	_ux_host_class_storage_sense_code_translate
+ 308              	.LVL32:
+ 353:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****                 _ux_host_class_storage_sense_code_translate(storage,status);
+ 309              		.loc 1 353 45 view .LVU101
+ 310 013c C4F88C00 		str	r0, [r4, #140]
+ 311 0140 C3E7     		b	.L16
+ 312              	.LVL33:
+ 313              	.L5:
+ 362:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 314              		.loc 1 362 9 is_stmt 1 view .LVU102
+ 362:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****         break;
+ 315              		.loc 1 362 41 is_stmt 0 view .LVU103
+ 316 0142 9023     		movs	r3, #144
+ 317 0144 C4F88C30 		str	r3, [r4, #140]
+ 363:Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_storage_driver_entry.c ****     }
+ 318              		.loc 1 363 9 is_stmt 1 view .LVU104
+ 319 0148 BFE7     		b	.L16
+ 320              		.cfi_endproc
+ 321              	.LFE11:
+ 323              		.text
+ 324              	.Letext0:
+ 325              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 326              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 327              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 328              		.file 5 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 329              		.file 6 "Middlewares/ST/usbx/common/usbx_host_classes/inc/ux_host_class_storage.h"
+ 330              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_class_storage_driver_entry.c
+C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s:20     .text._ux_host_class_storage_driver_entry:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s:26     .text._ux_host_class_storage_driver_entry:00000000 _ux_host_class_storage_driver_entry
+C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s:115    .text._ux_host_class_storage_driver_entry:0000005a $d
+C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s:125    .text._ux_host_class_storage_driver_entry:00000063 $d
+C:\Users\HP\AppData\Local\Temp\ccDbWuzl.s:125    .text._ux_host_class_storage_driver_entry:00000064 $t
+
+UNDEFINED SYMBOLS
+_ux_utility_semaphore_get
+_ux_host_class_storage_media_read
+_ux_host_class_storage_sense_code_translate
+_ux_host_class_storage_media_write
+_ux_utility_semaphore_put

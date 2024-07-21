@@ -1,0 +1,558 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_interfaces_scan.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_interfaces_scan,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_interfaces_scan
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_interfaces_scan:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    _ux_host_stack_interfaces_scan                      PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                           6.1          */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    This function scans all the interfaces and alternate settings for   */
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    particular configuration.                                           */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  INPUT                                                                 */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    configuration                         Where the interface(s) will   */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                            be attached                 */
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    descriptor                            Contains the entire descriptor*/ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                            for this configuration      */
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  OUTPUT                                                                */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    None                                                                */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  CALLS                                                                 */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    _ux_utility_descriptor_parse          Parse interface descriptor    */
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    _ux_host_stack_new_interface_create   Create new interface          */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  CALLED BY                                                             */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    USBX Components                                                     */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  RELEASE HISTORY                                                       */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */ 
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                            resulting in version 6.1    */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /*                                                                        */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** /**************************************************************************/
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** UINT  _ux_host_stack_interfaces_scan(UX_CONFIGURATION *configuration, UCHAR * descriptor)
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** {
+  30              		.loc 1 77 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 32
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 77 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 32
+  38              		.cfi_offset 4, -32
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 3
+
+
+  39              		.cfi_offset 5, -28
+  40              		.cfi_offset 6, -24
+  41              		.cfi_offset 7, -20
+  42              		.cfi_offset 8, -16
+  43              		.cfi_offset 9, -12
+  44              		.cfi_offset 10, -8
+  45              		.cfi_offset 14, -4
+  46 0004 88B0     		sub	sp, sp, #32
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 64
+  49 0006 8046     		mov	r8, r0
+  50 0008 0C46     		mov	r4, r1
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** ULONG                               total_configuration_length;
+  51              		.loc 1 79 1 is_stmt 1 view .LVU2
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** UINT                                descriptor_length;
+  52              		.loc 1 80 1 view .LVU3
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** UINT                                descriptor_type;                
+  53              		.loc 1 81 1 view .LVU4
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** ULONG                               status;
+  54              		.loc 1 82 1 view .LVU5
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** ULONG                               interface_association_descriptor_present;
+  55              		.loc 1 83 1 view .LVU6
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** ULONG                               interface_in_iad_count;
+  56              		.loc 1 84 1 view .LVU7
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** UX_INTERFACE_ASSOCIATION_DESCRIPTOR interface_association;
+  57              		.loc 1 85 1 view .LVU8
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     /* Retrieve the size of all the configuration descriptor.  */
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     total_configuration_length =  configuration -> ux_configuration_descriptor.wTotalLength;
+  58              		.loc 1 88 5 view .LVU9
+  59              		.loc 1 88 32 is_stmt 0 view .LVU10
+  60 000a 4669     		ldr	r6, [r0, #20]
+  61              	.LVL1:
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     /* Set the IAD to false.  */
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     interface_association_descriptor_present = UX_FALSE;
+  62              		.loc 1 91 5 is_stmt 1 view .LVU11
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     /* Set the IAD interface count to zero.  */
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     interface_in_iad_count = 0;
+  63              		.loc 1 94 5 view .LVU12
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     /* Scan the entire descriptor and search for interfaces. We should also ensure that 
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****        the descriptor is valid by verifying the length of each descriptor scanned.  */
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     while (total_configuration_length)
+  64              		.loc 1 98 5 view .LVU13
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  65              		.loc 1 94 28 is_stmt 0 view .LVU14
+  66 000c 4FF00009 		mov	r9, #0
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+  67              		.loc 1 91 46 view .LVU15
+  68 0010 CA46     		mov	r10, r9
+  69              		.loc 1 98 11 view .LVU16
+  70 0012 38E0     		b	.L2
+  71              	.LVL2:
+  72              	.L15:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 4
+
+
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     {
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* Gather the length and type of the descriptor.  */
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         descriptor_length =  *descriptor;
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         descriptor_type =    *(descriptor + 1);
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* Make sure this descriptor has at least the minimum length.  */
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         if (descriptor_length < 3)
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Error trap. */
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_DESCR
+  73              		.loc 1 110 13 is_stmt 1 view .LVU17
+  74 0014 4222     		movs	r2, #66
+  75 0016 0421     		movs	r1, #4
+  76 0018 0220     		movs	r0, #2
+  77 001a FFF7FEFF 		bl	_ux_system_error_handler
+  78              	.LVL3:
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DESCRIPTOR_CORRUPTED, descriptor, 0, 0, UX_T
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+  79              		.loc 1 115 13 view .LVU18
+  80              		.loc 1 115 19 is_stmt 0 view .LVU19
+  81 001e 4226     		movs	r6, #66
+  82              	.LVL4:
+  83              	.L1:
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }            
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* Check the type for an interface association descriptor.  */
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         if (descriptor_type == UX_INTERFACE_ASSOCIATION_DESCRIPTOR_ITEM)
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Parse the interface association descriptor and make it machine independent.  */
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             _ux_utility_descriptor_parse(descriptor,
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                             _ux_system_interface_association_descriptor_structure,
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                             UX_INTERFACE_ASSOCIATION_DESCRIPTOR_ENTRIES,
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                             (UCHAR *) &interface_association);
+ 127:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 128:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Retrieve the CLASS/SUBCLASS from descriptor and store it in the configuration instan
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_class    = interface_association.bFunctionClass;
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_subclass = interface_association.bFunctionSubClas
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_protocol = interface_association.bFunctionProtoco
+ 132:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 133:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* We have an IAD.  */
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             interface_association_descriptor_present = UX_TRUE;
+ 135:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             
+ 136:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Memorize the number of interfaces attached to this IAD.  */
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             interface_in_iad_count = interface_association.bInterfaceCount;
+ 138:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }
+ 139:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         
+ 140:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* Check the type for an interface descriptor.  */
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         if (descriptor_type == UX_INTERFACE_DESCRIPTOR_ITEM)
+ 142:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 143:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 144:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* We have found an interface descriptor. This descriptor contains at least 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 5
+
+
+ 145:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                the default alternate setting (with value 0) and may have others.  */
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             status =  _ux_host_stack_new_interface_create(configuration, descriptor, total_configur
+ 147:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 148:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Are we within an IAD ? */
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             if (interface_association_descriptor_present == UX_TRUE)
+ 150:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             {
+ 151:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 152:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 /* Decrement the number of interfaces attached here.  */
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 interface_in_iad_count--;
+ 154:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 
+ 155:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 /* Are we at the end of the interface count ? */
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 if (interface_in_iad_count == 0)
+ 157:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 {
+ 158:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     
+ 159:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     /* Set the IAD to false now.  */
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     interface_association_descriptor_present = UX_FALSE;
+ 161:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 162:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     /* Reset the IAD Class/Subclass/Protocol. */
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     configuration -> ux_configuration_iad_class    = 0;
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     configuration -> ux_configuration_iad_subclass = 0;
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     configuration -> ux_configuration_iad_protocol = 0;
+ 166:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 167:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 }
+ 168:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             }
+ 169:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 170:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Check return status.  */
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             if(status != UX_SUCCESS)
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 return(status);
+ 173:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }       
+ 174:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 175:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* Check the type for an OTG descriptor.  */
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         if (descriptor_type == UX_OTG_DESCRIPTOR_ITEM)
+ 177:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         
+ 178:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Retrieve the bmAttributes for SRP/HNP support.  */
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_otg_capabilities = (ULONG) *(descriptor + UX_OTG_BM_A
+ 180:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 181:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* Verify if the descriptor is still valid.  */
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         if (descriptor_length > total_configuration_length)
+ 183:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 184:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 185:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* Error trap. */
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_ENUMERATOR, UX_DESCR
+ 187:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 188:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 189:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_DESCRIPTOR_CORRUPTED, descriptor, 0, 0, UX_T
+ 190:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             return(UX_DESCRIPTOR_CORRUPTED);
+ 192:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }
+ 193:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* Jump to the next descriptor if we have not reached the end.  */
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         descriptor +=  descriptor_length;
+ 195:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 196:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         /* And adjust the length left to parse in the descriptor.  */
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         total_configuration_length -=  descriptor_length;
+ 198:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     }
+ 199:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 200:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     /* Return successful completion.  */
+ 201:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     return(UX_SUCCESS);
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 6
+
+
+ 202:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** }
+  84              		.loc 1 202 1 view .LVU20
+  85 0020 3046     		mov	r0, r6
+  86 0022 08B0     		add	sp, sp, #32
+  87              	.LCFI2:
+  88              		.cfi_remember_state
+  89              		.cfi_def_cfa_offset 32
+  90              		@ sp needed
+  91 0024 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+  92              	.LVL5:
+  93              	.L16:
+  94              	.LCFI3:
+  95              		.cfi_restore_state
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                             _ux_system_interface_association_descriptor_structure,
+  96              		.loc 1 123 13 is_stmt 1 view .LVU21
+  97 0028 6B46     		mov	r3, sp
+  98 002a 0822     		movs	r2, #8
+  99 002c 2149     		ldr	r1, .L18
+ 100 002e 2046     		mov	r0, r4
+ 101 0030 FFF7FEFF 		bl	_ux_utility_descriptor_parse
+ 102              	.LVL6:
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_subclass = interface_association.bFunctionSubClas
+ 103              		.loc 1 129 13 view .LVU22
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_subclass = interface_association.bFunctionSubClas
+ 104              		.loc 1 129 83 is_stmt 0 view .LVU23
+ 105 0034 049B     		ldr	r3, [sp, #16]
+ 129:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_subclass = interface_association.bFunctionSubClas
+ 106              		.loc 1 129 60 view .LVU24
+ 107 0036 C8F83830 		str	r3, [r8, #56]
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_protocol = interface_association.bFunctionProtoco
+ 108              		.loc 1 130 13 is_stmt 1 view .LVU25
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_protocol = interface_association.bFunctionProtoco
+ 109              		.loc 1 130 83 is_stmt 0 view .LVU26
+ 110 003a 059B     		ldr	r3, [sp, #20]
+ 130:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             configuration -> ux_configuration_iad_protocol = interface_association.bFunctionProtoco
+ 111              		.loc 1 130 60 view .LVU27
+ 112 003c C8F83C30 		str	r3, [r8, #60]
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 113              		.loc 1 131 13 is_stmt 1 view .LVU28
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 114              		.loc 1 131 83 is_stmt 0 view .LVU29
+ 115 0040 069B     		ldr	r3, [sp, #24]
+ 131:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 116              		.loc 1 131 60 view .LVU30
+ 117 0042 C8F84030 		str	r3, [r8, #64]
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             
+ 118              		.loc 1 134 13 is_stmt 1 view .LVU31
+ 119              	.LVL7:
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }
+ 120              		.loc 1 137 13 view .LVU32
+ 137:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }
+ 121              		.loc 1 137 36 is_stmt 0 view .LVU33
+ 122 0046 DDF80C90 		ldr	r9, [sp, #12]
+ 123              	.LVL8:
+ 134:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             
+ 124              		.loc 1 134 54 view .LVU34
+ 125 004a 4FF0010A 		mov	r10, #1
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 7
+
+
+ 126 004e 22E0     		b	.L5
+ 127              	.LVL9:
+ 128              	.L17:
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 129              		.loc 1 146 13 is_stmt 1 view .LVU35
+ 146:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 130              		.loc 1 146 23 is_stmt 0 view .LVU36
+ 131 0050 3246     		mov	r2, r6
+ 132 0052 2146     		mov	r1, r4
+ 133 0054 4046     		mov	r0, r8
+ 134 0056 FFF7FEFF 		bl	_ux_host_stack_new_interface_create
+ 135              	.LVL10:
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             {
+ 136              		.loc 1 149 13 is_stmt 1 view .LVU37
+ 149:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****             {
+ 137              		.loc 1 149 16 is_stmt 0 view .LVU38
+ 138 005a BAF1010F 		cmp	r10, #1
+ 139 005e 02D0     		beq	.L13
+ 140              	.LVL11:
+ 141              	.L7:
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 return(status);
+ 142              		.loc 1 171 13 is_stmt 1 view .LVU39
+ 171:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 return(status);
+ 143              		.loc 1 171 15 is_stmt 0 view .LVU40
+ 144 0060 D8B1     		cbz	r0, .L6
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }       
+ 145              		.loc 1 172 23 view .LVU41
+ 146 0062 0646     		mov	r6, r0
+ 147              	.LVL12:
+ 172:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }       
+ 148              		.loc 1 172 23 view .LVU42
+ 149 0064 DCE7     		b	.L1
+ 150              	.LVL13:
+ 151              	.L13:
+ 153:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 
+ 152              		.loc 1 153 17 is_stmt 1 view .LVU43
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 {
+ 153              		.loc 1 156 17 view .LVU44
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 {
+ 154              		.loc 1 156 20 is_stmt 0 view .LVU45
+ 155 0066 B9F10109 		subs	r9, r9, #1
+ 156              	.LVL14:
+ 156:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                 {
+ 157              		.loc 1 156 20 view .LVU46
+ 158 006a F9D1     		bne	.L7
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 159              		.loc 1 160 21 is_stmt 1 view .LVU47
+ 160              	.LVL15:
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     configuration -> ux_configuration_iad_subclass = 0;
+ 161              		.loc 1 163 21 view .LVU48
+ 163:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     configuration -> ux_configuration_iad_subclass = 0;
+ 162              		.loc 1 163 68 is_stmt 0 view .LVU49
+ 163 006c 0023     		movs	r3, #0
+ 164 006e C8F83830 		str	r3, [r8, #56]
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     configuration -> ux_configuration_iad_protocol = 0;
+ 165              		.loc 1 164 21 is_stmt 1 view .LVU50
+ 164:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****                     configuration -> ux_configuration_iad_protocol = 0;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 8
+
+
+ 166              		.loc 1 164 68 is_stmt 0 view .LVU51
+ 167 0072 C8F83C30 		str	r3, [r8, #60]
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 168              		.loc 1 165 21 is_stmt 1 view .LVU52
+ 165:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 169              		.loc 1 165 68 is_stmt 0 view .LVU53
+ 170 0076 C8F84030 		str	r3, [r8, #64]
+ 160:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 171              		.loc 1 160 62 view .LVU54
+ 172 007a CA46     		mov	r10, r9
+ 173 007c F0E7     		b	.L7
+ 174              	.LVL16:
+ 175              	.L8:
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 176              		.loc 1 182 9 is_stmt 1 view .LVU55
+ 182:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 177              		.loc 1 182 12 is_stmt 0 view .LVU56
+ 178 007e AE42     		cmp	r6, r5
+ 179 0080 11D3     		bcc	.L14
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 180              		.loc 1 194 9 is_stmt 1 view .LVU57
+ 194:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 181              		.loc 1 194 20 is_stmt 0 view .LVU58
+ 182 0082 2C44     		add	r4, r4, r5
+ 183              	.LVL17:
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     }
+ 184              		.loc 1 197 9 is_stmt 1 view .LVU59
+ 197:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     }
+ 185              		.loc 1 197 36 is_stmt 0 view .LVU60
+ 186 0084 761B     		subs	r6, r6, r5
+ 187              	.LVL18:
+ 188              	.L2:
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****     {
+ 189              		.loc 1 98 11 is_stmt 1 view .LVU61
+ 190 0086 002E     		cmp	r6, #0
+ 191 0088 CAD0     		beq	.L1
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         descriptor_type =    *(descriptor + 1);
+ 192              		.loc 1 102 9 view .LVU62
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         descriptor_type =    *(descriptor + 1);
+ 193              		.loc 1 102 30 is_stmt 0 view .LVU63
+ 194 008a 2578     		ldrb	r5, [r4]	@ zero_extendqisi2
+ 195              	.LVL19:
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 196              		.loc 1 103 9 is_stmt 1 view .LVU64
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 197              		.loc 1 103 30 is_stmt 0 view .LVU65
+ 198 008c 6778     		ldrb	r7, [r4, #1]	@ zero_extendqisi2
+ 199              	.LVL20:
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 200              		.loc 1 106 9 is_stmt 1 view .LVU66
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 201              		.loc 1 106 12 is_stmt 0 view .LVU67
+ 202 008e 022D     		cmp	r5, #2
+ 203 0090 C0D9     		bls	.L15
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 204              		.loc 1 119 9 is_stmt 1 view .LVU68
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 9
+
+
+ 205              		.loc 1 119 12 is_stmt 0 view .LVU69
+ 206 0092 0B2F     		cmp	r7, #11
+ 207 0094 C8D0     		beq	.L16
+ 208              	.LVL21:
+ 209              	.L5:
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 210              		.loc 1 141 9 is_stmt 1 view .LVU70
+ 141:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         {
+ 211              		.loc 1 141 12 is_stmt 0 view .LVU71
+ 212 0096 042F     		cmp	r7, #4
+ 213 0098 DAD0     		beq	.L17
+ 214              	.L6:
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         
+ 215              		.loc 1 176 9 is_stmt 1 view .LVU72
+ 176:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         
+ 216              		.loc 1 176 12 is_stmt 0 view .LVU73
+ 217 009a 092F     		cmp	r7, #9
+ 218 009c EFD1     		bne	.L8
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 219              		.loc 1 179 13 is_stmt 1 view .LVU74
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 220              		.loc 1 179 74 is_stmt 0 view .LVU75
+ 221 009e A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
+ 179:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 222              		.loc 1 179 64 view .LVU76
+ 223 00a0 C8F80830 		str	r3, [r8, #8]
+ 224 00a4 EBE7     		b	.L8
+ 225              	.L14:
+ 186:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c **** 
+ 226              		.loc 1 186 13 is_stmt 1 view .LVU77
+ 227 00a6 4222     		movs	r2, #66
+ 228 00a8 0421     		movs	r1, #4
+ 229 00aa 0220     		movs	r0, #2
+ 230 00ac FFF7FEFF 		bl	_ux_system_error_handler
+ 231              	.LVL22:
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }
+ 232              		.loc 1 191 13 view .LVU78
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }
+ 233              		.loc 1 191 19 is_stmt 0 view .LVU79
+ 234 00b0 4226     		movs	r6, #66
+ 235              	.LVL23:
+ 191:Middlewares/ST/usbx/common/core/src/ux_host_stack_interfaces_scan.c ****         }
+ 236              		.loc 1 191 19 view .LVU80
+ 237 00b2 B5E7     		b	.L1
+ 238              	.L19:
+ 239              		.align	2
+ 240              	.L18:
+ 241 00b4 00000000 		.word	_ux_system_interface_association_descriptor_structure
+ 242              		.cfi_endproc
+ 243              	.LFE11:
+ 245              		.text
+ 246              	.Letext0:
+ 247              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 248              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 249              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 250              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ 251              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 10
+
+
+ 252              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cctGXMHx.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_interfaces_scan.c
+C:\Users\HP\AppData\Local\Temp\cctGXMHx.s:20     .text._ux_host_stack_interfaces_scan:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cctGXMHx.s:26     .text._ux_host_stack_interfaces_scan:00000000 _ux_host_stack_interfaces_scan
+C:\Users\HP\AppData\Local\Temp\cctGXMHx.s:241    .text._ux_host_stack_interfaces_scan:000000b4 $d
+
+UNDEFINED SYMBOLS
+_ux_system_error_handler
+_ux_utility_descriptor_parse
+_ux_host_stack_new_interface_create
+_ux_system_interface_association_descriptor_structure

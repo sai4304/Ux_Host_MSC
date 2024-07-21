@@ -1,0 +1,1662 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fx_utility_logical_sector_read.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._fx_utility_logical_sector_read,"ax",%progbits
+  20              		.align	1
+  21              		.global	_fx_utility_logical_sector_read
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_fx_utility_logical_sector_read:
+  27              	.LVL0:
+  28              	.LFB8:
+  29              		.file 1 "Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c"
+   1:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+   2:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+   3:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+   5:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  10:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+  11:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  12:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  13:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+  14:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+  15:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**                                                                       */
+  16:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /** FileX Component                                                       */
+  17:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**                                                                       */
+  18:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**   Utility                                                             */
+  19:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**                                                                       */
+  20:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+  21:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+  22:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  23:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #define FX_SOURCE_CODE
+  24:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  25:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  26:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /* Include necessary system files.  */
+  27:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  28:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #include "fx_api.h"
+  29:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #include "fx_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 2
+
+
+  30:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #include "fx_utility.h"
+  31:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+  32:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #include "fx_fault_tolerant.h"
+  33:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+  34:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  35:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+  36:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+  37:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  38:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  FUNCTION                                               RELEASE        */
+  39:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  40:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    _fx_utility_logical_sector_read                     PORTABLE C      */
+  41:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                           6.2.0        */
+  42:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  AUTHOR                                                                */
+  43:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  44:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    William E. Lamie, Microsoft Corporation                             */
+  45:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  46:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  DESCRIPTION                                                           */
+  47:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  48:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    This function handles logical sector read requests for all FileX    */
+  49:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    components.  If the logical sector is currently in the logical      */
+  50:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    sector cache, the function simply sets the appropriate pointer and  */
+  51:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    returns a successful status to the caller.  Otherwise, physical I/O */
+  52:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    is requested through the corresponding I/O driver.                  */
+  53:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  54:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    Note: Conversion of the logical sector is done inside the driver.   */
+  55:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*          This results in a performance boost for FLASH or RAM media    */
+  56:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*          devices.                                                      */
+  57:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  58:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  INPUT                                                                 */
+  59:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  60:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    media_ptr                             Media control block pointer   */
+  61:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    logical_sector                        Logical sector number         */
+  62:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    buffer_ptr                            Pointer of receiving buffer   */
+  63:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    sectors                               Number of sectors to read     */
+  64:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    sector_type                           Type of sector(s) to read     */
+  65:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  66:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  OUTPUT                                                                */
+  67:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  68:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    return status                                                       */
+  69:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  70:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  CALLS                                                                 */
+  71:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  72:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    _fx_utility_logical_sector_cache_entry_read                         */
+  73:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                          Read logical sector cache     */
+  74:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    _fx_utility_logical_sector_flush      Flush and invalidate sectors  */
+  75:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                          that overlap with non-cache   */
+  76:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                          sector I/O.                   */
+  77:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    _fx_utility_memory_copy               Copy cache sector             */
+  78:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    _fx_fault_tolerant_read_directory_sector                            */
+  79:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                          Read directory sector         */
+  80:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  81:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  CALLED BY                                                             */
+  82:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  83:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    FileX System Functions                                              */
+  84:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  85:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  RELEASE HISTORY                                                       */
+  86:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 3
+
+
+  87:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*    DATE              NAME                      DESCRIPTION             */
+  88:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+  89:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+  90:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  09-30-2020     William E. Lamie         Modified comment(s),          */
+  91:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            verified memcpy usage, and  */
+  92:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            added conditional to        */
+  93:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            disable cache,              */
+  94:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            resulting in version 6.1    */
+  95:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  04-02-2021     Bhupendra Naphade        Modified comment(s),          */
+  96:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            updated check for logical   */
+  97:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            sector value,               */
+  98:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            resulting in version 6.1.6  */
+  99:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*  10-31-2022     Tiejun Zhou              Modified comment(s),          */
+ 100:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            fixed memory buffer when    */
+ 101:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            cache is disabled,          */
+ 102:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                            resulting in version 6.2.0  */
+ 103:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /*                                                                        */
+ 104:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** /**************************************************************************/
+ 105:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** UINT  _fx_utility_logical_sector_read(FX_MEDIA *media_ptr, ULONG64 logical_sector,
+ 106:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                                       VOID *buffer_ptr, ULONG sectors, UCHAR sector_type)
+ 107:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** {
+  30              		.loc 1 107 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 12, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 107 1 is_stmt 0 view .LVU1
+  35 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 36
+  38              		.cfi_offset 4, -36
+  39              		.cfi_offset 5, -32
+  40              		.cfi_offset 6, -28
+  41              		.cfi_offset 7, -24
+  42              		.cfi_offset 8, -20
+  43              		.cfi_offset 9, -16
+  44              		.cfi_offset 10, -12
+  45              		.cfi_offset 11, -8
+  46              		.cfi_offset 14, -4
+  47 0004 87B0     		sub	sp, sp, #28
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 64
+  50 0006 0446     		mov	r4, r0
+  51 0008 1546     		mov	r5, r2
+  52 000a 9946     		mov	r9, r3
+  53 000c DDF84080 		ldr	r8, [sp, #64]
+  54 0010 119E     		ldr	r6, [sp, #68]
+  55 0012 9DF848B0 		ldrb	fp, [sp, #72]	@ zero_extendqisi2
+ 108:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_DISABLE_CACHE
+ 109:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** FX_CACHED_SECTOR *cache_entry;
+  56              		.loc 1 109 1 is_stmt 1 view .LVU2
+ 110:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** FX_CACHED_SECTOR *previous_cache_entry;
+  57              		.loc 1 110 1 view .LVU3
+ 111:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** ULONG64           end_sector;
+  58              		.loc 1 111 1 view .LVU4
+ 112:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_DISABLE_CACHE */
+ 113:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 114:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 4
+
+
+ 115:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** UINT              status;
+ 116:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 117:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 118:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 119:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 120:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 121:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     /* Determine if the request is for FAT sector.  */
+ 122:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     if (sector_type == FX_FAT_SECTOR)
+  59              		.loc 1 122 5 view .LVU5
+  60              		.loc 1 122 8 is_stmt 0 view .LVU6
+  61 0016 BBF1020F 		cmp	fp, #2
+  62 001a 30D0     		beq	.L29
+  63              	.L2:
+ 123:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     {
+ 124:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 125:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Increment the number of FAT sector reads.  */
+ 126:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_fat_sector_reads++;
+ 127:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 128:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 129:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     /* Increment the number of logical sectors read.  */
+ 130:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     media_ptr -> fx_media_logical_sector_reads++;
+  64              		.loc 1 130 5 is_stmt 1 view .LVU7
+  65              		.loc 1 130 15 is_stmt 0 view .LVU8
+  66 001c D4F89C31 		ldr	r3, [r4, #412]
+  67              		.loc 1 130 47 view .LVU9
+  68 0020 0133     		adds	r3, r3, #1
+  69 0022 C4F89C31 		str	r3, [r4, #412]
+ 131:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 132:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 133:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     /* Extended port-specific processing macro, which is by default defined to white space.  */
+ 134:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     FX_UTILITY_LOGICAL_SECTOR_READ_EXTENSION
+ 135:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 136:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_DISABLE_CACHE
+ 137:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     /* Determine if the request is for the internal media buffer area.  */
+ 138:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     if ((((UCHAR *)buffer_ptr) >= media_ptr -> fx_media_memory_buffer) &&
+  70              		.loc 1 138 5 is_stmt 1 view .LVU10
+  71              		.loc 1 138 45 is_stmt 0 view .LVU11
+  72 0026 A368     		ldr	r3, [r4, #8]
+  73              		.loc 1 138 8 view .LVU12
+  74 0028 4345     		cmp	r3, r8
+  75 002a 02D8     		bhi	.L3
+ 139:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         (((UCHAR *)buffer_ptr) <= media_ptr -> fx_media_sector_cache_end))
+  76              		.loc 1 139 45 discriminator 1 view .LVU13
+  77 002c A369     		ldr	r3, [r4, #24]
+ 138:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         (((UCHAR *)buffer_ptr) <= media_ptr -> fx_media_sector_cache_end))
+  78              		.loc 1 138 72 discriminator 1 view .LVU14
+  79 002e 4345     		cmp	r3, r8
+  80 0030 2BD2     		bcs	.L30
+  81              	.L3:
+ 140:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     {
+ 141:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 142:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Internal cache buffer is requested.  */
+ 143:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 144:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Examine the logical sector cache.  */
+ 145:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         cache_entry = _fx_utility_logical_sector_cache_entry_read(media_ptr, logical_sector, &previ
+ 146:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 147:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Was the sector found?  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 5
+
+
+ 148:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if (cache_entry == FX_NULL)
+ 149:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 150:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 151:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Yes, the sector was found. Return success!  */
+ 152:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             return(FX_SUCCESS);
+ 153:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 154:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 155:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* At this point, we need to read in a sector from the media.  */
+ 156:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 157:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 158:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 159:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Increment the number of logical sectors cache read misses.  */
+ 160:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_logical_sector_cache_read_misses++;
+ 161:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 162:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 163:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 164:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 165:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 166:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_LOG_SECTOR_CACHE_MISS, media_ptr, logical_sector,
+ 167:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #else
+ 168:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 169:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 170:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_LOG_SECTOR_CACHE_MISS, media_ptr, logical_sector,
+ 171:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 172:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 173:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* First, check and see if the last used entry has been
+ 174:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****            modified.  */
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if ((cache_entry -> fx_cached_sector_valid) &&
+ 176:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (cache_entry -> fx_cached_sector_buffer_dirty))
+ 177:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 178:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 179:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Yes, we need to flush this buffer out to the physical media
+ 180:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                before we read in the new buffer.  */
+ 181:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 182:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 183:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 184:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Increment the number of driver write sector(s) requests.  */
+ 185:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_write_requests++;
+ 186:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 187:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 188:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Build write request to the driver.  */
+ 189:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_request =          FX_DRIVER_WRITE;
+ 190:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 191:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector_memory_
+ 192:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 193:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_logical_sector =   cache_entry -> fx_cached_sector;
+ 194:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #else
+ 195:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_logical_sector =   (ULONG)cache_entry -> fx_cached_sector;
+ 196:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 197:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_sectors =          1;
+ 198:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_sector_type;
+ 199:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 200:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Determine if the sector is a data sector or a system sector.  */
+ 201:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (cache_entry -> fx_cached_sector_type != FX_DATA_SECTOR)
+ 202:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 203:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 204:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* System sector is present.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 6
+
+
+ 205:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 media_ptr -> fx_media_driver_system_write =  FX_TRUE;
+ 206:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 207:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 208:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* If trace is enabled, insert this event into the trace buffer.  */
+ 209:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_WRITE, media_ptr, cache_entry -> fx
+ 210:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 211:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Invoke the driver to write the sector.  */
+ 212:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 213:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 214:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Clear the system write flag.  */
+ 215:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ 216:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 217:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Check for successful completion.  */
+ 218:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (media_ptr -> fx_media_driver_status)
+ 219:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 220:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 221:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Error writing a cached sector out.  Return the
+ 222:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                    error status.  */
+ 223:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 return(media_ptr -> fx_media_driver_status);
+ 224:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 225:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 226:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Clear the buffer dirty flag since it has been flushed
+ 227:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                out.  */
+ 228:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             cache_entry -> fx_cached_sector_buffer_dirty =  FX_FALSE;
+ 229:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 230:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Decrement the number of outstanding dirty cache entries.  */
+ 231:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_sector_cache_dirty_count--;
+ 232:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 233:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 234:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* At this point, we can go out and setup this cached sector
+ 235:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****            entry.  */
+ 236:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 237:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Compare against logical sector to make sure it is valid.  */
+ 238:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if (logical_sector >= media_ptr -> fx_media_total_sectors)
+ 239:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 240:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             return(FX_SECTOR_INVALID);
+ 241:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 242:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 243:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 244:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 245:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Increment the number of driver read sector(s) requests.  */
+ 246:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_read_requests++;
+ 247:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 248:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 249:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Build Read request to the driver.  */
+ 250:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_request =          FX_DRIVER_READ;
+ 251:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 252:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector_memory_buff
+ 253:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 254:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_logical_sector =   logical_sector;
+ 255:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #else
+ 256:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_logical_sector =   (ULONG)logical_sector;
+ 257:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 258:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sectors =          1;
+ 259:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sector_type =      sector_type;
+ 260:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 261:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Determine if the sector is a data sector or a system sector.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 7
+
+
+ 262:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if (sector_type == FX_DATA_SECTOR)
+ 263:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 264:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 265:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Data sector is present.  */
+ 266:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_data_sector_read =  FX_TRUE;
+ 267:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 268:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 269:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 270:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_READ, media_ptr, logical_sector, 1, cac
+ 271:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 272:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Invoke the driver to read the sector.  */
+ 273:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 274:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 275:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Clear data sector is present flag.  */
+ 276:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_data_sector_read =  FX_FALSE;
+ 277:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 278:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Determine if the read was successful.  */
+ 279:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if (media_ptr -> fx_media_driver_status == FX_SUCCESS)
+ 280:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 281:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 282:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Remember the sector number.  */
+ 283:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             cache_entry -> fx_cached_sector =  logical_sector;
+ 284:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 285:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Make the cache entry valid.  */
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             cache_entry -> fx_cached_sector_valid =  FX_TRUE;
+ 287:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 288:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Remember the sector type.  */
+ 289:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             cache_entry -> fx_cached_sector_type =  sector_type;
+ 290:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 291:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Place this entry that the head of the cached sector
+ 292:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                list.  */
+ 293:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 294:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Determine if we need to update the last used list.  */
+ 295:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (previous_cache_entry)
+ 296:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 297:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 298:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Yes, the current entry is not at the front of the list
+ 299:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                    so we need to change the order.  */
+ 300:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 301:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Link the previous entry to this entry's next pointer.  */
+ 302:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 previous_cache_entry -> fx_cached_sector_next_used =
+ 303:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     cache_entry -> fx_cached_sector_next_used;
+ 304:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 305:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Place this entry at the head of the list.  */
+ 306:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 cache_entry -> fx_cached_sector_next_used =
+ 307:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_sector_cache_list_ptr;
+ 308:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 media_ptr -> fx_media_sector_cache_list_ptr =  cache_entry;
+ 309:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 310:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 311:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 312:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (media_ptr -> fx_media_fault_tolerant_enabled &&
+ 313:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 (media_ptr -> fx_media_fault_tolerant_state & FX_FAULT_TOLERANT_STATE_STARTED) &&
+ 314:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 (sector_type == FX_DIRECTORY_SECTOR))
+ 315:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 316:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 317:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Read sector from log file. */
+ 318:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 status = _fx_fault_tolerant_read_directory_sector(media_ptr, logical_sector, cache_
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 8
+
+
+ 319:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 320:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Check for successful completion.  */
+ 321:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 if (status)
+ 322:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 323:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 324:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Return the error status. */
+ 325:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     return(status);
+ 326:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 327:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 328:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 329:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 330:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         else
+ 331:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 332:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 333:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Invalidate the cache entry on read errors.  */
+ 334:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             cache_entry -> fx_cached_sector_valid =  FX_FALSE;
+ 335:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 336:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Put all ones in the sector value.  */
+ 337:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             cache_entry -> fx_cached_sector =  (~(ULONG64)0);
+ 338:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 339:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 340:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Simply setup the pointer to this buffer and return.  */
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_memory_buffer =  cache_entry -> fx_cached_sector_memory_buffer;
+ 342:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 343:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Return the driver status.  */
+ 344:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         return(media_ptr -> fx_media_driver_status);
+ 345:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 346:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #else
+ 347:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     if ((logical_sector == media_ptr -> fx_media_memory_buffer_sector) && (sectors == 1) && (buffer
+ 348:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     {
+ 349:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 350:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if (media_ptr -> fx_media_fault_tolerant_enabled &&
+ 351:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (media_ptr -> fx_media_fault_tolerant_state & FX_FAULT_TOLERANT_STATE_STARTED) &&
+ 352:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (sector_type == FX_DIRECTORY_SECTOR))
+ 353:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 354:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 355:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Read sector from log file. */
+ 356:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             status = _fx_fault_tolerant_read_directory_sector(media_ptr, logical_sector, buffer_ptr
+ 357:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 358:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Check for successful completion.  */
+ 359:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (status)
+ 360:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 361:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 362:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Return the error status. */
+ 363:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 return(status);
+ 364:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 365:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 366:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 367:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         return(FX_SUCCESS);
+ 368:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 369:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 370:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     else
+ 371:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     {
+ 372:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 373:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Direct I/O to application buffer area.  */
+ 374:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 375:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Compare against logical sector to make sure it is valid.  */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 9
+
+
+ 376:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if ((logical_sector + sectors - 1) > (ULONG)media_ptr -> fx_media_total_sectors)
+  82              		.loc 1 376 9 is_stmt 1 view .LVU15
+  83              		.loc 1 376 29 is_stmt 0 view .LVU16
+  84 0032 7319     		adds	r3, r6, r5
+  85 0034 49F10002 		adc	r2, r9, #0
+  86              	.LVL1:
+  87              		.loc 1 376 39 view .LVU17
+  88 0038 013B     		subs	r3, r3, #1
+  89 003a 42F1FF32 		adc	r2, r2, #-1
+  90              		.loc 1 376 63 view .LVU18
+  91 003e A16B     		ldr	r1, [r4, #56]
+  92              		.loc 1 376 12 view .LVU19
+  93 0040 9942     		cmp	r1, r3
+  94 0042 4FF00003 		mov	r3, #0
+  95 0046 9341     		sbcs	r3, r3, r2
+  96 0048 C0F05581 		bcc	.L31
+  97              	.LVL2:
+  98              	.L10:
+ 377:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 378:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             return(FX_SECTOR_INVALID);
+ 379:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 380:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 381:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_DISABLE_CACHE
+ 382:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Attempt to fill the beginning of the buffer from cached sectors.  */
+ 383:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         while (sectors)
+  99              		.loc 1 383 15 is_stmt 1 view .LVU20
+ 100 004c 002E     		cmp	r6, #0
+ 101 004e 00F0A380 		beq	.L11
+ 384:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 385:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 386:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Determine if the sector is in the cache.  */
+ 387:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (_fx_utility_logical_sector_cache_entry_read(media_ptr, logical_sector, &previous_ca
+ 102              		.loc 1 387 13 view .LVU21
+ 103              		.loc 1 387 17 is_stmt 0 view .LVU22
+ 104 0052 05AB     		add	r3, sp, #20
+ 105 0054 0093     		str	r3, [sp]
+ 106 0056 2A46     		mov	r2, r5
+ 107 0058 4B46     		mov	r3, r9
+ 108 005a 2046     		mov	r0, r4
+ 109 005c FFF7FEFF 		bl	_fx_utility_logical_sector_cache_entry_read
+ 110              	.LVL3:
+ 111              		.loc 1 387 16 view .LVU23
+ 112 0060 0028     		cmp	r0, #0
+ 113 0062 40F09980 		bne	.L11
+ 388:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 389:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 390:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Not in the cache - get out of the loop!  */
+ 391:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 break;
+ 392:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 393:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 394:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Yes, sector is in the cache. Copy the data from the cache to the destination buffer.
+ 395:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             _fx_utility_memory_copy(media_ptr -> fx_media_memory_buffer, buffer_ptr, media_ptr -> f
+ 114              		.loc 1 395 13 is_stmt 1 view .LVU24
+ 115 0066 A26A     		ldr	r2, [r4, #40]
+ 116 0068 4146     		mov	r1, r8
+ 117 006a A068     		ldr	r0, [r4, #8]
+ 118 006c FFF7FEFF 		bl	_fx_utility_memory_copy
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 10
+
+
+ 119              	.LVL4:
+ 396:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 397:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Advance the destination buffer.  */
+ 398:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             buffer_ptr =  ((UCHAR *)buffer_ptr) + media_ptr -> fx_media_bytes_per_sector;
+ 120              		.loc 1 398 13 view .LVU25
+ 121              		.loc 1 398 61 is_stmt 0 view .LVU26
+ 122 0070 A36A     		ldr	r3, [r4, #40]
+ 123              		.loc 1 398 24 view .LVU27
+ 124 0072 9844     		add	r8, r8, r3
+ 125              	.LVL5:
+ 399:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 400:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Advance the sector and decrement the number of sectors left.  */
+ 401:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             logical_sector++;
+ 126              		.loc 1 401 13 is_stmt 1 view .LVU28
+ 127              		.loc 1 401 27 is_stmt 0 view .LVU29
+ 128 0074 0135     		adds	r5, r5, #1
+ 129              	.LVL6:
+ 130              		.loc 1 401 27 view .LVU30
+ 131 0076 49F10009 		adc	r9, r9, #0
+ 132              	.LVL7:
+ 402:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             sectors--;
+ 133              		.loc 1 402 13 is_stmt 1 view .LVU31
+ 134              		.loc 1 402 20 is_stmt 0 view .LVU32
+ 135 007a 013E     		subs	r6, r6, #1
+ 136              	.LVL8:
+ 137              		.loc 1 402 20 view .LVU33
+ 138 007c E6E7     		b	.L10
+ 139              	.LVL9:
+ 140              	.L29:
+ 126:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 141              		.loc 1 126 9 is_stmt 1 view .LVU34
+ 126:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 142              		.loc 1 126 19 is_stmt 0 view .LVU35
+ 143 007e D0F89431 		ldr	r3, [r0, #404]
+ 126:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 144              		.loc 1 126 47 view .LVU36
+ 145 0082 0133     		adds	r3, r3, #1
+ 146 0084 C0F89431 		str	r3, [r0, #404]
+ 147 0088 C8E7     		b	.L2
+ 148              	.L30:
+ 145:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 149              		.loc 1 145 9 is_stmt 1 view .LVU37
+ 145:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 150              		.loc 1 145 23 is_stmt 0 view .LVU38
+ 151 008a 05AB     		add	r3, sp, #20
+ 152 008c 0093     		str	r3, [sp]
+ 153 008e 2A46     		mov	r2, r5
+ 154              	.LVL10:
+ 145:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 155              		.loc 1 145 23 view .LVU39
+ 156 0090 4B46     		mov	r3, r9
+ 157 0092 2046     		mov	r0, r4
+ 158              	.LVL11:
+ 145:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 159              		.loc 1 145 23 view .LVU40
+ 160 0094 FFF7FEFF 		bl	_fx_utility_logical_sector_cache_entry_read
+ 161              	.LVL12:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 11
+
+
+ 148:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 162              		.loc 1 148 9 is_stmt 1 view .LVU41
+ 148:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 163              		.loc 1 148 12 is_stmt 0 view .LVU42
+ 164 0098 0746     		mov	r7, r0
+ 165 009a 0028     		cmp	r0, #0
+ 166 009c 00F02781 		beq	.L23
+ 160:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 167              		.loc 1 160 9 is_stmt 1 view .LVU43
+ 160:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 168              		.loc 1 160 19 is_stmt 0 view .LVU44
+ 169 00a0 D4F8A831 		ldr	r3, [r4, #424]
+ 160:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 170              		.loc 1 160 63 view .LVU45
+ 171 00a4 0133     		adds	r3, r3, #1
+ 172 00a6 C4F8A831 		str	r3, [r4, #424]
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (cache_entry -> fx_cached_sector_buffer_dirty))
+ 173              		.loc 1 175 9 is_stmt 1 view .LVU46
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (cache_entry -> fx_cached_sector_buffer_dirty))
+ 174              		.loc 1 175 26 is_stmt 0 view .LVU47
+ 175 00aa 437C     		ldrb	r3, [r0, #17]	@ zero_extendqisi2
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (cache_entry -> fx_cached_sector_buffer_dirty))
+ 176              		.loc 1 175 12 view .LVU48
+ 177 00ac 63B3     		cbz	r3, .L5
+ 176:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 178              		.loc 1 176 26 discriminator 1 view .LVU49
+ 179 00ae 037C     		ldrb	r3, [r0, #16]	@ zero_extendqisi2
+ 175:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             (cache_entry -> fx_cached_sector_buffer_dirty))
+ 180              		.loc 1 175 53 discriminator 1 view .LVU50
+ 181 00b0 53B3     		cbz	r3, .L5
+ 185:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 182              		.loc 1 185 13 is_stmt 1 view .LVU51
+ 185:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 183              		.loc 1 185 23 is_stmt 0 view .LVU52
+ 184 00b2 D4F8B031 		ldr	r3, [r4, #432]
+ 185:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 185              		.loc 1 185 56 view .LVU53
+ 186 00b6 0133     		adds	r3, r3, #1
+ 187 00b8 C4F8B031 		str	r3, [r4, #432]
+ 189:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 188              		.loc 1 189 13 is_stmt 1 view .LVU54
+ 189:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 189              		.loc 1 189 50 is_stmt 0 view .LVU55
+ 190 00bc 0123     		movs	r3, #1
+ 191 00be C4F88830 		str	r3, [r4, #136]
+ 190:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector_memory_
+ 192              		.loc 1 190 13 is_stmt 1 view .LVU56
+ 190:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector_memory_
+ 193              		.loc 1 190 49 is_stmt 0 view .LVU57
+ 194 00c2 9022     		movs	r2, #144
+ 195 00c4 C4F88C20 		str	r2, [r4, #140]
+ 191:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 196              		.loc 1 191 13 is_stmt 1 view .LVU58
+ 191:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 197              		.loc 1 191 73 is_stmt 0 view .LVU59
+ 198 00c8 0268     		ldr	r2, [r0]
+ 191:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 12
+
+
+ 199              		.loc 1 191 49 view .LVU60
+ 200 00ca C4F89020 		str	r2, [r4, #144]
+ 195:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 201              		.loc 1 195 13 is_stmt 1 view .LVU61
+ 195:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 202              		.loc 1 195 80 is_stmt 0 view .LVU62
+ 203 00ce 8268     		ldr	r2, [r0, #8]
+ 195:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 204              		.loc 1 195 57 view .LVU63
+ 205 00d0 C4F89420 		str	r2, [r4, #148]
+ 197:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_sector_type;
+ 206              		.loc 1 197 13 is_stmt 1 view .LVU64
+ 197:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_sector_type;
+ 207              		.loc 1 197 50 is_stmt 0 view .LVU65
+ 208 00d4 C4F89830 		str	r3, [r4, #152]
+ 198:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 209              		.loc 1 198 13 is_stmt 1 view .LVU66
+ 198:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 210              		.loc 1 198 73 is_stmt 0 view .LVU67
+ 211 00d8 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+ 198:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 212              		.loc 1 198 54 view .LVU68
+ 213 00da C4F8B830 		str	r3, [r4, #184]
+ 201:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 214              		.loc 1 201 13 is_stmt 1 view .LVU69
+ 201:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 215              		.loc 1 201 29 is_stmt 0 view .LVU70
+ 216 00de 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+ 201:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 217              		.loc 1 201 16 view .LVU71
+ 218 00e0 042B     		cmp	r3, #4
+ 219 00e2 02D0     		beq	.L6
+ 205:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 220              		.loc 1 205 17 is_stmt 1 view .LVU72
+ 205:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 221              		.loc 1 205 59 is_stmt 0 view .LVU73
+ 222 00e4 0123     		movs	r3, #1
+ 223 00e6 C4F8B030 		str	r3, [r4, #176]
+ 224              	.L6:
+ 212:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 225              		.loc 1 212 13 is_stmt 1 view .LVU74
+ 212:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 226              		.loc 1 212 24 is_stmt 0 view .LVU75
+ 227 00ea D4F8BC30 		ldr	r3, [r4, #188]
+ 228 00ee 2046     		mov	r0, r4
+ 229              	.LVL13:
+ 212:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 230              		.loc 1 212 24 view .LVU76
+ 231 00f0 9847     		blx	r3
+ 232              	.LVL14:
+ 215:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 233              		.loc 1 215 13 is_stmt 1 view .LVU77
+ 215:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 234              		.loc 1 215 55 is_stmt 0 view .LVU78
+ 235 00f2 0023     		movs	r3, #0
+ 236 00f4 C4F8B030 		str	r3, [r4, #176]
+ 218:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 13
+
+
+ 237              		.loc 1 218 13 is_stmt 1 view .LVU79
+ 218:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 238              		.loc 1 218 27 is_stmt 0 view .LVU80
+ 239 00f8 D4F88C60 		ldr	r6, [r4, #140]
+ 218:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 240              		.loc 1 218 16 view .LVU81
+ 241 00fc 002E     		cmp	r6, #0
+ 242 00fe 66D1     		bne	.L1
+ 228:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 243              		.loc 1 228 13 is_stmt 1 view .LVU82
+ 228:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 244              		.loc 1 228 58 is_stmt 0 view .LVU83
+ 245 0100 3B74     		strb	r3, [r7, #16]
+ 231:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 246              		.loc 1 231 13 is_stmt 1 view .LVU84
+ 231:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 247              		.loc 1 231 23 is_stmt 0 view .LVU85
+ 248 0102 636A     		ldr	r3, [r4, #36]
+ 231:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 249              		.loc 1 231 59 view .LVU86
+ 250 0104 013B     		subs	r3, r3, #1
+ 251 0106 6362     		str	r3, [r4, #36]
+ 252              	.L5:
+ 238:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 253              		.loc 1 238 9 is_stmt 1 view .LVU87
+ 238:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 254              		.loc 1 238 41 is_stmt 0 view .LVU88
+ 255 0108 A26B     		ldr	r2, [r4, #56]
+ 256 010a E36B     		ldr	r3, [r4, #60]
+ 238:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 257              		.loc 1 238 12 view .LVU89
+ 258 010c 9542     		cmp	r5, r2
+ 259 010e 79EB0303 		sbcs	r3, r9, r3
+ 260 0112 80F0EE80 		bcs	.L24
+ 246:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 261              		.loc 1 246 9 is_stmt 1 view .LVU90
+ 246:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 262              		.loc 1 246 19 is_stmt 0 view .LVU91
+ 263 0116 D4F8AC31 		ldr	r3, [r4, #428]
+ 246:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 264              		.loc 1 246 51 view .LVU92
+ 265 011a 0133     		adds	r3, r3, #1
+ 266 011c C4F8AC31 		str	r3, [r4, #428]
+ 250:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 267              		.loc 1 250 9 is_stmt 1 view .LVU93
+ 250:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 268              		.loc 1 250 46 is_stmt 0 view .LVU94
+ 269 0120 0023     		movs	r3, #0
+ 270 0122 C4F88830 		str	r3, [r4, #136]
+ 251:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector_memory_buff
+ 271              		.loc 1 251 9 is_stmt 1 view .LVU95
+ 251:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector_memory_buff
+ 272              		.loc 1 251 45 is_stmt 0 view .LVU96
+ 273 0126 9023     		movs	r3, #144
+ 274 0128 C4F88C30 		str	r3, [r4, #140]
+ 252:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 275              		.loc 1 252 9 is_stmt 1 view .LVU97
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 14
+
+
+ 252:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 276              		.loc 1 252 69 is_stmt 0 view .LVU98
+ 277 012c 3B68     		ldr	r3, [r7]
+ 252:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 278              		.loc 1 252 45 view .LVU99
+ 279 012e C4F89030 		str	r3, [r4, #144]
+ 256:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 280              		.loc 1 256 9 is_stmt 1 view .LVU100
+ 256:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 281              		.loc 1 256 53 is_stmt 0 view .LVU101
+ 282 0132 C4F89450 		str	r5, [r4, #148]
+ 258:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sector_type =      sector_type;
+ 283              		.loc 1 258 9 is_stmt 1 view .LVU102
+ 258:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sector_type =      sector_type;
+ 284              		.loc 1 258 46 is_stmt 0 view .LVU103
+ 285 0136 0123     		movs	r3, #1
+ 286 0138 C4F89830 		str	r3, [r4, #152]
+ 259:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 287              		.loc 1 259 9 is_stmt 1 view .LVU104
+ 259:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 288              		.loc 1 259 50 is_stmt 0 view .LVU105
+ 289 013c C4F8B8B0 		str	fp, [r4, #184]
+ 262:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 290              		.loc 1 262 9 is_stmt 1 view .LVU106
+ 262:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 291              		.loc 1 262 12 is_stmt 0 view .LVU107
+ 292 0140 BBF1040F 		cmp	fp, #4
+ 293 0144 18D0     		beq	.L32
+ 294              	.L7:
+ 273:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 295              		.loc 1 273 9 is_stmt 1 view .LVU108
+ 273:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 296              		.loc 1 273 20 is_stmt 0 view .LVU109
+ 297 0146 D4F8BC30 		ldr	r3, [r4, #188]
+ 298 014a 2046     		mov	r0, r4
+ 299 014c 9847     		blx	r3
+ 300              	.LVL15:
+ 276:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 301              		.loc 1 276 9 is_stmt 1 view .LVU110
+ 276:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 302              		.loc 1 276 55 is_stmt 0 view .LVU111
+ 303 014e 0023     		movs	r3, #0
+ 304 0150 C4F8B430 		str	r3, [r4, #180]
+ 279:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 305              		.loc 1 279 9 is_stmt 1 view .LVU112
+ 279:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 306              		.loc 1 279 23 is_stmt 0 view .LVU113
+ 307 0154 D4F88C30 		ldr	r3, [r4, #140]
+ 279:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 308              		.loc 1 279 12 view .LVU114
+ 309 0158 8BB9     		cbnz	r3, .L8
+ 283:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 310              		.loc 1 283 13 is_stmt 1 view .LVU115
+ 283:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 311              		.loc 1 283 45 is_stmt 0 view .LVU116
+ 312 015a BD60     		str	r5, [r7, #8]
+ 313 015c C7F80C90 		str	r9, [r7, #12]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 15
+
+
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 314              		.loc 1 286 13 is_stmt 1 view .LVU117
+ 286:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 315              		.loc 1 286 51 is_stmt 0 view .LVU118
+ 316 0160 0123     		movs	r3, #1
+ 317 0162 7B74     		strb	r3, [r7, #17]
+ 289:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 318              		.loc 1 289 13 is_stmt 1 view .LVU119
+ 289:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 319              		.loc 1 289 50 is_stmt 0 view .LVU120
+ 320 0164 87F812B0 		strb	fp, [r7, #18]
+ 295:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 321              		.loc 1 295 13 is_stmt 1 view .LVU121
+ 295:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 322              		.loc 1 295 17 is_stmt 0 view .LVU122
+ 323 0168 059B     		ldr	r3, [sp, #20]
+ 295:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 324              		.loc 1 295 16 view .LVU123
+ 325 016a 83B1     		cbz	r3, .L9
+ 302:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     cache_entry -> fx_cached_sector_next_used;
+ 326              		.loc 1 302 17 is_stmt 1 view .LVU124
+ 303:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 327              		.loc 1 303 33 is_stmt 0 view .LVU125
+ 328 016c 7A69     		ldr	r2, [r7, #20]
+ 302:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     cache_entry -> fx_cached_sector_next_used;
+ 329              		.loc 1 302 68 view .LVU126
+ 330 016e 5A61     		str	r2, [r3, #20]
+ 306:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_sector_cache_list_ptr;
+ 331              		.loc 1 306 17 is_stmt 1 view .LVU127
+ 307:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 media_ptr -> fx_media_sector_cache_list_ptr =  cache_entry;
+ 332              		.loc 1 307 31 is_stmt 0 view .LVU128
+ 333 0170 E369     		ldr	r3, [r4, #28]
+ 306:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_sector_cache_list_ptr;
+ 334              		.loc 1 306 59 view .LVU129
+ 335 0172 7B61     		str	r3, [r7, #20]
+ 308:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 336              		.loc 1 308 17 is_stmt 1 view .LVU130
+ 308:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 337              		.loc 1 308 61 is_stmt 0 view .LVU131
+ 338 0174 E761     		str	r7, [r4, #28]
+ 339 0176 0AE0     		b	.L9
+ 340              	.L32:
+ 266:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 341              		.loc 1 266 13 is_stmt 1 view .LVU132
+ 266:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 342              		.loc 1 266 59 is_stmt 0 view .LVU133
+ 343 0178 C4F8B430 		str	r3, [r4, #180]
+ 344 017c E3E7     		b	.L7
+ 345              	.L8:
+ 334:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 346              		.loc 1 334 13 is_stmt 1 view .LVU134
+ 334:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 347              		.loc 1 334 51 is_stmt 0 view .LVU135
+ 348 017e 0023     		movs	r3, #0
+ 349 0180 7B74     		strb	r3, [r7, #17]
+ 337:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 350              		.loc 1 337 13 is_stmt 1 view .LVU136
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 16
+
+
+ 337:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 351              		.loc 1 337 45 is_stmt 0 view .LVU137
+ 352 0182 4FF0FF32 		mov	r2, #-1
+ 353 0186 4FF0FF33 		mov	r3, #-1
+ 354 018a C7E90223 		strd	r2, [r7, #8]
+ 355              	.L9:
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 356              		.loc 1 341 9 is_stmt 1 view .LVU138
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 357              		.loc 1 341 60 is_stmt 0 view .LVU139
+ 358 018e 3B68     		ldr	r3, [r7]
+ 341:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 359              		.loc 1 341 45 view .LVU140
+ 360 0190 A360     		str	r3, [r4, #8]
+ 344:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 361              		.loc 1 344 9 is_stmt 1 view .LVU141
+ 344:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 362              		.loc 1 344 26 is_stmt 0 view .LVU142
+ 363 0192 D4F88C60 		ldr	r6, [r4, #140]
+ 364 0196 1AE0     		b	.L1
+ 365              	.LVL16:
+ 366              	.L11:
+ 403:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 404:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 405:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Calculate the end sector.  */
+ 406:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         end_sector = logical_sector + sectors - 1;
+ 367              		.loc 1 406 9 is_stmt 1 view .LVU143
+ 368              		.loc 1 406 37 is_stmt 0 view .LVU144
+ 369 0198 7719     		adds	r7, r6, r5
+ 370 019a 49F1000A 		adc	r10, r9, #0
+ 371              		.loc 1 406 20 view .LVU145
+ 372 019e 013F     		subs	r7, r7, #1
+ 373 01a0 4AF1FF3A 		adc	r10, r10, #-1
+ 374              	.LVL17:
+ 407:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 408:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Attempt to fill the end of the buffer from the opposite direction.  */
+ 409:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         while (sectors)
+ 375              		.loc 1 409 9 is_stmt 1 view .LVU146
+ 376              	.L13:
+ 377              		.loc 1 409 15 view .LVU147
+ 378 01a4 96B1     		cbz	r6, .L14
+ 410:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 411:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 412:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Determine if the sector is in the cache.  */
+ 413:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (_fx_utility_logical_sector_cache_entry_read(media_ptr, end_sector, &previous_cache_
+ 379              		.loc 1 413 13 view .LVU148
+ 380              		.loc 1 413 17 is_stmt 0 view .LVU149
+ 381 01a6 05AB     		add	r3, sp, #20
+ 382 01a8 0093     		str	r3, [sp]
+ 383 01aa 3A46     		mov	r2, r7
+ 384 01ac 5346     		mov	r3, r10
+ 385 01ae 2046     		mov	r0, r4
+ 386 01b0 FFF7FEFF 		bl	_fx_utility_logical_sector_cache_entry_read
+ 387              	.LVL18:
+ 388              		.loc 1 413 16 view .LVU150
+ 389 01b4 50B9     		cbnz	r0, .L14
+ 414:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 17
+
+
+ 415:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 416:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Not in the cache - get out of the loop!  */
+ 417:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 break;
+ 418:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 419:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 420:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Yes, sector is in the cache. Copy the data from the cache to the destination buffer.
+ 421:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             _fx_utility_memory_copy(media_ptr -> fx_media_memory_buffer, /* Use case of memcpy is v
+ 390              		.loc 1 421 13 is_stmt 1 view .LVU151
+ 422:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                                     ((UCHAR *)buffer_ptr) + ((sectors - 1) * media_ptr -> fx_media_
+ 391              		.loc 1 422 71 is_stmt 0 view .LVU152
+ 392 01b6 013E     		subs	r6, r6, #1
+ 393              	.LVL19:
+ 394              		.loc 1 422 88 view .LVU153
+ 395 01b8 A26A     		ldr	r2, [r4, #40]
+ 421:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                                     ((UCHAR *)buffer_ptr) + ((sectors - 1) * media_ptr -> fx_media_
+ 396              		.loc 1 421 13 view .LVU154
+ 397 01ba 02FB0681 		mla	r1, r2, r6, r8
+ 398 01be A068     		ldr	r0, [r4, #8]
+ 399 01c0 FFF7FEFF 		bl	_fx_utility_memory_copy
+ 400              	.LVL20:
+ 423:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                                     media_ptr -> fx_media_bytes_per_sector);
+ 424:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 425:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Move sector to previous sector and decrement the number of sectors left.  */
+ 426:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             end_sector--;
+ 401              		.loc 1 426 13 is_stmt 1 view .LVU155
+ 402              		.loc 1 426 23 is_stmt 0 view .LVU156
+ 403 01c4 013F     		subs	r7, r7, #1
+ 404              	.LVL21:
+ 405              		.loc 1 426 23 view .LVU157
+ 406 01c6 4AF1FF3A 		adc	r10, r10, #-1
+ 407              	.LVL22:
+ 427:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             sectors--;
+ 408              		.loc 1 427 13 is_stmt 1 view .LVU158
+ 409              		.loc 1 427 13 is_stmt 0 view .LVU159
+ 410 01ca EBE7     		b	.L13
+ 411              	.L14:
+ 428:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 429:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 430:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Determine if there are still sectors left to read.  */
+ 431:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if (sectors == 0)
+ 412              		.loc 1 431 9 is_stmt 1 view .LVU160
+ 413              		.loc 1 431 12 is_stmt 0 view .LVU161
+ 414 01cc 1EB9     		cbnz	r6, .L33
+ 415              	.LVL23:
+ 416              	.L1:
+ 432:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 433:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 434:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* No more sectors to read - return success!  */
+ 435:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             return(FX_SUCCESS);
+ 436:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 437:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 438:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Flush and invalidate any entries in the cache that are in this direct I/O read request r
+ 439:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         _fx_utility_logical_sector_flush(media_ptr, logical_sector, (ULONG64) sectors, FX_TRUE);
+ 440:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_DISABLE_CACHE */
+ 441:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 442:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 443:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 18
+
+
+ 444:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Increment the number of driver read sector(s) requests.  */
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_read_requests++;
+ 446:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 447:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 448:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Build read request to the driver.  */
+ 449:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_request =          FX_DRIVER_READ;
+ 450:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 451:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_buffer =           buffer_ptr;
+ 452:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 453:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_logical_sector =   logical_sector;
+ 454:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #else
+ 455:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_logical_sector =   (ULONG)logical_sector;
+ 456:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 457:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sectors =          sectors;
+ 458:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sector_type =      sector_type;
+ 459:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 460:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Determine if the sector is a data sector or a system sector.  */
+ 461:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if (sector_type == FX_DATA_SECTOR)
+ 462:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 463:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 464:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Data sector is present.  */
+ 465:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_driver_data_sector_read =  FX_TRUE;
+ 466:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 467:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 468:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 469:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_READ, media_ptr, logical_sector, sector
+ 470:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 471:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Invoke the driver to read the sector.  */
+ 472:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 473:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 474:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Clear data sector is present flag.  */
+ 475:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_data_sector_read =  FX_FALSE;
+ 476:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 477:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DISABLE_CACHE
+ 478:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if ((media_ptr -> fx_media_driver_status == FX_SUCCESS) && (sectors == 1) && (buffer_ptr ==
+ 479:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 480:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             media_ptr -> fx_media_memory_buffer_sector = logical_sector;
+ 481:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_ENABLE_FAULT_TOLERANT
+ 482:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             if (media_ptr -> fx_media_fault_tolerant_enabled &&
+ 483:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 (media_ptr -> fx_media_fault_tolerant_state & FX_FAULT_TOLERANT_STATE_STARTED) &&
+ 484:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 (sector_type == FX_DIRECTORY_SECTOR))
+ 485:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 486:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 487:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Read sector from log file. */
+ 488:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 status = _fx_fault_tolerant_read_directory_sector(media_ptr, logical_sector, buffer
+ 489:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 490:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Check for successful completion.  */
+ 491:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 if (status)
+ 492:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 493:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 494:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Return the error status. */
+ 495:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     return(status);
+ 496:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 497:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 498:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_ENABLE_FAULT_TOLERANT */
+ 499:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             return(FX_SUCCESS);
+ 500:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 19
+
+
+ 501:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_DISABLE_CACHE */
+ 502:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 503:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_DISABLE_DIRECT_DATA_READ_CACHE_FILL
+ 504:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 505:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Determine if the read was successful and if number of sectors just read will
+ 506:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****            reasonably fit into the cache.  */
+ 507:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         if ((media_ptr -> fx_media_driver_status == FX_SUCCESS) && (sectors < (media_ptr -> fx_medi
+ 508:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 509:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 510:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Yes, read of direct sectors was successful.  */
+ 511:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 512:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             /* Copy the sectors directly read into the cache so they are available on
+ 513:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                subsequent read requests.  */
+ 514:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             while (sectors)
+ 515:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 516:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 517:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Attempt to read the cache entry.  */
+ 518:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 cache_entry =  _fx_utility_logical_sector_cache_entry_read(media_ptr, logical_secto
+ 519:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 520:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Extended port-specific processing macro, which is by default defined to white sp
+ 521:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 FX_UTILITY_LOGICAL_SECTOR_READ_EXTENSION_1
+ 522:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 523:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* At this point, a cache entry should always be present since we invalidated
+ 524:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                    the cache over this sector range previously. In any case, check for the error
+ 525:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                    condition.  */
+ 526:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 if (cache_entry == FX_NULL)
+ 527:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 528:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 529:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* This case should never happen, however, if it does simply give up on updatin
+ 530:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                        cache with the sectors from the direct read.  */
+ 531:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     return(FX_SUCCESS);
+ 532:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 533:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 534:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Determine if the cache entry is dirty and needs to be written out before it is u
+ 535:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 if ((cache_entry -> fx_cached_sector_valid) &&
+ 536:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     (cache_entry -> fx_cached_sector_buffer_dirty))
+ 537:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 538:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 539:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Yes, we need to flush this buffer out to the physical media
+ 540:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                        before we read in the new buffer.  */
+ 541:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 542:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_MEDIA_STATISTICS_DISABLE
+ 543:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 544:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Increment the number of driver write sector(s) requests.  */
+ 545:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_write_requests++;
+ 546:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 547:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 548:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Build write request to the driver.  */
+ 549:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_request =          FX_DRIVER_WRITE;
+ 550:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 551:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector
+ 552:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 553:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_logical_sector =   cache_entry -> fx_cached_sector
+ 554:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #else
+ 555:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_logical_sector =   (ULONG)cache_entry -> fx_cached
+ 556:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 557:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_sectors =          1;
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 20
+
+
+ 558:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_sector
+ 559:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 560:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Only data sectors may be dirty when FX_FAULT_TOLERANT is defined */
+ 561:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifndef FX_FAULT_TOLERANT
+ 562:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Determine if the sector is a data sector or a system sector.  */
+ 563:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     if (cache_entry -> fx_cached_sector_type != FX_DATA_SECTOR)
+ 564:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 565:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 566:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         /* System sector is present.  */
+ 567:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         media_ptr -> fx_media_driver_system_write =  FX_TRUE;
+ 568:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     }
+ 569:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_FAULT_TOLERANT */
+ 570:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 571:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* If trace is enabled, insert this event into the trace buffer.  */
+ 572:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     FX_TRACE_IN_LINE_INSERT(FX_TRACE_INTERNAL_IO_DRIVER_WRITE, media_ptr, cache_ent
+ 573:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 574:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Invoke the driver to write the sector.  */
+ 575:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     (media_ptr -> fx_media_driver_entry) (media_ptr);
+ 576:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 577:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Clear the system write flag.  */
+ 578:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_system_write =  FX_FALSE;
+ 579:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 580:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Check for successful completion.  */
+ 581:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     if (media_ptr -> fx_media_driver_status)
+ 582:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 583:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 584:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         /* Error writing a cached sector out.  Return the
+ 585:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                            error status.  */
+ 586:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         return(media_ptr -> fx_media_driver_status);
+ 587:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     }
+ 588:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 589:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Clear the buffer dirty flag since it has been flushed
+ 590:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                        out.  */
+ 591:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     cache_entry -> fx_cached_sector_buffer_dirty =  FX_FALSE;
+ 592:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 593:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Decrement the number of outstanding dirty cache entries.  */
+ 594:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_sector_cache_dirty_count--;
+ 595:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 596:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 597:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Now setup the cache entry with information from the new sector.  */
+ 598:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 599:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Remember the sector number.  */
+ 600:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 cache_entry -> fx_cached_sector =  logical_sector;
+ 601:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 602:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Make the cache entry valid.  */
+ 603:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 cache_entry -> fx_cached_sector_valid =  FX_TRUE;
+ 604:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 605:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Remember the sector type.  */
+ 606:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 cache_entry -> fx_cached_sector_type =  sector_type;
+ 607:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 608:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Place this entry that the head of the cached sector
+ 609:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                    list.  */
+ 610:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 611:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Determine if we need to update the last used list.  */
+ 612:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 if (previous_cache_entry)
+ 613:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 614:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 21
+
+
+ 615:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Yes, the current entry is not at the front of the list
+ 616:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                        so we need to change the order.  */
+ 617:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 618:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Link the previous entry to this entry's next pointer.  */
+ 619:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     previous_cache_entry -> fx_cached_sector_next_used =
+ 620:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         cache_entry -> fx_cached_sector_next_used;
+ 621:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 622:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     /* Place this entry at the head of the list.  */
+ 623:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     cache_entry -> fx_cached_sector_next_used =
+ 624:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         media_ptr -> fx_media_sector_cache_list_ptr;
+ 625:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_sector_cache_list_ptr =  cache_entry;
+ 626:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 627:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 628:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Copy the data from the destination buffer to the cache entry.  */
+ 629:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 _fx_utility_memory_copy(buffer_ptr, /* Use case of memcpy is verified. */
+ 630:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                                         cache_entry -> fx_cached_sector_memory_buffer,
+ 631:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                                         media_ptr -> fx_media_bytes_per_sector);
+ 632:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 633:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Advance the destination buffer.  */
+ 634:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 buffer_ptr =  ((UCHAR *)buffer_ptr) + media_ptr -> fx_media_bytes_per_sector;
+ 635:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 636:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 /* Advance the source sector and decrement the sector count.  */
+ 637:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 logical_sector++;
+ 638:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 sectors--;
+ 639:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 640:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 641:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 642:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 643:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         /* Return the driver status.  */
+ 644:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         return(media_ptr -> fx_media_driver_status);
+ 645:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 646:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** }
+ 417              		.loc 1 646 1 view .LVU162
+ 418 01ce 3046     		mov	r0, r6
+ 419 01d0 07B0     		add	sp, sp, #28
+ 420              	.LCFI2:
+ 421              		.cfi_remember_state
+ 422              		.cfi_def_cfa_offset 36
+ 423              		@ sp needed
+ 424 01d2 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 425              	.LVL24:
+ 426              	.L33:
+ 427              	.LCFI3:
+ 428              		.cfi_restore_state
+ 439:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_DISABLE_CACHE */
+ 429              		.loc 1 439 9 is_stmt 1 view .LVU163
+ 430 01d6 0123     		movs	r3, #1
+ 431 01d8 0293     		str	r3, [sp, #8]
+ 432 01da 0027     		movs	r7, #0
+ 433              	.LVL25:
+ 439:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif /* FX_DISABLE_CACHE */
+ 434              		.loc 1 439 9 is_stmt 0 view .LVU164
+ 435 01dc 0096     		str	r6, [sp]
+ 436 01de 0197     		str	r7, [sp, #4]
+ 437 01e0 2A46     		mov	r2, r5
+ 438 01e2 4B46     		mov	r3, r9
+ 439 01e4 2046     		mov	r0, r4
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 22
+
+
+ 440 01e6 FFF7FEFF 		bl	_fx_utility_logical_sector_flush
+ 441              	.LVL26:
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 442              		.loc 1 445 9 is_stmt 1 view .LVU165
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 443              		.loc 1 445 19 is_stmt 0 view .LVU166
+ 444 01ea D4F8AC31 		ldr	r3, [r4, #428]
+ 445:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 445              		.loc 1 445 51 view .LVU167
+ 446 01ee 0133     		adds	r3, r3, #1
+ 447 01f0 C4F8AC31 		str	r3, [r4, #428]
+ 449:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 448              		.loc 1 449 9 is_stmt 1 view .LVU168
+ 449:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 449              		.loc 1 449 46 is_stmt 0 view .LVU169
+ 450 01f4 C4F88870 		str	r7, [r4, #136]
+ 450:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_buffer =           buffer_ptr;
+ 451              		.loc 1 450 9 is_stmt 1 view .LVU170
+ 450:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_buffer =           buffer_ptr;
+ 452              		.loc 1 450 45 is_stmt 0 view .LVU171
+ 453 01f8 9023     		movs	r3, #144
+ 454 01fa C4F88C30 		str	r3, [r4, #140]
+ 451:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 455              		.loc 1 451 9 is_stmt 1 view .LVU172
+ 451:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 456              		.loc 1 451 45 is_stmt 0 view .LVU173
+ 457 01fe C4F89080 		str	r8, [r4, #144]
+ 455:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 458              		.loc 1 455 9 is_stmt 1 view .LVU174
+ 455:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 459              		.loc 1 455 53 is_stmt 0 view .LVU175
+ 460 0202 C4F89450 		str	r5, [r4, #148]
+ 457:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sector_type =      sector_type;
+ 461              		.loc 1 457 9 is_stmt 1 view .LVU176
+ 457:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         media_ptr -> fx_media_driver_sector_type =      sector_type;
+ 462              		.loc 1 457 46 is_stmt 0 view .LVU177
+ 463 0206 C4F89860 		str	r6, [r4, #152]
+ 458:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 464              		.loc 1 458 9 is_stmt 1 view .LVU178
+ 458:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 465              		.loc 1 458 50 is_stmt 0 view .LVU179
+ 466 020a C4F8B8B0 		str	fp, [r4, #184]
+ 461:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 467              		.loc 1 461 9 is_stmt 1 view .LVU180
+ 461:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 468              		.loc 1 461 12 is_stmt 0 view .LVU181
+ 469 020e BBF1040F 		cmp	fp, #4
+ 470 0212 12D0     		beq	.L34
+ 471              	.L16:
+ 472:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 472              		.loc 1 472 9 is_stmt 1 view .LVU182
+ 472:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 473              		.loc 1 472 20 is_stmt 0 view .LVU183
+ 474 0214 D4F8BC30 		ldr	r3, [r4, #188]
+ 475 0218 2046     		mov	r0, r4
+ 476 021a 9847     		blx	r3
+ 477              	.LVL27:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 23
+
+
+ 475:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 478              		.loc 1 475 9 is_stmt 1 view .LVU184
+ 475:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 479              		.loc 1 475 55 is_stmt 0 view .LVU185
+ 480 021c 0023     		movs	r3, #0
+ 481 021e C4F8B430 		str	r3, [r4, #180]
+ 507:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 482              		.loc 1 507 9 is_stmt 1 view .LVU186
+ 507:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 483              		.loc 1 507 24 is_stmt 0 view .LVU187
+ 484 0222 D4F88CA0 		ldr	r10, [r4, #140]
+ 507:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 485              		.loc 1 507 12 view .LVU188
+ 486 0226 BAF1000F 		cmp	r10, #0
+ 487 022a 03D1     		bne	.L17
+ 507:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 488              		.loc 1 507 90 discriminator 1 view .LVU189
+ 489 022c 6369     		ldr	r3, [r4, #20]
+ 507:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         {
+ 490              		.loc 1 507 65 discriminator 1 view .LVU190
+ 491 022e B6EB930F 		cmp	r6, r3, lsr #2
+ 492 0232 2ED3     		bcc	.L18
+ 493              	.LVL28:
+ 494              	.L17:
+ 644:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 495              		.loc 1 644 9 is_stmt 1 view .LVU191
+ 644:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 496              		.loc 1 644 26 is_stmt 0 view .LVU192
+ 497 0234 D4F88C60 		ldr	r6, [r4, #140]
+ 498              	.LVL29:
+ 644:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****     }
+ 499              		.loc 1 644 26 view .LVU193
+ 500 0238 C9E7     		b	.L1
+ 501              	.LVL30:
+ 502              	.L34:
+ 465:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 503              		.loc 1 465 13 is_stmt 1 view .LVU194
+ 465:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 504              		.loc 1 465 59 is_stmt 0 view .LVU195
+ 505 023a 0123     		movs	r3, #1
+ 506 023c C4F8B430 		str	r3, [r4, #180]
+ 507 0240 E8E7     		b	.L16
+ 508              	.LVL31:
+ 509              	.L20:
+ 575:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 510              		.loc 1 575 21 is_stmt 1 view .LVU196
+ 575:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 511              		.loc 1 575 32 is_stmt 0 view .LVU197
+ 512 0242 D4F8BC30 		ldr	r3, [r4, #188]
+ 513 0246 2046     		mov	r0, r4
+ 514              	.LVL32:
+ 575:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 515              		.loc 1 575 32 view .LVU198
+ 516 0248 9847     		blx	r3
+ 517              	.LVL33:
+ 578:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 518              		.loc 1 578 21 is_stmt 1 view .LVU199
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 24
+
+
+ 578:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 519              		.loc 1 578 63 is_stmt 0 view .LVU200
+ 520 024a 0023     		movs	r3, #0
+ 521 024c C4F8B030 		str	r3, [r4, #176]
+ 581:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 522              		.loc 1 581 21 is_stmt 1 view .LVU201
+ 581:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 523              		.loc 1 581 35 is_stmt 0 view .LVU202
+ 524 0250 D4F88C30 		ldr	r3, [r4, #140]
+ 581:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 525              		.loc 1 581 24 view .LVU203
+ 526 0254 002B     		cmp	r3, #0
+ 527 0256 52D1     		bne	.L27
+ 591:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 528              		.loc 1 591 21 is_stmt 1 view .LVU204
+ 591:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 529              		.loc 1 591 66 is_stmt 0 view .LVU205
+ 530 0258 3B74     		strb	r3, [r7, #16]
+ 594:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 531              		.loc 1 594 21 is_stmt 1 view .LVU206
+ 594:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 532              		.loc 1 594 31 is_stmt 0 view .LVU207
+ 533 025a 636A     		ldr	r3, [r4, #36]
+ 594:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 534              		.loc 1 594 67 view .LVU208
+ 535 025c 013B     		subs	r3, r3, #1
+ 536 025e 6362     		str	r3, [r4, #36]
+ 537              	.L19:
+ 600:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 538              		.loc 1 600 17 is_stmt 1 view .LVU209
+ 600:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 539              		.loc 1 600 49 is_stmt 0 view .LVU210
+ 540 0260 BD60     		str	r5, [r7, #8]
+ 541 0262 C7F80C90 		str	r9, [r7, #12]
+ 603:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 542              		.loc 1 603 17 is_stmt 1 view .LVU211
+ 603:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 543              		.loc 1 603 55 is_stmt 0 view .LVU212
+ 544 0266 0123     		movs	r3, #1
+ 545 0268 7B74     		strb	r3, [r7, #17]
+ 606:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 546              		.loc 1 606 17 is_stmt 1 view .LVU213
+ 606:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 547              		.loc 1 606 54 is_stmt 0 view .LVU214
+ 548 026a 87F812B0 		strb	fp, [r7, #18]
+ 612:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 549              		.loc 1 612 17 is_stmt 1 view .LVU215
+ 612:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 550              		.loc 1 612 21 is_stmt 0 view .LVU216
+ 551 026e 059B     		ldr	r3, [sp, #20]
+ 612:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 552              		.loc 1 612 20 view .LVU217
+ 553 0270 23B1     		cbz	r3, .L21
+ 619:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         cache_entry -> fx_cached_sector_next_used;
+ 554              		.loc 1 619 21 is_stmt 1 view .LVU218
+ 620:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 555              		.loc 1 620 37 is_stmt 0 view .LVU219
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 25
+
+
+ 556 0272 7A69     		ldr	r2, [r7, #20]
+ 619:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         cache_entry -> fx_cached_sector_next_used;
+ 557              		.loc 1 619 72 view .LVU220
+ 558 0274 5A61     		str	r2, [r3, #20]
+ 623:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         media_ptr -> fx_media_sector_cache_list_ptr;
+ 559              		.loc 1 623 21 is_stmt 1 view .LVU221
+ 624:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_sector_cache_list_ptr =  cache_entry;
+ 560              		.loc 1 624 35 is_stmt 0 view .LVU222
+ 561 0276 E369     		ldr	r3, [r4, #28]
+ 623:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                         media_ptr -> fx_media_sector_cache_list_ptr;
+ 562              		.loc 1 623 63 view .LVU223
+ 563 0278 7B61     		str	r3, [r7, #20]
+ 625:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 564              		.loc 1 625 21 is_stmt 1 view .LVU224
+ 625:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 565              		.loc 1 625 65 is_stmt 0 view .LVU225
+ 566 027a E761     		str	r7, [r4, #28]
+ 567              	.L21:
+ 629:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                                         cache_entry -> fx_cached_sector_memory_buffer,
+ 568              		.loc 1 629 17 is_stmt 1 view .LVU226
+ 569 027c A26A     		ldr	r2, [r4, #40]
+ 570 027e 3968     		ldr	r1, [r7]
+ 571 0280 4046     		mov	r0, r8
+ 572 0282 FFF7FEFF 		bl	_fx_utility_memory_copy
+ 573              	.LVL34:
+ 634:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 574              		.loc 1 634 17 view .LVU227
+ 634:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 575              		.loc 1 634 65 is_stmt 0 view .LVU228
+ 576 0286 A36A     		ldr	r3, [r4, #40]
+ 634:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 577              		.loc 1 634 28 view .LVU229
+ 578 0288 9844     		add	r8, r8, r3
+ 579              	.LVL35:
+ 637:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 sectors--;
+ 580              		.loc 1 637 17 is_stmt 1 view .LVU230
+ 637:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 sectors--;
+ 581              		.loc 1 637 31 is_stmt 0 view .LVU231
+ 582 028a 0135     		adds	r5, r5, #1
+ 583              	.LVL36:
+ 637:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 sectors--;
+ 584              		.loc 1 637 31 view .LVU232
+ 585 028c 49F10009 		adc	r9, r9, #0
+ 586              	.LVL37:
+ 638:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 587              		.loc 1 638 17 is_stmt 1 view .LVU233
+ 638:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             }
+ 588              		.loc 1 638 24 is_stmt 0 view .LVU234
+ 589 0290 013E     		subs	r6, r6, #1
+ 590              	.LVL38:
+ 591              	.L18:
+ 514:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****             {
+ 592              		.loc 1 514 19 is_stmt 1 view .LVU235
+ 593 0292 002E     		cmp	r6, #0
+ 594 0294 CED0     		beq	.L17
+ 518:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 595              		.loc 1 518 17 view .LVU236
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 26
+
+
+ 518:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 596              		.loc 1 518 32 is_stmt 0 view .LVU237
+ 597 0296 05AB     		add	r3, sp, #20
+ 598 0298 0093     		str	r3, [sp]
+ 599 029a 2A46     		mov	r2, r5
+ 600 029c 4B46     		mov	r3, r9
+ 601 029e 2046     		mov	r0, r4
+ 602 02a0 FFF7FEFF 		bl	_fx_utility_logical_sector_cache_entry_read
+ 603              	.LVL39:
+ 526:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 604              		.loc 1 526 17 is_stmt 1 view .LVU238
+ 526:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 605              		.loc 1 526 20 is_stmt 0 view .LVU239
+ 606 02a4 0746     		mov	r7, r0
+ 607 02a6 40B3     		cbz	r0, .L26
+ 535:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     (cache_entry -> fx_cached_sector_buffer_dirty))
+ 608              		.loc 1 535 17 is_stmt 1 view .LVU240
+ 535:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     (cache_entry -> fx_cached_sector_buffer_dirty))
+ 609              		.loc 1 535 34 is_stmt 0 view .LVU241
+ 610 02a8 437C     		ldrb	r3, [r0, #17]	@ zero_extendqisi2
+ 535:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     (cache_entry -> fx_cached_sector_buffer_dirty))
+ 611              		.loc 1 535 20 view .LVU242
+ 612 02aa 002B     		cmp	r3, #0
+ 613 02ac D8D0     		beq	.L19
+ 536:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 {
+ 614              		.loc 1 536 34 discriminator 1 view .LVU243
+ 615 02ae 037C     		ldrb	r3, [r0, #16]	@ zero_extendqisi2
+ 535:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     (cache_entry -> fx_cached_sector_buffer_dirty))
+ 616              		.loc 1 535 61 discriminator 1 view .LVU244
+ 617 02b0 002B     		cmp	r3, #0
+ 618 02b2 D5D0     		beq	.L19
+ 545:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 619              		.loc 1 545 21 is_stmt 1 view .LVU245
+ 545:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 620              		.loc 1 545 31 is_stmt 0 view .LVU246
+ 621 02b4 D4F8B031 		ldr	r3, [r4, #432]
+ 545:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 622              		.loc 1 545 64 view .LVU247
+ 623 02b8 0133     		adds	r3, r3, #1
+ 624 02ba C4F8B031 		str	r3, [r4, #432]
+ 549:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 625              		.loc 1 549 21 is_stmt 1 view .LVU248
+ 549:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_status =           FX_IO_ERROR;
+ 626              		.loc 1 549 58 is_stmt 0 view .LVU249
+ 627 02be 0123     		movs	r3, #1
+ 628 02c0 C4F88830 		str	r3, [r4, #136]
+ 550:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector
+ 629              		.loc 1 550 21 is_stmt 1 view .LVU250
+ 550:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_buffer =           cache_entry -> fx_cached_sector
+ 630              		.loc 1 550 57 is_stmt 0 view .LVU251
+ 631 02c4 9022     		movs	r2, #144
+ 632 02c6 C4F88C20 		str	r2, [r4, #140]
+ 551:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 633              		.loc 1 551 21 is_stmt 1 view .LVU252
+ 551:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 634              		.loc 1 551 81 is_stmt 0 view .LVU253
+ 635 02ca 0268     		ldr	r2, [r0]
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 27
+
+
+ 551:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #ifdef FX_DRIVER_USE_64BIT_LBA
+ 636              		.loc 1 551 57 view .LVU254
+ 637 02cc C4F89020 		str	r2, [r4, #144]
+ 555:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 638              		.loc 1 555 21 is_stmt 1 view .LVU255
+ 555:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 639              		.loc 1 555 88 is_stmt 0 view .LVU256
+ 640 02d0 8268     		ldr	r2, [r0, #8]
+ 555:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** #endif
+ 641              		.loc 1 555 65 view .LVU257
+ 642 02d2 C4F89420 		str	r2, [r4, #148]
+ 557:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_sector
+ 643              		.loc 1 557 21 is_stmt 1 view .LVU258
+ 557:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     media_ptr -> fx_media_driver_sector_type =      cache_entry -> fx_cached_sector
+ 644              		.loc 1 557 58 is_stmt 0 view .LVU259
+ 645 02d6 C4F89830 		str	r3, [r4, #152]
+ 558:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 646              		.loc 1 558 21 is_stmt 1 view .LVU260
+ 558:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 647              		.loc 1 558 81 is_stmt 0 view .LVU261
+ 648 02da 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+ 558:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c **** 
+ 649              		.loc 1 558 62 view .LVU262
+ 650 02dc C4F8B830 		str	r3, [r4, #184]
+ 563:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 651              		.loc 1 563 21 is_stmt 1 view .LVU263
+ 563:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 652              		.loc 1 563 37 is_stmt 0 view .LVU264
+ 653 02e0 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+ 563:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     {
+ 654              		.loc 1 563 24 view .LVU265
+ 655 02e2 042B     		cmp	r3, #4
+ 656 02e4 ADD0     		beq	.L20
+ 567:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     }
+ 657              		.loc 1 567 25 is_stmt 1 view .LVU266
+ 567:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     }
+ 658              		.loc 1 567 67 is_stmt 0 view .LVU267
+ 659 02e6 0123     		movs	r3, #1
+ 660 02e8 C4F8B030 		str	r3, [r4, #176]
+ 661 02ec A9E7     		b	.L20
+ 662              	.LVL40:
+ 663              	.L23:
+ 152:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 664              		.loc 1 152 19 view .LVU268
+ 665 02ee 0026     		movs	r6, #0
+ 666 02f0 6DE7     		b	.L1
+ 667              	.LVL41:
+ 668              	.L24:
+ 240:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 669              		.loc 1 240 19 view .LVU269
+ 670 02f2 8926     		movs	r6, #137
+ 671 02f4 6BE7     		b	.L1
+ 672              	.LVL42:
+ 673              	.L31:
+ 378:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****         }
+ 674              		.loc 1 378 19 view .LVU270
+ 675 02f6 8926     		movs	r6, #137
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 28
+
+
+ 676 02f8 69E7     		b	.L1
+ 677              	.LVL43:
+ 678              	.L26:
+ 531:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 679              		.loc 1 531 27 view .LVU271
+ 680 02fa 5646     		mov	r6, r10
+ 681              	.LVL44:
+ 531:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                 }
+ 682              		.loc 1 531 27 view .LVU272
+ 683 02fc 67E7     		b	.L1
+ 684              	.LVL45:
+ 685              	.L27:
+ 586:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     }
+ 686              		.loc 1 586 42 view .LVU273
+ 687 02fe 1E46     		mov	r6, r3
+ 688              	.LVL46:
+ 586:Middlewares/ST/filex/common/src/fx_utility_logical_sector_read.c ****                     }
+ 689              		.loc 1 586 42 view .LVU274
+ 690 0300 65E7     		b	.L1
+ 691              		.cfi_endproc
+ 692              	.LFE8:
+ 694              		.text
+ 695              	.Letext0:
+ 696              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 697              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 698              		.file 4 "Middlewares/ST/filex/common/inc/fx_api.h"
+ 699              		.file 5 "Middlewares/ST/filex/common/inc/fx_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fx_utility_logical_sector_read.c
+C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s:20     .text._fx_utility_logical_sector_read:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccIlTXQl.s:26     .text._fx_utility_logical_sector_read:00000000 _fx_utility_logical_sector_read
+
+UNDEFINED SYMBOLS
+_fx_utility_logical_sector_cache_entry_read
+_fx_utility_memory_copy
+_fx_utility_logical_sector_flush

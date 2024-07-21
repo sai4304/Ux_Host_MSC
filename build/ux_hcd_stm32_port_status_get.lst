@@ -1,0 +1,315 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczDMNp1.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_hcd_stm32_port_status_get.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_hcd_stm32_port_status_get,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_hcd_stm32_port_status_get
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_hcd_stm32_port_status_get:
+  27              	.LVL0:
+  28              	.LFB143:
+  29              		.file 1 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c"
+   1:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  12:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  13:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**                                                                       */
+  16:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /** USBX Component                                                        */
+  17:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**   STM32 Controller Driver                                             */
+  19:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  23:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  24:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  26:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** #define UX_HCD_STM32_SOURCE_CODE
+  28:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  29:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** #include "ux_api.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczDMNp1.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** #include "ux_hcd_stm32.h"
+  31:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** #include "ux_host_stack.h"
+  32:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  33:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  34:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+  35:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  36:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  FUNCTION                                               RELEASE        */
+  37:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  38:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    _ux_hcd_stm32_port_status_get                       PORTABLE C      */
+  39:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                           6.0          */
+  40:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  AUTHOR                                                                */
+  41:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  43:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  44:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  DESCRIPTION                                                           */
+  45:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  46:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*     This function will return the status for each port attached to the */
+  47:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*     root HUB.                                                          */
+  48:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  49:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  INPUT                                                                 */
+  50:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  51:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    hcd_stm32                           Pointer to STM32 controller     */
+  52:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    port_index                            Port index                    */
+  53:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  54:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  OUTPUT                                                                */
+  55:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  56:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  STM32 Port Status                                                     */
+  57:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  58:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    Where port status has the following format:                         */
+  59:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  60:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*               bit 0         device connection status                   */
+  61:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 0 : no device connected                 */
+  62:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 1 : device connected to the port        */
+  63:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*               bit 1         port enable status                         */
+  64:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 0 : port disabled                       */
+  65:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 1 : port enabled                        */
+  66:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*               bit 2         port suspend status                        */
+  67:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 0 : port is not suspended               */
+  68:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 1 : port is suspended                   */
+  69:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*               bit 3         port overcurrent status                    */
+  70:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 0 : port has no overcurrent condition   */
+  71:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 1 : port has overcurrent condition      */
+  72:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*               bit 4         port reset status                          */
+  73:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 0 : port is not in reset                */
+  74:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 1 : port is in reset                    */
+  75:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*               bit 5         port power status                          */
+  76:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 0 : port power is off                   */
+  77:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 1 : port power is on                    */
+  78:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*               bit 6-7       device attached speed                      */
+  79:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 00 : low speed device attached          */
+  80:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 01 : full speed device attached         */
+  81:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                             if 10 : high speed device attached         */
+  82:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  83:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  CALLS                                                                 */
+  84:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  85:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    HAL_HCD_GetCurrentSpeed             Get device speed                */
+  86:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczDMNp1.s 			page 3
+
+
+  87:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  CALLED BY                                                             */
+  88:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  89:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    STM32 Controller Driver                                             */
+  90:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  91:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  RELEASE HISTORY                                                       */
+  92:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  93:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*    DATE              NAME                      DESCRIPTION             */
+  94:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  95:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  96:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /*                                                                        */
+  97:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** /**************************************************************************/
+  98:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** ULONG  _ux_hcd_stm32_port_status_get(UX_HCD_STM32 *hcd_stm32, ULONG port_index)
+  99:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** {
+  30              		.loc 1 99 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 99 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+ 100:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 101:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** ULONG       port_status;
+  40              		.loc 1 101 1 is_stmt 1 view .LVU2
+ 102:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 103:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 104:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     /* Check to see if this port is valid on this controller.  */
+ 105:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     if (UX_HCD_STM32_NB_ROOT_PORTS < port_index)
+  41              		.loc 1 105 5 view .LVU3
+  42              		.loc 1 105 8 is_stmt 0 view .LVU4
+  43 0002 0129     		cmp	r1, #1
+  44 0004 0FD8     		bhi	.L9
+ 106:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     {
+ 107:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 108:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         /* Error trap. */
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         _ux_system_error_handler(UX_SYSTEM_LEVEL_THREAD, UX_SYSTEM_CONTEXT_HCD, UX_PORT_INDEX_UNKNO
+ 110:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 111:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         /* If trace is enabled, insert this event into the trace buffer.  */
+ 112:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         UX_TRACE_IN_LINE_INSERT(UX_TRACE_ERROR, UX_PORT_INDEX_UNKNOWN, port_index, 0, 0, UX_TRACE_E
+ 113:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         return(UX_PORT_INDEX_UNKNOWN);
+ 115:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     }
+ 116:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 117:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     /* The port is valid, build the status mask for this port. This function
+ 118:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****        returns a controller agnostic bit field.  */
+ 119:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     port_status =  0;
+  45              		.loc 1 119 5 is_stmt 1 view .LVU5
+  46              	.LVL1:
+ 120:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 121:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     /* Device Connection Status.  */
+ 122:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     if (hcd_stm32 -> ux_hcd_stm32_controller_flag & UX_HCD_STM32_CONTROLLER_FLAG_DEVICE_ATTACHED)
+  47              		.loc 1 122 5 view .LVU6
+  48              		.loc 1 122 19 is_stmt 0 view .LVU7
+  49 0006 446C     		ldr	r4, [r0, #68]
+  50              		.loc 1 122 8 view .LVU8
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczDMNp1.s 			page 4
+
+
+  51 0008 14F00104 		ands	r4, r4, #1
+  52 000c 00D0     		beq	.L4
+ 123:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         port_status |=  UX_PS_CCS;
+  53              		.loc 1 123 21 view .LVU9
+  54 000e 0124     		movs	r4, #1
+  55              	.L4:
+  56              	.LVL2:
+ 124:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 125:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     switch (HAL_HCD_GetCurrentSpeed(hcd_stm32 -> hcd_handle))
+  57              		.loc 1 125 5 is_stmt 1 view .LVU10
+  58              		.loc 1 125 13 is_stmt 0 view .LVU11
+  59 0010 806C     		ldr	r0, [r0, #72]
+  60              	.LVL3:
+  61              		.loc 1 125 13 view .LVU12
+  62 0012 FFF7FEFF 		bl	HAL_HCD_GetCurrentSpeed
+  63              	.LVL4:
+  64              		.loc 1 125 5 view .LVU13
+  65 0016 0128     		cmp	r0, #1
+  66 0018 10D0     		beq	.L5
+  67 001a 0228     		cmp	r0, #2
+  68 001c 0CD0     		beq	.L1
+  69 001e 48B1     		cbz	r0, .L10
+ 126:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     {
+ 127:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     case 0:
+ 128:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         /* High Speed.  */
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         port_status |=  UX_PS_DS_HS;
+ 130:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+ 131:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 132:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     case 1:
+ 133:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         /* Full Speed.  */
+ 134:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         port_status |=  UX_PS_DS_FS;
+ 135:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+ 136:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 137:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     case 2:
+ 138:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         /* Low Speed.  */
+ 139:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         port_status |=  UX_PS_DS_LS;
+ 140:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+ 141:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 142:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     default:
+ 143:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         /* Full Speed.  */
+ 144:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         port_status |=  UX_PS_DS_FS;
+  70              		.loc 1 144 9 is_stmt 1 view .LVU14
+  71              		.loc 1 144 21 is_stmt 0 view .LVU15
+  72 0020 44F04004 		orr	r4, r4, #64
+  73              	.LVL5:
+ 145:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+  74              		.loc 1 145 9 is_stmt 1 view .LVU16
+  75              		.loc 1 145 9 is_stmt 0 view .LVU17
+  76 0024 08E0     		b	.L1
+  77              	.LVL6:
+  78              	.L9:
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  79              		.loc 1 109 9 is_stmt 1 view .LVU18
+  80 0026 5622     		movs	r2, #86
+  81 0028 0121     		movs	r1, #1
+  82              	.LVL7:
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczDMNp1.s 			page 5
+
+
+  83              		.loc 1 109 9 is_stmt 0 view .LVU19
+  84 002a 0220     		movs	r0, #2
+  85              	.LVL8:
+ 109:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  86              		.loc 1 109 9 view .LVU20
+  87 002c FFF7FEFF 		bl	_ux_system_error_handler
+  88              	.LVL9:
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     }
+  89              		.loc 1 114 9 is_stmt 1 view .LVU21
+ 114:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     }
+  90              		.loc 1 114 15 is_stmt 0 view .LVU22
+  91 0030 5624     		movs	r4, #86
+  92 0032 01E0     		b	.L1
+  93              	.LVL10:
+  94              	.L10:
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+  95              		.loc 1 129 9 is_stmt 1 view .LVU23
+ 129:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+  96              		.loc 1 129 21 is_stmt 0 view .LVU24
+  97 0034 44F08004 		orr	r4, r4, #128
+  98              	.LVL11:
+ 130:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+  99              		.loc 1 130 9 is_stmt 1 view .LVU25
+ 100              	.L1:
+ 146:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     }
+ 147:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 148:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     /* Return port status.  */
+ 149:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****     return(port_status);
+ 150:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** }
+ 101              		.loc 1 150 1 is_stmt 0 view .LVU26
+ 102 0038 2046     		mov	r0, r4
+ 103 003a 10BD     		pop	{r4, pc}
+ 104              	.LVL12:
+ 105              	.L5:
+ 134:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+ 106              		.loc 1 134 9 is_stmt 1 view .LVU27
+ 134:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c ****         break;
+ 107              		.loc 1 134 21 is_stmt 0 view .LVU28
+ 108 003c 44F04004 		orr	r4, r4, #64
+ 109              	.LVL13:
+ 135:Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32_port_status_get.c **** 
+ 110              		.loc 1 135 9 is_stmt 1 view .LVU29
+ 111 0040 FAE7     		b	.L1
+ 112              		.cfi_endproc
+ 113              	.LFE143:
+ 115              		.text
+ 116              	.Letext0:
+ 117              		.file 2 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 118              		.file 3 "c:\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 119              		.file 4 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 120              		.file 5 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 121              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 122              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h"
+ 123              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 124              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h"
+ 125              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_hcd.h"
+ 126              		.file 11 "Middlewares/ST/usbx/common/usbx_stm32_host_controllers/ux_hcd_stm32.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczDMNp1.s 			page 6
+
+
+ 127              		.file 12 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\cczDMNp1.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_hcd_stm32_port_status_get.c
+C:\Users\HP\AppData\Local\Temp\cczDMNp1.s:20     .text._ux_hcd_stm32_port_status_get:00000000 $t
+C:\Users\HP\AppData\Local\Temp\cczDMNp1.s:26     .text._ux_hcd_stm32_port_status_get:00000000 _ux_hcd_stm32_port_status_get
+
+UNDEFINED SYMBOLS
+HAL_HCD_GetCurrentSpeed
+_ux_system_error_handler

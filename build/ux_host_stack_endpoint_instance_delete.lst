@@ -1,0 +1,262 @@
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ux_host_stack_endpoint_instance_delete.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ux_host_stack_endpoint_instance_delete,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ux_host_stack_endpoint_instance_delete
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ux_host_stack_endpoint_instance_delete:
+  27              	.LVL0:
+  28              	.LFB11:
+  29              		.file 1 "Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c"
+   1:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/
+   2:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */
+   3:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*       Copyright (c) Microsoft Corporation. All rights reserved.        */
+   4:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */
+   5:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*       This software is licensed under the Microsoft Software License   */
+   6:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*       Terms for Microsoft Azure RTOS. Full text of the license can be  */
+   7:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*       found in the LICENSE file at https://aka.ms/AzureRTOS_EULA       */
+   8:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*       and in the root directory of this software.                      */
+   9:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */
+  10:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/
+  11:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  12:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  13:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/
+  14:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/
+  15:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**                                                                       */ 
+  16:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /** USBX Component                                                        */ 
+  17:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**                                                                       */
+  18:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**   Host Stack                                                          */
+  19:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**                                                                       */
+  20:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/
+  21:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/
+  22:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  23:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  24:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /* Include necessary system files.  */
+  25:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  26:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** #define UX_SOURCE_CODE
+  27:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  28:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** #include "ux_api.h"
+  29:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** #include "ux_host_stack.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s 			page 2
+
+
+  30:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  31:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  32:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/ 
+  33:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  34:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  FUNCTION                                               RELEASE        */ 
+  35:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  36:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    _ux_host_stack_endpoint_instance_delete             PORTABLE C      */ 
+  37:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                           6.1.10       */
+  38:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  AUTHOR                                                                */
+  39:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */
+  40:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    Chaoqiong Xiao, Microsoft Corporation                               */
+  41:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */
+  42:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  DESCRIPTION                                                           */
+  43:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  44:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    This function will delete an endpoint instance. It does not delete  */ 
+  45:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    the endpoint container but it removes the HCD endpoint and reclaims */ 
+  46:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    the bandwidth.                                                      */ 
+  47:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  48:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  INPUT                                                                 */ 
+  49:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  50:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    endpoint                              Endpoint to delete            */ 
+  51:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  52:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  OUTPUT                                                                */ 
+  53:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  54:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    None                                                                */ 
+  55:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  56:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  CALLS                                                                 */ 
+  57:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  58:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    _ux_host_stack_bandwidth_release      Release bandwidth             */ 
+  59:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    _ux_utility_semaphore_delete          Semaphore delete              */ 
+  60:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    (ux_hcd_entry_function)               HCD entry function            */ 
+  61:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  62:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  CALLED BY                                                             */ 
+  63:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  64:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    USBX Components                                                     */ 
+  65:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  66:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  RELEASE HISTORY                                                       */ 
+  67:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  68:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*    DATE              NAME                      DESCRIPTION             */ 
+  69:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */ 
+  70:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  05-19-2020     Chaoqiong Xiao           Initial Version 6.0           */
+  71:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  09-30-2020     Chaoqiong Xiao           Modified comment(s),          */
+  72:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                            optimized based on compile  */
+  73:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                            definitions,                */
+  74:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                            resulting in version 6.1    */
+  75:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  06-02-2021     Chaoqiong Xiao           Modified comment(s),          */
+  76:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                            fixed trace enabled error,  */
+  77:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                            resulting in version 6.1.7  */
+  78:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*  01-31-2022     Chaoqiong Xiao           Modified comment(s),          */
+  79:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                            added standalone support,   */
+  80:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                            resulting in version 6.1.10 */
+  81:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /*                                                                        */
+  82:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** /**************************************************************************/
+  83:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** VOID  _ux_host_stack_endpoint_instance_delete(UX_ENDPOINT *endpoint)
+  84:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** {
+  30              		.loc 1 84 1 view -0
+  31              		.cfi_startproc
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s 			page 3
+
+
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 84 1 is_stmt 0 view .LVU1
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 3, -16
+  39              		.cfi_offset 4, -12
+  40              		.cfi_offset 5, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0446     		mov	r4, r0
+  85:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  86:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** UX_HCD          *hcd;
+  43              		.loc 1 86 1 is_stmt 1 view .LVU2
+  87:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  88:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     
+  89:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     /* Obtain the HCD for this endpoint.  */
+  90:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     hcd = UX_DEVICE_HCD_GET(endpoint -> ux_endpoint_device);
+  44              		.loc 1 90 5 view .LVU3
+  45              		.loc 1 90 11 is_stmt 0 view .LVU4
+  46 0004 0C4B     		ldr	r3, .L6
+  47 0006 1B68     		ldr	r3, [r3]
+  48              		.loc 1 90 9 view .LVU5
+  49 0008 DD68     		ldr	r5, [r3, #12]
+  50              	.LVL1:
+  91:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  92:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     /* If trace is enabled, insert this event into the trace buffer.  */
+  93:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     UX_TRACE_IN_LINE_INSERT(UX_TRACE_HOST_STACK_ENDPOINT_INSTANCE_DELETE, endpoint -> ux_endpoint_d
+  94:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     
+  95:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     /* Ensure the endpoint had its physical ED allocated.  */
+  96:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     if (endpoint -> ux_endpoint_ed != UX_NULL)
+  51              		.loc 1 96 5 is_stmt 1 view .LVU6
+  52              		.loc 1 96 18 is_stmt 0 view .LVU7
+  53 000a 8368     		ldr	r3, [r0, #8]
+  54              		.loc 1 96 8 view .LVU8
+  55 000c 43B1     		cbz	r3, .L2
+  97:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     {    
+  98:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  99:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****         /* Destroy this endpoint.  */
+ 100:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****         hcd -> ux_hcd_entry_function(hcd, UX_HCD_DESTROY_ENDPOINT, (VOID *) endpoint);
+  56              		.loc 1 100 9 is_stmt 1 view .LVU9
+  57              		.loc 1 100 13 is_stmt 0 view .LVU10
+  58 000e 2B6F     		ldr	r3, [r5, #112]
+  59              		.loc 1 100 9 view .LVU11
+  60 0010 0246     		mov	r2, r0
+  61 0012 0F21     		movs	r1, #15
+  62 0014 2846     		mov	r0, r5
+  63              	.LVL2:
+  64              		.loc 1 100 9 view .LVU12
+  65 0016 9847     		blx	r3
+  66              	.LVL3:
+ 101:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     
+ 102:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****         /* Free the semaphore previously attached to the transfer_request of this endpoint.  */
+ 103:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****         _ux_host_semaphore_delete(&endpoint -> ux_endpoint_transfer_request.ux_transfer_request_sem
+  67              		.loc 1 103 9 is_stmt 1 view .LVU13
+  68 0018 04F17400 		add	r0, r4, #116
+  69 001c FFF7FEFF 		bl	_ux_utility_semaphore_delete
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s 			page 4
+
+
+  70              	.LVL4:
+  71              	.L2:
+ 104:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     }
+ 105:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+ 106:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     /* If the endpoint requested guaranteed bandwidth, free it now.  */
+ 107:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     switch ((endpoint -> ux_endpoint_descriptor.bmAttributes) & UX_MASK_ENDPOINT_TYPE)
+  72              		.loc 1 107 5 view .LVU14
+  73              		.loc 1 107 48 is_stmt 0 view .LVU15
+  74 0020 A369     		ldr	r3, [r4, #24]
+  75              		.loc 1 107 5 view .LVU16
+  76 0022 13F00303 		ands	r3, r3, #3
+  77 0026 01D0     		beq	.L1
+  78 0028 022B     		cmp	r3, #2
+  79 002a 00D1     		bne	.L5
+  80              	.L1:
+ 108:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     {
+ 109:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+ 110:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     case UX_CONTROL_ENDPOINT:
+ 111:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     case UX_BULK_ENDPOINT:
+ 112:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+ 113:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****         break;
+ 114:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+ 115:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     default:
+ 116:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+ 117:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****         /* Reclaim its bandwidth.  */
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****         _ux_host_stack_bandwidth_release(hcd, endpoint);
+ 119:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     }
+ 120:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+ 121:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     /* If trace is enabled, register this object.  */
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     UX_TRACE_OBJECT_UNREGISTER(endpoint);
+ 123:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+ 124:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     /* Return to caller.  */
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     return;    
+ 126:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** }
+  81              		.loc 1 126 1 view .LVU17
+  82 002c 38BD     		pop	{r3, r4, r5, pc}
+  83              	.LVL5:
+  84              	.L5:
+ 118:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c ****     }
+  85              		.loc 1 118 9 is_stmt 1 view .LVU18
+  86 002e 2146     		mov	r1, r4
+  87 0030 2846     		mov	r0, r5
+  88 0032 FFF7FEFF 		bl	_ux_host_stack_bandwidth_release
+  89              	.LVL6:
+ 122:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** 
+  90              		.loc 1 122 41 view .LVU19
+ 125:Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_instance_delete.c **** }
+  91              		.loc 1 125 5 view .LVU20
+  92 0036 F9E7     		b	.L1
+  93              	.L7:
+  94              		.align	2
+  95              	.L6:
+  96 0038 00000000 		.word	_ux_system_host
+  97              		.cfi_endproc
+  98              	.LFE11:
+ 100              		.text
+ 101              	.Letext0:
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s 			page 5
+
+
+ 102              		.file 2 "Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/tx_port.h"
+ 103              		.file 3 "Middlewares/ST/threadx/common/inc/tx_api.h"
+ 104              		.file 4 "Middlewares/ST/usbx/common/core/inc/ux_api.h"
+ 105              		.file 5 "Middlewares/ST/usbx/common/core/inc/ux_utility.h"
+ 106              		.file 6 "Middlewares/ST/usbx/common/core/inc/ux_host_stack.h"
+ 107              		.file 7 "Middlewares/ST/usbx/common/core/inc/ux_system.h"
+ARM GAS  C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ux_host_stack_endpoint_instance_delete.c
+C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s:20     .text._ux_host_stack_endpoint_instance_delete:00000000 $t
+C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s:26     .text._ux_host_stack_endpoint_instance_delete:00000000 _ux_host_stack_endpoint_instance_delete
+C:\Users\HP\AppData\Local\Temp\ccVmZmGt.s:96     .text._ux_host_stack_endpoint_instance_delete:00000038 $d
+
+UNDEFINED SYMBOLS
+_ux_utility_semaphore_delete
+_ux_host_stack_bandwidth_release
+_ux_system_host
